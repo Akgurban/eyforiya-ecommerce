@@ -1,0 +1,1 @@
+import{_ as o}from"./entry.63f2b5d2.js";import{L as r,M as t,a7 as n}from"./swiper-vue.629ce7f2.js";const s={};function a(e,c){return r(),t("div",null,[n(e.$slots,"default")])}const _=o(s,[["render",a]]);export{_ as default};

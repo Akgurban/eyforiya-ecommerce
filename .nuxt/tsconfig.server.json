@@ -1,0 +1,85 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "paths": {
+      "#imports": [
+        "C:/Users/User/Desktop/eyforiya/.nuxt/types/nitro-imports"
+      ],
+      "#paths": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/core/runtime/nitro/paths"
+      ],
+      "~": [
+        "C:/Users/User/Desktop/eyforiya"
+      ],
+      "~/*": [
+        "C:/Users/User/Desktop/eyforiya/*"
+      ],
+      "@": [
+        "C:/Users/User/Desktop/eyforiya"
+      ],
+      "@/*": [
+        "C:/Users/User/Desktop/eyforiya/*"
+      ],
+      "~~": [
+        "C:/Users/User/Desktop/eyforiya"
+      ],
+      "~~/*": [
+        "C:/Users/User/Desktop/eyforiya/*"
+      ],
+      "@@": [
+        "C:/Users/User/Desktop/eyforiya"
+      ],
+      "@@/*": [
+        "C:/Users/User/Desktop/eyforiya/*"
+      ],
+      "assets": [
+        "C:/Users/User/Desktop/eyforiya/assets"
+      ],
+      "assets/*": [
+        "C:/Users/User/Desktop/eyforiya/assets/*"
+      ],
+      "public": [
+        "C:/Users/User/Desktop/eyforiya/public"
+      ],
+      "public/*": [
+        "C:/Users/User/Desktop/eyforiya/public/*"
+      ],
+      "pinia": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/pinia/dist/pinia"
+      ],
+      "vue-i18n": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n/dist/vue-i18n"
+      ],
+      "@intlify/shared": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/shared/dist/shared"
+      ],
+      "@intlify/vue-router-bridge": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-router-bridge/lib/index"
+      ],
+      "@intlify/vue-i18n-bridge": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-i18n-bridge/lib/index"
+      ],
+      "vue-i18n-routing": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n-routing/dist/vue-i18n-routing"
+      ],
+      "#i18n": [
+        "C:/Users/User/Desktop/eyforiya/node_modules/@nuxtjs/i18n/dist/runtime/composables"
+      ]
+    }
+  },
+  "include": [
+    "C:/Users/User/Desktop/eyforiya/.nuxt/types/nitro-nuxt.d.ts",
+    "./types/nitro.d.ts",
+    "../**/*",
+    "../server/**/*"
+  ]
+}
