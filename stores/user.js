@@ -67,7 +67,9 @@ export const useUserStore = defineStore("user", {
       );
     },
     async OneSpecialCategories(uuid) {
-      return await $axios.get(`/api/v1/admin/products/sub-category/${uuid}`);
+      return await $axios.get(
+        `/api/v1/admin/products/special-category/${uuid}`
+      );
     },
 
     // sub category
@@ -149,12 +151,15 @@ export const useUserStore = defineStore("user", {
       );
     },
     async OneProduct(uuid) {
-      return await $axios.get(`/api/v1/admin/products/brand/${uuid}`);
+      return await $axios.get(`/api/v1/admin/products/product/${uuid}`);
     },
     async deleteProduct(data) {
       return await $axios.post(
-        `/api/v1/admin/products/brand/delete/${data.uuid}`
+        `/api/v1/admin/products/product/delete/${data.uuid}`
       );
+    },
+    async deleteProductImage(data) {
+      return await $axios.post(`/api/v1/admin/products/image/delete/${data}`);
     },
   },
   persist: true,

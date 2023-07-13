@@ -17,16 +17,25 @@
         :key="item.uuid"
       >
         <img
-          :src="`http://192.168.1.126:2000/api/v1/uploads/special_categories/${item?.img_path}`"
+          :src="`http://216.250.9.21:2000/api/v1/uploads/special_categories/${item?.img_path}`"
           alt=""
           class="h-10 w-15"
         />
         <p>
           {{ item.name }}
         </p>
-        <BaseButton @click="deleteCategory(item)" type="danger"
-          >delete</BaseButton
-        >
+        <div class="flex gap-3">
+          <BaseButton
+            @click="
+              useRouter().push(`/admin/special-categories/edit/${item.uuid}`)
+            "
+            type="secondary"
+            >edit</BaseButton
+          >
+          <BaseButton @click="deleteCategory(item)" type="danger"
+            >delete</BaseButton
+          >
+        </div>
       </div>
     </ul>
   </div>

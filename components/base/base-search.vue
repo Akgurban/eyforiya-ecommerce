@@ -1,7 +1,7 @@
 <template>
   <label :for="id">{{ label }}</label>
   <div
-    class="px-5 py-[10px] w-[386px] rounded-lg bg-[#f6f6f6] flex border hover:border-black"
+    class="px-5 py-[10px] w-full rounded-lg bg-[#f6f6f6] flex border hover:border-black"
   >
     <img
       width="20"

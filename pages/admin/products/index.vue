@@ -15,21 +15,30 @@
     <ul>
       <li
         class="bg-gray-200 flex justify-between items-center text-lg font-bold rounded-md p-2 m-1"
-        v-for="item in posts"
+        v-for="item in products"
         :key="item.uuid"
       >
         <img
-          :src="`http://192.168.1.126:3000/api/v1/uploads/news/${item.img_path}`"
+          :src="`http://216.250.9.21:2000/api/v1/uploads/images/${item?.images[0]}`"
           alt=""
           class="h-10 w-15"
         />
         <p>
-          {{ item.title }}
+          {{ item.name }}
         </p>
         <p>
           {{ item.description }}
         </p>
-        <BaseButton @click="deletePosts(item)" type="danger">delete</BaseButton>
+        <div class="flex gap-3">
+          <BaseButton
+            @click="useRouter().push(`/admin/products/edit/${item.uuid}`)"
+            type="primary"
+            >edit</BaseButton
+          >
+          <BaseButton @click="deletePosts(item)" type="danger"
+            >delete</BaseButton
+          >
+        </div>
       </li>
     </ul>
   </div>
@@ -40,16 +49,16 @@ import { useUserStore } from "~~/stores/user";
 definePageMeta({
   layout: "admin",
 });
-const posts = ref(null);
+const products = ref(null);
 const userStore = useUserStore();
 const getPosts = async () => {
   try {
-    const { data } = await userStore.getPosts({
+    const { data } = await userStore.getProduct({
       limit: 10,
       offset: 0,
     });
     console.log(data, "data");
-    posts.value = data.data.services;
+    products.value = data.data.products;
   } catch (error) {
     console.log(error);
   }
@@ -58,7 +67,7 @@ await getPosts();
 
 const deletePosts = async (e) => {
   try {
-    const { data } = await userStore.deletePosts(e);
+    const { data } = await userStore.deleteProduct(e);
     console.log(data, "data");
     if (data.status) {
       await getPosts();

@@ -27,16 +27,11 @@ const renderBullet = (index, className) => {
     :navigation="true"
     :mousewheel="true"
     :keyboard="true"
-    style="
-      width: 98% !important;
-      height: auto !important;
-      padding-bottom: 20px !important;
-    "
+    style="width: 98% !important; padding-bottom: 10px !important"
   >
     <swiper-slide
       v-for="item in 6"
       :key="item"
-      style="height: fit-content !important"
       class="group mx-2 mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
     >
       <div class="rounded-xl mb-3 text-center mt-6">
@@ -47,26 +42,8 @@ const renderBullet = (index, className) => {
           height="262"
           loading="lazy"
         />
-        <div
-          class="w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
-        >
-          Raf-utuk-r126
-        </div>
-        <div
-          class="mx-auto text-[#48BC4E] text-3xl font-alatsi w-fit pb-1 border-b border-[#44A4DB]"
-        >
-          158 TMT
-        </div>
-        <div class="relative mt-5 mb-3">
-          <img class="mx-auto" src="@/assets/images/add_cart.svg" alt="" />
-          <div
-            class="absolute top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
-          >
-            <div class="md:text-2xl text-lg font-alatsi whitespace-nowrap">
-              Sebede goş
-            </div>
-            <IconTrash class="inline mt-1 md:w-9 w-6 md:h-9 h-6"></IconTrash>
-          </div>
+        <div class="md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1">
+          {{ $width }}
         </div>
       </div>
     </swiper-slide>

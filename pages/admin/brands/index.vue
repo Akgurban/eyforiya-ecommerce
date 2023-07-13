@@ -2,7 +2,7 @@
   <div>
     <NuxtLink
       class="bg-green-700 block rounded-md hover:bg-green-600 p-2 text-white font-bold text-center mt-3 cursor-pointer"
-      to="/admin/banners/add"
+      to="/admin/brands/add"
     >
       Add +
     </NuxtLink>
@@ -17,7 +17,7 @@
         :key="item.uuid"
       >
         <img
-          :src="`http://192.168.1.126:2000/api/v1/uploads/brands/${item?.img_path}`"
+          :src="`http://216.250.9.21:2000/api/v1/uploads/brands/${item?.img_path}`"
           alt=""
           class="h-10 w-15"
         />

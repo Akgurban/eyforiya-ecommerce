@@ -3,17 +3,28 @@ import axios from "~~/plugins/axios";
 
 const $axios = axios().provide.axios;
 
-export const useUserStore = defineStore("user", {
+export const useLoaderStore = defineStore("loader", {
   state: () => ({
     loading: false,
   }),
   actions: {
-    startLoading() {},
+    startLoading() {
+      this.loading = true;
+    },
+    endLoading() {
+      this.loading = false;
+    },
 
     async OneSubCategory(uuid) {
       return await $axios.get(
         `/api/v1/client/products/get-sub-categories/tm?uuid=${uuid}`
       );
+    },
+  },
+  getters: {
+    getLoading: (state) => state.loading,
+    doubleCounterPlusOne() {
+      return this.doubleCounter + 1;
     },
   },
 

@@ -70,13 +70,26 @@
       <div
         v-for="(item, index) in 5"
         :key="index"
-        class="flex flex-col w-[200px] gap-2"
+        class="flex flex-col w-[200px] gap-2 relative"
       >
         <BaseImgUpload
-          v-if="image.length >= index"
+          v-if="image.length >= index || addedImages.length >= index"
           class="w-[200px]"
+          :currentImg="
+            addedImages[index]?.img_path
+              ? `http://216.250.9.21:2000/api/v1/uploads/images/${addedImages[index].img_path}`
+              : null
+          "
+          :isChangable="addedImages[index]?.img_path ? false : true"
           v-model="image[index]"
         />
+        <div
+          @click="deleteOneImg(addedImages[index].img_uuid)"
+          v-if="addedImages[index]?.img_path"
+          class="text-white cursor-pointer hover:bg-red-500 px-2 w-full bg-red-600 mt-auto absolute -bottom-5"
+        >
+          Delete
+        </div>
       </div>
     </div>
   </div>
@@ -103,14 +116,16 @@ definePageMeta({
 });
 const userStore = useUserStore();
 const loaderStore = useLoaderStore();
+const router = useRouter();
+const route = useRoute();
 
 const image = ref([]);
+const addedImages = ref([]);
 
 const description_tm = ref(null);
 const description_en = ref(null);
 const description_ru = ref(null);
 
-const router = useRouter();
 const name_tm = ref(null);
 const name_en = ref(null);
 const name_ru = ref(null);
@@ -124,25 +139,52 @@ const selectedSpec = ref(null);
 const selectedSub = ref(null);
 const selectedBrand = ref(null);
 
-try {
-  const { data: sub } = await userStore.getSubCategories();
-  const { data: spec } = await userStore.getSpecialCategories();
-  const { data: brand } = await userStore.getBrand();
+const getOneProductData = async () => {
+  try {
+    const { data: sub } = await userStore.getSubCategories();
+    const { data: spec } = await userStore.getSpecialCategories();
+    const { data: brand } = await userStore.getBrand();
+    const { data: product_id } = await userStore.OneProduct(route.params.id);
 
-  console.log(sub, spec, "sub Categories");
-  sub_categories.value = sub.data;
-  spec_categories.value = spec.data;
-  brands.value = brand.data;
-} catch (error) {
-  console.log(error);
-}
+    console.log(product_id, "sub prodf");
+    sub_categories.value = sub.data;
+    spec_categories.value = spec.data;
+    brands.value = brand.data;
+    loaderStore.endLoading();
 
+    (addedImages.value = product_id.data.images),
+      (name_tm.value = product_id.data.name_tm),
+      (name_ru.value = product_id.data.name_ru),
+      (name_en.value = product_id.data.name_en),
+      (description_tm.value = product_id.data.description_tm),
+      (description_en.value = product_id.data.description_en),
+      (description_ru.value = product_id.data.description_ru),
+      (price.value = +product_id.data.price),
+      (selectedBrand.value = {
+        name: product_id.data.brand_name,
+        uuid: product_id.data.brand_id,
+      }),
+      (selectedSpec.value = {
+        name: product_id.data.special_categ_name,
+        uuid: product_id.data.special_categ_id,
+      });
+    selectedSub.value = {
+      name: product_id.data.sub_category_name,
+      uuid: product_id.data.sub_category_id,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+await getOneProductData();
 console.log(loaderStore, "loaderStore");
+
 const addPosts = async () => {
   try {
     loaderStore.startLoading();
-    const { data: onlyProduct } = await userStore.addProduct({
-      sub_category_id: selectedSub.value?.uuid || null,
+    console.log(selectedSub.value, "selectedSub");
+    const { data: onlyProduct } = await userStore.editProduct({
+      sub_category_id: selectedSub.value?.uuid,
       name_tm: name_tm.value,
       name_ru: name_ru.value,
       name_en: name_en.value,
@@ -152,6 +194,7 @@ const addPosts = async () => {
       price: +price.value,
       brand_id: selectedBrand.value?.uuid || null,
       special_category_id: selectedSpec.value?.uuid || null,
+      uuid: route.params.id,
     });
     if (onlyProduct.status) {
       const form = new FormData();
@@ -173,8 +216,21 @@ const addPosts = async () => {
     console.log(error);
   }
 };
-watch(image.value, () => {
-  console.log(image.value, image.value.length, "images wath");
+const deleteOneImg = async (e) => {
+  try {
+    loaderStore.startLoading();
+    const { data } = await userStore.deleteProductImage(e);
+    console.log(data, "image");
+    if (data.status) {
+      await getOneProductData();
+      loaderStore.endLoading();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+watch(addedImages, () => {
+  console.log(selectedSub.value, "images wath");
 });
 </script>
 

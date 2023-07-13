@@ -4,13 +4,16 @@ module.exports = {
   darkMode: "media", // or 'class'
   theme: {
     namedGroups: ["foo", "bar"],
+    extend: {
+      aspectRatio: {},
+    },
     screens: {
       xs: "440px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
+      xl: "1230px",
+      "2xl": "1400px",
     },
     supports: {},
     colors: ({ colors }) => ({

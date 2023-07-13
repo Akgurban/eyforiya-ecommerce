@@ -29,7 +29,10 @@
 
     <div class="flex justify-between mt-3">
       <div class="w-[400px]">
-        <BaseImgUpload v-model="category_img" />
+        <BaseImgUpload
+          :currentImg="`http://216.250.9.21:2000/api/v1/uploads/special_categories/${selectedImg}`"
+          v-model="category_img"
+        />
       </div>
 
       <BaseButton @click="addCategory" class="" type="secondary">
@@ -54,8 +57,8 @@ const category_tm = ref(null);
 const category_ru = ref(null);
 const category_en = ref(null);
 const category_img = ref(null);
-const description = ref(null);
-const route = useRouter();
+const selectedImg = ref(null);
+const route = useRoute();
 watch(image, () => {
   console.log(image);
 });
@@ -76,7 +79,7 @@ const val_en = (e) => {
 };
 
 try {
-  console.log(route.params);
+  console.log(route.params, "idfg");
   const { data } = await userStore.OneSpecialCategories(route.params.id);
   console.log(data, "dai");
   category_tm.value = data.data.name_tm;

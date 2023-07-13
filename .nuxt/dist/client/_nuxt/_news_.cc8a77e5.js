@@ -1,1 +1,0 @@
-import{_ as s,a as n}from"./entry.63f2b5d2.js";import{M as o,Y as r,u as t,L as a}from"./swiper-vue.629ce7f2.js";const u={};function c(e,_){return a(),o("div",null,r(("useRoute"in e?e.useRoute:t(n))().query.name),1)}const l=s(u,[["render",c]]);export{l as default};

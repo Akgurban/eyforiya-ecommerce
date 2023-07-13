@@ -12,10 +12,14 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  isChangable: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 onMounted(() => {
-  if (props.currentImg) {
+  if (!!props.currentImg) {
     img.value.src = props.currentImg;
   }
 });
@@ -32,7 +36,10 @@ watch(
 const emit = defineEmits(["update:modelValue"]);
 
 function showFileUpload() {
-  fileInput.value.click();
+  if (props.isChangable) {
+    console.log("utgedi");
+    fileInput.value.click();
+  }
 }
 
 function setImg(event) {
@@ -75,6 +82,7 @@ function setImg(event) {
         Täze surat goýmak üçin basyň
       </p>
     </div>
+
     <img
       ref="img"
       class="absolute top-0 left-0 w-full h-full object-cover z-[1]"

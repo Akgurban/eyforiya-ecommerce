@@ -10,6 +10,7 @@
       </div>
     </div>
   </div>
+  <BaseLoader></BaseLoader>
 </template>
 
 <script setup></script>

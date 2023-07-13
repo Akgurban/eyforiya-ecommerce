@@ -17,7 +17,7 @@
         :key="item.uuid"
       >
         <img
-          :src="`http://192.168.1.126:2000/api/v1/uploads/banners/${item?.img_path}`"
+          :src="`http://216.250.9.21:2000/api/v1/uploads/banners/${item?.img_path}`"
           alt=""
           class="h-10 w-15"
         />

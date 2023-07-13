@@ -1,17 +1,21 @@
 <template>
   <div>
-    <div class="w-[1448px] h-[544px] mx-auto">
+    <div
+      class="xl:w-[1196px] rounded-md overflow-hidden select-none w-full aspect-[21/10] mx-auto"
+    >
       <MainSwiper></MainSwiper>
     </div>
-    <div class="block w-[1238px] mx-auto mt-[92px]">
+    <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-between">
         <p
-          class="font-alatsi text-4xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
           Categories
         </p>
         <div class="flex cursor-pointer items-center">
-          <p class="font-alatsi inline text-3xl text-[#3C4242]">View All</p>
+          <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
+            View All
+          </p>
           <img
             class="inline h-[34px]"
             height=""
@@ -20,36 +24,42 @@
           />
         </div>
       </div>
-      <div class="h-[358px] mt-7">
-        <HeroSwiper class=""></HeroSwiper>
-      </div>
-    </div>
-    <div class="block w-[1238px] mx-auto mt-[100px]">
-      <MainInfo />
-    </div>
-    <div class="block w-[1238px] mx-auto mt-[92px]">
-      <div class="flex justify-between">
-        <p
-          class="font-alatsi text-4xl text-[#3C4242] border-l-[6px] border-[#44A4DB] pl-[14px]"
-        >
-          Categories
-        </p>
-        <div class="flex cursor-pointer items-center">
-          <p class="font-alatsi inline text-3xl text-[#3C4242]">View All</p>
-          <img
-            class="inline h-[34px]"
-            height=""
-            src="@/assets/images/chevron-right.svg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="h-[358px] mt-7">
-        <HeroSwiperProduct class=""></HeroSwiperProduct>
+      <div class="md:h-[358px] h-[250px] md:mt-7 mt-1">
+        <HeroSwiperCategory class=""></HeroSwiperCategory>
       </div>
     </div>
 
-    <!-- specials -->
+    <div
+      class="block xl:w-[1238px] md:w-full w-full mx-auto mt-4 md:mt-[100px]"
+    >
+      <MainInfo />
+    </div>
+    <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
+      <div class="flex justify-between">
+        <p
+          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+        >
+          Latest products
+        </p>
+        <div class="flex cursor-pointer items-center">
+          <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
+            View All
+          </p>
+          <img
+            class="inline h-[34px]"
+            height=""
+            src="@/assets/images/chevron-right.svg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="block md:h-auto h-auto md:mt-7 mt-1">
+        <HeroSwiperProduct class=""></HeroSwiperProduct>
+      </div>
+    </div>
+    <!--
+
+    
     <div class="block h-auto w-[1238px] mx-auto mt-[92px]">
       <div class="flex justify-center">
         <p
@@ -63,7 +73,7 @@
       </div>
     </div>
 
-    <!-- Trending -->
+    
     <div class="block w-[1238px] mx-auto mt-[92px]">
       <div class="flex justify-between">
         <p
@@ -86,7 +96,7 @@
       </div>
     </div>
 
-    <!-- Logos -->
+    
     <div class="flex items-center w-[1440px] mx-auto mt-[92px] h-[125px]">
       <div class="flex w-full justify-between">
         <img
@@ -120,16 +130,13 @@
           alt=""
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
-import { useUserStore } from "~~/stores/user";
-
 const posts = ref(null);
 const categories = ref(null);
-const userStore = useUserStore();
 
 // try {
 //   const { data } = await userStore.getCategories();
