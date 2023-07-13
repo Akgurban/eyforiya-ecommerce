@@ -1,0 +1,1 @@
+import{g as t,n as o}from"./entry.e64b2ffb.js";import{u as e}from"./authStore.5a2ccbdc.js";import"./swiper-vue.45949d5c.js";const m=t((r,a)=>{if(!e().userToken)return o("/admin/login")});export{m as default};

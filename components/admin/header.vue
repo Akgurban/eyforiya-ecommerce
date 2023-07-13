@@ -15,11 +15,6 @@
               class="items-center relative z-50 justify-center flex h-full text-sm bg-gray-600 rounded-md"
             >
               Hasapdan Cyk
-              <img
-                class="inline w-4 ml-2"
-                src="~/assets/images/logout.svg"
-                alt=""
-              />
             </div>
 
             <div

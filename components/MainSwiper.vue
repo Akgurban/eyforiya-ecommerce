@@ -77,7 +77,6 @@ const renderBullet = (index, className) => {
   display: flex;
   align-items: center;
   height: 120px !important;
-  background-image: url("@/assets/chevron.svg");
 }
 .swiper-button-next:after {
   color: #000 !important;
