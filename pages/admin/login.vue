@@ -17,13 +17,16 @@ async function login() {
       return;
       // throw new Error("Please fill all fields");
     }
-    const { data, error } = await useFetch("/api/v1/admin/login", {
-      method: "POST",
-      body: JSON.stringify({
-        user: user.value,
-        password: password.value,
-      }),
-    });
+    const { data, error } = await useFetch(
+      "http://216.250.9.21:2000/api/v1/admin/login",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: user.value,
+          password: password.value,
+        }),
+      }
+    );
     authStore.userToken = data.value.data;
     router.push("/admin/news");
   } catch (error) {

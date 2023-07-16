@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "@pinia-plugin-persistedstate/nuxt",
     "nuxt-swiper",
     "@nuxtjs/i18n",
+    "@vueuse/nuxt",
   ],
 
   i18n: {

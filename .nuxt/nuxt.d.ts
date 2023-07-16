@@ -4,6 +4,7 @@
 /// <reference types="@pinia-plugin-persistedstate/nuxt" />
 /// <reference types="nuxt-swiper" />
 /// <reference types="@nuxtjs/i18n" />
+/// <reference types="@vueuse/nuxt" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="nuxt" />

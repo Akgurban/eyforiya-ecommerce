@@ -3,9 +3,9 @@ import axios from "~~/plugins/axios";
 
 const $axios = axios().provide.axios;
 
-export const useTrashStore = defineStore("trash", {
+export const useLikedStore = defineStore("liked", {
   state: () => ({
-    trash_items: useLocalStorage("trash_items", {
+    liked_items: useLocalStorage("liked_items", {
       totalCount: 0,
       totalPrice: 0,
       products: [],

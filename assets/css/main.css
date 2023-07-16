@@ -26,9 +26,24 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   width: 100vw;
-  @media screen and (max-width: 320px) {
-    font-size: 14px;
+}
+@media screen and (max-width: 620px) {
+  * {
+    cursor: auto;
   }
+}
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+*.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {

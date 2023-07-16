@@ -7,8 +7,9 @@
       :type="type"
       :placeholder="placeholder"
       :value="modelValue"
+      :checked="checked"
       @input="handleInput"
-      class="bg-white w-full sm:px-6 px-4 h-[50px] border border-black focus:outline-none mt-1 placeholder:text-[#7f7777]"
+      class="bg-white w-full sm:px-6 px-4 h-full border border-black focus:outline-none mt-1 placeholder:text-[#7f7777]"
     />
     <div v-if="error" class="error">{{ error }}</div>
   </div>
@@ -19,6 +20,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const props = defineProps({
   name: { type: String, required: true },
+  checked: { type: Boolean, default: false },
   type: { type: String, default: "text" },
   label: { type: String, required: true },
   modelValue: { type: [String, Number], default: 0 },

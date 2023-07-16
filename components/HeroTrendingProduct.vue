@@ -1,17 +1,5 @@
 <template>
-  <swiper
-    :spaceBetween="5"
-    :slidesPerView="$width.value == 'desktop' ? 4 : 2"
-    :loop="true"
-    :autoplay="{
-      delay: 377500,
-      disableOnInteraction: false,
-    }"
-    class="pb-3"
-    :modules="[Autoplay, Pagination, Navigation]"
-    :navigation="true"
-    :mousewheel="true"
-    :keyboard="true"
+  <div
     style="
       width: 97% !important;
       height: auto !important;
@@ -19,13 +7,16 @@
       padding-bottom: 20px !important;
     "
   >
-    <swiper-slide
+    <div
       v-for="(item, index) in 6"
       :key="item"
-      draggable="true"
-      class="group product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center"
+      style=""
+      class="group product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
     >
-      <div class="rounded-xl text-center mt-6">
+      <div
+        @click="useRouter().push('/trash')"
+        class="rounded-xl text-center mt-6"
+      >
         <img
           class="border pointer-events-none select-none border-[#e6e6e6]"
           :src="`/categories/cat-${item}.png`"
@@ -45,9 +36,33 @@
         </div>
       </div>
 
-      <TrashButtonAndCounter />
-    </swiper-slide>
-  </swiper>
+      <div
+        v-if="index == 1"
+        @click="useRouter().push('/trashs')"
+        class="relative pointer-events-auto select-none mt-5 mb-3 hover:scale-95 transition-transform duration-150"
+      >
+        <img
+          class="mx-auto h-9 md:h-10 pointer-events-none touch-pan-y"
+          src="@/assets/images/add_cart.svg"
+          alt=""
+        />
+        <div
+          class="absolute pointer-events-auto top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
+        >
+          <div class="md:text-2xl text-lg font-alatsi whitespace-nowrap">
+            Sebede goş
+          </div>
+          <IconTrash
+            draggable="false"
+            class="inline pointer-events-none mt-1 md:w-9 w-6 md:h-9 h-6"
+          ></IconTrash>
+        </div>
+      </div>
+      <div v-if="index != 1" class="w-[80%] mt-3">
+        <BaseCounter @click="setStore" v-model="count"></BaseCounter>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -60,6 +75,7 @@ import "swiper/css/pagination";
 import { useTrashStore } from "~~/stores/trash";
 
 import "swiper/css/navigation";
+const { $width } = useNuxtApp();
 
 const count = ref(0);
 const trash = useTrashStore();
@@ -143,6 +159,7 @@ const renderBullet = (index, className) => {
 .product_item {
   height: fit-content !important;
   user-select: none !important;
+  touch-action: pan-y !important;
   border-radius: 12px !important;
 }
 </style>

@@ -32,7 +32,7 @@ const renderBullet = (index, className) => {
     <swiper-slide
       v-for="item in 6"
       :key="item"
-      class="group mx-2 mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
+      class="group mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
     >
       <div class="rounded-xl mb-3 text-center mt-6">
         <img

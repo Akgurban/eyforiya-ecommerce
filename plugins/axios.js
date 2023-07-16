@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export default defineNuxtPlugin((NuxtApp) => {
-  axios.defaults.baseURL = "http://216.250.9.21:2000";
-  // axios.defaults.baseURL = 'https://api.johntest.site'
-  //   axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = " ";
+  axios.defaults.withCredentials = true;
   return {
     provide: {
       axios: axios,

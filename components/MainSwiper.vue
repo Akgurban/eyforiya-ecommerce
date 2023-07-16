@@ -37,7 +37,12 @@ const renderBullet = (index, className) => {
     <swiper-slide
       v-for="item in 5"
       :key="item"
-      style="width: 100% !important; height: 100% !important"
+      style="
+        width: 100% !important;
+        height: 100% !important;
+        user-select: none !important;
+        pointer-events: none !important;
+      "
       class="select-none group w-full h-full cursor-pointer"
     >
       <div class="select-none rounded-xl w-full h-full">
@@ -65,7 +70,10 @@ const renderBullet = (index, className) => {
   justify-content: center;
   align-items: center;
 }
-
+.swiper-button-prev,
+.swiper-button-next {
+  cursor: pointer;
+}
 .swiper-button-prev:after {
   color: #000 !important;
   content: url("@/assets/images/chevron.svg") !important;
@@ -97,6 +105,10 @@ const renderBullet = (index, className) => {
     width: 37px !important;
     display: flex;
     justify-content: start;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    cursor: auto;
   }
 
   .swiper-pagination-bullet {
