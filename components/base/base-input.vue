@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full">
     <label :for="id">{{ label }}</label>
     <input
       :id="id"
@@ -9,7 +9,8 @@
       :value="modelValue"
       :checked="checked"
       @input="handleInput"
-      class="bg-white w-full sm:px-6 px-4 h-full border border-black focus:outline-none mt-1 placeholder:text-[#7f7777]"
+      :class="heightFull ? 'h-full' : 'h-[50px]'"
+      class="bg-white w-full sm:px-6 px-4 border border-black focus:outline-none placeholder:text-[#7f7777]"
     />
     <div v-if="error" class="error">{{ error }}</div>
   </div>
@@ -24,6 +25,7 @@ const props = defineProps({
   type: { type: String, default: "text" },
   label: { type: String, required: true },
   modelValue: { type: [String, Number], default: 0 },
+  heightFull: { type: Boolean, default: false },
   placeholder: { type: String, default: "" },
   validate: { type: Function },
 });

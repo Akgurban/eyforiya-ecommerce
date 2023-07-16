@@ -12,72 +12,72 @@
     "jsxFragmentFactory": "Fragment",
     "paths": {
       "#imports": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt/types/nitro-imports"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/types/nitro-imports"
       ],
       "#paths": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/core/runtime/nitro/paths"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
       "~": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "~/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "@": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "@/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "~~": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "~~/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "@@": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "@@/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "assets": [
-        "C:/Users/User/Desktop/eyforiya/assets"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/assets"
       ],
       "assets/*": [
-        "C:/Users/User/Desktop/eyforiya/assets/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/assets/*"
       ],
       "public": [
-        "C:/Users/User/Desktop/eyforiya/public"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/public"
       ],
       "public/*": [
-        "C:/Users/User/Desktop/eyforiya/public/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/public/*"
       ],
       "pinia": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/pinia/dist/pinia"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/pinia/dist/pinia"
       ],
       "vue-i18n": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n/dist/vue-i18n"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/vue-i18n/dist/vue-i18n"
       ],
       "@intlify/shared": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/shared/dist/shared"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/shared/dist/shared"
       ],
       "@intlify/vue-router-bridge": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-router-bridge/lib/index"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/vue-router-bridge/lib/index"
       ],
       "@intlify/vue-i18n-bridge": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-i18n-bridge/lib/index"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/vue-i18n-bridge/lib/index"
       ],
       "vue-i18n-routing": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n-routing/dist/vue-i18n-routing"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/vue-i18n-routing/dist/vue-i18n-routing"
       ],
       "#i18n": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@nuxtjs/i18n/dist/runtime/composables"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@nuxtjs/i18n/dist/runtime/composables"
       ]
     }
   },
   "include": [
-    "C:/Users/User/Desktop/eyforiya/.nuxt/types/nitro-nuxt.d.ts",
+    "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/types/nitro-nuxt.d.ts",
     "./types/nitro.d.ts",
     "../**/*",
     "../server/**/*"

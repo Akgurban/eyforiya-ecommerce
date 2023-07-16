@@ -6,10 +6,10 @@
     "module": true,
     "resourceType": "script"
   },
-  "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/app/entry.js": {
+  "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "isEntry": true,
-    "file": "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/app/entry.js"
+    "file": "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/app/entry.js"
   }
 }

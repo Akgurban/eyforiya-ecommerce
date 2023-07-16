@@ -1,1 +1,1 @@
-export { default } from "file:///C:/Users/User/Desktop/eyforiya/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
+export { default } from "file:///C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

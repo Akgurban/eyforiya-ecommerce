@@ -11,6 +11,11 @@ import "swiper/css/navigation";
 const renderBullet = (index, className) => {
   return '<span class="' + className + '">' + (index + 1) + "</span>";
 };
+
+const { data: categories } = await useMyFetch(
+  "/api/v1/client/products/categories?lang=ru"
+);
+console.log(categories, "data");
 </script>
 <template>
   <swiper
@@ -30,20 +35,20 @@ const renderBullet = (index, className) => {
     style="width: 98% !important; padding-bottom: 10px !important"
   >
     <swiper-slide
-      v-for="item in 6"
+      v-for="item in categories.data"
       :key="item"
       class="group mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
     >
       <div class="rounded-xl mb-3 text-center mt-6">
         <img
           class="border border-[#e6e6e6]"
-          :src="`/categories/cat-${item}.png`"
+          :src="`http://duybaha.com.tm/api/v1/uploads/categories/${item.img_path}`"
           alt=""
           height="262"
           loading="lazy"
         />
         <div class="md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1">
-          {{ $width }}
+          {{ item.name }}
         </div>
       </div>
     </swiper-slide>

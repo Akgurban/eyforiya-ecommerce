@@ -1,5 +1,5 @@
 
-import { defuFn } from 'C:/Users/User/Desktop/eyforiya/node_modules/defu/dist/defu.mjs'
+import { defuFn } from 'C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 

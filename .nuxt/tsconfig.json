@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
-    "baseUrl": "C:/Users/User/Desktop/eyforiya",
+    "baseUrl": "C:/Users/User/Desktop/eyforiya-ecommerce",
     "noEmit": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
@@ -19,85 +19,85 @@
     ],
     "paths": {
       "~": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "~/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "@": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "@/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "~~": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "~~/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "@@": [
-        "C:/Users/User/Desktop/eyforiya"
+        "C:/Users/User/Desktop/eyforiya-ecommerce"
       ],
       "@@/*": [
-        "C:/Users/User/Desktop/eyforiya/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/*"
       ],
       "assets": [
-        "C:/Users/User/Desktop/eyforiya/assets"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/assets"
       ],
       "assets/*": [
-        "C:/Users/User/Desktop/eyforiya/assets/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/assets/*"
       ],
       "public": [
-        "C:/Users/User/Desktop/eyforiya/public"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/public"
       ],
       "public/*": [
-        "C:/Users/User/Desktop/eyforiya/public/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/public/*"
       ],
       "#app": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/app"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/app"
       ],
       "#app/*": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/app/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/app/*"
       ],
       "vue-demi": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/nuxt/dist/app/compat/vue-demi"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/nuxt/dist/app/compat/vue-demi"
       ],
       "pinia": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/pinia/dist/pinia"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/pinia/dist/pinia"
       ],
       "vue-i18n": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n/dist/vue-i18n"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/vue-i18n/dist/vue-i18n"
       ],
       "@intlify/shared": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/shared/dist/shared"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/shared/dist/shared"
       ],
       "@intlify/vue-router-bridge": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-router-bridge/lib/index"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/vue-router-bridge/lib/index"
       ],
       "@intlify/vue-i18n-bridge": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@intlify/vue-i18n-bridge/lib/index"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@intlify/vue-i18n-bridge/lib/index"
       ],
       "vue-i18n-routing": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/vue-i18n-routing/dist/vue-i18n-routing"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/vue-i18n-routing/dist/vue-i18n-routing"
       ],
       "#i18n": [
-        "C:/Users/User/Desktop/eyforiya/node_modules/@nuxtjs/i18n/dist/runtime/composables"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/node_modules/@nuxtjs/i18n/dist/runtime/composables"
       ],
       "#vue-router": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt/vue-router"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/vue-router"
       ],
       "#imports": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt/imports"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/imports"
       ],
       "#build": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt"
       ],
       "#build/*": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt/*"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/*"
       ],
       "#components": [
-        "C:/Users/User/Desktop/eyforiya/.nuxt/components"
+        "C:/Users/User/Desktop/eyforiya-ecommerce/.nuxt/components"
       ]
     }
   },
