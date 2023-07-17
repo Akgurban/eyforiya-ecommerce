@@ -175,27 +175,7 @@
 const posts = ref(null);
 const categories = ref(null);
 
-// try {
-//   const { data } = await userStore.getCategories();
-//   console.log(data, "data");
-//   categories.value = data.data;
-// } catch (error) {
-//   console.log(error);
-// }
-
-// const getPosts = async () => {
-//   try {
-//     const { data } = await userStore.getPosts({
-//       limit: 10,
-//       offset: 0,
-//     });
-//     console.log(data, "data");
-//     posts.value = data.data.services;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// await getPosts();
+// const { data } = await useMyFetch(() => `/api/v1/client/products/product`, {});
 </script>
 
 <style scoped>

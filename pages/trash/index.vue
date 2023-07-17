@@ -36,7 +36,9 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center w-full justify-around">
+        <div
+          class="flex items-center w-full justify-around md:flex-row flex-col"
+        >
           <p class="uppercase">$29.00</p>
           <p class="uppercase w-[100px] md:w-[200px]">
             <BaseCounter @click="setStore" v-model="count"></BaseCounter>

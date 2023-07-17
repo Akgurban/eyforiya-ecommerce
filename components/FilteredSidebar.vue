@@ -62,19 +62,19 @@
 
       <div>
         <div
-          class="right-0 border-t-2 h-auto duration-250 ease-in-out z-10 shadow-lg w-full"
+          class="right-0 border-t-2 h-auto duration-250 ease-in-out z-10 w-full"
         >
           <ul v-for="(option, index) in options" :key="index">
             <li
               @click="$emit('update:modelValue', option)"
-              class="py-2 px-7 hover:bg-gray-100 cursor-pointer"
+              class="py-2 px-5 hover:bg-gray-100 cursor-pointer"
             >
-              <div class="flex items-center justify-start gap-3">
+              <div class="flex items-center justify-start gap-2">
                 <div class="h-4 w-4">
                   <BaseInput heightFull type="checkbox"></BaseInput>
                 </div>
                 <div
-                  class="font-alatsi text-lg hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                  class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
                 >
                   {{ option.name }}
                 </div>

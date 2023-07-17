@@ -55,11 +55,11 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    defaultLocale: "tk",
+    defaultLocale: "tm",
     locales: [
       {
-        code: "tk",
-        file: "tk.json",
+        code: "tm",
+        file: "tm.json",
       },
       {
         code: "en",

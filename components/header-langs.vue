@@ -13,7 +13,7 @@
       <img class="md:w-10 w-7" :src="`/${locale.code}.png`" alt="" />
       <p class="mt-[6px] md:block hidden">
         {{
-          locale.code == "tk"
+          locale.code == "tm"
             ? "Turkmen"
             : locale.code == "en"
             ? "English"

@@ -1,5 +1,7 @@
 <script setup>
 const { $hello } = useNuxtApp();
+const { locale } = useI18n();
+
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -13,7 +15,7 @@ const renderBullet = (index, className) => {
 };
 
 const { data: categories } = await useMyFetch(
-  "/api/v1/client/products/categories?lang=ru"
+  `/api/v1/client/products/categories?lang=${locale.value}`
 );
 console.log(categories, "data");
 </script>
@@ -42,12 +44,14 @@ console.log(categories, "data");
     >
       <div class="rounded-xl mb-3 text-center mt-6">
         <img
-          class="border border-[#e6e6e6] w-[262px] h-[262px] object-cover"
+          class="border border-[#e6e6e6] w-[262px] h-[210px] md:h-[262px] object-cover"
           :src="`http://duypbaha.com.tm/api/v1/uploads/categories/${item.img_path}`"
           alt=""
           loading="lazy"
         />
-        <div class="md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1">
+        <div
+          class="md:text-3xl text-lg font-alatsi text-[#3C4242] mt-0 md:mt-3 mb-1"
+        >
           {{ item.name }}
         </div>
       </div>
