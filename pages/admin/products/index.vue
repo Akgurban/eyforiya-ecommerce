@@ -19,14 +19,14 @@
         :key="item.uuid"
       >
         <img
-          :src="`http://216.250.9.21:2000/api/v1/uploads/images/${item?.images[0]}`"
+          :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item?.images[0]}`"
           alt=""
           class="h-10 w-15"
         />
         <p>
           {{ item.name }}
         </p>
-        <p>
+        <p class="text-xs w-1/3">
           {{ item.description }}
         </p>
         <div class="flex gap-3">

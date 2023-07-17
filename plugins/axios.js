@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default defineNuxtPlugin((NuxtApp) => {
-  axios.defaults.baseURL = " ";
-  axios.defaults.withCredentials = true;
+  // axios.defaults.baseURL = "http://duypbaha.com.tm";
+  axios.defaults.baseURL = "http://216.250.9.21:2000";
   return {
     provide: {
       axios: axios,

@@ -17,7 +17,7 @@
         :key="item.uuid"
       >
         <img
-          :src="`http://216.250.9.21:2000/api/v1/uploads/brands/${item?.img_path}`"
+          :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
           alt=""
           class="h-10 w-15"
         />

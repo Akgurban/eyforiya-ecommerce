@@ -77,7 +77,7 @@
           class="w-[200px]"
           :currentImg="
             addedImages[index]?.img_path
-              ? `http://216.250.9.21:2000/api/v1/uploads/images/${addedImages[index].img_path}`
+              ? `http://duypbaha.com.tm/api/v1/uploads/images/${addedImages[index].img_path}`
               : null
           "
           :isChangable="addedImages[index]?.img_path ? false : true"

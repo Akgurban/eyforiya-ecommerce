@@ -17,7 +17,7 @@ export const useLoaderStore = defineStore("loader", {
 
     async OneSubCategory(uuid) {
       return await $axios.get(
-        `http://216.250.9.21:2000/api/v1/client/products/get-sub-categories/tm?uuid=${uuid}`
+        `http://duypbaha.com.tm/api/v1/client/products/get-sub-categories/tm?uuid=${uuid}`
       );
     },
   },

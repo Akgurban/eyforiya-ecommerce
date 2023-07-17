@@ -37,14 +37,14 @@ console.log(categories, "data");
     <swiper-slide
       v-for="item in categories.data"
       :key="item"
+      @click="useRouter().push(`filtered-product/${item.uuid}`)"
       class="group mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
     >
       <div class="rounded-xl mb-3 text-center mt-6">
         <img
-          class="border border-[#e6e6e6]"
-          :src="`http://duybaha.com.tm/api/v1/uploads/categories/${item.img_path}`"
+          class="border border-[#e6e6e6] w-[262px] h-[262px] object-cover"
+          :src="`http://duypbaha.com.tm/api/v1/uploads/categories/${item.img_path}`"
           alt=""
-          height="262"
           loading="lazy"
         />
         <div class="md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1">

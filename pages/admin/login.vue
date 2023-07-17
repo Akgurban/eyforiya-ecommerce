@@ -18,7 +18,7 @@ async function login() {
       // throw new Error("Please fill all fields");
     }
     const { data, error } = await useFetch(
-      "http://216.250.9.21:2000/api/v1/admin/login",
+      "http://duypbaha.com.tm/api/v1/admin/login",
       {
         method: "POST",
         body: JSON.stringify({

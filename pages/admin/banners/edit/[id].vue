@@ -16,7 +16,7 @@
     <div class="flex justify-between mt-3">
       <div class="w-[400px]">
         <BaseImgUpload
-          :currentImg="`http://216.250.9.21:2000/api/v1/uploads/banners/${selectedImg}`"
+          :currentImg="`http://duypbaha.com.tm/api/v1/uploads/banners/${selectedImg}`"
           v-model="category_img"
         />
       </div>
