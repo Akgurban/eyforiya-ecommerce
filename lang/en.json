@@ -1,10 +1,20 @@
 {
-  "mainPage": "Main page",
-  "books": "Books",
-  "gallery": "Gallery",
+  "categories": "Categories",
+  "latest_products": "Latest Products",
+  "visit_web": "visits to our vebsite",
   "about": "About Halk Maslahaty",
-  "news": "News",
-  "laws": "Laws",
+  "items_sold": "items sold so far",
+  "our_partners": "our global partners",
+  "products_website": "products on the website",
+  "view_all": "View All",
+  "search": "search",
+  "main": "Main",
+  "brands": "Brands",
+  "shops": "Shops",
+  "about_us": "About us",
+  "contact": "Contact",
+  "specials": "Specials",
+
   "seeMore": "See more",
   "otherNews": "Other news",
   "all": "See more",
@@ -13,6 +23,8 @@
   "and": "and",
   "videos": "Videos",
   "contactUs": "Contact Us",
+  "dowload_app": "Download The App",
+
   "address": "744000, Aşgabat city, Arçabil district, 96",
   "lawsPreview": {
     "1": {

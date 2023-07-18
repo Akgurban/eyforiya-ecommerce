@@ -19,7 +19,7 @@
       class="flex items-center justify-between w-full lg:my-0 lg:mt-3 mt-3 gap-4"
     >
       <div class="h-fit lg:w-[200px] xl:w-[386px] w-full lg:mr-[14px] mr-auto">
-        <BaseSearch placeholder="Search"></BaseSearch>
+        <BaseSearch :placeholder="$t('search')"></BaseSearch>
       </div>
       <div class="flex items-center gap-[44px]">
         <HeaderIcons class="h-fit"></HeaderIcons>

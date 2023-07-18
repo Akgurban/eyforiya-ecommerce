@@ -1,8 +1,12 @@
 <template>
   <div class="2xl:w-[1440px] xl:screen mx-auto">
     <div class="lead flex gap-5">
-      <filtered-sidebar />
-
+      <filtered-sidebar
+        :brands="data.data.brands"
+        :sub_categories="data.data.sub_categories"
+        @filterChange="filter_items"
+      />
+      {{ filter_items }}
       <div
         style="
           width: 97% !important;
@@ -45,9 +49,18 @@
 </template>
 
 <script setup>
+const router = useRouter();
 const route = useRoute();
+const filter_items = ref(null);
+console.log(filter_items.value?.brnd, "filter uytgedi");
+console.log(route);
+watch(filter_items, () => {
+  alert("hjk");
+  // router.push(
+  //   `/filtered-product/${route.params.id}?filter=%7B"brandIds"%3A%5B"3d923a80-75ac-432a-ab81-4a45ad50112f"%5D%7D}`
+  // );
+});
 
-console.log(route.params);
 const filteredProducts = ref({
   category_id: route.params.id,
   lang: "tm",

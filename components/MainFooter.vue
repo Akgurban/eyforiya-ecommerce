@@ -3,7 +3,9 @@
     <div class="flex md:gap-25 gap-4">
       <div class="md:text-lg text-sm">
         <div>
-          <p class="md:text-4xl text-2xl font-semibold">Contact Us</p>
+          <p class="md:text-4xl text-2xl font-semibold">
+            {{ $t("contactUs") }}
+          </p>
         </div>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/location.png" alt="" />

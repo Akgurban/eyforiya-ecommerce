@@ -10,11 +10,11 @@
         <p
           class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
-          Categories
+          {{ $t("categories") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
-            View All
+            {{ $t("view_all") }}
           </p>
           <img
             class="inline h-[34px]"
@@ -40,11 +40,11 @@
         <p
           class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
-          Latest products
+          {{ $t("latest_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
-            View All
+            {{ $t("view_all") }}
           </p>
           <img
             class="inline h-[34px]"
@@ -64,7 +64,7 @@
         <p
           class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
-          Specials
+          {{ $t("specials") }}
         </p>
       </div>
       <div class="h-auto w-full mt-7">
@@ -77,11 +77,11 @@
         <p
           class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
-          Latest products
+          {{ $t("latest_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
-            View All
+            {{ $t("view_all") }}
           </p>
           <img
             class="inline h-[34px]"

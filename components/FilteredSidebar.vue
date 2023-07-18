@@ -40,19 +40,11 @@
       <div class="text-2xl font-alatsi mb-2">Icki kategoriya saylan</div>
       <div class="ml-5">
         <p
+          v-for="item in sub_categories"
+          @click="selectedSub = item"
           class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
         >
-          balak
-        </p>
-        <p
-          class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
-        >
-          koynek
-        </p>
-        <p
-          class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
-        >
-          jinsi
+          {{ item.uuid }}
         </p>
       </div>
     </div>
@@ -64,19 +56,20 @@
         <div
           class="right-0 border-t-2 h-auto duration-250 ease-in-out z-10 w-full"
         >
-          <ul v-for="(option, index) in options" :key="index">
-            <li
-              @click="$emit('update:modelValue', option)"
-              class="py-2 px-5 hover:bg-gray-100 cursor-pointer"
-            >
+          <ul
+            @click="checkBrands(option)"
+            v-for="(option, index) in brands"
+            :key="index"
+          >
+            <li class="py-2 px-5 hover:bg-gray-100 cursor-pointer">
               <div class="flex items-center justify-start gap-2">
                 <div class="h-4 w-4">
-                  <BaseInput heightFull type="checkbox"></BaseInput>
+                  <input v-model="option.selected" type="checkbox" />
                 </div>
                 <div
                   class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
                 >
-                  {{ option.name }}
+                  {{ option.uuid }}
                 </div>
               </div>
             </li>
@@ -88,15 +81,62 @@
 </template>
 
 <script setup>
-const checkbox = ref(true);
-const checkbox1 = ref(false);
-const options = ref([
-  { name: "wtf" },
-  { name: "nike" },
-  { name: "puma" },
-  { name: "adidas" },
-  { name: "uzyn" },
-]);
+const emit = defineEmits(["update:modelValue", "changeValue"]);
+const props = defineProps({
+  brands: {
+    type: Array,
+    default: [],
+  },
+  sub_categories: {
+    type: Array,
+    default: [],
+  },
+});
+
+const order = ref("desc");
+const selectedBrands = ref([]);
+const selectedSub = ref({});
+const checkBrands = async (e) => {
+  // emit("changeValue", e);
+  if (e.selected) {
+    e.selected = false;
+    selectedBrands.value.filter((item, index) => {
+      if (item.uuid == e.uuid) {
+        selectedBrands.value.splice(index, 1);
+      }
+    });
+  } else {
+    e.selected = true;
+    selectedBrands.value.push(e);
+  }
+
+  emit("update:modelValue", {
+    sub: selectedSub.value,
+    ord: order.value,
+    brnd: selectedBrands.value,
+  });
+};
+watch(order, () => {
+  emit("update:modelValue", {
+    sub: selectedSub.value,
+    ord: order.value,
+    brnd: selectedBrands.value,
+  });
+});
+watch(selectedSub, () => {
+  emit("update:modelValue", {
+    sub: selectedSub.value,
+    ord: order.value,
+    brnd: selectedBrands.value,
+  });
+});
+watch(selectedBrands, () => {
+  emit("update:modelValue", {
+    sub: selectedSub.value,
+    ord: order.value,
+    brnd: selectedBrands.value,
+  });
+});
 </script>
 
 <style scoped></style>

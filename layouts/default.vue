@@ -14,7 +14,7 @@
           v-for="item in links"
           :key="item.name"
           class="hover:text-2xl select-none whitespace-nowrap md:px-2 flex items-center transition-all duration-75 h-10 cursor-pointer md:mx-2 hover:underline hover:text-[#44A4DB]"
-          >{{ item.name }}</NuxtLink
+          >{{ $t(item.name) }}</NuxtLink
         >
       </ul>
     </div>
@@ -25,11 +25,11 @@
 
 <script setup>
 const links = ref([
-  { name: "Main" },
-  { name: "Brands" },
-  { name: "Shops" },
-  { name: "About us" },
-  { name: "Contact" },
+  { name: "main" },
+  { name: "brands" },
+  { name: "shops" },
+  { name: "about_us" },
+  { name: "contact" },
 ]);
 </script>
 
