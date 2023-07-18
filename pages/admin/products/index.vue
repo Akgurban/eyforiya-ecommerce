@@ -1,3 +1,57 @@
+<script setup>
+import { useUserStore } from "~~/stores/user";
+import { useLoaderStore } from "~~/stores/loader";
+const loaderStore = useLoaderStore();
+
+definePageMeta({
+  layout: "admin",
+});
+const products = ref();
+const userStore = useUserStore();
+
+const getPosts = async () => {
+  try {
+    const { data } = await userStore.getProduct({
+      limit: 10,
+      offset: 0,
+    });
+    if (data?.status) {
+      console.log(data, "datass");
+      products.value = data?.data?.products;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+loaderStore.startLoading();
+try {
+  const { data } = await userStore.getProduct({
+    limit: 10,
+    offset: 0,
+  });
+  if (data.status) {
+    console.log(data, "datass");
+    products.value = data?.data?.products;
+  }
+} catch (error) {
+  console.log(error);
+}
+// await getPosts();
+
+const deletePosts = async (e) => {
+  try {
+    const { data } = await userStore.deleteProduct(e);
+    console.log(data, "data");
+    if (data?.status) {
+      await getPosts();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+loaderStore.endLoading();
+</script>
+
 <template>
   <div>
     <NuxtLink
@@ -16,7 +70,7 @@
       <li
         class="bg-gray-200 flex justify-between items-center text-lg font-bold rounded-md p-2 m-1"
         v-for="item in products"
-        :key="item.uuid"
+        :key="item?.uuid"
       >
         <img
           :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item?.images[0]}`"
@@ -24,14 +78,14 @@
           class="h-10 w-15"
         />
         <p>
-          {{ item.name }}
+          {{ item?.name }}
         </p>
         <p class="text-xs w-1/3">
-          {{ item.description }}
+          {{ item?.description }}
         </p>
         <div class="flex gap-3">
           <BaseButton
-            @click="useRouter().push(`/admin/products/edit/${item.uuid}`)"
+            @click="useRouter().push(`/admin/products/edit/${item?.uuid}`)"
             type="primary"
             >edit</BaseButton
           >
@@ -43,39 +97,5 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-import { useUserStore } from "~~/stores/user";
-definePageMeta({
-  layout: "admin",
-});
-const products = ref(null);
-const userStore = useUserStore();
-const getPosts = async () => {
-  try {
-    const { data } = await userStore.getProduct({
-      limit: 10,
-      offset: 0,
-    });
-    console.log(data, "data");
-    products.value = data.data.products;
-  } catch (error) {
-    console.log(error);
-  }
-};
-await getPosts();
-
-const deletePosts = async (e) => {
-  try {
-    const { data } = await userStore.deleteProduct(e);
-    console.log(data, "data");
-    if (data.status) {
-      await getPosts();
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-</script>
 
 <style lang="scss" scoped></style>

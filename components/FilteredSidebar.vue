@@ -5,47 +5,37 @@
     <div>
       <div class="text-2xl font-alatsi mb-2">Tertip</div>
       <div>
-        <div class="flex items-center gap-2">
+        <div v-for="item in orderList" class="flex items-center gap-2">
           <BaseInput
+            @change="test(item)"
             heightFull
             class="w-5 h-5"
             type="radio"
             name="price-filter"
-            checked
+            :checked="item.code == order"
           />
-          <div class="font-alatsi text-base">Hic hili</div>
-        </div>
-        <div class="flex items-center gap-2">
-          <BaseInput
-            heightFull
-            class="w-5 h-5"
-            type="radio"
-            name="price-filter"
-          />
-          <div class="font-alatsi text-base">Arzandan gymmada</div>
-        </div>
-        <div class="flex items-center gap-2">
-          <BaseInput
-            heightFull
-            class="w-5 h-5"
-            type="radio"
-            name="price-filter"
-          />
-          <div class="font-alatsi text-base">Gymmatdan arzana</div>
+          <div class="font-alatsi text-base">{{ item.name }}</div>
         </div>
       </div>
     </div>
 
     <div class="mt-5">
       <div class="text-2xl font-alatsi mb-2">Icki kategoriya saylan</div>
-      <div class="ml-5">
+      <div class="ml-5" v-if="!route.query.catId">
         <p
           v-for="item in sub_categories"
-          @click="selectedSub = item"
+          @click="selectedSub = item.name"
           class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
         >
           {{ item.uuid }}
         </p>
+      </div>
+      <div
+        v-else
+        @click="selectedSub = null"
+        class="text-[#44A4DB] md:cursor-pointer cursor-auto font-alatsi ml-5"
+      >
+        <IconChevronLeft class="inline text-[#44A4DB]" /> = yza Cyk
       </div>
     </div>
 
@@ -69,7 +59,7 @@
                 <div
                   class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
                 >
-                  {{ option.uuid }}
+                  {{ option.brand_name }}
                 </div>
               </div>
             </li>
@@ -81,7 +71,8 @@
 </template>
 
 <script setup>
-const emit = defineEmits(["update:modelValue", "changeValue"]);
+const route = useRoute();
+const emit = defineEmits(["someChange"]);
 const props = defineProps({
   brands: {
     type: Array,
@@ -94,44 +85,63 @@ const props = defineProps({
 });
 
 const order = ref("desc");
+if (route.query.order) {
+  order.value = route.query.order;
+}
+const orderList = ref([
+  { code: "desc", name: "Hic hili" },
+  { code: 1, name: "Arzandan gymmada" },
+  { code: 2, name: "Gymmatdan arzana" },
+]);
 const selectedBrands = ref([]);
-const selectedSub = ref({});
+const selectedSub = ref("");
+
+props.brands?.forEach((e) => {
+  JSON.parse(route.query.filter)?.forEach((item) => {
+    if (item == e.uuid) {
+      e.selected = true;
+      selectedBrands.value.push(e.uuid);
+    }
+  });
+});
+
 const checkBrands = async (e) => {
-  // emit("changeValue", e);
   if (e.selected) {
     e.selected = false;
     selectedBrands.value.filter((item, index) => {
-      if (item.uuid == e.uuid) {
+      if (item == e.uuid) {
         selectedBrands.value.splice(index, 1);
       }
     });
   } else {
     e.selected = true;
-    selectedBrands.value.push(e);
+    selectedBrands.value.push(e.uuid);
   }
 
-  emit("update:modelValue", {
+  emit("someChange", {
     sub: selectedSub.value,
     ord: order.value,
     brnd: selectedBrands.value,
   });
 };
-watch(order, () => {
-  emit("update:modelValue", {
+function test(e) {
+  order.value = e.code;
+  emit("someChange", {
     sub: selectedSub.value,
     ord: order.value,
     brnd: selectedBrands.value,
   });
-});
+}
+
 watch(selectedSub, () => {
-  emit("update:modelValue", {
+  emit("someChange", {
     sub: selectedSub.value,
     ord: order.value,
     brnd: selectedBrands.value,
   });
 });
 watch(selectedBrands, () => {
-  emit("update:modelValue", {
+  emit("someChange", {
     sub: selectedSub.value,
     ord: order.value,
     brnd: selectedBrands.value,

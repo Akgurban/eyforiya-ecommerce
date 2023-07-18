@@ -14,7 +14,7 @@
         >
           {{ item.name }}
         </p>
-        <p class="font-alatsi mtext-base text-[#000] mt-2">
+        <p class="font-alatsi font-medium text-base text-[#000] mt-2 w-[150px]">
           {{ $t(item.desc) }}
         </p>
       </div>

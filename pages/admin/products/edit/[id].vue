@@ -209,7 +209,6 @@ const addPosts = async () => {
         }
       });
       loaderStore.endLoading();
-
       router.push("/admin/products");
     }
   } catch (error) {

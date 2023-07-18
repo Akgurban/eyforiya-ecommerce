@@ -35,7 +35,6 @@ const valueInput = ref(null);
 const id = uuidv4();
 function handleInput(event) {
   emit("update:modelValue", event.target.value);
-  console.log(event.target.value);
   if (props.validate) {
     error.value = props.validate(event.target.value);
   }

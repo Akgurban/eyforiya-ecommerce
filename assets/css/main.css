@@ -76,10 +76,16 @@ a {
   font-display: swap;
   src: url("@/assets/fonts/Alatsi-Regular.ttf") format("opentype");
 }
+@font-face {
+  font-family: "Alatsi";
+  font-weight: 500;
+  font-display: swap;
+  src: url("@/assets/fonts/Alatsi-Regular.ttf") format("opentype");
+}
 
 @font-face {
   font-family: "Inter";
-  font-weight: 400;
+  font-weight: 500;
   font-display: swap;
   src: url("@/assets/fonts/Inter/static/Inter-Regular.ttf") format("opentype");
 }

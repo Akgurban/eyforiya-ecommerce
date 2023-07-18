@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
   ],
-
+  routeRules: {},
   i18n: {
     defaultLocale: "tm",
     locales: [

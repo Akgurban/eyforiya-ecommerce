@@ -8,12 +8,14 @@
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-between">
         <p
-          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
           {{ $t("categories") }}
         </p>
         <div class="flex cursor-pointer items-center">
-          <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
+          <p
+            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+          >
             {{ $t("view_all") }}
           </p>
           <img
@@ -38,12 +40,14 @@
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-between">
         <p
-          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
           {{ $t("latest_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
-          <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
+          <p
+            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+          >
             {{ $t("view_all") }}
           </p>
           <img
@@ -62,7 +66,7 @@
     <div class="block h-auto xl:w-[1238px] w-screen mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-center">
         <p
-          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
           {{ $t("specials") }}
         </p>
@@ -75,12 +79,14 @@
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-between">
         <p
-          class="font-alatsi md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
           {{ $t("latest_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
-          <p class="font-alatsi inline md:text-3xl text-lg text-[#3C4242]">
+          <p
+            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+          >
             {{ $t("view_all") }}
           </p>
           <img

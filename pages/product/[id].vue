@@ -25,6 +25,7 @@
         >
           <div
             class="text-white cursor-pointer rounded-md text-2xl px-4 py-3 bg-[#44A4DB]"
+            @click="useRouter().push({ path: '/product/s', query: { s: 7 } })"
           >
             199 TMT
           </div>
@@ -39,6 +40,11 @@
 
 <script setup>
 const count_product = ref(0);
+const route = useRoute();
+watch(route.query.s, async () => {
+  console.log("route uyth=ef");
+});
+console.log(route.query.s);
 </script>
 
 <style lang="scss" scoped></style>

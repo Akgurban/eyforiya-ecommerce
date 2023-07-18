@@ -15,7 +15,8 @@
       :class="
         route.path == '/trash' ||
         route.path == '/en/trash' ||
-        route.path == '/ru/trash'
+        route.path == '/ru/trash' ||
+        trash.trash_items.totalCount !== 0
           ? 'bg-[#44A4DB] text-white '
           : 'bg-[#F6F6F6] text-[#807D7E]'
       "
