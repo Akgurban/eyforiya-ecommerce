@@ -1,5 +1,4 @@
 <script setup>
-const { $hello } = useNuxtApp();
 const { locale } = useI18n();
 
 // Import Swiper Vue.js components
@@ -23,7 +22,6 @@ console.log(categories, "data");
   <swiper
     :spaceBetween="5"
     :slidesPerView="$width.value == 'desktop' ? 4 : 2"
-    :loop="true"
     :centeredSlides="false"
     :autoplay="{
       delay: 3500,

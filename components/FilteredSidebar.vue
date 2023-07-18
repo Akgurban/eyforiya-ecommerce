@@ -90,9 +90,10 @@ if (route.query.order) {
 }
 const orderList = ref([
   { code: "desc", name: "Hic hili" },
-  { code: 1, name: "Arzandan gymmada" },
-  { code: 2, name: "Gymmatdan arzana" },
+  { code: "asc", name: "Arzandan gymmada" },
+  { code: "desc", name: "Gymmatdan arzana" },
 ]);
+
 const selectedBrands = ref([]);
 const selectedSub = ref("");
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"index-3a0ad81b.js","sources":["../../../../pages/admin/index.vue"],"sourcesContent":["<template>\r\n  <div></div>\r\n</template>\r\n\r\n<script setup>\r\nawait navigateTo(\"/admin/login\");\r\n</script>\r\n\r\n<style lang=\"scss\" scoped></style>\r\n"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAKA,iDAAM,WAAW,cAAc,CAAA;;;;;;;;;;;;"}

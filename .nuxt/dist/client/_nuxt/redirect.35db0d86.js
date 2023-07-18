@@ -1,0 +1,1 @@
+import{k as t,n as e}from"./entry.54e19d71.js";import{u as o}from"./authStore.0f721ceb.js";import"./swiper-vue.00c128fd.js";const m=t((r,a)=>{if(o().userToken)return e("/admin/categories")});export{m as default};

@@ -6,6 +6,7 @@
         :sub_categories="incomedDatas.sub_categories"
         @someChange="(e) => testFunc(e)"
       />
+
       <div
         style="
           width: 97% !important;
@@ -21,15 +22,21 @@
           draggable="true"
           class="group md:w-auto w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
         >
-          <div class="rounded-xl text-center mt-6">
+          <NuxtLink
+            :to="localePath(`/product/${item.uuid}`)"
+            class="rounded-xl text-center mt-6"
+            @click.native="active = item.uuid"
+          >
             <img
-              class="border pointer-events-none select-none border-[#e6e6e6] w-[90%] md:w-[245px] mx-3 aspect-square"
+              class="border prod_img pointer-events-none select-none border-[#e6e6e6] w-[90%] md:w-[245px] mx-3 aspect-square"
               :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.images}`"
               alt=""
+              :class="{ active: active === item.uuid }"
               loading="lazy"
             />
             <div
-              class="w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
+              class="prod_name w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
+              :class="{ active: active === item.uuid }"
             >
               {{ item.name }}
             </div>
@@ -38,9 +45,15 @@
             >
               {{ item.price }} TMT
             </div>
-          </div>
+          </NuxtLink>
 
           <TrashButtonAndCounter />
+        </div>
+        <div
+          v-if="!incomedDatas.products"
+          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+        >
+          Hic hili Haryt tapylmady!
         </div>
       </div>
     </div>
@@ -48,10 +61,13 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
+
 const router = useRouter();
 const route = useRoute();
 const incomedDatas = ref("");
 
+const active = useState();
 async function testFunc(e) {
   console.log("pp");
   router.push({
@@ -117,4 +133,18 @@ watch(
 );
 </script>
 
-<style scoped></style>
+<style scoped>
+.prod_name.active {
+  view-transition-name: title;
+}
+img.active {
+  view-transition-name: selected-img;
+  contain: layout;
+}
+</style>
+<style>
+:view-transition-old(title),
+:view-transition-new(title) {
+  width: auto;
+}
+</style>

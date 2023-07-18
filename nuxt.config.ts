@@ -36,10 +36,12 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#ffffff" },
       ],
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    // pageTransition: { name: "page", mode: "out-in" },
+    // layoutTransition: { name: "layout", mode: "out-in" },
   },
   experimental: {
+    viewTransition: true,
+
     payloadExtraction: false,
     inlineSSRStyles: false,
     renderJsonPayloads: true,
@@ -53,6 +55,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
   ],
+
   routeRules: {},
   i18n: {
     defaultLocale: "tm",
