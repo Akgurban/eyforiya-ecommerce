@@ -5,7 +5,7 @@
     >
       <div class="sm:w-[35%] w-full">
         <img
-          :src="`http://duypbaha.com.tm/api/v1/uploads/images/${selectedImg.img_path}`"
+          :src="`http://duypbaha.com.tm/api/v1/uploads/images/${selectedImg?.img_path}`"
           class="w-full one_img rounded-md aspect-square"
           alt=""
         />
@@ -13,7 +13,7 @@
           <img
             v-for="item in oneProduct.images"
             :key="item.img_path"
-            :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.img_path}`"
+            :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item?.img_path}`"
             @click.native="selectedImg = item"
             class="w-[19%] rounded-md aspect-square mr-2"
             alt=""
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="w-fit md:ml-5 ml-1">
-            <TrashButtonAndCounter v-model="count_product" />
+            <TrashButtonAndCounter :item="oneProduct" />
           </div>
         </div>
       </div>
@@ -66,30 +66,10 @@
       <NuxtLink
         v-for="(item, index) in similarProducts"
         :key="item"
-        :to="localePath(`/product/${item.uuid}`)"
-        draggable="true"
-        class="group md:w-auto w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+        :to="localePath(`/product/${item?.uuid}`)"
+        class="group md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
       >
-        <div class="rounded-xl text-center mt-6">
-          <img
-            class="border select-none border-[#e6e6e6] w-[90%] md:w-[245px] mx-3 aspect-square"
-            :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.images}`"
-            alt=""
-            loading="lazy"
-          />
-          <div
-            class="w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
-          >
-            {{ item.name }}
-          </div>
-          <div
-            class="mx-auto text-[#48BC4E] text-3xl font-alatsi w-fit pb-1 border-b border-[#44A4DB]"
-          >
-            {{ item.price }} TMT
-          </div>
-        </div>
-
-        <TrashButtonAndCounter />
+        <BaseProduct :item="item"> </BaseProduct>
       </NuxtLink>
     </div>
   </div>
@@ -109,13 +89,10 @@ const { data, status } = await useMyFetch(
   `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`
 );
 if (status) {
-  console.log(data.value.data, "ssd");
   oneProduct.value = data.value.data.one_products;
   selectedImg.value = data.value.data.one_products.images[0];
   similarProducts.value = data.value.data.products;
 }
-
-console.log(route.query.s);
 </script>
 
 <style scoped>

@@ -13,7 +13,8 @@
         <NuxtLink
           v-for="item in links"
           :key="item.name"
-          class="hover:text-lg select-none md:hover:text-2xl select-none whitespace-nowrap md:px-2 flex items-center transition-all duration-75 h-10 cursor-pointer md:mx-2 hover:underline hover:text-[#44A4DB]"
+          :to="localePath(item?.path)"
+          class="hover:text-lg md:hover:text-2xl select-none whitespace-nowrap md:px-2 flex items-center transition-all duration-75 h-10 cursor-pointer md:mx-2 hover:underline hover:text-[#44A4DB]"
           >{{ $t(item.name) }}</NuxtLink
         >
       </ul>
@@ -25,7 +26,7 @@
 
 <script setup>
 const links = ref([
-  { name: "main" },
+  { name: "main", path: "/" },
   { name: "brands" },
   { name: "shops" },
   { name: "about_us" },

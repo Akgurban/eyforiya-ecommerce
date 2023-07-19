@@ -1,0 +1,135 @@
+<script setup>
+import { useAuthStore } from "@/stores/authStore";
+import { useLoaderStore } from "~~/stores/loader";
+const loaderStore = useLoaderStore();
+definePageMeta({
+  layout: "default",
+  // middleware: ["redirect"],
+});
+const user = ref("");
+const password = ref("");
+const pendings = ref(false);
+const isValid = ref(true);
+const authStore = useAuthStore();
+const router = useRouter();
+
+async function signUp() {
+  try {
+    // simple data validation
+    if (!user.value || !password.value) {
+      isValid.value = false;
+      return;
+      // throw new Error("Please fill all fields");
+    }
+    pendings.value = true;
+
+    const { data, pending, status, error } = await useFetch(
+      "http://duypbaha.com.tm/api/v1/client/user-register",
+      {
+        method: "POST",
+        body: {
+          username: user.value,
+          password: password.value,
+        },
+      }
+    );
+    console.log(data.value, "eret");
+    authStore.userToken = data.value?.auth;
+    router.push("/");
+    if (pending) {
+      pendings.value = true;
+    }
+    pendings.value = false;
+    console.log("pendinend");
+  } catch (error) {
+    throw error;
+  }
+}
+async function login() {
+  try {
+    // simple data validation
+    if (!user.value || !password.value) {
+      isValid.value = false;
+      return;
+    }
+
+    pendings.value = true;
+    const { data, pending, status, error } = await useFetch(
+      "http://duypbaha.com.tm/api/v1/client/user/login",
+      {
+        method: "POST",
+        body: {
+          username: user.value,
+          password: password.value,
+        },
+      }
+    );
+    authStore.userToken = data.value?.auth;
+
+    router.push("/");
+    pendings.value = false;
+    console.log(data.value, "eret");
+
+    console.log("pendinend");
+  } catch (error) {
+    throw error;
+  }
+}
+</script>
+
+<template>
+  <div
+    class="flex justify-center pt-30 md:pt-40 h-[120vh] absolute top-0 bg-slate-300 z-40 w-full"
+  >
+    <div class="w-full max-w-md">
+      <h1 class="text-3xl font-bold text-center mb-6">Login</h1>
+      <form class="bg-c-gray shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <BaseInput
+            label="Username"
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            v-model="user"
+          />
+        </div>
+        <div class="mb-6">
+          <BaseInput
+            label="Password"
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            v-model="password"
+          />
+        </div>
+        <p class="text-red-500 text-sm inter font-bold mb-4" v-if="!isValid">
+          Please fill all the forms
+        </p>
+        <div class="flex w-full gap-5 items-center justify-between">
+          <button
+            class="bg-blue-700 w-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            @click="login"
+          >
+            Sign In
+          </button>
+          <p
+            class="p-2 bg-red-500 rounded-md text-white font-bold"
+            v-if="pendings"
+          >
+            Garashyn...
+          </p>
+          <button
+            class="bg-green-700 w-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            @click="signUp"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>

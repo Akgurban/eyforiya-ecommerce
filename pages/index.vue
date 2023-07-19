@@ -37,7 +37,7 @@
       <MainInfo />
     </div>
 
-    <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
+    <!-- <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-between">
         <p
           class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
@@ -58,10 +58,10 @@
           />
         </div>
       </div>
-      <div class="block md:h-auto h-auto md:mt-7 mt-1">
-        <HeroSwiperProduct class=""></HeroSwiperProduct>
+      <div class="block md:h-auto  h-auto md:mt-7 mt-1">
+        <HeroSwiperProduct :products="latest" class=""></HeroSwiperProduct>
       </div>
-    </div>
+    </div> -->
 
     <div class="block h-auto xl:w-[1238px] w-screen mx-auto md:mt-[92px] mt-4">
       <div class="flex justify-center">
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="block md:h-auto h-auto md:mt-7 mt-1">
-        <HeroSwiperProduct class=""></HeroSwiperProduct>
+        <HeroSwiperProduct :products="latest" class=""></HeroSwiperProduct>
       </div>
     </div>
 
@@ -178,10 +178,18 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
+
 const posts = ref(null);
 const categories = ref(null);
+const latest = ref(null);
 
-// const { data } = await useMyFetch(() => `/api/v1/client/products/product`, {});
+const { data, status } = await useMyFetch(
+  `/api/v1/client/products/latest/products?lang=${locale.value}`
+);
+if (status) {
+  latest.value = data.value?.data;
+}
 </script>
 
 <style scoped>

@@ -20,32 +20,11 @@
     "
   >
     <swiper-slide
-      v-for="(item, index) in 6"
+      v-for="(item, index) in products"
       :key="item"
-      draggable="true"
       class="group product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center"
     >
-      <div class="rounded-xl text-center mt-6">
-        <img
-          class="border pointer-events-none select-none border-[#e6e6e6]"
-          :src="`/categories/cat-${item}.png`"
-          alt=""
-          height="262"
-          loading="lazy"
-        />
-        <div
-          class="w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
-        >
-          Raf-utuk-r126
-        </div>
-        <div
-          class="mx-auto text-[#48BC4E] text-3xl font-alatsi w-fit pb-1 border-b border-[#44A4DB]"
-        >
-          158 TMT
-        </div>
-      </div>
-
-      <TrashButtonAndCounter />
+      <BaseProduct :item="item"></BaseProduct>
     </swiper-slide>
   </swiper>
 </template>
@@ -60,6 +39,12 @@ import "swiper/css/pagination";
 import { useTrashStore } from "~~/stores/trash";
 
 import "swiper/css/navigation";
+const props = defineProps({
+  products: {
+    type: Array,
+    default: [],
+  },
+});
 
 const count = ref(0);
 const trash = useTrashStore();

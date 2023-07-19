@@ -36,11 +36,11 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#ffffff" },
       ],
     },
-    // pageTransition: { name: "page", mode: "out-in" },
-    // layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   experimental: {
-    viewTransition: true,
+    // viewTransition: true,
 
     payloadExtraction: false,
     inlineSSRStyles: false,

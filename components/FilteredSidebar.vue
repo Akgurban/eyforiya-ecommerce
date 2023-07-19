@@ -1,6 +1,7 @@
 <template>
   <div
-    class="relative px-2 py-2 lg:block hidden 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+    class="lg:relative absolute h-auto px-2 py-2 lg:block w-[70%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+    :class="props.show_filter ? 'block' : 'hidden'"
   >
     <div>
       <div class="text-2xl font-alatsi mb-2">Tertip</div>
@@ -27,7 +28,7 @@
           @click="selectedSub = item.name"
           class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
         >
-          {{ item.uuid }}
+          {{ item?.uuid }}
         </p>
       </div>
       <div
@@ -78,18 +79,22 @@ const props = defineProps({
     type: Array,
     default: [],
   },
+  show_filter: {
+    type: Boolean,
+    default: false,
+  },
   sub_categories: {
     type: Array,
     default: [],
   },
 });
 
-const order = ref("desc");
+const order = ref("");
 if (route.query.order) {
   order.value = route.query.order;
 }
 const orderList = ref([
-  { code: "desc", name: "Hic hili" },
+  { code: "", name: "Hic hili" },
   { code: "asc", name: "Arzandan gymmada" },
   { code: "desc", name: "Gymmatdan arzana" },
 ]);

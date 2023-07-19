@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div v-if="count != 0" class="w-[80%] mt-3 z-50 h-19">
+    <div v-if="count != 0" class="w-[80%] text-center mt-3 z-50 md:h-19 h-18">
       <div
         class="w-full font-bold justify-evenly flex gap-2 px-6 py-1 md:py-2 rounded-xl bg-[#F6F6F6]"
       >
@@ -46,18 +46,41 @@
 </template>
 
 <script setup>
+import { useTrashStore } from "~~/stores/trash";
+const trash = useTrashStore();
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true,
+  },
+  count: {
+    type: Number,
+    default: 0,
+  },
+});
 const count = ref(0);
+if (props.count > 0) {
+  count.value = props.count;
+}
+
 const emit = defineEmits(["update:modelValue"]);
+trash.trash_items.products?.forEach((item, index) => {
+  if (item?.uuid == props.item?.uuid) {
+    count.value = item.count;
+  }
+});
 
 const increment = () => {
   count.value += 1;
+  trash.setLocalStorage(props.item, count.value);
+
   emit("update:modelValue", count.value);
 };
 
 const decrement = () => {
+  count.value -= 1;
+  trash.removeLocalStorage(props.item, count.value);
   if (count.value > 0) {
-    count.value -= 1;
-
     emit("update:modelValue", count.value);
   }
 };

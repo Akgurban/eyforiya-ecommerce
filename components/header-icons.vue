@@ -1,10 +1,26 @@
 <template>
   <div class="flex gap-3">
-    <div
-      class="group cursor-pointer hover:bg-[#44A4DB] bg-[#F6F6F6] p-3 w-fit rounded-lg"
+    <NuxtLink
+      :to="localePath('/user/login')"
+      :class="
+        route.path == '/login' ||
+        route.path == '/en/login' ||
+        route.path == '/ru/login' ||
+        !!authStore.userToken
+          ? 'bg-[#44A4DB] text-white'
+          : ' text-[#807D7E] bg-[#F6F6F6]'
+      "
+      class="group cursor-pointer hover:bg-[#44A4DB] p-3 w-fit rounded-lg"
     >
-      <IconUser class="group-hover:text-white text-[#807D7E]"></IconUser>
-    </div>
+      <IconUser
+        v-if="!authStore.userToken"
+        class="group-hover:text-white"
+      ></IconUser>
+      <div v-else class="text-white font-bold font-inter w-5 text-center">
+        {{ authStore.userToken.username.slice(0, 1).toUpperCase() }}
+      </div>
+    </NuxtLink>
+
     <div
       class="group cursor-pointer hover:bg-[#44A4DB] bg-[#F6F6F6] p-3 w-fit rounded-lg"
     >
@@ -35,10 +51,11 @@
 
 <script setup>
 import { useTrashStore } from "~~/stores/trash";
+import { useAuthStore } from "@/stores/authStore";
+const authStore = useAuthStore();
 const trash = useTrashStore();
 const { locale: activeLocale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
-
 const props = defineProps({
   image: { type: String, required: true },
   text: { type: String, default: "text" },
