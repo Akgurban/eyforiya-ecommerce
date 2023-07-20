@@ -79,11 +79,25 @@ async function login() {
 
 <template>
   <div
-    class="flex justify-center pt-34 md:pt-40 h-[120vh] absolute top-0 bg-slate-300 z-40 w-full"
+    class="flex justify-center pt-34 md:pt-40 h-[110vh] absolute top-0 bg-slate-300 z-40 w-full"
   >
     <div class="w-full max-w-md">
-      <h1 class="text-3xl font-bold text-center mb-6">Login</h1>
+      <div
+        class="text-3xl font-bold text-center mb-6 flex w-full justify-between"
+      >
+        <p>Login</p>
+
+        <p>Register</p>
+      </div>
+      <!-- <BaseButton type="danger">Logout</BaseButton> -->
       <form class="bg-c-gray shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+        <img
+          class="mx-auto md:cursor-pointer cursor-auto"
+          @click="router.push(localePath('/'))"
+          src="~/assets/images/logo.png"
+          alt=""
+        />
+
         <div class="mb-4">
           <BaseInput
             label="Username"

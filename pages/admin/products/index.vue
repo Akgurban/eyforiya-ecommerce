@@ -6,7 +6,7 @@ const loaderStore = useLoaderStore();
 definePageMeta({
   layout: "admin",
 });
-const products = ref();
+const products = ref(null);
 const userStore = useUserStore();
 
 const getPosts = async () => {
@@ -15,34 +15,22 @@ const getPosts = async () => {
       limit: 10,
       offset: 0,
     });
-    if (data?.status) {
+    if (data?.value.status) {
       console.log(data, "datass");
-      products.value = data?.data?.products;
+      products.value = data.value.data?.products;
     }
   } catch (error) {
     console.log(error);
   }
 };
-loaderStore.startLoading();
-try {
-  const { data } = await userStore.getProduct({
-    limit: 10,
-    offset: 0,
-  });
-  if (data.status) {
-    console.log(data, "datass");
-    products.value = data?.data?.products;
-  }
-} catch (error) {
-  console.log(error);
-}
-// await getPosts();
+
+await getPosts();
 
 const deletePosts = async (e) => {
   try {
     const { data } = await userStore.deleteProduct(e);
     console.log(data, "data");
-    if (data?.status) {
+    if (data.value.status) {
       await getPosts();
     }
   } catch (error) {
@@ -98,4 +86,4 @@ loaderStore.endLoading();
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style></style>

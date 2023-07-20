@@ -80,7 +80,7 @@ const val_en = (e) => {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getCategories();
-    categories.value = data.data;
+    categories.value = data.value.data;
   } catch (error) {
     console.log(error);
   }

@@ -50,7 +50,7 @@ const router = useRouter();
 try {
   const { data } = await userStore.getBanner();
   console.log(data, "data");
-  categories.value = data.data;
+  categories.value = data.value.data;
 } catch (error) {
   console.log(error);
 }
@@ -59,7 +59,7 @@ const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getBanner();
     console.log(data, "data");
-    categories.value = data.data;
+    categories.value = data.value.data;
   } catch (error) {
     console.log(error);
   }

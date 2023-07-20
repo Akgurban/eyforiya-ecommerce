@@ -45,11 +45,9 @@ const category_en = ref(null);
 const category_img = ref(null);
 const selectedImg = ref(null);
 try {
-  console.log(route.params);
-  const { data } = await userStore.OneBanner(route.params.id);
-  console.log(data, "dai");
-  category_tm.value = data.data.name;
-  selectedImg.value = data?.data?.img_path;
+  const { data } = await userStore.OneBanner(route.params?.id);
+  category_tm.value = data.value.data.name;
+  selectedImg.value = data.value?.data?.img_path;
   //   useRouter().push("/admin/categories");
 } catch (error) {
   console.log(error);

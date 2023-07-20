@@ -129,10 +129,9 @@ try {
   const { data: spec } = await userStore.getSpecialCategories();
   const { data: brand } = await userStore.getBrand();
 
-  console.log(sub, spec, "sub Categories");
-  sub_categories.value = sub.data;
-  spec_categories.value = spec.data;
-  brands.value = brand.data;
+  sub_categories.value = sub.value.data;
+  spec_categories.value = spec.value.data;
+  brands.value = brand.value.data;
 } catch (error) {
   console.log(error);
 }
@@ -140,7 +139,6 @@ try {
 console.log(loaderStore, "loaderStore");
 const addPosts = async () => {
   try {
-    loaderStore.startLoading();
     const { data: onlyProduct } = await userStore.addProduct({
       sub_category_id: selectedSub.value?.uuid || null,
       name_tm: name_tm.value,
@@ -153,20 +151,17 @@ const addPosts = async () => {
       brand_id: selectedBrand.value?.uuid || null,
       special_category_id: selectedSpec.value?.uuid || null,
     });
-    if (onlyProduct.status) {
+    console.log(onlyProduct.value, "onlyProduct");
+    if (onlyProduct.value.status) {
       const form = new FormData();
-
-      form.append("product_id", onlyProduct.data);
+      form.append("product_id", onlyProduct.value.data);
       image.value.forEach(async (e, index) => {
         form.append("img", image.value[index]);
-        const { data } = await userStore.addProductImage(form);
+        const { data, status } = await userStore.addProductImage(form);
         console.log(data, "image");
-        if (data.status) {
-          console.log(data);
+        if (status) {
         }
       });
-      loaderStore.endLoading();
-
       router.push("/admin/products");
     }
   } catch (error) {

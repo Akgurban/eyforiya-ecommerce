@@ -62,10 +62,10 @@ try {
   console.log(route.params);
   const { data } = await userStore.getOneCategories(route.params.id);
   console.log(data, "dai");
-  category_tm.value = data.data.name_tm;
-  category_en.value = data.data.name_en;
-  category_ru.value = data.data.name_ru;
-  selectedImg.value = data?.data?.image;
+  category_tm.value = data.value.data.name_tm;
+  category_en.value = data.value.data.name_en;
+  category_ru.value = data.value.data.name_ru;
+  selectedImg.value = data.value?.data?.image;
   //   useRouter().push("/admin/categories");
 } catch (error) {
   console.log(error);

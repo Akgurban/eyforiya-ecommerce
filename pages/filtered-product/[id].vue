@@ -72,12 +72,12 @@ const toggleFilter = () => {
 const refetch = async () => {
   let dataForm = {
     category_id: route.params.id,
-    lang: "tm",
+    lang: locale.value,
     limit: 10,
     offset: 0,
   };
 
-  if (JSON.parse(route.query?.filter).length) {
+  if (JSON.parse(route.query?.filter)?.length) {
     dataForm.brand_id = JSON.parse(route.query?.filter);
   }
   if (route.query.order) {
@@ -112,8 +112,8 @@ watch(
   () => route.query,
   async () => {
     await refetch();
-    incomedDatas.value.brands.forEach((e) => {
-      JSON.parse(route.query.filter).forEach((item) => {
+    incomedDatas.value.brands?.forEach((e) => {
+      JSON.parse(route.query?.filter)?.forEach((item) => {
         if (item == e.uuid) {
           e.selected = true;
         }

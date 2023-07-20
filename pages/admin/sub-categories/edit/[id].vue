@@ -78,12 +78,12 @@ const val_en = (e) => {
 try {
   const { data } = await userStore.OneSubCategory(route?.params?.id);
   console.log(data, "dai");
-  category_tm.value = data.data.name_tm;
-  category_en.value = data.data.name_en;
-  category_ru.value = data.data.name_ru;
+  category_tm.value = data.value.data.name_tm;
+  category_en.value = data.value.data.name_en;
+  category_ru.value = data.value.data.name_ru;
   selectedCategory.value = {
-    name: data?.data?.category_name,
-    uuid: data?.data?.category_id,
+    name: data.value?.data?.category_name,
+    uuid: data.value?.data?.category_id,
   };
   //   useRouter().push("/admin/categories");
 } catch (error) {
@@ -93,7 +93,7 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getCategories();
-    categories.value = data.data;
+    categories.value = data.value.data;
   } catch (error) {
     console.log(error);
   }

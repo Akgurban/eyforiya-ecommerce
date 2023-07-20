@@ -1,6 +1,11 @@
 <template>
   <div class="w-[300px] h-screen bg-slate-200 p-4 shadow-md font-bold text-2xl">
-    <img src="~/assets/images/logo.png" alt="" />
+    <img
+      class="mx-auto md:cursor-pointer cursor-auto"
+      @click="useRouter().push(localePath('/'))"
+      src="~/assets/images/logo.png"
+      alt=""
+    />
     <ul class="m-5">
       <NuxtLink
         v-for="item in posts"

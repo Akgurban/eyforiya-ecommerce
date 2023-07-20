@@ -52,7 +52,7 @@
             <p
               class="uppercase font-bold text-lg md:w-[150px] flex flex-nowrap w-[150px]"
             >
-              {{ item?.price }} TMT
+              {{ item?.count * item?.price }} TMT
             </p>
           </div>
           <div class="block cursor-pointer">

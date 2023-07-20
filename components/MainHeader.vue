@@ -4,7 +4,7 @@
   >
     <div class="flex justify-between items-center w-full lg:mt-3 mt-0">
       <img
-        @click="useRouter().push('/')"
+        @click="useRouter().push(localePath('/'))"
         src="@/assets/images/logo.png"
         alt=""
         draggable="false"

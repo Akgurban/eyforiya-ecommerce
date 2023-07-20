@@ -49,8 +49,7 @@ const categories = ref(null);
 const router = useRouter();
 try {
   const { data } = await userStore.getCategories();
-  console.log(data, "data");
-  categories.value = data.data;
+  categories.value = data.value.data;
 } catch (error) {
   console.log(error);
 }
@@ -58,8 +57,7 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getCategories();
-    console.log(data, "data");
-    categories.value = data.data;
+    categories.value = data.value.data;
   } catch (error) {
     console.log(error);
   }
