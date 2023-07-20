@@ -43,7 +43,10 @@
             </div>
           </div>
           <div class="w-fit md:ml-5 ml-1">
-            <TrashButtonAndCounter :item="oneProduct" />
+            <TrashButtonAndCounter
+              :item="changedOneProduct"
+              v-model="oneCountProduct"
+            />
           </div>
         </div>
       </div>
@@ -54,23 +57,15 @@
     >
       {{ $t("similar_products") }}
     </div>
-    <div
-      style="
-        width: 97% !important;
-        height: auto !important;
-        user-select: none !important;
-        padding-bottom: 20px !important;
-      "
-      class="flex flex-wrap gap-3 px-2 md:px-10"
-    >
-      <NuxtLink
+
+    <div style="" class="flex flex-wrap gap-3 px-2 md:px-1">
+      <div
         v-for="(item, index) in similarProducts"
-        :key="item"
-        :to="localePath(`/product/${item?.uuid}`)"
+        :key="item?.uuid"
         class="group md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
       >
-        <BaseProduct :item="item"> </BaseProduct>
-      </NuxtLink>
+        <BaseProduct :item="item"></BaseProduct>
+      </div>
     </div>
   </div>
 </template>
@@ -79,8 +74,10 @@
 const { locale } = useI18n();
 
 const oneProduct = ref(null);
-const similarProducts = ref(null);
+const similarProducts = ref([]);
 const selectedImg = ref(null);
+const oneCountProduct = ref(0);
+const changedOneProduct = ref(null);
 
 const router = useRouter();
 const route = useRoute();
@@ -90,8 +87,15 @@ const { data, status } = await useMyFetch(
 );
 if (status) {
   oneProduct.value = data.value.data.one_products;
+  changedOneProduct.value = data.value.data.one_products;
   selectedImg.value = data.value.data.one_products.images[0];
-  similarProducts.value = data.value.data.products;
+  data.value.data.products.filter((e, index) => {
+    if (data.value.data.one_products.uuid !== e.uuid) {
+      similarProducts.value.push(e);
+    } else {
+      changedOneProduct.value.images = e.images;
+    }
+  });
 }
 </script>
 

@@ -79,7 +79,7 @@ async function login() {
 
 <template>
   <div
-    class="flex justify-center pt-30 md:pt-40 h-[120vh] absolute top-0 bg-slate-300 z-40 w-full"
+    class="flex justify-center pt-34 md:pt-40 h-[120vh] absolute top-0 bg-slate-300 z-40 w-full"
   >
     <div class="w-full max-w-md">
       <h1 class="text-3xl font-bold text-center mb-6">Login</h1>
