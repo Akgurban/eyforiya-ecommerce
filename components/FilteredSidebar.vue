@@ -25,10 +25,10 @@
       <div class="ml-5" v-if="!route.query.catId">
         <p
           v-for="item in sub_categories"
-          @click="selectedSub = item.name"
+          @click="selectedSub = item.uuid"
           class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
         >
-          {{ item?.uuid }}
+          {{ item?.name }}
         </p>
       </div>
       <div

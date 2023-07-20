@@ -9,17 +9,14 @@
     </div>
     <div class="w-full">
       <div
-        class="bg-[#3C4242] text-white p-[26px] flex justify-between mt-10 px-10 w-full"
+        class="bg-[#3C4242] text-white p-2 md:p-[26px] flex justify-between mt-10 px-3 md:px-10 w-full"
       >
-        <div>
+        <div></div>
+        <div class="flex justify-between w-full md:text-xl text-[10px]">
           <p class="uppercase">Product Details</p>
-        </div>
-        <div class="flex justify-between w-full">
-          <p class="uppercase">Price</p>
           <p class="uppercase">Quantity</p>
-          <p class="uppercase">shipping</p>
-          <p class="uppercase">subtotal</p>
-          <p class="uppercase">action</p>
+          <p class="uppercase">Price</p>
+          <p class="uppercase">Delete</p>
         </div>
       </div>
       <div
