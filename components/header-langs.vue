@@ -36,16 +36,26 @@ const props = defineProps({
 });
 
 const changeLang = (e) => {
-  route.fullPath.replace("/ru", "/en");
+  // route.fullPath.replace("/ru", "/en");
   if (e.code == "tm") {
     if (route.fullPath.includes("/ru")) {
-      router.push(route.fullPath.replace("/ru", ""));
+      console.log(route.fullPath);
+      if (route.fullPath == "/ru") {
+        router.push(route.fullPath.replace("/ru", "/"));
+      } else {
+        router.push(route.fullPath.replace("/ru", "/").substring(1));
+      }
     } else if (route.fullPath.includes("/en")) {
-      router.push(route.fullPath.replace("/en", ""));
+      if (route.fullPath == "/en") {
+        router.push(route.fullPath.replace("/en", "/"));
+      } else {
+        router.push(route.fullPath.replace("/en", "/").substring(1));
+      }
     }
   }
   if (e.code == "en") {
     if (route.fullPath.includes("/ru")) {
+      console.log(e.code, route.fullPath);
       router.push(route.fullPath.replace("/ru", "/en"));
     } else if (route.fullPath.includes("/en")) {
       router.push(route.fullPath.replace("/en", "/en"));
@@ -69,4 +79,4 @@ const changeLang = (e) => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

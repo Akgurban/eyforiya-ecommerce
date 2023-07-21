@@ -24,10 +24,10 @@
 
 <script setup>
 const icons = ref([
-  { name: "40358", desc: "visit_web", img: "visit.png" },
-  { name: "403", desc: "items_sold", img: "sold.png" },
-  { name: "15", desc: "our_partners", img: "brand.png" },
-  { name: "2232", desc: "products_website", img: "products.png" },
+  { name: "40358", desc: "visit_web", img: "/visit.png" },
+  { name: "403", desc: "items_sold", img: "/sold.png" },
+  { name: "15", desc: "our_partners", img: "/brand.png" },
+  { name: "2232", desc: "products_website", img: "/products.png" },
 ]);
 </script>
 
