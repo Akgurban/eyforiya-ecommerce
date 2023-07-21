@@ -16,6 +16,11 @@
             :key="item.name"
             :to="localePath(item?.path)"
             class="hover:text-lg md:hover:text-2xl select-none whitespace-nowrap md:px-2 flex items-center transition-all duration-75 h-10 cursor-pointer md:mx-2 hover:underline hover:text-[#44A4DB]"
+            :class="
+              route.path.includes(item.path) && item.path !== '/'
+                ? 'text-[#44A4DB]'
+                : 'text-[#474747]'
+            "
             >{{ $t(item.name) }}</NuxtLink
           >
         </ul>
@@ -27,9 +32,10 @@
 </template>
 
 <script setup>
+const route = useRoute();
 const links = ref([
   { name: "main", path: "/" },
-  { name: "brands" },
+  { name: "brands", path: "/brands" },
   { name: "shops" },
   { name: "about_us" },
 ]);
