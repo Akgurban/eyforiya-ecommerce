@@ -45,11 +45,11 @@ console.log(categories, "data");
           })
         )
       "
-      class="group mb-3 hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center cursor-pointer"
+      class="group mb-3 hover:shadow-hero rounded-md hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 flex flex-col justify-center items-center cursor-pointer"
     >
       <div class="rounded-xl mb-3 text-center mt-6">
         <img
-          class="border border-[#e6e6e6] w-[262px] h-[210px] md:h-[262px] object-cover"
+          class="border rounded-md md:rounded-lg border-[#e6e6e6] w-[262px] h-[210px] md:h-[262px] object-cover"
           :src="`http://duypbaha.com.tm/api/v1/uploads/categories/${item.img_path}`"
           alt=""
           loading="lazy"

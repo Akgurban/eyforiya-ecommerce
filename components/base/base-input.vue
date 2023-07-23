@@ -24,7 +24,7 @@ const props = defineProps({
   checked: { type: Boolean, default: false },
   type: { type: String, default: "text" },
   label: { type: String, required: true },
-  modelValue: { type: [String, Number], default: 0 },
+  modelValue: { type: [String, Number], default: null },
   heightFull: { type: Boolean, default: false },
   placeholder: { type: String, default: "" },
   validate: { type: Function },

@@ -3,7 +3,7 @@
     <div class="flex flex-wrap font-bold font-alatsi text-3xl mb-4">
       Duypbaha HJ
     </div>
-    <div class="flex gap-4">
+    <div class="flex gap-4 md:flex-row flex-col">
       <img src="/special/spec-1.png" alt="" />
       <div class="mb-4">
         <p>

@@ -4,7 +4,7 @@
     class="rounded-xl w-full text-center mt-6"
   >
     <img
-      class="border w-full aspect-square p-3 select-none border-[#e6e6e6]"
+      class="border w-full aspect-square select-none rounded-md md:rounded-lg border-[#e6e6e6]"
       :src="`http://duypbaha.com.tm/api/v1/uploads/images/${propItem?.images}`"
       alt=""
       height="262"

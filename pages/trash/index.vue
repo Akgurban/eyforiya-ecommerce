@@ -5,59 +5,91 @@
     >
       <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer hover:font-bold">Add to cart</p>
+      <p class="cursor-pointer font-bold">Add to cart</p>
     </div>
     <div class="w-full">
-      <div
-        class="bg-[#3C4242] text-white p-2 md:p-[26px] flex justify-between mt-10 px-3 md:px-10 w-full"
-      >
-        <div></div>
-        <div class="flex justify-between w-full md:text-xl text-[10px]">
-          <p class="uppercase">Product Details</p>
-          <p class="uppercase">Quantity</p>
-          <p class="uppercase">Price</p>
-          <p class="uppercase">Delete</p>
-        </div>
-      </div>
-      <div
-        class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-        v-if="!trash.trash_items.products.length"
-      >
-        SebediNiz Bosh
-      </div>
-      <div
-        v-for="item in trash.trash_items.products"
-        :key="item"
-        class="py-12 p-[26px] flex items-center justify-between px-10"
-      >
-        <div>
-          <div class="flex md:flex-row flex-col items-center md:gap-10 gap-5">
-            <img
-              :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.images}`"
-              alt=""
-              class="w-35 rounded-md aspect-square"
-            />
-            <p class="font-alatsi text-2xl w-[100px]">{{ item.name }}</p>
+      <div class="w-full">
+        <div
+          class="bg-[#3C4242] text-white p-2 md:p-[26px] flex justify-between mt-10 px-3 md:px-10 w-full"
+        >
+          <div></div>
+          <div class="flex justify-between w-full md:text-xl text-[10px]">
+            <p class="uppercase">Product Details</p>
+            <p class="uppercase">Quantity</p>
+            <p class="uppercase">Price</p>
+            <p class="uppercase">Delete</p>
           </div>
         </div>
         <div
-          class="flex items-center w-full justify-end gap-6 md:gap-10 md:flex-row flex-row"
+          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+          v-if="!trash.trash_items.products.length"
         >
+          SebediNiz Bosh
+        </div>
+        <div
+          v-for="item in trash.trash_items.products"
+          :key="item"
+          class="py-12 p-[26px] flex items-center justify-between px-10"
+        >
+          <div>
+            <div class="flex md:flex-row flex-col items-center md:gap-10 gap-5">
+              <img
+                :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.images}`"
+                alt=""
+                class="w-35 rounded-md aspect-square"
+              />
+              <p class="font-alatsi text-2xl w-[100px]">{{ item.name }}</p>
+            </div>
+          </div>
           <div
-            class="w-[150px] md:w-[400px] flex md:flex-row flex-col items-center justify-between ml-5"
+            class="flex items-center w-full justify-end gap-6 md:gap-10 md:flex-row flex-row"
           >
-            <p class="uppercase md:w-[200px] w-[150px]">
-              <TrashButtonAndCounter :count="item.count" :item="item" />
-            </p>
-            <p
-              class="uppercase font-bold text-lg md:w-[150px] flex flex-nowrap w-[150px]"
+            <div
+              class="w-[150px] md:w-[400px] flex md:flex-row flex-col items-center justify-between ml-5"
             >
-              {{ item?.count * item?.price }} TMT
+              <p class="uppercase md:w-[200px] w-[150px]">
+                <TrashButtonAndCounter :count="item.count" :item="item" />
+              </p>
+              <p
+                class="uppercase font-bold text-lg md:w-[150px] flex flex-nowrap w-[150px]"
+              >
+                {{ item?.count * item?.price }} TMT
+              </p>
+            </div>
+            <div class="block cursor-pointer">
+              <img class="m-1 w-4" src="@/assets/images/deletecon.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-[#3C4242] text-white py-3 flex md:flex-row flex-col gap-y-4 justify-between w-full md:text-xl px-5 text-[10px]"
+        >
+          <div class="">
+            <p class="uppercase font-bold font-alatsi">Total Price:</p>
+            <p class="uppercase font-bold font-inter text-lg">
+              {{ totalPrice }} TMT
             </p>
           </div>
-          <div class="block cursor-pointer">
-            <img class="m-1 w-4" src="@/assets/images/deletecon.svg" alt="" />
+          <div>
+            <p class="uppercase font-bold font-alatsi">Phone number:</p>
+            <div
+              class="flex h-12 items-center justify-center text-black relative bg-white rounded-lg"
+            >
+              <div class="h-full flex text-lg items-center mx-2">+993</div>
+              <input
+                class="text-black text-lg bg-white outline-0 border-white"
+                type="text"
+                v-model="phone"
+                placeholder="6522222"
+              />
+            </div>
           </div>
+          <BaseButton
+            @click="makeOrder"
+            class="rounded-lg text-lg"
+            type="secondary"
+            >Sargydy tayyarlamak</BaseButton
+          >
         </div>
       </div>
     </div>
@@ -68,11 +100,23 @@
 const count = ref(0);
 import { useTrashStore } from "~~/stores/trash";
 import { useAuthStore } from "~~/stores/authStore";
+import { useToast } from "vue-toastification";
 const { locale } = useI18n();
+const $toast = useToast();
 
 const trash = useTrashStore();
 const user = useAuthStore();
 console.log(trash.trash_items.products, "saplop");
+const totalPrice = ref(0);
+const phone = ref(null);
+const calcTotal = () => {
+  trash.trash_items.products?.filter((e) => {
+    totalPrice.value += e.price;
+  });
+};
+calcTotal();
+watch(trash.trash_items, calcTotal);
+
 const setStore = () => {
   trash.setLocalStorage(count.value);
 };
@@ -80,7 +124,34 @@ console.log(user.userToken.uuid, "user.userToken");
 const { data: user_trash } = useMyFetch(
   `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
 );
-console.log(user_trash, "userTrasg");
+
+const makeOrder = async () => {
+  const making_products = [];
+  trash.trash_items.products?.filter((e) => {
+    making_products.push({
+      product_id: e.uuid,
+      count: e.count,
+    });
+  });
+  if (phone.value?.length == 8) {
+    const { data: make_order } = useMyFetch(
+      `/api/v1/client/products/order/create`,
+      {
+        method: "POST",
+        body: {
+          user_id: user.userToken?.uuid || null,
+          phone: +phone.value,
+          products: making_products,
+        },
+      }
+    );
+    if (make_order.value.status) {
+      $toast.success("Habarynyz ustunlikli kabul edildi");
+    }
+  } else {
+    $toast.error("Telefonynyzy dogry dolduryn");
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
