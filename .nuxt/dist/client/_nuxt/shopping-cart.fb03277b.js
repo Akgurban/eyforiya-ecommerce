@@ -1,1 +1,0 @@
-import{_ as e}from"./entry.54e19d71.js";import{M as r,L as o}from"./swiper-vue.00c128fd.js";const t={};function c(n,s){return o(),r("div",null,"sasa")}const f=e(t,[["render",c]]);export{f as default};

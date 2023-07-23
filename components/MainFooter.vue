@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#44A4DB] md:px-[100px] px-3 md:pt-10 pt-7 text-white">
+  <footer class="bg-[#44A4DB] md:px-[100px] px-3 md:pt-10 pt-7 text-white">
     <div class="flex md:gap-25 gap-4">
       <div class="md:text-lg text-sm">
         <div>
@@ -46,7 +46,7 @@
     <div class="border-t border-white p-3 mt-10 text-center">
       Copyright © 2023 Duypbaha. All rights reserved.
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup></script>

@@ -27,6 +27,8 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@pinia/nuxt": "^0.4.11",
     "nuxt-swiper": "^1.1.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vue-awesome-paginate": "^1.1.46",
+    "vue-toastification": "^2.0.0-rc.5"
   }
 }

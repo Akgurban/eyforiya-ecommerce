@@ -36,8 +36,8 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#ffffff" },
       ],
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: "page", mode: "in-out" },
+    layoutTransition: { name: "layout", mode: "in-out" },
   },
   experimental: {
     // viewTransition: true,
@@ -75,5 +75,8 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: "lang/",
+  },
+  build: {
+    transpile: ["vue-toastification"],
   },
 });

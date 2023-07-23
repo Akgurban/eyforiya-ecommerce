@@ -111,7 +111,7 @@
       <div
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
-        <a class="" :href="item.brand_name" v-for="item in main_brands">
+        <a class="" v-for="item in main_brands">
           <img
             class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
@@ -122,7 +122,7 @@
       <div
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
-        <a class="" :href="item.brand_name" v-for="item in main_brands">
+        <a class="" v-for="item in main_brands">
           <img
             class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
@@ -149,6 +149,7 @@ const { data: products } = await useMyFetch(
 );
 if (products.value.status) {
   latest.value = products.value?.data;
+  console.log("latest.value", products.value);
 }
 const { data: spec_latest } = await useMyFetch(
   `/api/v1/client/products/special-categ-products?lang=${locale.value}`

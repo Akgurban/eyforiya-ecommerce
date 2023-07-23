@@ -198,7 +198,7 @@ const addPosts = async () => {
       const form = new FormData();
 
       form.append("product_id", onlyProduct.value.data);
-      image.value.forEach(async (e, index) => {
+      image.value?.forEach(async (e, index) => {
         form.append("img", image.value[index]);
         const { data, status } = await userStore.addProductImage(form);
         console.log(data, "image");

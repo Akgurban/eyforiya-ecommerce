@@ -10,6 +10,8 @@ import "swiper/css/navigation";
 const renderBullet = (index, className) => {
   return '<span class="' + className + '">' + " " + "</span>";
 };
+const { data: banners } = await useMyFetch(`/api/v1/client/products/banners`);
+console.log(banners, "banners");
 </script>
 <template>
   <swiper
@@ -35,24 +37,23 @@ const renderBullet = (index, className) => {
     class="mb-5 w-full h-full select-none"
   >
     <swiper-slide
-      v-for="item in 5"
-      :key="item"
+      v-for="item in banners.data"
+      :key="item.uuid"
       style="
         width: 100% !important;
         height: 100% !important;
         user-select: none !important;
-        pointer-events: none !important;
       "
-      class="select-none group w-full h-full cursor-pointer"
+      class="group w-full h-full cursor-pointer"
     >
-      <div class="select-none rounded-xl w-full h-full">
+      <NuxtLink :to="item.brand_name" class="rounded-xl w-full h-full">
         <img
-          class="border select-none pointer-events-none border-[#e6e6e6] object-cover w-full h-full transition-all ease-in-out duration-200"
-          :src="`/banner/banner_${item}.png`"
+          class="border border-[#e6e6e6] object-cover w-full h-full transition-all ease-in-out duration-200"
+          :src="`http://duypbaha.com.tm/api/v1/uploads/banners/${item?.img_path}`"
           alt=""
           loading="lazy"
         />
-      </div>
+      </NuxtLink>
     </swiper-slide>
   </swiper>
 </template>

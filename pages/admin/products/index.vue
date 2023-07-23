@@ -1,45 +1,3 @@
-<script setup>
-import { useUserStore } from "~~/stores/user";
-import { useLoaderStore } from "~~/stores/loader";
-const loaderStore = useLoaderStore();
-
-definePageMeta({
-  layout: "admin",
-});
-const products = ref(null);
-const userStore = useUserStore();
-
-const getPosts = async () => {
-  try {
-    const { data } = await userStore.getProduct({
-      limit: 10,
-      offset: 0,
-    });
-    if (data?.value.status) {
-      console.log(data, "datass");
-      products.value = data.value.data?.products;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-await getPosts();
-
-const deletePosts = async (e) => {
-  try {
-    const { data } = await userStore.deleteProduct(e);
-    console.log(data, "data");
-    if (data.value.status) {
-      await getPosts();
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-loaderStore.endLoading();
-</script>
-
 <template>
   <div>
     <NuxtLink
@@ -82,8 +40,56 @@ loaderStore.endLoading();
           >
         </div>
       </li>
+      <BasePaginate :total-items="totalItems" v-model="count" />
     </ul>
   </div>
 </template>
 
+<script setup>
+import { useToast } from "vue-toastification";
+
+import { useUserStore } from "~~/stores/user";
+import { useLoaderStore } from "~~/stores/loader";
+const loaderStore = useLoaderStore();
+const $toast = useToast();
+// $toast.success("Ustunlikli tazelendi");
+
+definePageMeta({
+  layout: "admin",
+});
+const products = ref(null);
+const count = ref(1);
+const totalItems = ref(10);
+const userStore = useUserStore();
+
+const getPosts = async () => {
+  try {
+    const { data } = await userStore.getProduct({
+      limit: 10,
+      offset: 0,
+    });
+    if (data?.value.status) {
+      console.log(data, "datass");
+      products.value = data.value.data?.products;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+await getPosts();
+
+const deletePosts = async (e) => {
+  try {
+    const { data } = await userStore.deleteProduct(e);
+    console.log(data, "data");
+    if (data.value.status) {
+      await getPosts();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+loaderStore.endLoading();
+</script>
 <style></style>

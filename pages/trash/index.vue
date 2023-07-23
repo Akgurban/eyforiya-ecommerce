@@ -67,11 +67,20 @@
 <script setup>
 const count = ref(0);
 import { useTrashStore } from "~~/stores/trash";
+import { useAuthStore } from "~~/stores/authStore";
+const { locale } = useI18n();
+
 const trash = useTrashStore();
+const user = useAuthStore();
 console.log(trash.trash_items.products, "saplop");
 const setStore = () => {
   trash.setLocalStorage(count.value);
 };
+console.log(user.userToken.uuid, "user.userToken");
+const { data: user_trash } = useMyFetch(
+  `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
+);
+console.log(user_trash, "userTrasg");
 </script>
 
 <style lang="scss" scoped></style>

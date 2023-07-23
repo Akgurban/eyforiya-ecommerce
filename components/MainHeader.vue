@@ -1,5 +1,5 @@
 <template>
-  <div
+  <header
     class="lg:mt-0 mt-2 flex lg:flex-row flex-col items-center w-full pb-2 border-b-2 border-[#f6f6f6] justify-between"
   >
     <div class="flex justify-between items-center w-full lg:mt-3 mt-0">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup></script>

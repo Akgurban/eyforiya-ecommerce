@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
-import axios from "~~/plugins/axios";
-
-const $axios = axios().provide.axios;
+// import axios from "~~/plugins/axios";
+// import { useAuthStore } from "@/stores/authStore";
+// const authStore = useAuthStore();
+// const $axios = axios().provide.axios;
 
 export const useTrashStore = defineStore("trash", {
   state: () => ({
@@ -31,6 +32,15 @@ export const useTrashStore = defineStore("trash", {
         this.trash_items.products.push(some);
       }
       this.trash_items.totalCount += 1;
+      // const { data } = await useMyFetch("/api/v1/client/trash/create", {
+      //   body: {
+      //     user_id: authStore.userToken.uuid,
+      //     product_id: propItem.uuid,
+      //     count: count,
+      //   },
+      //   method: "POST",
+      // });
+      // console.log(data, "trash stabase");
     },
 
     async removeLocalStorage(propItem, count) {

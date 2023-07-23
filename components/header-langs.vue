@@ -35,8 +35,9 @@ const props = defineProps({
   text: { type: String, default: "text" },
 });
 
-const changeLang = (e) => {
+const changeLang = async (e) => {
   // route.fullPath.replace("/ru", "/en");
+  await nextTick();
   if (e.code == "tm") {
     if (route.fullPath.includes("/ru")) {
       console.log(route.fullPath);

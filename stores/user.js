@@ -211,6 +211,17 @@ export const useUserStore = defineStore("user", {
         method: "POST",
       });
     },
+
+    // video
+    async addVideos(data) {
+      return await useMyFetch("/api/v1/admin/products/video/create", {
+        method: "POST",
+        body: data,
+      });
+    },
+    async getVideos() {
+      return await useMyFetch("/api/v1/client/products/videos");
+    },
   },
   persist: true,
 });

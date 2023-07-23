@@ -47,6 +47,8 @@
 
 <script setup>
 import { useTrashStore } from "~~/stores/trash";
+import { useAuthStore } from "@/stores/authStore";
+const authStore = useAuthStore();
 const trash = useTrashStore();
 const props = defineProps({
   item: {
@@ -70,20 +72,37 @@ trash.trash_items.products?.forEach((item, index) => {
   }
 });
 
-const increment = () => {
+const increment = async () => {
   count.value += 1;
   trash.setLocalStorage(props.item, count.value);
+  console.log(authStore, "[]");
 
-  emit("update:modelValue", count.value);
+  if (authStore.userToken) {
+    const { data } = await useMyFetch("/api/v1/client/trash/create", {
+      body: {
+        user_id: authStore.userToken?.uuid,
+        product_id: props.item.uuid,
+        count: count.value,
+      },
+      method: "POST",
+    });
+  }
 };
 
-const decrement = () => {
+const decrement = async () => {
   count.value -= 1;
   trash.removeLocalStorage(props.item, count.value);
-  if (count.value > 0) {
-    emit("update:modelValue", count.value);
+
+  if (authStore.userToken) {
+    const { data } = await useMyFetch("/api/v1/client/trash/create", {
+      body: {
+        user_id: authStore.userToken?.uuid,
+        product_id: props.item.uuid,
+        count: count.value,
+      },
+      method: "POST",
+    });
   }
 };
 </script>
-
 <style scoped></style>

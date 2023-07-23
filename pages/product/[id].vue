@@ -48,6 +48,15 @@
               v-model="oneCountProduct"
             />
           </div>
+          <div>
+            <p>Kommentariya</p>
+            <div class="min-w-[300px] w-auto flex gap-4">
+              <BaseTextarea type="text" v-model="comment" />
+              <IconSend
+                class="md:cursor-pointer self-end cursor-auto"
+              ></IconSend>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -77,6 +86,7 @@ const { locale } = useI18n();
 const oneProduct = ref(null);
 const similarProducts = ref([]);
 const selectedImg = ref(null);
+const comment = ref(null);
 const oneCountProduct = ref(0);
 const changedOneProduct = ref(null);
 

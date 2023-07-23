@@ -1,1 +1,0 @@
-import{_ as c}from"./entry.54e19d71.js";import{M as e,L as o}from"./swiper-vue.00c128fd.js";const t={};function r(n,s){return o(),e("div",null,"checkout")}const f=c(t,[["render",r]]);export{f as default};

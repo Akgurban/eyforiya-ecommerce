@@ -75,21 +75,23 @@ async function login() {
     throw error;
   }
 }
+const logout = () => {
+  authStore.userToken = "";
+  router.push("/");
+};
 </script>
 
 <template>
   <div
     class="flex justify-center pt-34 md:pt-40 h-[110vh] absolute top-0 bg-slate-300 z-40 w-full"
   >
+    <BaseButton @click="logout" class="absolute top-0 left-0" type="danger"
+      >Logout</BaseButton
+    >
     <div class="w-full max-w-md">
       <div
         class="text-3xl font-bold text-center mb-6 flex w-full justify-between"
-      >
-        <p>Login</p>
-
-        <p>Register</p>
-      </div>
-      <!-- <BaseButton type="danger">Logout</BaseButton> -->
+      ></div>
       <form class="bg-c-gray shadow-lg rounded px-8 pt-6 pb-8 mb-4">
         <img
           class="mx-auto md:cursor-pointer cursor-auto"

@@ -34,7 +34,7 @@
           v-for="(item, index) in incomedDatas.products"
           :key="item"
           draggable="true"
-          class="group md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
         >
           <BaseProduct :item="item"></BaseProduct>
         </div>
@@ -101,7 +101,7 @@ const refetch = async () => {
 await refetch();
 
 incomedDatas.value.brands?.forEach((e) => {
-  JSON.parse(route.query.filter).forEach((item) => {
+  JSON.parse(route.query.filter)?.forEach((item) => {
     if (item == e.uuid) {
       e.selected = true;
     }
