@@ -50,7 +50,7 @@
         route.path == '/trash' ||
         route.path == '/en/trash' ||
         route.path == '/ru/trash' ||
-        trash.trash_items.totalCount !== 0
+        trash_count !== 0
           ? 'bg-[#44A4DB] text-white '
           : 'bg-[#F6F6F6] text-[#807D7E]'
       "
@@ -58,10 +58,10 @@
     >
       <IconTrash class="group-hover:text-white w-5"></IconTrash>
       <div
-        v-if="trash.trash_items.totalCount !== 0"
+        v-if="trash_count !== 0"
         class="absolute -top-4 left-0 rounded-full bg-[#F35528] text-white w-7 h-7 flex justify-center items-center"
       >
-        {{ trash.trash_items.totalCount }}
+        {{ trash_count }}
       </div>
     </NuxtLink>
   </div>
@@ -81,6 +81,19 @@ const props = defineProps({
   text: { type: String, default: "text" },
 });
 const route = useRoute();
+const trash_count = ref(0);
+
+trash.trash_items.products?.filter((e) => {
+  trash_count.value += e.count;
+});
+watch(trash.trash_items, () => {
+  trash_count.value = 0;
+
+  trash.trash_items.products?.filter((e) => {
+    trash_count.value += e.count;
+  });
+});
+
 console.log(route);
 const path = route.path;
 </script>

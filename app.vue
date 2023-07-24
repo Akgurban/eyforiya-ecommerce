@@ -5,4 +5,6 @@
     </NuxtLayout>
   </div>
 </template>
-<script setup></script>
+<script setup>
+// trashda price yok
+</script>

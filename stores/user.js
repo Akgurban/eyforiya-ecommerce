@@ -222,6 +222,24 @@ export const useUserStore = defineStore("user", {
     async getVideos() {
       return await useMyFetch("/api/v1/client/products/videos");
     },
+
+    //orders
+    async getOrders() {
+      return await useMyFetch(
+        "/api/v1/admin/products/orders?offset=0&status=false&limit=15"
+      );
+    },
+    async deleteOrders(data) {
+      return await useMyFetch(`/api/v1/admin/products/order/delete/${data}`, {
+        method: "POST",
+      });
+    },
+    async updateOrder(data) {
+      return await useMyFetch("/api/v1/admin/products/orders/update", {
+        method: "POST",
+        body: data,
+      });
+    },
   },
   persist: true,
 });

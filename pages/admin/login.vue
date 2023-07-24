@@ -24,7 +24,7 @@ async function signUp() {
     pendings.value = true;
 
     const { data, pending, status, error } = await useFetch(
-      "http://duypbaha.com.tm/api/v1/client/user-register",
+      "http://duypbaha.com.tm/api/v1/admin/login",
       {
         method: "POST",
         body: {
@@ -34,7 +34,7 @@ async function signUp() {
       }
     );
     console.log(data.value, "eret");
-    authStore.userToken = data.value?.auth;
+    authStore.adminToken = data.value?.auth;
     router.push("/");
     if (pending) {
       pendings.value = true;
@@ -55,7 +55,7 @@ async function login() {
 
     pendings.value = true;
     const { data, pending, status, error } = await useFetch(
-      "http://duypbaha.com.tm/api/v1/client/user/login",
+      "http://duypbaha.com.tm/api/v1/admin/login",
       {
         method: "POST",
         body: {
@@ -137,13 +137,6 @@ const logout = () => {
           >
             Garashyn...
           </p>
-          <button
-            class="bg-green-700 w-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            @click="signUp"
-          >
-            Sign up
-          </button>
         </div>
       </form>
     </div>

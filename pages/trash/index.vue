@@ -22,7 +22,7 @@
         </div>
         <div
           class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-          v-if="!trash.trash_items.products.length"
+          v-if="!trash.trash_items.products?.length"
         >
           SebediNiz Bosh
         </div>
@@ -111,20 +111,28 @@ console.log(trash.trash_items.products, "saplop");
 const totalPrice = ref(0);
 const phone = ref(null);
 const calcTotal = () => {
+  totalPrice.value = 0;
   trash.trash_items.products?.filter((e) => {
-    totalPrice.value = e.price;
+    totalPrice.value += e.price * e.count;
   });
 };
 calcTotal();
-watch(trash.trash_items.totalCount, calcTotal);
+watch(trash.trash_items, calcTotal);
 
 const setStore = () => {
   trash.setLocalStorage(count.value);
 };
 console.log(user.userToken.uuid, "user.userToken");
-const { data: user_trash } = useMyFetch(
-  `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
-);
+
+if (user.userToken.uuid && false) {
+  const { data: user_trash } = useMyFetch(
+    `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
+  );
+  trash.trash_items.products = user_trash.value?.data.filter((e) => {
+    e.images = e.img_path;
+  });
+  console.log(user_trash.value?.data, "p[p[]]");
+}
 
 const makeOrder = async () => {
   const making_products = [];

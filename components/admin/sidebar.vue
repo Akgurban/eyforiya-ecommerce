@@ -29,6 +29,7 @@ const posts = ref([
   { name: "Videos", path: "/admin/videos" },
   { name: "Products", path: "/admin/products" },
   { name: "Comments", path: "/admin/comments" },
+  { name: "Orders", path: "/admin/orders" },
 ]);
 const isRouteActive = ref(true);
 

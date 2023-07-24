@@ -142,7 +142,6 @@
         autoplay
         loop
         muted
-        ref="img"
       >
         <source
           :src="`http://duypbaha.com.tm/api/v1/uploads/videos/${item?.video_path}`"

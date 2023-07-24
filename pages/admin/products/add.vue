@@ -99,10 +99,12 @@
 <script setup>
 import { useUserStore } from "~~/stores/user";
 import { useLoaderStore } from "~~/stores/loader";
+import { useToast } from "vue-toastification";
 
 definePageMeta({
   layout: "admin",
 });
+const $toast = useToast();
 const userStore = useUserStore();
 const loaderStore = useLoaderStore();
 
