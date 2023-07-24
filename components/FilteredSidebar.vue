@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="mt-5">
+    <div v-if="show_cat" class="mt-5">
       <div class="text-2xl font-alatsi mb-2">Icki kategoriya saylan</div>
       <div class="ml-5" v-if="!route.query.catId">
         <p
@@ -83,6 +83,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  show_cat: {
+    type: Boolean,
+    default: true,
+  },
   sub_categories: {
     type: Array,
     default: [],
@@ -90,7 +94,7 @@ const props = defineProps({
 });
 
 const order = ref("");
-if (route.query.order) {
+if (route.query?.order) {
   order.value = route.query.order;
 }
 const orderList = ref([
@@ -101,15 +105,16 @@ const orderList = ref([
 
 const selectedBrands = ref([]);
 const selectedSub = ref("");
-
-props.brands?.forEach((e) => {
-  JSON.parse(route.query.filter)?.forEach((item) => {
-    if (item == e.uuid) {
-      e.selected = true;
-      selectedBrands.value.push(e.uuid);
-    }
+if (route.query?.filter) {
+  props.brands?.forEach((e) => {
+    JSON.parse(route.query?.filter)?.forEach((item) => {
+      if (item == e.uuid) {
+        e.selected = true;
+        selectedBrands.value.push(e.uuid);
+      }
+    });
   });
-});
+}
 
 const checkBrands = async (e) => {
   if (e.selected) {

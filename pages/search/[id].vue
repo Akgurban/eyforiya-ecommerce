@@ -15,7 +15,7 @@
         <filtered-sidebar
           :show_filter="showFilter"
           :brands="incomedDatas?.brands"
-          :sub_categories="incomedDatas?.sub_categories"
+          :show_cat="false"
           @someChange="(e) => emittedFromSidebar(e)"
           v-if="showFilter"
         />
@@ -57,12 +57,20 @@ const router = useRouter();
 const route = useRoute();
 const incomedDatas = ref("");
 const showFilter = ref(true);
+const order = ref("");
+
+const orderList = ref([
+  { code: "", name: "Hic hili" },
+  { code: "asc", name: "Arzandan gymmada" },
+  { code: "desc", name: "Gymmatdan arzana" },
+]);
 
 const active = useState();
 async function emittedFromSidebar(e) {
+  console.log(e);
   router.push({
-    path: `/filtered-product/${route.params.id}`,
-    query: { filter: JSON.stringify(e.brnd), order: e.ord, catId: e.sub },
+    path: `/search/${route.params.id}`,
+    query: { filter: JSON.stringify(e.brnd), order: e.ord },
   });
 }
 
@@ -71,39 +79,40 @@ const toggleFilter = () => {
 };
 const refetch = async () => {
   let dataForm = {
-    category_id: route.params.id,
-    lang: locale.value,
-    limit: 10,
+    lang: "tm",
+    //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
+    order: route.query.order,
+    limit: 20,
     offset: 0,
+    criteria: route.params.id,
   };
 
   if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
     dataForm.brand_id = JSON.parse(route.query?.filter);
   }
-  if (route.query.order) {
-    dataForm.order = route.query.order;
+  if (route.params.id) {
   }
   if (route.query.catId) {
     dataForm.sub_category_id = route.query.catId;
   }
 
   const { data, status } = await useMyFetch(
-    () => `/api/v1/client/products/product`,
+    () => `/api/v1/client/products/product/search`,
     {
       method: "POST",
       body: dataForm,
     }
   );
   if (status) {
-    incomedDatas.value = data.value?.data;
     console.log(data.value?.data, "geldi========");
+    incomedDatas.value = data.value?.data;
   }
 };
 await refetch();
 
-if (incomedDatas.value) {
+if (route.query?.filter && incomedDatas.value) {
   incomedDatas.value?.brands?.forEach((e) => {
-    JSON.parse(route.query.filter)?.forEach((item) => {
+    JSON.parse(route.query?.filter)?.forEach((item) => {
       if (item == e.uuid) {
         e.selected = true;
       }

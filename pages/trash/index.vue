@@ -70,6 +70,7 @@
               {{ totalPrice }} TMT
             </p>
           </div>
+
           <div>
             <p class="uppercase font-bold font-alatsi">Phone number:</p>
             <div
@@ -111,11 +112,11 @@ const totalPrice = ref(0);
 const phone = ref(null);
 const calcTotal = () => {
   trash.trash_items.products?.filter((e) => {
-    totalPrice.value += e.price;
+    totalPrice.value = e.price;
   });
 };
 calcTotal();
-watch(trash.trash_items, calcTotal);
+watch(trash.trash_items.totalCount, calcTotal);
 
 const setStore = () => {
   trash.setLocalStorage(count.value);
@@ -130,7 +131,7 @@ const makeOrder = async () => {
   trash.trash_items.products?.filter((e) => {
     making_products.push({
       product_id: e.uuid,
-      count: e.count,
+      count: `${e.count}`,
     });
   });
   if (phone.value?.length == 8) {
@@ -140,13 +141,15 @@ const makeOrder = async () => {
         method: "POST",
         body: {
           user_id: user.userToken?.uuid || null,
-          phone: +phone.value,
+          phone: `${phone.value}`,
           products: making_products,
         },
       }
     );
-    if (make_order.value.status) {
+    if (make_order.value?.status) {
       $toast.success("Habarynyz ustunlikli kabul edildi");
+      phone.value = "";
+      useRouter().push("/");
     }
   } else {
     $toast.error("Telefonynyzy dogry dolduryn");

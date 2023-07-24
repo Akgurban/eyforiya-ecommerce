@@ -141,30 +141,34 @@ try {
 console.log(loaderStore, "loaderStore");
 const addPosts = async () => {
   try {
-    const { data: onlyProduct } = await userStore.addProduct({
-      sub_category_id: selectedSub.value?.uuid || null,
-      name_tm: name_tm.value,
-      name_ru: name_ru.value,
-      name_en: name_en.value,
-      description_tm: description_tm.value,
-      description_en: description_en.value,
-      description_ru: description_ru.value,
-      price: +price.value,
-      brand_id: selectedBrand.value?.uuid || null,
-      special_category_id: selectedSpec.value?.uuid || null,
-    });
-    console.log(onlyProduct.value, "onlyProduct");
-    if (onlyProduct.value.status) {
-      const form = new FormData();
-      form.append("product_id", onlyProduct.value.data);
-      image.value?.forEach(async (e, index) => {
-        form.append("img", image.value[index]);
-        const { data, status } = await userStore.addProductImage(form);
-        console.log(data, "image");
-        if (status) {
-        }
+    if (!selectedSub.value?.uuid) {
+      $toast.error("sub kategoriya saylan");
+    } else {
+      const { data: onlyProduct } = await userStore.addProduct({
+        sub_category_id: selectedSub.value?.uuid,
+        name_tm: name_tm.value,
+        name_ru: name_ru.value,
+        name_en: name_en.value,
+        description_tm: description_tm.value,
+        description_en: description_en.value,
+        description_ru: description_ru.value,
+        price: +price.value,
+        brand_id: selectedBrand.value?.uuid || null,
+        special_category_id: selectedSpec.value?.uuid || null,
       });
-      router.push("/admin/products");
+      console.log(onlyProduct.value, "onlyProduct");
+      if (onlyProduct.value.status) {
+        const form = new FormData();
+        form.append("product_id", onlyProduct.value.data);
+        image.value?.forEach(async (e, index) => {
+          form.append("img", image.value[index]);
+          const { data, status } = await userStore.addProductImage(form);
+          console.log(data, "image");
+          if (status) {
+          }
+        });
+        router.push("/admin/products");
+      }
     }
   } catch (error) {
     console.log(error);

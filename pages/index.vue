@@ -131,6 +131,26 @@
         </a>
       </div>
     </div>
+
+    <div
+      class="flex items-center gap-7 md:gap-14 2xl:w-[1440px] w-screen overflow-hidden mx-auto mt-4 md:mt-[92px]"
+    >
+      <video
+        v-for="item in video.data"
+        class="w-1/2 p-2 aspect-video object-cover z-[1]"
+        controls
+        autoplay
+        loop
+        muted
+        ref="img"
+      >
+        <source
+          :src="`http://duypbaha.com.tm/api/v1/uploads/videos/${item?.video_path}`"
+          ref="img"
+          alt=""
+        />
+      </video>
+    </div>
   </div>
 </template>
 
@@ -147,29 +167,31 @@ const main_brands = ref(null);
 const { data: products } = await useMyFetch(
   `/api/v1/client/products/latest/products?lang=${locale.value}`
 );
-if (products.value.status) {
+if (products.value?.status) {
   latest.value = products.value?.data;
   console.log("latest.value", products.value);
 }
 const { data: spec_latest } = await useMyFetch(
   `/api/v1/client/products/special-categ-products?lang=${locale.value}`
 );
-if (spec_latest.value.status) {
+if (spec_latest.value?.status) {
   special_latest.value = spec_latest.value?.data;
 }
 const { data: brands } = await useMyFetch(
   `/api/v1/client/products/brands?lang=${locale.value}`
 );
-if (brands.value.status) {
+if (brands.value?.status) {
   main_brands.value = brands.value?.data;
   console.log(main_brands.value, "sfghj");
 }
 const { data: special_categories } = await useMyFetch(
   `/api/v1/client/products/special-categories?lang=${locale.value}`
 );
-if (special_categories.value.status) {
+if (special_categories.value?.status) {
   spec_categories.value = special_categories.value?.data;
 }
+const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
+console.log(video);
 </script>
 
 <style scoped>

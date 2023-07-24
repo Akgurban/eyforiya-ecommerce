@@ -30,7 +30,7 @@
           <div
             class="sm:pt-1.5 pt-0 pb-1.5 md:text-xl text-lg sm:font-normal font-medium"
           >
-            Çaga egin-eşikleri üçin ýumşadyjy konsentrat Bingo "Oğluşum" 1440 ml
+            {{ oneProduct.description }}
           </div>
 
           <div
@@ -97,6 +97,7 @@ const { data, status } = await useMyFetch(
   `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`
 );
 if (status) {
+  console.log(data.value.data);
   oneProduct.value = data.value.data.one_products;
   changedOneProduct.value = data.value.data.one_products;
   selectedImg.value = data.value.data.one_products.images[0];

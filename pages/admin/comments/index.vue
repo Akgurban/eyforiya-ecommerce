@@ -48,16 +48,18 @@ definePageMeta({
 const categories = ref(null);
 const router = useRouter();
 try {
-  const { data } = await userStore.getCategories();
-  categories.value = data.value.data;
+  const { data } = await userStore.getComments();
+  console.log(data, "commemts");
+  // categories.value = data.value.data;
 } catch (error) {
   console.log(error);
 }
 
 const getCategoriesr = async () => {
   try {
-    const { data } = await userStore.getCategories();
-    categories.value = data.value.data;
+    const { data } = await userStore.getComments();
+    // categories.value = data.value.data;
+    console.log(data, "commemts");
   } catch (error) {
     console.log(error);
   }
