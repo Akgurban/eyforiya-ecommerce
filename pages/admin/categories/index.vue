@@ -44,6 +44,7 @@ import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const categories = ref(null);
 const router = useRouter();
@@ -65,7 +66,6 @@ const getCategoriesr = async () => {
 const deleteCategory = async (e) => {
   try {
     const { data } = await userStore.deleteCategories({ uuid: e.uuid });
-    console.log(data, "data");
     await getCategoriesr();
   } catch (error) {
     console.log(error);

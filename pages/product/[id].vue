@@ -53,6 +53,7 @@
             <div class="min-w-[300px] w-auto flex gap-4">
               <BaseTextarea type="text" v-model="comment" />
               <IconSend
+                @click="sendComment"
                 class="md:cursor-pointer self-end cursor-auto"
               ></IconSend>
             </div>
@@ -60,7 +61,19 @@
         </div>
       </div>
     </div>
+
     <div class="w-screen 2xl:w-[1428px] mx-auto px-4 sm:flex-row flex-col">
+      <div class="bg-teal-100 mt-6">
+        <p class="font-alatsi font-bold p-2">Kommentariyalar</p>
+        <ul>
+          <li
+            v-for="(item, index) in comments.data.comments"
+            class="odd:bg-teal-50 even:bg-teal-100 p-2 font-inter"
+          >
+            {{ index + 1 }}: {{ item.content }}
+          </li>
+        </ul>
+      </div>
       <div
         class="mt-8 px-10 cursor-pointer transition-all duration-100 md:text-4xl text-2xl mb-1 font-semibold font-inter"
       >
@@ -81,6 +94,13 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "~~/stores/authStore";
+import { useToast } from "vue-toastification";
+
+const $toast = useToast();
+
+const user = useAuthStore();
+
 const { locale } = useI18n();
 
 const oneProduct = ref(null);
@@ -92,12 +112,33 @@ const changedOneProduct = ref(null);
 
 const router = useRouter();
 const route = useRoute();
+const sendComment = async () => {
+  if (!comment.value?.length) {
+    return $toast.error("kommentariya bosh bolmaly dal");
+  }
+  const { data } = await useMyFetch(`/api/v1/client/comment/create`, {
+    method: "POST",
+    body: {
+      product_id: oneProduct.value.uuid,
+      user_id: user.userToken.uuid,
+      content: comment.value,
+    },
+  });
+  if (data.value?.status) {
+    comment.value = null;
+    $toast.success("Habarynyz garasylyar");
+  }
+};
 
+const { data: comments } = await useMyFetch(
+  `/api/v1/client/products/product-comment?product_id=${route.params.id}&offset=0&limit=100`
+);
+console.log(comments.value.data);
 const { data, status } = await useMyFetch(
   `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`
 );
+
 if (status) {
-  console.log(data.value.data);
   oneProduct.value = data.value.data.one_products;
   changedOneProduct.value = data.value.data.one_products;
   selectedImg.value = data.value.data.one_products.images[0];

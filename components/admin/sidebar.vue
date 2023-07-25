@@ -32,8 +32,6 @@ const posts = ref([
   { name: "Orders", path: "/admin/orders" },
 ]);
 const isRouteActive = ref(true);
-
-console.log(useRoute());
 </script>
 
 <style scoped>

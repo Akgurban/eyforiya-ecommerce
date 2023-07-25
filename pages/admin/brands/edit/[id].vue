@@ -31,6 +31,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -45,7 +46,6 @@ const category_en = ref(null);
 const category_img = ref(null);
 const selectedImg = ref(null);
 try {
-  console.log(route.params);
   const { data } = await userStore.OneBrand(route.params.id);
   category_tm.value = data.value.data.name;
   selectedImg.value = data.value?.data?.img_path;
@@ -71,7 +71,6 @@ const val_en = (e) => {
 };
 const addCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (!category_tm.value) {
       val_tm(category_tm.value);
       alert("Maglumatlary doly giriziň!");

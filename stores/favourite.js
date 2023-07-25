@@ -12,15 +12,6 @@ export const useFavStore = defineStore("favourite", {
     async setLocalStorage(propItem) {
       propItem.isLiked = true;
       this.wish_items.push(propItem);
-      // const { data } = await useMyFetch("/api/v1/client/trash/create", {
-      //   body: {
-      //     user_id: authStore.userToken.uuid,
-      //     product_id: propItem.uuid,
-      //     count: count,
-      //   },
-      //   method: "POST",
-      // });
-      // console.log(data, "trash stabase");
     },
     async removeLocalStorage(propItem) {
       propItem.isLiked = false;
@@ -29,15 +20,6 @@ export const useFavStore = defineStore("favourite", {
           this.wish_items?.splice(index, 1);
         }
       });
-      // const { data } = await useMyFetch("/api/v1/client/trash/create", {
-      //   body: {
-      //     user_id: authStore.userToken.uuid,
-      //     product_id: propItem.uuid,
-      //     count: count,
-      //   },
-      //   method: "POST",
-      // });
-      // console.log(data, "trash stabase");
     },
   },
   persist: true,

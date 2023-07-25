@@ -67,7 +67,6 @@ const orderList = ref([
 
 const active = useState();
 async function emittedFromSidebar(e) {
-  console.log(e);
   router.push({
     path: `/search/${route.params.id}`,
     query: { filter: JSON.stringify(e.brnd), order: e.ord },
@@ -104,7 +103,6 @@ const refetch = async () => {
     }
   );
   if (status) {
-    console.log(data.value?.data, "geldi========");
     incomedDatas.value = data.value?.data;
   }
 };

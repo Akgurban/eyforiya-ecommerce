@@ -40,7 +40,6 @@ const changeLang = async (e) => {
   await nextTick();
   if (e.code == "tm") {
     if (route.fullPath.includes("/ru")) {
-      console.log(route.fullPath);
       if (route.fullPath == "/ru") {
         router.push(route.fullPath.replace("/ru", "/"));
       } else {
@@ -56,7 +55,6 @@ const changeLang = async (e) => {
   }
   if (e.code == "en") {
     if (route.fullPath.includes("/ru")) {
-      console.log(e.code, route.fullPath);
       router.push(route.fullPath.replace("/ru", "/en"));
     } else if (route.fullPath.includes("/en")) {
       router.push(route.fullPath.replace("/en", "/en"));
@@ -73,10 +71,6 @@ const changeLang = async (e) => {
       router.push("/ru" + route.fullPath);
     }
   }
-  // else {
-  //     console.log("[]");
-  //     router.push("/" + route.fullPath);
-  //   }
 };
 </script>
 

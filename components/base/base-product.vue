@@ -35,6 +35,7 @@
 <script setup>
 import { useFavStore } from "~~/stores/favourite";
 import { useAuthStore } from "@/stores/authStore";
+
 const props = defineProps({
   item: {
     type: Object,
@@ -43,6 +44,8 @@ const props = defineProps({
 });
 const favStore = useFavStore();
 const propItem = ref({});
+const user = useAuthStore();
+
 propItem.value = props.item;
 
 favStore.wish_items?.forEach(async (e) => {
@@ -52,19 +55,46 @@ favStore.wish_items?.forEach(async (e) => {
     propItem.isLiked == false;
   }
 });
-const toggleFav = (e) => {
+const toggleFav = async (e) => {
+  if (user.userToken?.uuid) {
+    const { data: wish_user } = await useMyFetch(
+      `/api/v1/client/wish-list?lang=tm&user_id=${user.userToken?.uuid}`
+    );
+    if (wish_user.value?.status) {
+      console.log(wish_user.value.data, "wish_user.value.data");
+      wish_user.value.data?.filter((e) => {
+        e.images = e.img_path;
+      });
+      favStore.wish_items = wish_user.value.data;
+    }
+  }
   if (e.isLiked) {
     e.isLiked = false;
-    favStore.removeLocalStorage(e);
 
-    console.log(e, "true");
+    favStore.removeLocalStorage(e);
+    if (user.userToken?.uuid) {
+      const { data } = await useMyFetch(
+        `/api/v1/client/wish-list/delete/${user.userToken?.uuid}/${e.uuid}`,
+        {
+          method: "POST",
+        }
+      );
+    }
   } else {
     e.isLiked = true;
+    if (user.userToken?.uuid) {
+      const { data } = useMyFetch(`/api/v1/client/wish-list/create`, {
+        method: "POST",
+        body: {
+          product_id: e.uuid,
+          user_id: user.userToken?.uuid,
+        },
+      });
+    }
     favStore.setLocalStorage(e);
-
-    console.log(e, "false");
   }
 };
+
 const countProduct = ref(null);
 watch(countProduct, () => {
   console.log(countProduct, "countProduct");

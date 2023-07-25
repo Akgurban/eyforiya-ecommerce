@@ -45,6 +45,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -88,7 +89,6 @@ const getCategoriesr = async () => {
 await getCategoriesr();
 const addSubCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (!category_tm.value || !category_en.value || !category_ru.value) {
       alert("Maglumatlary doly giriziň!");
       throw "Maglumatlary doly giriziň!";

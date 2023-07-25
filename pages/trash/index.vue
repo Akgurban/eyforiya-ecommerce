@@ -56,7 +56,7 @@
                 {{ item?.count * item?.price }} TMT
               </p>
             </div>
-            <div class="block cursor-pointer">
+            <div @click="deleteUserProduct(item)" class="block cursor-pointer">
               <img class="m-1 w-4" src="@/assets/images/deletecon.svg" alt="" />
             </div>
           </div>
@@ -102,12 +102,12 @@ const count = ref(0);
 import { useTrashStore } from "~~/stores/trash";
 import { useAuthStore } from "~~/stores/authStore";
 import { useToast } from "vue-toastification";
+
 const { locale } = useI18n();
 const $toast = useToast();
 
 const trash = useTrashStore();
 const user = useAuthStore();
-console.log(trash.trash_items.products, "saplop");
 const totalPrice = ref(0);
 const phone = ref(null);
 const calcTotal = () => {
@@ -119,19 +119,51 @@ const calcTotal = () => {
 calcTotal();
 watch(trash.trash_items, calcTotal);
 
+const deleteUserProduct = async (e) => {
+  trash.removeLocalStorage(e, 0);
+
+  if (user.userToken) {
+    const { data, status } = await useMyFetch("/api/v1/client/trash/create", {
+      body: {
+        user_id: user.userToken?.uuid,
+        product_id: e?.uuid,
+        count: 0,
+      },
+      method: "POST",
+    });
+    if (status) {
+      if (user.userToken?.uuid) {
+        const { data: user_trash } = await useMyFetch(
+          `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
+        );
+        if (user_trash.value.status && user_trash.value?.data?.length) {
+          trash.trash_items.products = [];
+          user_trash.value?.data?.filter((e) => {
+            e.images = e.img_path;
+          });
+          console.log(user_trash.value?.data, "user_trash.value?.data");
+          trash.trash_items.products = user_trash.value?.data;
+        }
+      }
+    }
+  }
+};
 const setStore = () => {
   trash.setLocalStorage(count.value);
 };
-console.log(user.userToken.uuid, "user.userToken");
 
-if (user.userToken.uuid && false) {
-  const { data: user_trash } = useMyFetch(
+if (user.userToken?.uuid) {
+  const { data: user_trash } = await useMyFetch(
     `/api/v1/client/trash?user_id=${user.userToken.uuid}&lang=${locale.value}`
   );
-  trash.trash_items.products = user_trash.value?.data.filter((e) => {
-    e.images = e.img_path;
-  });
-  console.log(user_trash.value?.data, "p[p[]]");
+  if (user_trash.value.status && user_trash.value?.data?.length) {
+    trash.trash_items.products = [];
+    user_trash.value?.data?.filter((e) => {
+      e.images = e.img_path;
+    });
+    console.log(user_trash.value?.data, "user_trash.value?.data");
+    trash.trash_items.products = user_trash.value?.data;
+  }
 }
 
 const makeOrder = async () => {
@@ -143,7 +175,7 @@ const makeOrder = async () => {
     });
   });
   if (phone.value?.length == 8) {
-    const { data: make_order } = useMyFetch(
+    const { data: make_order } = await useMyFetch(
       `/api/v1/client/products/order/create`,
       {
         method: "POST",
@@ -155,6 +187,7 @@ const makeOrder = async () => {
       }
     );
     if (make_order.value?.status) {
+      trash.trash_items.products = [];
       $toast.success("Habarynyz ustunlikli kabul edildi");
       phone.value = "";
       useRouter().push("/");

@@ -15,7 +15,7 @@ export const useTrashStore = defineStore("trash", {
   actions: {
     async setLocalStorage(propItem, count) {
       if (count > 1) {
-        this.trash_items.products.filter((item, index) => {
+        this.trash_items.products?.filter((item, index) => {
           if (propItem?.uuid == item?.uuid) {
             item.count = count;
           }
@@ -29,18 +29,9 @@ export const useTrashStore = defineStore("trash", {
           name: propItem?.name,
         };
 
-        this.trash_items.products.push(some);
+        this.trash_items.products?.push(some);
       }
       this.trash_items.totalCount += 1;
-      // const { data } = await useMyFetch("/api/v1/client/trash/create", {
-      //   body: {
-      //     user_id: authStore.userToken.uuid,
-      //     product_id: propItem.uuid,
-      //     count: count,
-      //   },
-      //   method: "POST",
-      // });
-      // console.log(data, "trash stabase");
     },
 
     async removeLocalStorage(propItem, count) {

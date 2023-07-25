@@ -34,7 +34,7 @@
     <div
       class="block xl:w-[1238px] md:w-full w-full mx-auto mt-4 md:mt-[100px]"
     >
-      <MainInfo />
+      <MainInfo :rating="rating.data" />
     </div>
 
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
@@ -163,12 +163,12 @@ const spec_categories = ref(null);
 const special_latest = ref(null);
 const main_brands = ref(null);
 
+const { data: rating } = await useMyFetch(`/api/v1/client/products/rating`);
 const { data: products } = await useMyFetch(
   `/api/v1/client/products/latest/products?lang=${locale.value}`
 );
 if (products.value?.status) {
   latest.value = products.value?.data;
-  console.log("latest.value", products.value);
 }
 const { data: spec_latest } = await useMyFetch(
   `/api/v1/client/products/special-categ-products?lang=${locale.value}`
@@ -181,7 +181,6 @@ const { data: brands } = await useMyFetch(
 );
 if (brands.value?.status) {
   main_brands.value = brands.value?.data;
-  console.log(main_brands.value, "sfghj");
 }
 const { data: special_categories } = await useMyFetch(
   `/api/v1/client/products/special-categories?lang=${locale.value}`
@@ -190,7 +189,6 @@ if (special_categories.value?.status) {
   spec_categories.value = special_categories.value?.data;
 }
 const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
-console.log(video);
 </script>
 
 <style scoped>

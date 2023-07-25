@@ -52,10 +52,10 @@ import { useUserStore } from "~~/stores/user";
 import { useLoaderStore } from "~~/stores/loader";
 const loaderStore = useLoaderStore();
 const $toast = useToast();
-// $toast.success("Ustunlikli tazelendi");
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const products = ref(null);
 const count = ref(1);
@@ -65,11 +65,10 @@ const userStore = useUserStore();
 const getPosts = async () => {
   try {
     const { data } = await userStore.getProduct({
-      limit: 10,
-      offset: 0,
+      limit: 25,
+      offset: count.value,
     });
     if (data?.value.status) {
-      console.log(data, "datass");
       products.value = data.value.data?.products;
     }
   } catch (error) {
@@ -79,10 +78,12 @@ const getPosts = async () => {
 
 await getPosts();
 
+watch(count, async () => {
+  await getPosts();
+});
 const deletePosts = async (e) => {
   try {
     const { data } = await userStore.deleteProduct(e);
-    console.log(data, "data");
     if (data.value.status) {
       await getPosts();
     }

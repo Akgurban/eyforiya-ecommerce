@@ -6,8 +6,7 @@
         @click="
           useRouter().push(
             localePath({
-              path: `/filtered-product/${item?.uuid}`,
-              query: { filter: '[]' },
+              path: `/special-products/${item?.uuid}`,
             })
           )
         "
@@ -26,8 +25,7 @@
         @click="
           useRouter().push(
             localePath({
-              path: `/filtered-product/${item?.uuid}`,
-              query: { filter: '[]' },
+              path: `/special-products/${item?.uuid}`,
             })
           )
         "

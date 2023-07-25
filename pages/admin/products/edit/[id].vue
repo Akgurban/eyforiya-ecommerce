@@ -112,6 +112,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import { useUserStore } from "~~/stores/user";
 import { useLoaderStore } from "~~/stores/loader";
@@ -148,7 +149,6 @@ const getOneProductData = async () => {
     const { data: brand } = await userStore.getBrand();
     const { data: product_id } = await userStore.OneProduct(route.params.id);
 
-    console.log(product_id, "sub prodf");
     sub_categories.value = sub.value.data;
     spec_categories.value = spec.value.data;
     brands.value = brand.value.data;
@@ -201,9 +201,7 @@ const addPosts = async () => {
       image.value?.forEach(async (e, index) => {
         form.append("img", image.value[index]);
         const { data, status } = await userStore.addProductImage(form);
-        console.log(data, "image");
         if (status) {
-          console.log("blabla");
         }
       });
       router.push("/admin/products");
@@ -216,7 +214,6 @@ const deleteOneImg = async (e) => {
   try {
     loaderStore.startLoading();
     const { data, status } = await userStore.deleteProductImage(e);
-    console.log(data, "image");
     if (status) {
       await getOneProductData();
       loaderStore.endLoading();

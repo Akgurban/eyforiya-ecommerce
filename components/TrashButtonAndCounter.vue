@@ -75,7 +75,6 @@ trash.trash_items.products?.forEach((item, index) => {
 const increment = async () => {
   count.value += 1;
   trash.setLocalStorage(props.item, count.value);
-  console.log(authStore, "[]");
 
   if (authStore.userToken) {
     const { data } = await useMyFetch("/api/v1/client/trash/create", {

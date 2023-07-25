@@ -28,6 +28,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -39,9 +40,7 @@ const image = ref(null);
 const category_tm = ref(null);
 const category_img = ref(null);
 const route = useRouter();
-watch(image, () => {
-  console.log(image);
-});
+watch(image, () => {});
 const val_tm = (e) => {
   if (e === "") {
     return "dogry dolduryn";
@@ -50,7 +49,6 @@ const val_tm = (e) => {
 
 const addCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (!category_tm.value || !category_img.value) {
       val_tm(category_tm.value);
       alert("Maglumatlary doly giriziň!");

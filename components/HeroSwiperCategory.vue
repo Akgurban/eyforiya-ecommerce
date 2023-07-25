@@ -16,7 +16,6 @@ const renderBullet = (index, className) => {
 const { data: categories } = await useMyFetch(
   `/api/v1/client/products/categories?lang=${locale.value}`
 );
-console.log(categories, "data");
 </script>
 <template>
   <swiper

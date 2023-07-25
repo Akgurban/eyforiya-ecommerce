@@ -48,17 +48,21 @@
 import { useUserStore } from "~~/stores/user";
 
 import { useLoaderStore } from "~~/stores/loader";
+
+import { useToast } from "vue-toastification";
+const $toast = useToast();
+
 const loaderStore = useLoaderStore();
 
 const userStore = useUserStore();
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const categories = ref(null);
 const router = useRouter();
 try {
   const { data } = await userStore.getVideos();
-  console.log("data", data);
   categories.value = data.value.data;
   loaderStore.endLoading();
 } catch (error) {
@@ -78,7 +82,6 @@ const deleteCategory = async (e) => {
     const form = new FormData();
     form.append("uuid", e.uuid);
     const { data } = await userStore.addVideos(form);
-    console.log(data, "data");
     await getCategoriesr();
   } catch (error) {
     console.log(error);

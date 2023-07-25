@@ -103,6 +103,7 @@ import { useToast } from "vue-toastification";
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const $toast = useToast();
 const userStore = useUserStore();
@@ -140,7 +141,6 @@ try {
   console.log(error);
 }
 
-console.log(loaderStore, "loaderStore");
 const addPosts = async () => {
   try {
     if (!selectedSub.value?.uuid) {
@@ -158,14 +158,12 @@ const addPosts = async () => {
         brand_id: selectedBrand.value?.uuid || null,
         special_category_id: selectedSpec.value?.uuid || null,
       });
-      console.log(onlyProduct.value, "onlyProduct");
       if (onlyProduct.value.status) {
         const form = new FormData();
         form.append("product_id", onlyProduct.value.data);
         image.value?.forEach(async (e, index) => {
           form.append("img", image.value[index]);
           const { data, status } = await userStore.addProductImage(form);
-          console.log(data, "image");
           if (status) {
           }
         });
@@ -176,9 +174,6 @@ const addPosts = async () => {
     console.log(error);
   }
 };
-watch(image.value, () => {
-  console.log(image.value, image.value.length, "images wath");
-});
 </script>
 
 <style scoped></style>

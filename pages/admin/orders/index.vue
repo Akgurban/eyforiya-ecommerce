@@ -6,8 +6,20 @@
     >
       Add +
     </NuxtLink>
+    <div class="w-60 flex gap-2 items-center ml-auto">
+      <div
+        class="text-xl font-bold"
+        :class="statusValue.name == true ? 'text-green-700' : 'text-red-500'"
+      >
+        Status:
+      </div>
+      <BaseSelect
+        v-model="statusValue"
+        :options="[{ name: true }, { name: false }]"
+      ></BaseSelect>
+    </div>
     <div class="rounded-md p-2 m-1 flex justify-between">
-      <p class="font-bold">Name category</p>
+      <p class="font-bold">Name Orders</p>
       <BaseButton type="">Delete</BaseButton>
     </div>
     <ul>
@@ -24,7 +36,7 @@
           <!-- <p>status: {{ item.status }}</p> -->
           <div class="flex gap-3">
             <BaseButton @click="setStatus(item)" type="primary"
-              >kabul edildi</BaseButton
+              >Status uytget</BaseButton
             >
             <BaseButton @click="deleteCategory(item)" type="danger"
               >delete</BaseButton
@@ -49,6 +61,7 @@
           </li>
         </ul>
       </div>
+      <BasePaginate v-model="count" :total-items="orders.length" />
     </ul>
   </div>
 </template>
@@ -59,14 +72,21 @@ import { useToast } from "vue-toastification";
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const userStore = useUserStore();
 const $toast = useToast();
+const count = ref(1);
 const orders = ref(null);
 const router = useRouter();
+const statusValue = ref({ name: true });
+
 try {
-  const { data } = await userStore.getOrders();
-  console.log(data, "orders");
+  const { data } = await userStore.getOrders({
+    limit: 25,
+    offset: 0,
+    status: statusValue.value.name,
+  });
   // categories.value = data.value.data;
   orders.value = data.value.data.orders;
 } catch (error) {
@@ -75,9 +95,12 @@ try {
 
 const getCategoriesr = async () => {
   try {
-    const { data } = await userStore.getOrders();
+    const { data } = await userStore.getOrders({
+      limit: 25,
+      offset: count.value,
+      status: statusValue.value.name,
+    });
     orders.value = data.value.data.orders;
-    console.log(data, "orders");
   } catch (error) {
     console.log(error);
   }
@@ -85,7 +108,6 @@ const getCategoriesr = async () => {
 const deleteCategory = async (e) => {
   try {
     const { data, status } = await userStore.deleteOrders(e.order_id);
-    console.log(data, "data");
     if (status) {
       $toast.success("order deleted!");
     }
@@ -97,10 +119,9 @@ const deleteCategory = async (e) => {
 const setStatus = async (e) => {
   try {
     const { data, status } = await userStore.updateOrder({
-      status: true,
+      status: status.value.name,
       uuid: e.order_id,
     });
-    console.log(data, "data");
     if (status) {
       $toast.success("Sargyt kabul edildi!");
     }
@@ -109,6 +130,12 @@ const setStatus = async (e) => {
     console.log(error);
   }
 };
+watch(statusValue, async () => {
+  await getCategoriesr();
+});
+watch(count, async () => {
+  await getCategoriesr();
+});
 </script>
 
 <style lang="scss" scoped></style>

@@ -37,7 +37,6 @@ const emit = defineEmits(["update:modelValue"]);
 
 function showFileUpload() {
   if (props.isChangable) {
-    console.log("utgedi");
     fileInput.value.click();
   }
 }

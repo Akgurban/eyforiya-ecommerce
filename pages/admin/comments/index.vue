@@ -6,29 +6,44 @@
     >
       Add +
     </NuxtLink>
+
+    <div class="w-60 flex gap-2 items-center ml-auto">
+      <div
+        class="text-xl font-bold"
+        :class="statusValue.name == true ? 'text-green-700' : 'text-red-500'"
+      >
+        Status:
+      </div>
+      <BaseSelect
+        v-model="statusValue"
+        :options="[{ name: true }, { name: false }]"
+      ></BaseSelect>
+    </div>
     <div class="rounded-md p-2 m-1 flex justify-between">
-      <p class="font-bold">Name category</p>
-      <BaseButton type="">Delete</BaseButton>
+      <p class="font-bold">Username</p>
+      <p class="font-bold">productName</p>
+      <p class="font-bold">Comment</p>
+      <p class="font-bold">update</p>
+      <p class="font-bold">Delete</p>
     </div>
     <ul>
       <div
         class="bg-gray-200 cursor-pointer flex justify-between items-center text-lg font-bold rounded-md p-2 m-1"
-        v-for="item in categories"
+        v-for="item in comments"
         :key="item.uuid"
       >
-        <img
-          :src="`http://duypbaha.com.tm/api/v1/uploads/categories/${item?.img_path}`"
-          alt=""
-          class="h-10 w-15"
-        />
         <p>
-          {{ item.name }}
+          {{ item.user_name }}
+        </p>
+        <p>
+          {{ item.product_name }}
+        </p>
+        <p class="w-50 text-sm">
+          {{ item.content }}
         </p>
         <div class="flex gap-3">
-          <BaseButton
-            @click="router.push(`/admin/categories/edit/${item.uuid}`)"
-            type="primary"
-            >edit</BaseButton
+          <BaseButton @click="updateComments(item)" type="secondary"
+            >changeStatus</BaseButton
           >
           <BaseButton @click="deleteCategory(item)" type="danger"
             >delete</BaseButton
@@ -36,6 +51,7 @@
         </div>
       </div>
     </ul>
+    <BasePaginate v-model="count" :total-items="comments?.length" />
   </div>
 </template>
 
@@ -44,35 +60,60 @@ import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
-const categories = ref(null);
+const comments = ref(null);
+const count = ref(1);
+const statusValue = ref({ name: true });
 const router = useRouter();
 try {
-  const { data } = await userStore.getComments();
-  console.log(data, "commemts");
-  // categories.value = data.value.data;
+  const { data } = await userStore.getComments({
+    status: statusValue.value.name,
+    limit: 50,
+    offset: count.value,
+  });
+  comments.value = data.value.data.comments;
 } catch (error) {
   console.log(error);
 }
 
 const getCategoriesr = async () => {
   try {
-    const { data } = await userStore.getComments();
-    // categories.value = data.value.data;
-    console.log(data, "commemts");
+    const { data } = await userStore.getComments({
+      status: statusValue.value.name,
+      limit: 50,
+      offset: count.value,
+    });
+    comments.value = data.value.data.comments;
   } catch (error) {
     console.log(error);
   }
 };
 const deleteCategory = async (e) => {
   try {
-    const { data } = await userStore.deleteCategories({ uuid: e.uuid });
-    console.log(data, "data");
+    const { data } = await userStore.deleteComment(e.uuid);
     await getCategoriesr();
   } catch (error) {
     console.log(error);
   }
 };
+const updateComments = async (e) => {
+  try {
+    const { data } = await userStore.updateComment({
+      status: !statusValue.value.name,
+      uuid: e.uuid,
+    });
+    await getCategoriesr();
+  } catch (error) {
+    console.log(error);
+  }
+};
+watch(statusValue, async () => {
+  await getCategoriesr();
+});
+watch(count, async () => {
+  await getCategoriesr();
+});
 </script>
 
 <style lang="scss" scoped></style>

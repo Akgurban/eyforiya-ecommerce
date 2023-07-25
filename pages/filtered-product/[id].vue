@@ -96,7 +96,6 @@ const refetch = async () => {
   );
   if (status) {
     incomedDatas.value = data.value?.data;
-    console.log(data.value?.data, "geldi========");
   }
 };
 await refetch();

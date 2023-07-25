@@ -45,6 +45,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -59,9 +60,6 @@ const category_en = ref(null);
 const category_img = ref(null);
 const selectedImg = ref(null);
 const route = useRoute();
-watch(image, () => {
-  console.log(image);
-});
 const val_tm = (e) => {
   if (e === "") {
     return "dogry dolduryn";
@@ -79,9 +77,7 @@ const val_en = (e) => {
 };
 
 try {
-  console.log(route.params, "idfg");
   const { data } = await userStore.OneSpecialCategories(route.params.id);
-  console.log(data, "dai");
   category_tm.value = data.value.data.name_tm;
   category_en.value = data.value.data.name_en;
   category_ru.value = data.value.data.name_ru;
@@ -93,7 +89,6 @@ try {
 
 const addCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (
       !category_tm.value ||
       !category_en.value ||

@@ -19,6 +19,7 @@ import { useToast } from "vue-toastification";
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -36,9 +37,7 @@ const $toast = useToast();
 
 const description = ref(null);
 const route = useRouter();
-watch(image, () => {
-  console.log(image);
-});
+watch(image, () => {});
 const val_tm = (e) => {
   if (e === "") {
     return "dogry dolduryn";
@@ -56,7 +55,6 @@ const val_en = (e) => {
 };
 const addCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (!category_img.value) {
       $toast.error("Maglumatlary doly giriziň!");
       throw "Maglumatlary doly giriziň!";
@@ -67,11 +65,9 @@ const addCategory = async () => {
     loaderStore.startLoading();
     const { data, pending } = await userStore.addVideos(form);
 
-    console.log(pending.value, "pending.value");
     if (!pending.value) {
       loaderStore.endLoading();
     }
-    console.log(pending.value, "pending.value");
     useRouter().push("/admin/videos");
   } catch (error) {
     console.log(error);

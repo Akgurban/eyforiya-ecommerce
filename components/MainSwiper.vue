@@ -11,7 +11,6 @@ const renderBullet = (index, className) => {
   return '<span class="' + className + '">' + " " + "</span>";
 };
 const { data: banners } = await useMyFetch(`/api/v1/client/products/banners`);
-console.log(banners, "banners");
 </script>
 <template>
   <swiper

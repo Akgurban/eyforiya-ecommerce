@@ -45,6 +45,7 @@
 <script setup>
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
@@ -77,7 +78,6 @@ const val_en = (e) => {
 };
 try {
   const { data } = await userStore.OneSubCategory(route?.params?.id);
-  console.log(data, "dai");
   category_tm.value = data.value.data.name_tm;
   category_en.value = data.value.data.name_en;
   category_ru.value = data.value.data.name_ru;
@@ -86,9 +86,7 @@ try {
     uuid: data.value?.data?.category_id,
   };
   //   useRouter().push("/admin/categories");
-} catch (error) {
-  console.log(error);
-}
+} catch (error) {}
 
 const getCategoriesr = async () => {
   try {
@@ -101,7 +99,6 @@ const getCategoriesr = async () => {
 await getCategoriesr();
 const addSubCategory = async () => {
   try {
-    console.log(!category_tm.value);
     if (!category_tm.value || !category_en.value || !category_ru.value) {
       alert("Maglumatlary doly giriziň!");
       throw "Maglumatlary doly giriziň!";

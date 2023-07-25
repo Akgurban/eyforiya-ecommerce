@@ -1,6 +1,12 @@
 <script setup>
 import { useAuthStore } from "@/stores/authStore";
 import { useLoaderStore } from "~~/stores/loader";
+import { useFavStore } from "~~/stores/favourite";
+
+import { useTrashStore } from "~~/stores/trash";
+const favStore = useFavStore();
+const trash = useTrashStore();
+
 const loaderStore = useLoaderStore();
 definePageMeta({
   layout: "default",
@@ -33,14 +39,12 @@ async function signUp() {
         },
       }
     );
-    console.log(data.value, "eret");
     authStore.userToken = data.value?.auth;
     router.push("/");
     if (pending) {
       pendings.value = true;
     }
     pendings.value = false;
-    console.log("pendinend");
   } catch (error) {
     throw error;
   }
@@ -66,11 +70,31 @@ async function login() {
     );
     authStore.userToken = data.value?.auth;
 
+    const { data: user_trash } = await useMyFetch(
+      `/api/v1/client/trash?user_id=${data.value?.auth.uuid}&lang=tm`
+    );
+
+    if (user_trash.value.status && user_trash.value?.data?.length) {
+      user_trash.value?.data?.filter((e) => {
+        e.images = e.img_path;
+      });
+
+      trash.trash_items.products = user_trash.value?.data;
+    }
+
+    const { data: wish_user } = await useMyFetch(
+      `/api/v1/client/wish-list?lang=tm&user_id=${data.value?.auth.uuid}`
+    );
+    if (wish_user.value?.status && wish_user.value?.data?.length) {
+      wish_user.value.data?.filter((e) => {
+        e.images = e.img_path;
+        favStore.setLocalStorage(e);
+      });
+
+      // favStore.wish_items = wish_user.value.data;
+    }
     router.push("/");
     pendings.value = false;
-    console.log(data.value, "eret");
-
-    console.log("pendinend");
   } catch (error) {
     throw error;
   }

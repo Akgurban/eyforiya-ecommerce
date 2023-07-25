@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthStore } from "@/stores/authStore";
+import { useAdminStore } from "@/stores/adminStore";
 import { useLoaderStore } from "~~/stores/loader";
 const loaderStore = useLoaderStore();
 definePageMeta({
@@ -10,41 +10,9 @@ const user = ref("");
 const password = ref("");
 const pendings = ref(false);
 const isValid = ref(true);
-const authStore = useAuthStore();
+const admin_store = useAdminStore();
 const router = useRouter();
 
-async function signUp() {
-  try {
-    // simple data validation
-    if (!user.value || !password.value) {
-      isValid.value = false;
-      return;
-      // throw new Error("Please fill all fields");
-    }
-    pendings.value = true;
-
-    const { data, pending, status, error } = await useFetch(
-      "http://duypbaha.com.tm/api/v1/admin/login",
-      {
-        method: "POST",
-        body: {
-          username: user.value,
-          password: password.value,
-        },
-      }
-    );
-    console.log(data.value, "eret");
-    authStore.adminToken = data.value?.auth;
-    router.push("/");
-    if (pending) {
-      pendings.value = true;
-    }
-    pendings.value = false;
-    console.log("pendinend");
-  } catch (error) {
-    throw error;
-  }
-}
 async function login() {
   try {
     // simple data validation
@@ -59,24 +27,23 @@ async function login() {
       {
         method: "POST",
         body: {
-          username: user.value,
+          user: user.value,
           password: password.value,
         },
       }
     );
-    authStore.userToken = data.value?.auth;
-
-    router.push("/");
+    if (data.value.data) {
+      console.log("pppp", data.value);
+      admin_store.adminToken = data.value.data;
+      router.push("/admin/categories");
+    }
     pendings.value = false;
-    console.log(data.value, "eret");
-
-    console.log("pendinend");
   } catch (error) {
     throw error;
   }
 }
 const logout = () => {
-  authStore.userToken = "";
+  admin_store.adminToken = "";
   router.push("/");
 };
 </script>

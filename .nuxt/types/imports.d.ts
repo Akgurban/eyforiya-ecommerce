@@ -167,6 +167,7 @@ declare global {
   const until: typeof import('@vueuse/core')['until']
   const updateAppConfig: typeof import('../../node_modules/nuxt/dist/app')['updateAppConfig']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
+  const useAdminFetch: typeof import('../../composables/useAdminFetch')['useAdminFetch']
   const useAnimate: typeof import('@vueuse/core')['useAnimate']
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']
   const useArrayDifference: typeof import('@vueuse/core')['useArrayDifference']
@@ -555,6 +556,7 @@ declare module 'vue' {
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['updateAppConfig']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
+    readonly useAdminFetch: UnwrapRef<typeof import('../../composables/useAdminFetch')['useAdminFetch']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>
@@ -937,6 +939,7 @@ declare module '@vue/runtime-core' {
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['updateAppConfig']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
+    readonly useAdminFetch: UnwrapRef<typeof import('../../composables/useAdminFetch')['useAdminFetch']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>

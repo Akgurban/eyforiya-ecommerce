@@ -81,7 +81,6 @@ const count = ref(0);
 const trash = useTrashStore();
 const setStore = () => {
   trash.setLocalStorage(count.value);
-  console.log(trash.trash_items);
 };
 
 const renderBullet = (index, className) => {

@@ -23,12 +23,22 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  rating: {
+    type: Object,
+    default: {},
+  },
+});
 const icons = ref([
   { name: "40358", desc: "visit_web", img: "/visit.png" },
   { name: "403", desc: "items_sold", img: "/sold.png" },
   { name: "15", desc: "our_partners", img: "/brand.png" },
   { name: "2232", desc: "products_website", img: "/products.png" },
 ]);
+icons.value[0].name = props.rating.users;
+icons.value[1].name = props.rating.solved;
+icons.value[2].name = props.rating.brands;
+icons.value[3].name = props.rating.products;
 </script>
 
 <style lang="scss" scoped></style>

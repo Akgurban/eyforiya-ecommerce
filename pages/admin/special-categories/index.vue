@@ -46,12 +46,12 @@ import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 const categories = ref(null);
 
 try {
   const { data } = await userStore.getSpecialCategories();
-  console.log(data, "data");
   categories.value = data.value.data;
 } catch (error) {
   console.log(error);
@@ -60,7 +60,6 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getSpecialCategories();
-    console.log(data, "data");
     categories.value = data.value.data;
   } catch (error) {
     console.log(error);
@@ -69,7 +68,6 @@ const getCategoriesr = async () => {
 const deleteCategory = async (e) => {
   try {
     const { data } = await userStore.deleteSpecialCategories({ uuid: e.uuid });
-    console.log(data, "data");
     await getCategoriesr();
   } catch (error) {
     console.log(error);

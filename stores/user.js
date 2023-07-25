@@ -34,25 +34,25 @@ export const useUserStore = defineStore("user", {
 
     // category
     async getCategories() {
-      return await useMyFetch("/api/v1/admin/products/categories");
+      return await useAdminFetch("/api/v1/admin/products/categories");
     },
     async addCategories(data) {
-      return await useMyFetch("/api/v1/admin/products/category/create", {
+      return await useAdminFetch("/api/v1/admin/products/category/create", {
         method: "POST",
         body: data,
       });
     },
     async getOneCategories(data) {
-      return await useMyFetch(`/api/v1/admin/products/categories/${data}`);
+      return await useAdminFetch(`/api/v1/admin/products/categories/${data}`);
     },
     async editCategories(data) {
-      return await useMyFetch("/api/v1/admin/products/category/update", {
+      return await useAdminFetch("/api/v1/admin/products/category/update", {
         method: "POST",
         body: data,
       });
     },
     async deleteCategories(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/category/delete/${data.uuid}`,
         {
           method: "POST",
@@ -62,10 +62,10 @@ export const useUserStore = defineStore("user", {
 
     // special category
     async getSpecialCategories() {
-      return await useMyFetch("/api/v1/admin/products/special-categories");
+      return await useAdminFetch("/api/v1/admin/products/special-categories");
     },
     async addSpecialCategories(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         "/api/v1/admin/products/special-category/create",
         {
           method: "POST",
@@ -74,7 +74,7 @@ export const useUserStore = defineStore("user", {
       );
     },
     async deleteSpecialCategories(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/special-category/delete/${data.uuid}`,
         {
           method: "POST",
@@ -82,29 +82,29 @@ export const useUserStore = defineStore("user", {
       );
     },
     async OneSpecialCategories(uuid) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/special-category/${uuid}`
       );
     },
 
     // sub category
     async getSubCategories() {
-      return await useMyFetch("/api/v1/admin/products/sub-categories");
+      return await useAdminFetch("/api/v1/admin/products/sub-categories");
     },
     async addSubCategories(data) {
-      return await useMyFetch("/api/v1/admin/products/subcategory/create", {
+      return await useAdminFetch("/api/v1/admin/products/subcategory/create", {
         method: "POST",
         body: data,
       });
     },
     async editSubCategories(data) {
-      return await useMyFetch("/api/v1/admin/products/sub-category/update", {
+      return await useAdminFetch("/api/v1/admin/products/sub-category/update", {
         method: "POST",
         body: data,
       });
     },
     async deleteSubCategories(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/sub-category/delete/${data.uuid}`,
         {
           method: "POST",
@@ -112,30 +112,30 @@ export const useUserStore = defineStore("user", {
       );
     },
     async OneSubCategory(uuid) {
-      return await useMyFetch(`/api/v1/admin/products/sub-category/${uuid}`);
+      return await useAdminFetch(`/api/v1/admin/products/sub-category/${uuid}`);
     },
 
     // Banner
     async addBanner(data) {
-      return await useMyFetch("/api/v1/admin/products/banner/create", {
+      return await useAdminFetch("/api/v1/admin/products/banner/create", {
         method: "POST",
         body: data,
       });
     },
     async editBanner(data) {
-      return await useMyFetch("/api/v1/admin/products/banner/update", {
+      return await useAdminFetch("/api/v1/admin/products/banner/update", {
         method: "POST",
         body: data,
       });
     },
     async getBanner() {
-      return await useMyFetch("/api/v1/admin/products/banners");
+      return await useAdminFetch("/api/v1/admin/products/banners");
     },
     async OneBanner(uuid) {
-      return await useMyFetch(`/api/v1/admin/products/banner/${uuid}`);
+      return await useAdminFetch(`/api/v1/admin/products/banner/${uuid}`);
     },
     async deleteBanner(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/banner/delete/${data.uuid}`,
         {
           method: "POST",
@@ -145,25 +145,25 @@ export const useUserStore = defineStore("user", {
 
     // Brand
     async addBrand(data) {
-      return await useMyFetch("/api/v1/admin/products/brand/create", {
+      return await useAdminFetch("/api/v1/admin/products/brand/create", {
         method: "POST",
         body: data,
       });
     },
     async editBrand(data) {
-      return await useMyFetch("/api/v1/admin/products/brand/update", {
+      return await useAdminFetch("/api/v1/admin/products/brand/update", {
         method: "POST",
         body: data,
       });
     },
     async getBrand() {
-      return await useMyFetch("/api/v1/admin/products/brands");
+      return await useAdminFetch("/api/v1/admin/products/brands");
     },
     async OneBrand(uuid) {
-      return await useMyFetch(`/api/v1/admin/products/brand/${uuid}`);
+      return await useAdminFetch(`/api/v1/admin/products/brand/${uuid}`);
     },
     async deleteBrand(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/brand/delete/${data.uuid}`,
         {
           method: "POST",
@@ -173,33 +173,33 @@ export const useUserStore = defineStore("user", {
 
     // product
     async addProduct(data) {
-      return await useMyFetch("/api/v1/admin/products/product/create", {
+      return await useAdminFetch("/api/v1/admin/products/product/create", {
         method: "POST",
         body: data,
       });
     },
     async addProductImage(data) {
-      return await useMyFetch("/api/v1/admin/products/image/create", {
+      return await useAdminFetch("/api/v1/admin/products/image/create", {
         method: "POST",
         body: data,
       });
     },
     async editProduct(data) {
-      return await useMyFetch("/api/v1/admin/products/product/update", {
+      return await useAdminFetch("/api/v1/admin/products/product/update", {
         method: "POST",
         body: data,
       });
     },
     async getProduct() {
-      return await useMyFetch(
+      return await useAdminFetch(
         "/api/v1/admin/products/products?limit=100&offset=0"
       );
     },
     async OneProduct(uuid) {
-      return await useMyFetch(`/api/v1/admin/products/product/${uuid}`);
+      return await useAdminFetch(`/api/v1/admin/products/product/${uuid}`);
     },
     async deleteProduct(data) {
-      return await useMyFetch(
+      return await useAdminFetch(
         `/api/v1/admin/products/product/delete/${data.uuid}`,
         {
           method: "POST",
@@ -207,35 +207,63 @@ export const useUserStore = defineStore("user", {
       );
     },
     async deleteProductImage(data) {
-      return await useMyFetch(`/api/v1/admin/products/image/delete/${data}`, {
-        method: "POST",
-      });
+      return await useAdminFetch(
+        `/api/v1/admin/products/image/delete/${data}`,
+        {
+          method: "POST",
+        }
+      );
     },
 
     // video
     async addVideos(data) {
-      return await useMyFetch("/api/v1/admin/products/video/create", {
+      return await useAdminFetch("/api/v1/admin/products/video/create", {
         method: "POST",
         body: data,
       });
     },
     async getVideos() {
-      return await useMyFetch("/api/v1/client/products/videos");
+      return await useAdminFetch("/api/v1/client/products/videos");
     },
 
     //orders
-    async getOrders() {
-      return await useMyFetch(
-        "/api/v1/admin/products/orders?offset=0&status=false&limit=15"
+    async getOrders(data) {
+      return await useAdminFetch(
+        `/api/v1/admin/products/orders?offset=${data.offset}&status=${data.status}&limit=${data.limit}`
       );
     },
     async deleteOrders(data) {
-      return await useMyFetch(`/api/v1/admin/products/order/delete/${data}`, {
-        method: "POST",
-      });
+      return await useAdminFetch(
+        `/api/v1/admin/products/order/delete/${data}`,
+        {
+          method: "POST",
+        }
+      );
     },
     async updateOrder(data) {
-      return await useMyFetch("/api/v1/admin/products/orders/update", {
+      return await useAdminFetch("/api/v1/admin/products/orders/update", {
+        method: "POST",
+        body: data,
+      });
+    },
+
+    //comments
+
+    async getComments(data) {
+      return await useAdminFetch(
+        `/api/v1/admin/products/comments?offset=${data.offset}&limit=${data.limit}&status=${data.status}`
+      );
+    },
+    async deleteComment(data) {
+      return await useAdminFetch(
+        `/api/v1/admin/products/comment/delete/${data}`,
+        {
+          method: "POST",
+        }
+      );
+    },
+    async updateComment(data) {
+      return await useAdminFetch("/api/v1/admin/products/comment/update", {
         method: "POST",
         body: data,
       });
