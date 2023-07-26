@@ -119,7 +119,7 @@ const deleteCategory = async (e) => {
 const setStatus = async (e) => {
   try {
     const { data, status } = await userStore.updateOrder({
-      status: status.value.name,
+      status: !statusValue.value.name,
       uuid: e.order_id,
     });
     if (status) {

@@ -51,10 +51,14 @@
           <div>
             <p>Kommentariya</p>
             <div class="min-w-[300px] w-auto flex gap-4">
-              <BaseTextarea type="text" v-model="comment" />
+              <textarea
+                class="border border-[#44A4DB] p-2"
+                type="text"
+                v-model="comment"
+              />
               <IconSend
                 @click="sendComment"
-                class="md:cursor-pointer self-end cursor-auto"
+                class="md:cursor-pointer self-end cursor-auto text-[#44A4DB] fill-[#44A4DB]"
               ></IconSend>
             </div>
           </div>
@@ -80,11 +84,11 @@
         {{ $t("similar_products") }}
       </div>
 
-      <div style="" class="flex flex-wrap gap-3 px-2 md:px-1">
+      <div style="" class="flex flex-wrap gap-3 px-2 md:px-1 mt-2">
         <div
           v-for="(item, index) in similarProducts"
           :key="item?.uuid"
-          class="group md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          class="group relative md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
         >
           <BaseProduct :item="item"></BaseProduct>
         </div>

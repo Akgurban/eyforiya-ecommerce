@@ -1,7 +1,7 @@
 <template>
   <div
-    class="lg:relative absolute h-auto px-2 py-2 lg:block w-[70%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
-    :class="props.show_filter ? 'block' : 'hidden'"
+    class="lg:relative absolute h-auto px-2 py-2 lg:block w-50%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+    :class="!props.show_filter ? 'block' : 'hidden'"
   >
     <div>
       <div class="text-2xl font-alatsi mb-2">Tertip</div>

@@ -1,6 +1,6 @@
 <template>
   <div class="2xl:w-[1440px] xl:screen mx-auto">
-    <div class="flex justify-between">
+    <div class="flex justify-between px-3">
       <div></div>
       <BaseButton
         @click="toggleFilter"
@@ -14,7 +14,7 @@
       <Transition name="slide-fade">
         <filtered-sidebar
           :show_filter="showFilter"
-          :brands="incomedDatas?.brands"
+          :brands="brands.data"
           :show_cat="false"
           @someChange="(e) => emittedFromSidebar(e)"
         />
@@ -66,10 +66,16 @@ const orderList = ref([
 
 const active = useState();
 async function emittedFromSidebar(e) {
-  router.push({
-    path: `/search/${route.params.id}`,
-    query: { filter: JSON.stringify(e.brnd), order: e.ord },
-  });
+  console.log(e);
+  if (e.brnd.length) {
+    router.push({
+      path: `/brand_id/${e.brnd[e.brnd.length - 1]}`,
+      query: {
+        filter: JSON.stringify([`${e.brnd[e.brnd.length - 1]}`]),
+        order: e.ord,
+      },
+    });
+  }
 }
 
 const toggleFilter = () => {
@@ -95,15 +101,25 @@ const refetch = async () => {
   }
 
   const { data, status } = await useMyFetch(
-    () => `/api/v1/client/products/product/search`,
+    () => `/api/v1/client/products/brand-products`,
     {
-      method: "POST",
-      body: dataForm,
+      query: {
+        brand_id: route.params.id,
+        limit: 10,
+        offset: 0,
+        lang: "tm",
+        order: route.query.order,
+      },
+      // ?brand_id=${route.params.id}&limit=10&offset=0&lang=tm&order=${route.query.order}
     }
   );
   if (status) {
+    console.log(data.value, "poo");
     incomedDatas.value = data.value?.data;
   }
+  var { data: brands } = await useMyFetch(
+    `/api/v1/client/products/brands?lang=${locale.value}`
+  );
 };
 await refetch();
 
@@ -121,7 +137,7 @@ watch(
   () => route.query,
   async () => {
     await refetch();
-    incomedDatas.value?.brands?.forEach((e) => {
+    brands.value.data?.forEach((e) => {
       JSON.parse(route.query?.filter)?.forEach((item) => {
         if (item == e.uuid) {
           e.selected = true;
@@ -129,6 +145,10 @@ watch(
       });
     });
   }
+);
+
+const { data: brands } = await useMyFetch(
+  `/api/v1/client/products/brands?lang=${locale.value}`
 );
 </script>
 

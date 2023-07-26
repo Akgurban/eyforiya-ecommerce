@@ -2,9 +2,13 @@
   <div>
     <div class="">
       <div
-        class="sticky top-0 left-0 z-40 bg-white 2xl:w-[1428px] w-full mx-auto md:px-8 px-4 shadow-md"
+        class="sticky shadow-md top-0 left-0 z-40 bg-white w-screen mx-auto md:px-8 px-4"
       >
-        <MainHeader class=""></MainHeader>
+        <div
+          class="sticky top-0 left-0 z-40 bg-white 2xl:w-[1428px] w-full mx-auto md:px-8 px-4"
+        >
+          <MainHeader class=""></MainHeader>
+        </div>
       </div>
 
       <div>
@@ -27,7 +31,11 @@
       </div>
       <slot></slot>
     </div>
-    <div class="mx-auto 2xl:w-[1440px] w-full mt-10"><MainFooter /></div>
+    <div class="w-screen bg-[#44A4DB]">
+      <div class="mx-auto 2xl:w-[1440px] w-full mt-10">
+        <MainFooter />
+      </div>
+    </div>
   </div>
 </template>
 

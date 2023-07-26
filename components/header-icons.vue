@@ -6,11 +6,11 @@
         route.path == '/login' ||
         route.path == '/en/login' ||
         route.path == '/ru/login' ||
-        !!authStore.userToken
+        authStore.userToken
           ? 'bg-[#44A4DB] text-white'
           : ' text-[#807D7E] bg-[#F6F6F6]'
       "
-      class="group relative cursor-pointer hover:bg-[#44A4DB] bg-[#F6F6F6] p-3 w-fit rounded-lg"
+      class="group relative cursor-pointer hover:bg-[#44A4DB] p-3 w-fit rounded-lg"
     >
       <IconUser
         v-if="!authStore.userToken"
@@ -18,7 +18,7 @@
       ></IconUser>
       <div
         v-else
-        class="text-[#807D7E] group-hover:text-white font-bold font-inter w-5 text-center"
+        class="group-hover:text-white font-bold font-inter w-5 text-center"
       >
         {{ authStore.userToken.username.slice(0, 1).toUpperCase() }}
       </div>

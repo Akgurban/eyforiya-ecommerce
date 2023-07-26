@@ -13,6 +13,14 @@
         :key="item"
         :to="item.brand_name"
         draggable="true"
+        @click="
+          useRouter().push(
+            localePath({
+              path: `/brand_id/${item?.uuid}`,
+              query: { filter: JSON.stringify([`${item?.uuid}`]) },
+            })
+          )
+        "
         class="group md:w-[146px] gap-3 md:gap-6 w-[96px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
       >
         <img

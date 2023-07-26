@@ -6,7 +6,7 @@
         @click="toggleFilter"
         class="self-end lg:hidden block"
         type="secondary"
-        >{{ showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
+        >{{ !showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
       >
     </div>
 
@@ -17,18 +17,17 @@
           :brands="incomedDatas?.brands"
           :sub_categories="incomedDatas?.sub_categories"
           @someChange="(e) => emittedFromSidebar(e)"
-          v-if="showFilter"
         />
       </Transition>
 
       <div
         style="
-          width: 100% !important;
+          width: 92% !important;
           height: auto !important;
           user-select: none !important;
           padding-bottom: 20px !important;
         "
-        class="flex flex-wrap gap-3 justify-between"
+        class="flex flex-wrap gap-3 justify-between mx-auto"
       >
         <div
           v-for="(item, index) in incomedDatas?.products"

@@ -81,7 +81,7 @@
         <p
           class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
         >
-          {{ $t("latest_products") }}
+          {{ $t("special_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p
@@ -111,44 +111,50 @@
       <div
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
-        <a class="" v-for="item in main_brands">
+        <NuxtLink
+          v-for="item in main_brands"
+          @click="
+            useRouter().push(
+              localePath({
+                path: `/brand_id/${item?.uuid}`,
+                query: { filter: JSON.stringify([`${item?.uuid}`]) },
+              })
+            )
+          "
+        >
           <img
             class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
             alt=""
           />
-        </a>
+        </NuxtLink>
       </div>
       <div
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
-        <a class="" v-for="item in main_brands">
+        <NuxtLink
+          v-for="item in main_brands"
+          @click="
+            useRouter().push(
+              localePath({
+                path: `/brand_id/${item?.uuid}`,
+                query: { filter: JSON.stringify([`${item?.uuid}`]) },
+              })
+            )
+          "
+        >
           <img
             class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
             alt=""
           />
-        </a>
+        </NuxtLink>
       </div>
     </div>
-
     <div
-      class="flex items-center gap-7 md:gap-14 2xl:w-[1440px] w-screen overflow-hidden mx-auto mt-4 md:mt-[92px]"
+      class="xl:w-[1196px] mt-10 rounded-md overflow-hidden select-none w-full aspect-[21/10] mx-auto"
     >
-      <video
-        v-for="item in video.data"
-        class="w-1/2 p-2 aspect-video object-cover z-[1]"
-        controls
-        autoplay
-        loop
-        muted
-      >
-        <source
-          :src="`http://duypbaha.com.tm/api/v1/uploads/videos/${item?.video_path}`"
-          ref="img"
-          alt=""
-        />
-      </video>
+      <HeroSwiperVideo></HeroSwiperVideo>
     </div>
   </div>
 </template>
@@ -188,7 +194,6 @@ const { data: special_categories } = await useMyFetch(
 if (special_categories.value?.status) {
   spec_categories.value = special_categories.value?.data;
 }
-const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
 </script>
 
 <style scoped>

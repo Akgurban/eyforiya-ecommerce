@@ -13,8 +13,8 @@
     <div class="lead flex gap-5">
       <Transition name="slide-fade">
         <div
-          class="lg:relative absolute h-auto px-2 py-2 lg:block w-[70%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
-          :class="true ? 'block' : 'hidden'"
+          class="lg:relative absolute h-auto px-2 py-2 lg:block w-[50%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+          :class="showFilter ? 'block' : 'hidden'"
         >
           <div class="mt-5">
             <div class="text-2xl font-alatsi mb-2">Kategoriya saylan</div>
@@ -40,12 +40,12 @@
 
       <div
         style="
-          width: 100% !important;
+          width: 92% !important;
           height: auto !important;
           user-select: none !important;
           padding-bottom: 20px !important;
         "
-        class="flex flex-wrap gap-3 justify-between"
+        class="flex flex-wrap gap-3 mx-auto justify-between"
       >
         <div
           v-for="(item, index) in all_products.data.products"
@@ -70,10 +70,14 @@
 import { useFavStore } from "~~/stores/favourite";
 const { locale } = useI18n();
 const count = ref(1);
+const showFilter = ref(false);
 
 const { data: all_products } = await useMyFetch(
   `/api/v1/client/products/all-products?limit=15&offset=${count.value}&lang=${locale.value}`
 );
+const toggleFilter = () => {
+  showFilter.value = !showFilter.value;
+};
 console.log(all_products.value, "all_products");
 const fav = useFavStore();
 fav.wish_items.map((e) => (e.isLiked = true));

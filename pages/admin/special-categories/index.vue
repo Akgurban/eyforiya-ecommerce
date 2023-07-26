@@ -7,7 +7,7 @@
       Add +
     </NuxtLink>
     <div class="rounded-md p-2 m-1 flex justify-between">
-      <p class="font-bold">Name category</p>
+      <p class="font-bold">Name</p>
       <BaseButton type="">Delete</BaseButton>
     </div>
     <ul>

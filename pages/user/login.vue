@@ -4,6 +4,9 @@ import { useLoaderStore } from "~~/stores/loader";
 import { useFavStore } from "~~/stores/favourite";
 
 import { useTrashStore } from "~~/stores/trash";
+import { useToast } from "vue-toastification";
+const $toast = useToast();
+
 const favStore = useFavStore();
 const trash = useTrashStore();
 
@@ -69,34 +72,52 @@ async function login() {
       }
     );
     authStore.userToken = data.value?.auth;
+    console.log(error, data);
+    if (!data.value.status) {
+      $toast.error(data.value.message);
+    }
+    pendings.value = false;
+  } catch (err) {
+    console.log(err);
+  }
 
-    const { data: user_trash } = await useMyFetch(
-      `/api/v1/client/trash?user_id=${data.value?.auth.uuid}&lang=tm`
-    );
+  try {
+    if (authStore.userToken?.uuid) {
+      var { data: wish_user, error: wishErr } = await useMyFetch(
+        `/api/v1/client/wish-list?lang=tm&user_id=${authStore.userToken?.uuid}`
+      );
+    }
+    if (wish_user.value?.status && wish_user.value?.data?.length) {
+      favStore.wish_items = [];
+      wish_user.value.data?.filter((e) => {
+        e.images = e.img_path;
+        favStore.setLocalStorage(e);
+      });
 
-    if (user_trash.value.status && user_trash.value?.data?.length) {
+      router.push("/");
+      // favStore.wish_items = wish_user.value.data;
+    } else {
+      console.log(wishErr, "[]");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  try {
+    if (authStore.userToken?.uuid) {
+      var { data: user_trash } = await useMyFetch(
+        `/api/v1/client/trash?user_id=${authStore.userToken?.uuid}&lang=tm`
+      );
+    }
+    if (user_trash.value?.status && user_trash.value?.data?.length) {
       user_trash.value?.data?.filter((e) => {
         e.images = e.img_path;
       });
 
       trash.trash_items.products = user_trash.value?.data;
     }
-
-    const { data: wish_user } = await useMyFetch(
-      `/api/v1/client/wish-list?lang=tm&user_id=${data.value?.auth.uuid}`
-    );
-    if (wish_user.value?.status && wish_user.value?.data?.length) {
-      wish_user.value.data?.filter((e) => {
-        e.images = e.img_path;
-        favStore.setLocalStorage(e);
-      });
-
-      // favStore.wish_items = wish_user.value.data;
-    }
-    router.push("/");
-    pendings.value = false;
-  } catch (error) {
-    throw error;
+  } catch (e) {
+    console.log(e);
   }
 }
 const logout = () => {
