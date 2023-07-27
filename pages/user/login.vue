@@ -98,7 +98,6 @@ async function login() {
         favStore.setLocalStorage(e);
       });
 
-      router.push("/");
       // favStore.wish_items = wish_user.value.data;
     } else if (!wish_user.value?.data?.length) {
       favStore.wish_items = [];

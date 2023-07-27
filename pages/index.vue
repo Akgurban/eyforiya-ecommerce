@@ -35,7 +35,7 @@
     <div
       class="block xl:w-[1238px] md:w-full w-full mx-auto mt-4 md:mt-[100px]"
     >
-      <MainInfo :rating="rating.data" />
+      <MainInfo :rating="rating?.data" />
     </div>
 
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
