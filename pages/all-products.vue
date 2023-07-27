@@ -48,7 +48,7 @@
         class="flex flex-wrap gap-3 mx-auto justify-between mt-5"
       >
         <div
-          v-for="(item, index) in all_products.data.products"
+          v-for="(item, index) in all_products?.products"
           :key="item"
           draggable="true"
           class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
@@ -56,11 +56,12 @@
           <BaseProduct :item="item"></BaseProduct>
         </div>
         <div
-          v-if="!all_products.data.products"
+          v-if="!all_products"
           class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
         >
           Hic hili Haryt tapylmady!
         </div>
+        <BasePaginate v-model="count" :total-items="all_products.count" />
       </div>
     </div>
   </div>
@@ -71,10 +72,17 @@ import { useFavStore } from "~~/stores/favourite";
 const { locale } = useI18n();
 const count = ref(1);
 const showFilter = ref(false);
-
-const { data: all_products } = await useMyFetch(
-  `/api/v1/client/products/all-products?limit=15&offset=${count.value}&lang=${locale.value}`
-);
+const all_products = ref(null);
+const refetch = async () => {
+  const { data: all } = await useMyFetch(
+    `/api/v1/client/products/all-products?limit=15&offset=${
+      count.value - 1
+    }&lang=${locale.value}`
+  );
+  console.log(all);
+  all_products.value = all.value.data;
+};
+await refetch();
 const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
@@ -84,6 +92,9 @@ fav.wish_items?.map((e) => (e.isLiked = true));
 const { data: categories } = await useMyFetch(
   `/api/v1/client/products/categories?lang=${locale.value}`
 );
+watch(count, async () => {
+  await refetch();
+});
 </script>
 
 <style lang="scss" scoped></style>

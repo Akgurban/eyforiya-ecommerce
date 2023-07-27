@@ -51,7 +51,7 @@
         </div>
       </div>
     </ul>
-    <BasePaginate v-model="count" :total-items="comments?.length" />
+    <BasePaginate v-model="count" :total-items="totalItems" />
   </div>
 </template>
 
@@ -64,15 +64,17 @@ definePageMeta({
 });
 const comments = ref(null);
 const count = ref(1);
+const totalItems = ref(10);
 const statusValue = ref({ name: true });
 const router = useRouter();
 try {
   const { data } = await userStore.getComments({
     status: statusValue.value.name,
-    limit: 50,
+    limit: 15,
     offset: count.value,
   });
   comments.value = data.value.data.comments;
+  totalItems.value = data.value.data?.count;
 } catch (error) {
   console.log(error);
 }
@@ -81,10 +83,11 @@ const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getComments({
       status: statusValue.value.name,
-      limit: 50,
-      offset: count.value,
+      limit: 15,
+      offset: count.value - 1,
     });
     comments.value = data.value.data.comments;
+    totalItems.value = data.value.data?.count;
   } catch (error) {
     console.log(error);
   }

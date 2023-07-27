@@ -50,13 +50,13 @@ import { useToast } from "vue-toastification";
 
 import { useUserStore } from "~~/stores/user";
 import { useLoaderStore } from "~~/stores/loader";
-const loaderStore = useLoaderStore();
-const $toast = useToast();
 
 definePageMeta({
   layout: "admin",
   middleware: ["auth"],
 });
+const loaderStore = useLoaderStore();
+const $toast = useToast();
 const products = ref(null);
 const count = ref(1);
 const totalItems = ref(10);
@@ -65,11 +65,12 @@ const userStore = useUserStore();
 const getPosts = async () => {
   try {
     const { data } = await userStore.getProduct({
-      limit: 25,
+      limit: 10,
       offset: count.value,
     });
     if (data?.value.status) {
       products.value = data.value.data?.products;
+      totalItems.value = data.value.data?.count;
     }
   } catch (error) {
     console.log(error);
@@ -79,6 +80,7 @@ const getPosts = async () => {
 await getPosts();
 
 watch(count, async () => {
+  console.log("xsa");
   await getPosts();
 });
 const deletePosts = async (e) => {

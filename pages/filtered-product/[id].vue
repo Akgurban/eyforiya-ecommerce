@@ -19,30 +19,24 @@
           @someChange="(e) => emittedFromSidebar(e)"
         />
       </Transition>
-
-      <div
-        style="
-          width: 96% !important;
-          height: auto !important;
-          user-select: none !important;
-          padding-bottom: 20px !important;
-        "
-        class="flex flex-wrap gap-3 justify-between mx-auto mt-5"
-      >
-        <div
-          v-for="(item, index) in incomedDatas?.products"
-          :key="item"
-          draggable="true"
-          class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
-        >
-          <BaseProduct :item="item"></BaseProduct>
+      <div class="w-full">
+        <div style="" class="flex flex-wrap gap-3 justify-between mx-auto mt-5">
+          <div
+            v-for="(item, index) in incomedDatas?.products"
+            :key="item"
+            draggable="true"
+            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          >
+            <BaseProduct :item="item"></BaseProduct>
+          </div>
+          <div
+            v-if="!incomedDatas?.products"
+            class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+          >
+            Hic hili Haryt tapylmady!
+          </div>
         </div>
-        <div
-          v-if="!incomedDatas?.products"
-          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-        >
-          Hic hili Haryt tapylmady!
-        </div>
+        <BasePaginate :total-items="totalItems" v-model="count" />
       </div>
     </div>
   </div>
@@ -55,6 +49,8 @@ const { locale } = useI18n();
 const router = useRouter();
 const route = useRoute();
 const incomedDatas = ref("");
+const count = ref(1);
+const totalItems = ref(15);
 const showFilter = ref(true);
 
 const active = useState();
@@ -72,8 +68,8 @@ const refetch = async () => {
   let dataForm = {
     category_id: route.params.id,
     lang: locale.value,
-    limit: 10,
-    offset: 0,
+    limit: 15,
+    offset: count.value - 1,
   };
 
   if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
@@ -95,6 +91,8 @@ const refetch = async () => {
   );
   if (status) {
     incomedDatas.value = data.value?.data;
+    console.log(data.value, "[]");
+    totalItems.value = data.value?.data?.product_count;
   }
 };
 await refetch();
@@ -122,6 +120,9 @@ watch(
     });
   }
 );
+watch(count, async () => {
+  await refetch();
+});
 </script>
 
 <style scoped>

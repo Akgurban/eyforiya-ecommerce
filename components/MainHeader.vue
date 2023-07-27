@@ -19,7 +19,7 @@
       class="flex items-center justify-between w-full lg:my-0 lg:mt-3 mt-3 gap-4"
     >
       <form
-        @submit.prevent="submitSearch"
+        @submit.prevent="useRouter().push(localePath(`/search/${search}`))"
         class="h-fit lg:w-[200px] xl:w-[386px] w-full lg:mr-[14px] mr-auto"
       >
         <BaseSearch v-model="search" :placeholder="$t('search')"></BaseSearch>
@@ -39,10 +39,6 @@ const search = ref("");
 if (useRoute().path.includes("/search")) {
   search.value = useRoute().params.id;
 }
-const submitSearch = () => {
-  var newSearch = search.value;
-  useRouter().push(`/search/${newSearch}`);
-};
 </script>
 
 <style lang="scss" scoped></style>

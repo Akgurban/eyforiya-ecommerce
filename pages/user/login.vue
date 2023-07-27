@@ -42,6 +42,12 @@ async function signUp() {
         },
       }
     );
+    console.log(error);
+    if (!error.value.data.status) {
+      pendings.value = false;
+      return $toast.error("username is used");
+    }
+
     await login();
     if (pending) {
       pendings.value = true;

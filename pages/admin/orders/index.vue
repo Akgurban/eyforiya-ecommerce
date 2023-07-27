@@ -61,7 +61,7 @@
           </li>
         </ul>
       </div>
-      <BasePaginate v-model="count" :total-items="orders.length" />
+      <BasePaginate v-model="count" :total-items="totalItems" />
     </ul>
   </div>
 </template>
@@ -77,6 +77,7 @@ definePageMeta({
 const userStore = useUserStore();
 const $toast = useToast();
 const count = ref(1);
+const totalItems = ref(1);
 const orders = ref(null);
 const router = useRouter();
 const statusValue = ref({ name: true });
@@ -96,11 +97,12 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getOrders({
-      limit: 25,
-      offset: count.value,
+      limit: 15,
+      offset: count.value - 1,
       status: statusValue.value.name,
     });
     orders.value = data.value.data.orders;
+    totalItems.value = data.value.data?.count;
   } catch (error) {
     console.log(error);
   }
@@ -123,7 +125,7 @@ const setStatus = async (e) => {
       uuid: e.order_id,
     });
     if (status) {
-      $toast.success("Sargyt kabul edildi!");
+      $toast.success("Status uytgedi!");
     }
     await getCategoriesr();
   } catch (error) {
