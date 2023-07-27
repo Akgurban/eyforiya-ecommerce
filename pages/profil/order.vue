@@ -26,14 +26,6 @@
                 <p>name: {{ item.username }}</p>
                 <p>+993 {{ item.string }}</p>
                 <!-- <p>status: {{ item.status }}</p> -->
-                <div class="flex gap-3">
-                  <BaseButton @click="setStatus(item)" type="primary"
-                    >Status uytget</BaseButton
-                  >
-                  <BaseButton @click="deleteCategory(item)" type="danger"
-                    >delete</BaseButton
-                  >
-                </div>
               </div>
               <ul class="pl-10">
                 <li

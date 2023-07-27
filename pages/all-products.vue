@@ -79,7 +79,7 @@ const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
 const fav = useFavStore();
-fav.wish_items.map((e) => (e.isLiked = true));
+fav.wish_items?.map((e) => (e.isLiked = true));
 
 const { data: categories } = await useMyFetch(
   `/api/v1/client/products/categories?lang=${locale.value}`
