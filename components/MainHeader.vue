@@ -40,7 +40,7 @@ if (useRoute().path.includes("/search")) {
   search.value = useRoute().params.id;
 }
 const submitSearch = () => {
-  var newSearch = search.value.replaceAll(" ", "");
+  var newSearch = search.value;
   useRouter().push(`/search/${newSearch}`);
 };
 </script>

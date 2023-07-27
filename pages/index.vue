@@ -15,6 +15,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            @click="useRouter().push('/all-products')"
           >
             {{ $t("view_all") }}
           </p>
@@ -47,6 +48,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            @click="useRouter().push('/all-products')"
           >
             {{ $t("view_all") }}
           </p>
@@ -86,6 +88,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            @click="useRouter().push('/all-products')"
           >
             {{ $t("view_all") }}
           </p>
