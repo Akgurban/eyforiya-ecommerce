@@ -7,7 +7,7 @@
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer font-bold">favourites</p>
     </div>
-    <div class="w-full flex gap-5 flex-wrap my-5">
+    <div class="w-full flex gap-3 flex-wrap my-5">
       <div
         class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
         v-if="!fav.wish_items.length"
@@ -17,7 +17,7 @@
       <div
         v-for="item in fav.wish_items"
         :key="item"
-        class="group px-2 relative md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+        class="group relative md:w-[272px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
       >
         <BaseProduct :item="item"> </BaseProduct>
       </div>
@@ -34,13 +34,11 @@ const user = useAuthStore();
 
 const fav = useFavStore();
 fav.wish_items.map((e) => (e.isLiked = true));
-console.log(fav, "fav");
 if (user.userToken?.uuid) {
   const { data: wish_user } = await useMyFetch(
     `/api/v1/client/wish-list?lang=tm&user_id=${user.userToken?.uuid}`
   );
   if (wish_user.value?.status) {
-    console.log(wish_user.value.data, "wish_user.value.data");
     wish_user.value.data?.filter((e) => {
       e.images = e.img_path;
     });

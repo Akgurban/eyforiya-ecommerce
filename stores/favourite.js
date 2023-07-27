@@ -10,8 +10,12 @@ export const useFavStore = defineStore("favourite", {
   }),
   actions: {
     async setLocalStorage(propItem) {
+      console.log(propItem, this.wish_items);
       propItem.isLiked = true;
-      this.wish_items.push(propItem);
+      if (this.wish_items == null) {
+        this.wish_items = [];
+      }
+      this.wish_items?.push(propItem);
     },
     async removeLocalStorage(propItem) {
       propItem.isLiked = false;

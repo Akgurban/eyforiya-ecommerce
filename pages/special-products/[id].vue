@@ -10,7 +10,7 @@
     <div class="w-full flex gap-2 flex-wrap mt-4">
       <div
         class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-        v-if="!all_products.data.products.length"
+        v-if="!all_products.data.products?.length"
       >
         {{ $t("no_product") }}
       </div>
@@ -34,10 +34,8 @@ const route = useRoute();
 const { data: all_products } = await useMyFetch(
   `/api/v1/client/products/special-categories/${route.params.id}?lang=tm&limit=10&offset=0`
 );
-console.log(all_products.value.data);
 const fav = useFavStore();
 fav.wish_items.map((e) => (e.isLiked = true));
-console.log(all_products, "fav");
 </script>
 
 <style lang="scss" scoped></style>

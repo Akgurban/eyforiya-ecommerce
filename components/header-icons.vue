@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-3">
     <NuxtLink
-      :to="localePath('/user/login')"
+      @click="profilLogin"
       :class="
         route.path == '/login' ||
         route.path == '/en/login' ||
@@ -50,7 +50,7 @@
         route.path == '/trash' ||
         route.path == '/en/trash' ||
         route.path == '/ru/trash' ||
-        trash_count !== 0
+        trash.trash_items.products?.length !== 0
           ? 'bg-[#44A4DB] text-white '
           : 'bg-[#F6F6F6] text-[#807D7E]'
       "
@@ -58,7 +58,7 @@
     >
       <IconTrash class="group-hover:text-white w-5"></IconTrash>
       <div
-        v-if="trash_count !== 0"
+        v-if="trash.trash_items.products?.length !== 0"
         class="absolute -top-4 left-0 rounded-full bg-[#F35528] text-white w-7 h-7 flex justify-center items-center"
       >
         {{ trash.trash_items.products?.length }}
@@ -84,6 +84,7 @@ const props = defineProps({
   text: { type: String, default: "text" },
 });
 const route = useRoute();
+const router = useRouter();
 const trash_count = ref(0);
 
 trash.trash_items.products?.filter((e) => {
@@ -97,7 +98,6 @@ watch(trash.trash_items, () => {
 });
 watch(favStore.wish_items, () => {
   trash_count.value = favStore.wish_items.length;
-  console.log(favStore.wish_items, "favStore.wish_items");
 });
 
 if (user.userToken?.uuid) {
@@ -105,7 +105,6 @@ if (user.userToken?.uuid) {
     `/api/v1/client/wish-list?lang=tm&user_id=${user.userToken?.uuid}`
   );
   if (wish_user.value?.status) {
-    console.log(wish_user.value.data, "wish_user.value.data");
     wish_user.value.data?.filter((e) => {
       e.images = e.img_path;
     });
@@ -113,6 +112,13 @@ if (user.userToken?.uuid) {
   }
 }
 const path = route.path;
+const profilLogin = () => {
+  if (user.userToken?.uuid) {
+    router.push("/profil/order");
+  } else {
+    router.push("/user/login");
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

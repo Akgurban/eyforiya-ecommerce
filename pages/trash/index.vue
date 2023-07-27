@@ -141,7 +141,6 @@ const deleteUserProduct = async (e) => {
           user_trash.value?.data?.filter((e) => {
             e.images = e.img_path;
           });
-          console.log(user_trash.value?.data, "user_trash.value?.data");
           trash.trash_items.products = user_trash.value?.data;
         }
       }
@@ -161,7 +160,6 @@ if (user.userToken?.uuid) {
     user_trash.value?.data?.filter((e) => {
       e.images = e.img_path;
     });
-    console.log(user_trash.value?.data, "user_trash.value?.data");
     trash.trash_items.products = user_trash.value?.data;
   }
 }

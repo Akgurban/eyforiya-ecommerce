@@ -3,13 +3,23 @@
     <div
       class="aspect-[video] w-screen 2xl:w-[1428px] mx-auto flex justify-between items-start px-4 sm:flex-row flex-col"
     >
-      <div class="sm:w-[35%] w-full">
+      <div class="sm:w-[35%] w-full relative">
         <img
           :src="`http://duypbaha.com.tm/api/v1/uploads/images/${selectedImg?.img_path}`"
           class="w-full one_img rounded-md aspect-square"
           alt=""
         />
-        <div class="w-full mt-5 flex justify-start">
+        <div class="absolute top-5 right-5">
+          <IconLike
+            fill="none"
+            @click="toggleFav(oneProduct)"
+            :class="
+              oneProduct.isLiked ? 'fill-red-600 text-red-600' : ' text-white'
+            "
+            class="hover:text-red-600 w-7"
+          ></IconLike>
+        </div>
+        <div class="w-full relative mt-5 flex justify-start">
           <img
             v-for="item in oneProduct.images"
             :key="item.img_path"
@@ -84,7 +94,7 @@
         {{ $t("similar_products") }}
       </div>
 
-      <div style="" class="flex flex-wrap gap-3 px-2 md:px-1 mt-2">
+      <div style="" class="flex flex-wrap justify-between md:px-1 mt-2">
         <div
           v-for="(item, index) in similarProducts"
           :key="item?.uuid"
@@ -100,6 +110,8 @@
 <script setup>
 import { useAuthStore } from "~~/stores/authStore";
 import { useToast } from "vue-toastification";
+import { useFavStore } from "~~/stores/favourite";
+const favStore = useFavStore();
 
 const $toast = useToast();
 
@@ -124,7 +136,7 @@ const sendComment = async () => {
     method: "POST",
     body: {
       product_id: oneProduct.value.uuid,
-      user_id: user.userToken.uuid,
+      user_id: user.userToken?.uuid,
       content: comment.value,
     },
   });
@@ -137,7 +149,6 @@ const sendComment = async () => {
 const { data: comments } = await useMyFetch(
   `/api/v1/client/products/product-comment?product_id=${route.params.id}&offset=0&limit=100`
 );
-console.log(comments.value.data);
 const { data, status } = await useMyFetch(
   `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`
 );
@@ -159,6 +170,67 @@ if (status) {
     }
   });
 }
+
+favStore.wish_items?.forEach(async (e) => {
+  if (e.uuid == oneProduct.value.uuid) {
+    oneProduct.value.isLiked = true;
+  } else {
+    oneProduct.value.isLiked == false;
+  }
+});
+const toggleFav = async (e) => {
+  // if (user.userToken?.uuid) {
+  //   const { data: wish_user } = await useMyFetch(
+  //     `/api/v1/client/wish-list?lang=tm&user_id=${user.userToken?.uuid}`
+  //   );
+  //   if (wish_user.value?.status) {
+  //     wish_user.value.data?.filter((e) => {
+  //       e.images = e.img_path;
+  //     });
+  //     favStore.wish_items = wish_user.value.data;
+  //   }
+  // }
+
+  if (e.isLiked) {
+    e.isLiked = false;
+    changedOneProduct.value = {
+      name: e?.name,
+      uuid: e?.uuid,
+      images: e?.images[0].img_path,
+      price: e?.price,
+    };
+
+    favStore.removeLocalStorage(changedOneProduct.value);
+    if (user.userToken?.uuid) {
+      const { data } = await useMyFetch(
+        `/api/v1/client/wish-list/delete/${user.userToken?.uuid}/${e.uuid}`,
+        {
+          method: "POST",
+        }
+      );
+    }
+  } else {
+    e.isLiked = true;
+
+    changedOneProduct.value = {
+      name: e?.name,
+      uuid: e?.uuid,
+      images: e?.images[0].img_path,
+      price: e?.price,
+    };
+
+    if (user.userToken?.uuid) {
+      const { data } = useMyFetch(`/api/v1/client/wish-list/create`, {
+        method: "POST",
+        body: {
+          product_id: e.uuid,
+          user_id: user.userToken?.uuid,
+        },
+      });
+    }
+    favStore.setLocalStorage(changedOneProduct.value);
+  }
+};
 </script>
 
 <style scoped>

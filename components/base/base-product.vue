@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="localePath(`/product/${item?.uuid}`)"
-    class="rounded-xl w-full text-center mt-6"
+    class="rounded-xl w-full text-center"
   >
     <img
       class="border w-full aspect-square select-none rounded-md md:rounded-lg border-[#e6e6e6]"
@@ -21,7 +21,7 @@
       {{ propItem?.price }} TMT
     </div>
   </NuxtLink>
-  <div class="absolute top-11 right-5">
+  <div class="absolute top-5 right-5">
     <IconLike
       fill="none"
       @click="toggleFav(propItem)"
@@ -61,7 +61,6 @@ const toggleFav = async (e) => {
       `/api/v1/client/wish-list?lang=tm&user_id=${user.userToken?.uuid}`
     );
     if (wish_user.value?.status) {
-      console.log(wish_user.value.data, "wish_user.value.data");
       wish_user.value.data?.filter((e) => {
         e.images = e.img_path;
       });
@@ -96,9 +95,7 @@ const toggleFav = async (e) => {
 };
 
 const countProduct = ref(null);
-watch(countProduct, () => {
-  console.log(countProduct, "countProduct");
-});
+watch(countProduct, () => {});
 </script>
 
 <style scoped></style>

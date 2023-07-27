@@ -14,13 +14,20 @@
             Ashgabat city, Turkmenistan
           </p>
         </div>
-        <div class="flex items-start gap-2 mt-4">
+        <a href="tel:+993 65 656565" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/call.png" alt="" />
-          <p>Phone: +99365656565</p>
-        </div>
+          <p class="select-none">Phone: +99365656565</p>
+        </a>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/email.png" alt="" />
-          <p>Email: duypbaha@gmail.com</p>
+          <p class="">
+            Email:
+            <a
+              href="mailto:duypbaha@gmail.com"
+              class="select-none cursor-default"
+              >duypbaha@gmail.com</a
+            >
+          </p>
         </div>
       </div>
       <div class="md:mt-10 mt-0">

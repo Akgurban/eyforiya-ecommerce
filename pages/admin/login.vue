@@ -33,7 +33,6 @@ async function login() {
       }
     );
     if (data.value.data) {
-      console.log("pppp", data.value);
       admin_store.adminToken = data.value.data;
       router.push("/admin/categories");
     }

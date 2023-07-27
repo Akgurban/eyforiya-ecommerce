@@ -60,9 +60,7 @@ const category_en = ref(null);
 const categories = ref(null);
 const selectedCategory = ref(null);
 const route = useRouter();
-watch(image, () => {
-  console.log(image);
-});
+watch(image, () => {});
 const val_tm = (e) => {
   if (e === "") {
     return "dogry dolduryn";

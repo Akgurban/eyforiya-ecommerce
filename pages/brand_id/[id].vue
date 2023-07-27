@@ -22,12 +22,12 @@
 
       <div
         style="
-          width: 92% !important;
+          width: 96% !important;
           height: auto !important;
           user-select: none !important;
           padding-bottom: 20px !important;
         "
-        class="flex flex-wrap gap-3 justify-between mx-auto"
+        class="flex flex-wrap gap-3 justify-between mx-auto mt-5"
       >
         <div
           v-for="(item, index) in incomedDatas?.products"

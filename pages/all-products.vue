@@ -40,12 +40,12 @@
 
       <div
         style="
-          width: 92% !important;
+          width: 96% !important;
           height: auto !important;
           user-select: none !important;
           padding-bottom: 20px !important;
         "
-        class="flex flex-wrap gap-3 mx-auto justify-between"
+        class="flex flex-wrap gap-3 mx-auto justify-between mt-5"
       >
         <div
           v-for="(item, index) in all_products.data.products"
@@ -78,7 +78,6 @@ const { data: all_products } = await useMyFetch(
 const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
-console.log(all_products.value, "all_products");
 const fav = useFavStore();
 fav.wish_items.map((e) => (e.isLiked = true));
 

@@ -42,8 +42,7 @@ async function signUp() {
         },
       }
     );
-    authStore.userToken = data.value?.auth;
-    router.push("/");
+    await login();
     if (pending) {
       pendings.value = true;
     }
@@ -72,7 +71,6 @@ async function login() {
       }
     );
     authStore.userToken = data.value?.auth;
-    console.log(error, data);
     if (!data.value.status) {
       $toast.error(data.value.message);
     }
@@ -83,12 +81,18 @@ async function login() {
 
   try {
     if (authStore.userToken?.uuid) {
-      var { data: wish_user, error: wishErr } = await useMyFetch(
+      var {
+        data: wish_user,
+        error: wishErr,
+        status,
+      } = await useMyFetch(
         `/api/v1/client/wish-list?lang=tm&user_id=${authStore.userToken?.uuid}`
       );
     }
-    if (wish_user.value?.status && wish_user.value?.data?.length) {
+    console.log(wish_user.value.status, "wish_user.value");
+    if (wish_user.value.status && wish_user.value?.data?.length) {
       favStore.wish_items = [];
+      console.log("[][]");
       wish_user.value.data?.filter((e) => {
         e.images = e.img_path;
         favStore.setLocalStorage(e);
@@ -96,8 +100,8 @@ async function login() {
 
       router.push("/");
       // favStore.wish_items = wish_user.value.data;
-    } else {
-      console.log(wishErr, "[]");
+    } else if (!wish_user.value?.data?.length) {
+      favStore.wish_items = [];
     }
   } catch (err) {
     console.log(err);
@@ -116,6 +120,7 @@ async function login() {
 
       trash.trash_items.products = user_trash.value?.data;
     }
+    router.push("/");
   } catch (e) {
     console.log(e);
   }
@@ -130,9 +135,6 @@ const logout = () => {
   <div
     class="flex justify-center pt-34 md:pt-40 h-[110vh] absolute top-0 bg-slate-300 z-40 w-full"
   >
-    <BaseButton @click="logout" class="absolute top-0 left-0" type="danger"
-      >Logout</BaseButton
-    >
     <div class="w-full max-w-md">
       <div
         class="text-3xl font-bold text-center mb-6 flex w-full justify-between"
@@ -170,7 +172,7 @@ const logout = () => {
         </p>
         <div class="flex w-full gap-5 items-center justify-between">
           <button
-            class="bg-blue-700 w-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-blue-700 rounded-2xl w-1/2 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
             @click="login"
           >
@@ -183,7 +185,7 @@ const logout = () => {
             Garashyn...
           </p>
           <button
-            class="bg-green-700 w-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-green-700 rounded-2xl w-1/2 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
             @click="signUp"
           >
