@@ -36,8 +36,16 @@
         <div class="md:hidden block">
           <p class="md:text-2xl text-base md:m-4 mt-4">Download The App</p>
           <div class="flex md:flex-row flex-col gap-2">
-            <img class="h-10 w-[110px]" src="@/assets/images/play.png" alt="" />
-            <img class="h-10 w-[110px]" src="@/assets/images/app.png" alt="" />
+            <img
+              class="h-10 w-[110px] rounded-xl"
+              src="@/assets/images/play.png"
+              alt=""
+            />
+            <img
+              class="h-10 w-[110px] rounded-xl"
+              src="@/assets/images/app.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -45,8 +53,8 @@
       <div class="self-end md:block hidden">
         <p class="md:text-2xl text-xs md:m-4 m-0">Download The App</p>
         <div class="flex md:flex-row flex-col gap-4">
-          <img class="h-10" src="@/assets/images/play.png" alt="" />
-          <img class="h-10" src="@/assets/images/app.png" alt="" />
+          <img class="h-10 rounded-xl" src="@/assets/images/play.png" alt="" />
+          <img class="h-10 rounded-xl" src="@/assets/images/app.png" alt="" />
         </div>
       </div>
     </div>

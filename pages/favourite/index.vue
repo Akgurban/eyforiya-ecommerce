@@ -7,7 +7,9 @@
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer font-bold">favourites</p>
     </div>
-    <div class="w-full flex gap-3 flex-wrap my-5">
+    <div
+      class="w-full flex gap-3 flex-wrap my-5 md:justify-start justify-center"
+    >
       <div
         class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
         v-if="!fav.wish_items.length"

@@ -3,7 +3,7 @@
     <div
       v-if="count == 0"
       @click="increment"
-      class="relative select-none mt-5 mb-[30px] md:mb-[30px] hover:scale-95 transition-transform duration-150"
+      class="relative select-none mb-[30px] md:mb-[30px] hover:scale-95 transition-transform duration-150"
     >
       <img
         class="mx-auto h-9 md:h-10 touch-pan-y"
@@ -23,7 +23,10 @@
       </div>
     </div>
 
-    <div v-if="count != 0" class="w-[80%] text-center mt-3 z-50 md:h-19 h-18">
+    <div
+      v-if="count != 0"
+      class="w-[80%] text-center md:mt-3 z-50 md:h-19 h-13"
+    >
       <div
         class="w-full font-bold justify-evenly flex gap-2 px-6 py-1 md:py-2 rounded-xl bg-[#F6F6F6]"
       >

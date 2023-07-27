@@ -60,12 +60,12 @@
           />
         </div>
       </div>
-      <div class="block md:h-auto h-auto md:mt-7 mt-1">
+      <div class="block md:h-auto h-auto md:mt-7 mt-3">
         <HeroSwiperProduct :products="latest" class=""></HeroSwiperProduct>
       </div>
     </div>
 
-    <div class="block h-auto xl:w-[1238px] w-screen mx-auto md:mt-[92px] mt-4">
+    <div class="block h-auto xl:w-[1238px] w-screen mx-auto md:mt-[92px]">
       <div class="flex justify-center">
         <p
           class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
@@ -73,7 +73,7 @@
           {{ $t("specials") }}
         </p>
       </div>
-      <div class="h-auto w-full mt-7">
+      <div class="h-auto w-full md:mt-7 mt-3">
         <HeroSpecials :specials="spec_categories" class=""></HeroSpecials>
       </div>
     </div>

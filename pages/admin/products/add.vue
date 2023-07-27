@@ -159,9 +159,9 @@ const addPosts = async () => {
         special_category_id: selectedSpec.value?.uuid || null,
       });
       if (onlyProduct.value.status) {
-        const form = new FormData();
-        form.append("product_id", onlyProduct.value.data);
         image.value?.forEach(async (e, index) => {
+          const form = new FormData();
+          form.append("product_id", onlyProduct.value.data);
           form.append("img", image.value[index]);
           const { data, status } = await userStore.addProductImage(form);
           if (status) {

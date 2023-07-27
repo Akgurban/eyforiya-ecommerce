@@ -29,7 +29,7 @@
       class="hover:text-red-600 w-7"
     ></IconLike>
   </div>
-  <TrashButtonAndCounter :item="propItem" v-model="countProduct" />
+  <TrashButtonAndCounter class="mt-5" :item="propItem" v-model="countProduct" />
 </template>
 
 <script setup>

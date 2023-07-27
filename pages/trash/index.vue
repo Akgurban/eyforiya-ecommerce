@@ -34,18 +34,21 @@
           <div>
             <div class="flex md:flex-row flex-col items-center md:gap-10 gap-5">
               <img
+                @click="useRouter().push(`/product/${item?.uuid}`)"
                 :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item.images}`"
                 alt=""
-                class="w-35 rounded-md aspect-square"
+                class="w-35 rounded-md aspect-square object-cover"
               />
-              <p class="font-alatsi text-2xl w-[100px]">{{ item.name }}</p>
+              <p class="font-alatsi md:text-2xl text-lg w-[100px]">
+                {{ item.name }}
+              </p>
             </div>
           </div>
           <div
-            class="flex items-center w-full justify-end gap-6 md:gap-10 md:flex-row flex-row"
+            class="flex items-start w-full justify-end gap-1 md:gap-10 md:flex-row flex-row"
           >
             <div
-              class="w-[150px] md:w-[400px] flex md:flex-row flex-col items-center justify-between ml-5"
+              class="w-[150px] md:w-[400px] flex md:flex-row flex-col items-center justify-start ml-0"
             >
               <p class="uppercase md:w-[200px] w-[150px]">
                 <TrashButtonAndCounter :count="item.count" :item="item" />

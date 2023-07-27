@@ -25,7 +25,7 @@
             :key="item.img_path"
             :src="`http://duypbaha.com.tm/api/v1/uploads/images/${item?.img_path}`"
             @click.native="selectedImg = item"
-            class="w-[19%] rounded-md aspect-square mr-2"
+            class="w-[19%] rounded-md aspect-square mr-2 border border-blue-200"
             alt=""
           />
         </div>
@@ -89,7 +89,7 @@
         </ul>
       </div>
       <div
-        class="mt-8 px-10 cursor-pointer transition-all duration-100 md:text-4xl text-2xl mb-1 font-semibold font-inter"
+        class="mt-8 px-0 md:px-10 cursor-pointer transition-all duration-100 md:text-4xl text-2xl mb-1 font-semibold font-inter"
       >
         {{ $t("similar_products") }}
       </div>
@@ -131,6 +131,9 @@ const route = useRoute();
 const sendComment = async () => {
   if (!comment.value?.length) {
     return $toast.error("kommentariya bosh bolmaly dal");
+  }
+  if (!user.userToken?.uuid) {
+    return $toast.error("Ulgama girin");
   }
   const { data } = await useMyFetch(`/api/v1/client/comment/create`, {
     method: "POST",

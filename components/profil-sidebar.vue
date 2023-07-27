@@ -1,18 +1,23 @@
 <template>
-  <div class="w-[400px] h-screen bg-blue-50 shadow-md font-bold text-xl">
-    <ul class="m-5">
+  <div
+    class="md:w-[400px] w-full md:h-screen h-auto md:relative md:mb-10 bottom-0 bg-blue-50 shadow-md font-bold text-xl"
+  >
+    <ul class="md:m-5 flex md:flex-col flex-row gap-3">
       <NuxtLink
         v-for="item in posts"
         :key="item.name"
         :to="item.path"
         :class="{ active: useRoute().path.includes(item.path) }"
-        class="admin-links hover:bg-slate-500 hover:text-slate-50 my-2 p-2 text-2xl hover:underline cursor-pointer flex flex-col"
+        class="admin-links gap-1 md:gap-3 text-sm md:text-xl rounded-2xl hover:bg-slate-500 hover:text-slate-50 p-2 my-2"
         >{{ item.name }}</NuxtLink
       >
+      <BaseButton
+        @click="logout"
+        class="admin-links gap-1 md:gap-3 text-sm md:text-2xl rounded-2xl hover:bg-slate-500 hover:text-slate-50 p-2 my-2"
+        type="danger"
+        >Logout</BaseButton
+      >
     </ul>
-    <BaseButton @click="logout" class="m-6 mt-10 w-[320px]" type="danger"
-      >Logout</BaseButton
-    >
   </div>
 </template>
 
@@ -21,9 +26,9 @@ import { useAuthStore } from "@/stores/authStore";
 const authStore = useAuthStore();
 const router = useRouter();
 const posts = ref([
-  { name: "zakazlaryn istoriyasy", path: "/profil/order" },
-  { name: "password calyshmak", path: "/profil/password" },
-  { name: "username calysmak", path: "/profil/username" },
+  { name: "history", path: "/profil/order" },
+  { name: "password", path: "/profil/password" },
+  { name: "username", path: "/profil/username" },
 ]);
 const isRouteActive = ref(true);
 const logout = () => {

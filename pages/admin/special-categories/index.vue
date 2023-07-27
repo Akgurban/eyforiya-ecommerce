@@ -2,7 +2,7 @@
   <div>
     <NuxtLink
       class="bg-green-700 block rounded-md hover:bg-green-600 p-2 text-white font-bold text-center mt-3 cursor-pointer"
-      to="/admin/special-categories/add"
+      @click="addPost"
     >
       Add +
     </NuxtLink>
@@ -71,6 +71,13 @@ const deleteCategory = async (e) => {
     await getCategoriesr();
   } catch (error) {
     console.log(error);
+  }
+};
+const addPost = () => {
+  if (categories.value.length < 5) {
+    useRouter().push("/admin/special-categories/add");
+  } else {
+    alert("maximum 5 sany special categoriya");
   }
 };
 </script>

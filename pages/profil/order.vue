@@ -1,7 +1,7 @@
 <template>
-  <div class="w-[1200px] mx-auto z-50">
+  <div class="w-screen px-3 md:w-[1200px] mx-auto z-20">
     <div
-      class="2xl:w-[1424px] xl:w-[1230px] w-screen flex gap-3 items-center pl-10"
+      class="2xl:w-[1424px] xl:w-[1230px] w-full flex gap-3 items-center pl-0 md:pl-10"
     >
       <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
       <IconChevronRight class="h-3" />
@@ -10,10 +10,12 @@
       <p class="cursor-pointer font-bold">history</p>
     </div>
 
-    <div class="flex gap-4 mt-3">
-      <profil-sidebar></profil-sidebar>
-      <div class="w-[900px]">
-        <div class="h-screen overflow-auto">
+    <div class="flex md:flex-row flex-col gap-4 mt-3">
+      <div class="">
+        <profil-sidebar></profil-sidebar>
+      </div>
+      <div class="md:w-[900px] w-full">
+        <div class="overflow-auto">
           <ul>
             <div
               class="bg-gray-200 cursor-pointer text-lg font-bold rounded-md p-2 m-1"
@@ -27,7 +29,7 @@
                 <p>+993 {{ item.string }}</p>
                 <!-- <p>status: {{ item.status }}</p> -->
               </div>
-              <ul class="pl-10">
+              <ul class="pl-0 md:pl-10">
                 <li
                   class="mt-2 odd:bg-gray-50 even:bg-gray-100 cursor-pointer flex justify-between items-center text-lg font-bold rounded-md p-2 m-1"
                   v-for="small in item.products"

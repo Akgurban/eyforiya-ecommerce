@@ -1,23 +1,26 @@
 <template>
-  <div class="w-[1200px] mx-auto z-50">
+  <div class="w-screen px-3 md:w-[1200px] mx-auto z-20">
     <div
-      class="2xl:w-[1424px] xl:w-[1230px] w-screen flex gap-3 items-center pl-10"
+      class="2xl:w-[1424px] xl:w-[1230px] w-full flex gap-3 items-center pl-0 md:pl-10"
     >
       <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer">licny kabinet</p>
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer font-bold">username rec over</p>
+      <p class="cursor-pointer font-bold">history</p>
     </div>
-    <div class="flex gap-4 mt-3">
-      <profil-sidebar></profil-sidebar>
-      <div class="w-[900px]">
+
+    <div class="flex md:flex-row flex-col gap-4 mt-3">
+      <div class="">
+        <profil-sidebar></profil-sidebar>
+      </div>
+      <div class="md:w-[900px] w-full">
         <div class="h-[96vh] overflow-auto">
-          <div class="text-4xl font-bold mt-6 text-blue-900">
+          <div class="text-2xl md:text-4xl font-bold mt-6 text-blue-900">
             Username recover
           </div>
-          <form @submit.prevent="submit" class="mt-20">
-            <div class="pl-10 w-[50%]">
+          <form @submit.prevent="submit" class="mt-10 md:mt-20">
+            <div class="pl-2 md:pl-10 w-[70%]">
               <p class="text-blue-800 font-bold">username tazele</p>
               <input
                 v-model="password"
@@ -26,7 +29,7 @@
                 class="border-2 border-blue-800 rounded-full p-2"
               />
             </div>
-            <div class="pl-10 w-[50%] mt-8">
+            <div class="pl-2 md:pl-10 w-[70%] mt-8">
               <p class="text-blue-800 font-bold">username tazeden girizin</p>
               <input
                 v-model="password2"
