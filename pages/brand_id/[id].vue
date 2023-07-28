@@ -6,7 +6,7 @@
         @click="toggleFilter"
         class="self-end lg:hidden block"
         type="secondary"
-        >{{ !showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
+        >{{ !showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
       >
     </div>
 
@@ -41,7 +41,7 @@
           v-if="!incomedDatas?.products"
           class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
         >
-          Hic hili Haryt tapylmady!
+          {{ $t("no_product") }}
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
 
 <script setup>
 const { $width } = useNuxtApp();
-const { locale } = useI18n();
+const { locale, locales } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
@@ -59,21 +59,25 @@ const showFilter = ref(true);
 const order = ref("");
 
 const orderList = ref([
-  { code: "", name: "Hic hili" },
-  { code: "asc", name: "Arzandan gymmada" },
-  { code: "desc", name: "Gymmatdan arzana" },
+  { code: "", name: "none" },
+  { code: "asc", name: "min_to" },
+  { code: "desc", name: "max_to" },
 ]);
 
 const active = useState();
 async function emittedFromSidebar(e) {
   console.log(e);
-  if (e.brnd.length) {
-    router.push({
-      path: `/brand_id/${e.brnd[e.brnd.length - 1]}`,
-      query: {
-        filter: JSON.stringify([`${e.brnd[e.brnd.length - 1]}`]),
-        order: e.ord,
-      },
+  if (e.brnd?.length) {
+    locales.value.forEach((a) => {
+      if (a.code == locale.value) {
+        router.push({
+          path: `${a.code2}/brand_id/${e.brnd[e.brnd.length - 1]}`,
+          query: {
+            filter: JSON.stringify([`${e.brnd[e.brnd.length - 1]}`]),
+            order: e.ord,
+          },
+        });
+      }
     });
   }
 }

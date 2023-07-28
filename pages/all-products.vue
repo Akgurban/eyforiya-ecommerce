@@ -6,7 +6,7 @@
         @click="toggleFilter"
         class="self-end lg:hidden block"
         type="secondary"
-        >{{ showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
+        >{{ showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
       >
     </div>
 
@@ -17,7 +17,9 @@
           :class="showFilter ? 'block' : 'hidden'"
         >
           <div class="mt-5">
-            <div class="text-2xl font-alatsi mb-2">Kategoriya saylan</div>
+            <div class="text-2xl font-alatsi mb-2">
+              {{ $t("category_select") }}
+            </div>
             <div class="ml-5">
               <p
                 v-for="item in categories.data"

@@ -4,7 +4,7 @@
     :class="!props.show_filter ? 'block' : 'hidden'"
   >
     <div>
-      <div class="text-2xl font-alatsi mb-2">Tertip</div>
+      <div class="text-2xl font-alatsi mb-2">{{ $t("order") }}</div>
       <div>
         <div v-for="item in orderList" class="flex items-center gap-2">
           <BaseInput
@@ -15,13 +15,13 @@
             name="price-filter"
             :checked="item.code == order"
           />
-          <div class="font-alatsi text-base">{{ item.name }}</div>
+          <div class="font-alatsi text-base">{{ $t(item.name) }}</div>
         </div>
       </div>
     </div>
 
     <div v-if="show_cat" class="mt-5">
-      <div class="text-2xl font-alatsi mb-2">Icki kategoriya saylan</div>
+      <div class="text-2xl font-alatsi mb-2">{{ $t("in_category") }}</div>
       <div class="ml-5" v-if="!route.query.catId">
         <p
           v-for="item in sub_categories"
@@ -41,7 +41,7 @@
     </div>
 
     <div class="relative mt-5">
-      <div class="text-2xl font-alatsi mb-2">Brend</div>
+      <div class="text-2xl font-alatsi mb-2">{{ $t("brands") }}</div>
 
       <div>
         <div
@@ -98,9 +98,9 @@ if (route.query?.order) {
   order.value = route.query.order;
 }
 const orderList = ref([
-  { code: "", name: "Hic hili" },
-  { code: "asc", name: "Arzandan gymmada" },
-  { code: "desc", name: "Gymmatdan arzana" },
+  { code: "", name: "none" },
+  { code: "asc", name: "min_to" },
+  { code: "desc", name: "max_to" },
 ]);
 
 const selectedBrands = ref([]);

@@ -6,7 +6,7 @@
         @click="toggleFilter"
         class="self-end lg:hidden block"
         type="secondary"
-        >{{ !showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
+        >{{ !showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
       >
     </div>
 
@@ -36,7 +36,7 @@
             v-if="!incomedDatas?.products"
             class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
           >
-            Hic hili Haryt tapylmady!
+            {{ $t("no_product") }}
           </div>
         </div>
         <BasePaginate
@@ -50,7 +50,7 @@
 
 <script setup>
 const { $width } = useNuxtApp();
-const { locale } = useI18n();
+const { locale, locales } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
@@ -60,17 +60,15 @@ const count = ref(1);
 const showFilter = ref(true);
 const order = ref("");
 
-const orderList = ref([
-  { code: "", name: "Hic hili" },
-  { code: "asc", name: "Arzandan gymmada" },
-  { code: "desc", name: "Gymmatdan arzana" },
-]);
-
 const active = useState();
 async function emittedFromSidebar(e) {
-  router.push({
-    path: `/search/${route.params.id}`,
-    query: { filter: JSON.stringify(e.brnd), order: e.ord },
+  locales.value.forEach((a) => {
+    if (a.code == locale.value) {
+      router.push({
+        path: `${a.code2}/search/${route.params.id}`,
+        query: { filter: JSON.stringify(e.brnd), order: e.ord },
+      });
+    }
   });
 }
 

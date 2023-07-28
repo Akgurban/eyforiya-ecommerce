@@ -5,9 +5,10 @@
     >
       <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer">licny kabinet</p>
+      <p class="cursor-pointer">{{ $t("profile") }}</p>
+
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer font-bold">history</p>
+      <p class="cursor-pointer">{{ $t("order") }}</p>
     </div>
 
     <div class="flex md:flex-row flex-col gap-4 mt-3">

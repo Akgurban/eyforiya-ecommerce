@@ -2,18 +2,20 @@
   <div
     class="md:w-[400px] w-full md:h-screen h-auto md:relative md:mb-10 bottom-0 bg-blue-50 shadow-md font-bold text-xl"
   >
-    <ul class="md:m-5 flex md:flex-col flex-row gap-3">
+    <ul
+      class="md:m-5 flex md:flex-col flex-row gap-3 mt-3 justify-between md:justify-start"
+    >
       <NuxtLink
         v-for="item in posts"
         :key="item.name"
-        :to="item.path"
+        :to="localePath(item.path)"
         :class="{ active: useRoute().path.includes(item.path) }"
-        class="admin-links gap-1 md:gap-3 text-sm md:text-xl rounded-2xl hover:bg-slate-500 hover:text-slate-50 p-2 my-2"
-        >{{ item.name }}</NuxtLink
+        class="admin-links gap-1 md:gap-3 text-sm md:text-xl md:first:mt-10 rounded-md hover:bg-slate-500 hover:text-slate-50 p-2 my-2 md:my-0"
+        >{{ $t(item.name) }}</NuxtLink
       >
       <BaseButton
         @click="logout"
-        class="admin-links gap-1 md:gap-3 text-sm md:text-2xl rounded-2xl hover:bg-slate-500 hover:text-slate-50 p-2 my-2"
+        class="admin-links gap-1 md:gap-3 text-sm md:text-2xl rounded-md hover:bg-slate-500 hover:text-slate-50 p-2 my-2 md:my-0"
         type="danger"
         >Logout</BaseButton
       >

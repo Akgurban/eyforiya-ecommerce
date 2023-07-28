@@ -43,12 +43,14 @@ async function signUp() {
       }
     );
     console.log(error);
-    if (!error.value.data.status) {
+    if (error.value?.fatal == false) {
       pendings.value = false;
-      return $toast.error("username is used");
-    }
 
-    await login();
+      return $toast.error(`username exist`);
+    }
+    if (data.value?.status) {
+      await login();
+    }
     if (pending) {
       pendings.value = true;
     }

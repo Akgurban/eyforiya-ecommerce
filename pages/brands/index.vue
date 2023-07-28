@@ -33,7 +33,7 @@
         v-if="!brands.data"
         class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
       >
-        Hic hili Haryt tapylmady!
+        {{ $t("no_product") }}
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@
         @click="toggleFilter"
         class="self-end lg:hidden block"
         type="secondary"
-        >{{ !showFilter ? "CloseFilter" : " ShowFilter" }}</BaseButton
+        >{{ !showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
       >
     </div>
 
@@ -20,7 +20,10 @@
         />
       </Transition>
       <div class="w-full">
-        <div style="" class="flex flex-wrap gap-3 justify-between mx-auto mt-5">
+        <div
+          style=""
+          class="flex flex-wrap gap-3 justify-between mx-auto mt-5 px-2"
+        >
           <div
             v-for="(item, index) in incomedDatas?.products"
             :key="item"
@@ -33,7 +36,7 @@
             v-if="!incomedDatas?.products"
             class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
           >
-            Hic hili Haryt tapylmady!
+            {{ $t("no_product") }}
           </div>
         </div>
         <BasePaginate :total-items="totalItems" v-model="count" />
@@ -44,7 +47,7 @@
 
 <script setup>
 const { $width } = useNuxtApp();
-const { locale } = useI18n();
+const { locale, locales } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
@@ -55,9 +58,15 @@ const showFilter = ref(true);
 
 const active = useState();
 async function emittedFromSidebar(e) {
-  router.push({
-    path: `/filtered-product/${route.params.id}`,
-    query: { filter: JSON.stringify(e.brnd), order: e.ord, catId: e.sub },
+  console.log(locale, locales);
+  locales.value.forEach((a) => {
+    if (a.code == locale.value) {
+      console.log(a.code, locale.value);
+      router.push({
+        path: `${a.code2}/filtered-product/${route.params.id}`,
+        query: { filter: JSON.stringify(e.brnd), order: e.ord, catId: e.sub },
+      });
+    }
   });
 }
 

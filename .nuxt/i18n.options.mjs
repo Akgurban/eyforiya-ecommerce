@@ -21,7 +21,7 @@ export const resolveNuxtI18nOptions = async (context) => {
                 : {}
           }
   nuxtI18nOptions.vueI18n = Object({})
-  nuxtI18nOptions.locales = [Object({"code":"tm","file":"tm.json","hash":"b7b2d7aa","type":"static"}),Object({"code":"en","file":"en.json","hash":"38175145","type":"static"}),Object({"code":"ru","file":"ru.json","hash":"fb4504ec","type":"static"})]
+  nuxtI18nOptions.locales = [Object({"code":"tm","code2":"","file":"tm.json","hash":"b7b2d7aa","type":"static"}),Object({"code":"en","code2":"/en","file":"en.json","hash":"38175145","type":"static"}),Object({"code":"ru","code2":"/ru","file":"ru.json","hash":"fb4504ec","type":"static"})]
   nuxtI18nOptions.defaultLocale = "tm"
   nuxtI18nOptions.defaultDirection = "ltr"
   nuxtI18nOptions.routesNameSeparator = "___"
@@ -45,6 +45,6 @@ export const resolveNuxtI18nOptions = async (context) => {
 
 export const nuxtI18nOptionsDefault = Object({experimental: Object({"jsTsFormatResource":false}),compilation: Object({"strictMessage":true,"escapeHtml":false}),vueI18n: "",locales: [],defaultLocale: "",defaultDirection: "ltr",routesNameSeparator: "___",trailingSlash: false,defaultLocaleRouteNameSuffix: "default",strategy: "prefix_except_default",lazy: false,langDir: null,rootRedirect: null,detectBrowserLanguage: Object({"alwaysRedirect":false,"cookieCrossOrigin":false,"cookieDomain":null,"cookieKey":"i18n_redirected","cookieSecure":false,"fallbackLocale":"","redirectOn":"root","useCookie":true}),differentDomains: false,baseUrl: "",dynamicRouteParams: false,customRoutes: "page",pages: Object({}),skipSettingLocaleOnNavigate: false,types: "composition",debug: false})
 
-export const nuxtI18nInternalOptions = Object({__normalizedLocales: [Object({"code":"tm","file":"tm.json","hash":"b7b2d7aa","type":"static"}),Object({"code":"en","file":"en.json","hash":"38175145","type":"static"}),Object({"code":"ru","file":"ru.json","hash":"fb4504ec","type":"static"})]})
+export const nuxtI18nInternalOptions = Object({__normalizedLocales: [Object({"code":"tm","code2":"","file":"tm.json","hash":"b7b2d7aa","type":"static"}),Object({"code":"en","code2":"/en","file":"en.json","hash":"38175145","type":"static"}),Object({"code":"ru","code2":"/ru","file":"ru.json","hash":"fb4504ec","type":"static"})]})
 export const NUXT_I18N_MODULE_ID = "@nuxtjs/i18n"
 export const isSSG = false
