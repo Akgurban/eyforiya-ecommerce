@@ -52,7 +52,7 @@
               {{ oneProduct.price }} TMT
             </div>
           </div>
-          <div class="w-fit md:ml-5 ml-1">
+          <div class="w-fit md:ml-5 ml-1 pt-3">
             <TrashButtonAndCounter
               :item="changedOneProduct"
               v-model="oneCountProduct"

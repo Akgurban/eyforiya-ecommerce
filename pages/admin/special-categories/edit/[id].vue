@@ -89,12 +89,7 @@ try {
 
 const addCategory = async () => {
   try {
-    if (
-      !category_tm.value ||
-      !category_en.value ||
-      !category_ru.value ||
-      !category_img.value
-    ) {
+    if (!category_tm.value || !category_en.value || !category_ru.value) {
       val_tm(category_tm.value);
       val_en(category_en.value);
       val_ru(category_ru.value);
@@ -105,8 +100,11 @@ const addCategory = async () => {
     form.append("name_tm", category_tm.value);
     form.append("name_ru", category_ru.value);
     form.append("name_en", category_en.value);
-    form.append("img", category_img.value);
-    const { data } = await userStore.addSpecialCategories(form);
+    form.append("uuid", route.params.id);
+    if (category_img.value) {
+      form.append("img", category_img.value);
+    }
+    const { data } = await userStore.updateSpecialCategories(form);
 
     if (data.status) {
       alert("Categoriya Gosuldy");

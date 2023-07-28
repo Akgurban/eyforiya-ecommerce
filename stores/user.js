@@ -73,6 +73,15 @@ export const useUserStore = defineStore("user", {
         }
       );
     },
+    async updateSpecialCategories(data) {
+      return await useAdminFetch(
+        "/api/v1/admin/products/special-category/update",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+    },
     async deleteSpecialCategories(data) {
       return await useAdminFetch(
         `/api/v1/admin/products/special-category/delete/${data.uuid}`,
