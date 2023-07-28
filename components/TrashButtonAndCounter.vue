@@ -13,8 +13,10 @@
       <div
         class="absolute top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
       >
-        <div class="md:text-2xl text-lg font-alatsi whitespace-nowrap">
-          Sebede goş
+        <div
+          class="md:text-2xl text-lg font-alatsi uppercase whitespace-nowrap"
+        >
+          {{ $t("add_to") }}
         </div>
         <IconTrash
           draggable="false"
