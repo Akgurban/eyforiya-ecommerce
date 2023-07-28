@@ -1,11 +1,5 @@
 <template>
   <div>
-    <NuxtLink
-      class="bg-green-700 block rounded-md hover:bg-green-600 p-2 text-white font-bold text-center mt-3 cursor-pointer"
-      to="/admin/categories/add"
-    >
-      Add +
-    </NuxtLink>
     <div class="w-60 flex gap-2 items-center ml-auto">
       <div
         class="text-xl font-bold"
