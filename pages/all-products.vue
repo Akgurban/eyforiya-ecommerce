@@ -16,7 +16,7 @@
     <div class="lead flex gap-5">
       <div class="md:relative absolute w-[50%] 2xl:w-[25%] lg:w-[28%]">
         <div
-          class="md:block hidden fixed shadow-2xl top-0 z-30 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
+          class="md:block hidden shadow-2xl top-0 z-30 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
         >
           <div class="mt-5">
             <div
