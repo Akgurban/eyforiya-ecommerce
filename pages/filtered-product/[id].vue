@@ -4,7 +4,7 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end w-35 lg:hidden flex justify-between"
+        class="self-end w-32 lg:hidden flex justify-between"
         type="secondary"
         ><p>
           {{ !showFilter ? $t("close_filter") : $t("show_filter") }}
@@ -12,20 +12,26 @@
         <img src="@/assets/images/filter.png" class="inline w-5" alt=""
       /></BaseButton>
     </div>
-
-    <div class="lead flex gap-5">
-      <filtered-sidebar
-        :show_filter="showFilter"
-        :brands="incomedDatas?.brands"
-        :sub_categories="incomedDatas?.sub_categories"
-        @someChange="(e) => emittedFromSidebar(e)"
-      />
+    <div class="flex justify-between gap-5">
+      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%]">
+        <filtered-sidebar
+          :show_filter="!showFilter"
+          :brands="incomedDatas?.brands"
+          :sub_categories="incomedDatas?.sub_categories"
+          @someChange="(e) => emittedFromSidebar(e)"
+        />
+      </div>
+      <div class="block md:hidden absolute w-full 2xl:w-[25%] lg:w-[28%]">
+        <filtered-sidebar
+          :show_filter="showFilter"
+          :brands="incomedDatas?.brands"
+          :sub_categories="incomedDatas?.sub_categories"
+          @someChange="(e) => emittedFromSidebar(e)"
+        />
+      </div>
 
       <div class="w-full">
-        <div
-          style=""
-          class="flex flex-wrap gap-3 justify-between mx-auto mt-5 px-2"
-        >
+        <div class="flex flex-wrap gap-3 justify-between mx-auto mt-5 px-2">
           <div
             v-for="(item, index) in incomedDatas?.products"
             :key="item"
@@ -41,14 +47,15 @@
             {{ $t("no_product") }}
           </div>
         </div>
-        <BasePaginate :total-items="totalItems" v-model="count" />
+        <div class="" v-if="!(count == 1)">
+          <BasePaginate :total-items="totalItems" v-model="count" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const { $width } = useNuxtApp();
 const { locale, locales } = useI18n();
 
 const router = useRouter();
@@ -57,6 +64,10 @@ const incomedDatas = ref("");
 const count = ref(1);
 const totalItems = ref(15);
 const showFilter = ref(true);
+
+const toggleFilter = () => {
+  showFilter.value = !showFilter.value;
+};
 
 const active = useState();
 async function emittedFromSidebar(e) {
@@ -72,9 +83,6 @@ async function emittedFromSidebar(e) {
   });
 }
 
-const toggleFilter = () => {
-  showFilter.value = !showFilter.value;
-};
 const refetch = async () => {
   let dataForm = {
     category_id: route.params.id,

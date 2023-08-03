@@ -4,21 +4,34 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end lg:hidden block"
+        class="self-end w-32 lg:hidden flex justify-between"
         type="secondary"
-        >{{ !showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
-      >
+        ><p>
+          {{ !showFilter ? $t("close_filter") : $t("show_filter") }}
+        </p>
+        <img src="@/assets/images/filter.png" class="inline w-5" alt=""
+      /></BaseButton>
     </div>
 
     <div class="lead flex gap-5">
-      <Transition name="slide-fade">
+      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%]">
         <filtered-sidebar
-          :show_filter="showFilter"
+          :show_filter="!showFilter"
           :brands="brands.data"
           :show_cat="false"
+          :sub_categories="incomedDatas?.sub_categories"
           @someChange="(e) => emittedFromSidebar(e)"
         />
-      </Transition>
+      </div>
+      <div class="block md:hidden absolute w-full 2xl:w-[25%] lg:w-[28%]">
+        <filtered-sidebar
+          :show_filter="showFilter"
+          :show_cat="false"
+          :brands="brands.data"
+          :sub_categories="incomedDatas?.sub_categories"
+          @someChange="(e) => emittedFromSidebar(e)"
+        />
+      </div>
 
       <div
         style="

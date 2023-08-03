@@ -11,8 +11,8 @@
         @click="
           useRouter().push(
             localePath({
-              path: `/brand_id/${item?.uuid}`,
-              query: { filter: JSON.stringify([`${item?.uuid}`]) },
+              path: `/filtered-product/${item?.uuid}`,
+              query: { filter: '[]' },
             })
           )
         "

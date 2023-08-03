@@ -4,7 +4,7 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end w-35 lg:hidden flex justify-between"
+        class="self-end w-32 lg:hidden flex justify-between"
         type="secondary"
         ><p>
           {{ showFilter ? $t("close_filter") : $t("show_filter") }}
@@ -14,10 +14,9 @@
     </div>
 
     <div class="lead flex gap-5">
-      <Transition name="slide-fade">
+      <div class="md:relative absolute w-[50%] 2xl:w-[25%] lg:w-[28%]">
         <div
-          class="lg:relative fixed shadow-2xl top-0 z-40 h-screen px-2 py-2 lg:block w-[50%] 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
-          v-if="showFilter"
+          class="md:block hidden fixed shadow-2xl top-0 z-30 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
         >
           <div class="mt-5">
             <div
@@ -43,7 +42,38 @@
             </div>
           </div>
         </div>
-      </Transition>
+        <!-- xas -->
+        <Transition name="slide-fade">
+          <div
+            class="md:hidden block fixed w-[50%] 2xl:w-[25%] lg:w-[28%] shadow-2xl top-0 z-40 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
+            v-if="showFilter"
+          >
+            <div class="mt-5">
+              <div
+                class="md:text-2xl text-xl w-min uppercase text-[#44A4DB] font-alatsi mb-2"
+              >
+                {{ $t("category_select") }}
+              </div>
+              <div class="ml-5">
+                <p
+                  v-for="item in categories.data"
+                  @click="
+                    useRouter().push(
+                      localePath({
+                        path: `/filtered-product/${item?.uuid}`,
+                        query: { filter: '[]' },
+                      })
+                    )
+                  "
+                  class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                >
+                  {{ item?.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </Transition>
+      </div>
 
       <div class="w-full">
         <div
@@ -54,7 +84,7 @@
             v-for="(item, index) in all_products?.products"
             :key="item"
             draggable="true"
-            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start gap-y-4 items-center"
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>
