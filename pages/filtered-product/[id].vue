@@ -4,10 +4,13 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end lg:hidden block"
+        class="self-end w-35 lg:hidden flex justify-between"
         type="secondary"
-        >{{ !showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
-      >
+        ><p>
+          {{ !showFilter ? $t("close_filter") : $t("show_filter") }}
+        </p>
+        <img src="@/assets/images/filter.png" class="inline w-5" alt=""
+      /></BaseButton>
     </div>
 
     <div class="lead flex gap-5">

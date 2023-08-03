@@ -5,7 +5,11 @@
       v-if="!props.show_filter"
     >
       <div>
-        <div class="text-2xl font-alatsi mb-2">{{ $t("order") }}</div>
+        <div
+          class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+        >
+          {{ $t("order") }}
+        </div>
         <div>
           <div v-for="item in orderList" class="flex items-center gap-2">
             <BaseInput
@@ -22,7 +26,11 @@
       </div>
 
       <div v-if="show_cat" class="mt-5">
-        <div class="text-2xl font-alatsi mb-2">{{ $t("in_category") }}</div>
+        <div
+          class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+        >
+          {{ $t("in_category") }}
+        </div>
         <div class="ml-5" v-if="!route.query.catId">
           <p
             v-for="item in sub_categories"
@@ -42,7 +50,11 @@
       </div>
 
       <div class="relative mt-5">
-        <div class="text-2xl font-alatsi mb-2">{{ $t("brands") }}</div>
+        <div
+          class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+        >
+          {{ $t("brands") }}
+        </div>
 
         <div>
           <div

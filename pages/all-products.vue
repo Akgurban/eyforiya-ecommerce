@@ -20,7 +20,9 @@
           v-if="showFilter"
         >
           <div class="mt-5">
-            <div class="text-2xl font-alatsi mb-2">
+            <div
+              class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+            >
               {{ $t("category_select") }}
             </div>
             <div class="ml-5">
