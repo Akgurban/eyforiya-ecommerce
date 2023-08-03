@@ -18,7 +18,7 @@ import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
 const props = defineProps({
-  name: { type: String, required: true },
+  name: { type: String, required: false },
   type: { type: String, default: "text" },
   label: { type: String, required: true },
   value: { type: [String, Number], default: "" },

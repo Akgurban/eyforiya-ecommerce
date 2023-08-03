@@ -1,6 +1,8 @@
 <script setup>
 const { locale } = useI18n();
-
+const props = defineProps({
+  count: { type: Number, default: 2 },
+});
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -20,7 +22,7 @@ const { data: categories } = await useMyFetch(
 <template>
   <swiper
     :spaceBetween="5"
-    :slidesPerView="$width.value == 'desktop' ? 4 : 2"
+    :slidesPerView="count"
     :centeredSlides="false"
     :autoplay="{
       delay: 3500,

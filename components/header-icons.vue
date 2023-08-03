@@ -80,7 +80,7 @@ const trash = useTrashStore();
 const { locale: activeLocale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const props = defineProps({
-  image: { type: String, required: true },
+  image: { type: String, required: false },
   text: { type: String, default: "text" },
 });
 const route = useRoute();

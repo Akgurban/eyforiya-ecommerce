@@ -1,17 +1,12 @@
 <template>
   <div class="2xl:w-[1440px] xl:screen w-[90%] mx-auto">
     <div
-      style="
-        height: auto !important;
-        user-select: none !important;
-        padding-bottom: 20px !important;
-      "
-      class="flex flex-wrap gap-6 justify-start"
+      style="padding-bottom: 20px !important"
+      class="flex flex-wrap gap-6 px-4 justify-start"
     >
       <NuxtLink
-        v-for="(item, index) in brands.data"
-        :key="item"
-        :to="item.brand_name"
+        v-for="(item, index) in brands?.data"
+        :key="item.uuid"
         draggable="true"
         @click="
           useRouter().push(

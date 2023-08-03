@@ -36,7 +36,7 @@ const { data: banners } = await useMyFetch(`/api/v1/client/products/banners`);
     class="mb-5 w-full h-full select-none"
   >
     <swiper-slide
-      v-for="item in banners.data"
+      v-for="item in banners?.data"
       :key="item.uuid"
       style="
         width: 100% !important;
@@ -45,12 +45,12 @@ const { data: banners } = await useMyFetch(`/api/v1/client/products/banners`);
       "
       class="group w-full h-full cursor-pointer"
     >
-      <NuxtLink :to="item.brand_name" class="rounded-xl w-full h-full">
+      <NuxtLink :to="item?.brand_name" class="rounded-xl w-full h-full">
         <img
           class="border border-[#e6e6e6] object-cover w-full h-full transition-all ease-in-out duration-200"
           :src="`http://duypbaha.com.tm/api/v1/uploads/banners/${item?.img_path}`"
           alt=""
-          loading="lazy"
+          lazy="true"
         />
       </NuxtLink>
     </swiper-slide>

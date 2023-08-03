@@ -20,10 +20,10 @@
 import { v4 as uuidv4 } from "uuid";
 
 const props = defineProps({
-  name: { type: String, required: true },
+  name: { type: String, required: false },
   checked: { type: Boolean, default: false },
   type: { type: String, default: "text" },
-  label: { type: String, required: true },
+  label: { type: String, required: false },
   modelValue: { type: [String, Number], default: null },
   heightFull: { type: Boolean, default: false },
   placeholder: { type: String, default: "" },

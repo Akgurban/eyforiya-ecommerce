@@ -40,28 +40,25 @@
         </div>
       </Transition>
 
-      <div
-        style="
-          width: 96% !important;
-          height: auto !important;
-          user-select: none !important;
-          padding-bottom: 20px !important;
-        "
-        class="flex flex-wrap gap-3 mx-auto justify-between mt-5"
-      >
+      <div class="w-full">
         <div
-          v-for="(item, index) in all_products?.products"
-          :key="item"
-          draggable="true"
-          class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          style="padding-bottom: 20px !important"
+          class="flex w-full flex-wrap gap-3 mx-auto justify-between mt-5"
         >
-          <BaseProduct :item="item"></BaseProduct>
-        </div>
-        <div
-          v-if="!all_products"
-          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-        >
-          Hic hili Haryt tapylmady!
+          <div
+            v-for="(item, index) in all_products?.products"
+            :key="item"
+            draggable="true"
+            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          >
+            <BaseProduct :item="item"></BaseProduct>
+          </div>
+          <div
+            v-if="!all_products"
+            class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+          >
+            {{ $t("no_product") }}
+          </div>
         </div>
         <BasePaginate v-model="count" :total-items="all_products.count" />
       </div>

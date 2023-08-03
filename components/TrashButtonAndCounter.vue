@@ -25,10 +25,7 @@
       </div>
     </div>
 
-    <div
-      v-if="count != 0"
-      class="w-[80%] text-center md:mt-3 z-50 md:h-19 h-13"
-    >
+    <div v-if="count != 0" class="w-[80%] text-center z-50 md:h-17.5 h-13">
       <div
         class="w-full font-bold justify-evenly flex gap-2 px-6 py-1 md:py-2 rounded-xl bg-[#F6F6F6]"
       >

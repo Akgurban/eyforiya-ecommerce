@@ -28,7 +28,12 @@
         </div>
       </div>
       <div class="md:h-[358px] h-[250px] md:mt-7 mt-1">
-        <HeroSwiperCategory class=""></HeroSwiperCategory>
+        <div class="block md:hidden">
+          <HeroSwiperCategory :count="2"></HeroSwiperCategory>
+        </div>
+        <div class="md:block hidden">
+          <HeroSwiperCategory class="hidden" :count="4"></HeroSwiperCategory>
+        </div>
       </div>
     </div>
 
@@ -61,7 +66,12 @@
         </div>
       </div>
       <div class="block md:h-auto h-auto md:mt-7 mt-3">
-        <HeroSwiperProduct :products="latest" class=""></HeroSwiperProduct>
+        <div class="md:block hidden">
+          <HeroSwiperProduct :products="latest" :count="4"></HeroSwiperProduct>
+        </div>
+        <div class="block md:hidden">
+          <HeroSwiperProduct :products="latest" :count="2"></HeroSwiperProduct>
+        </div>
       </div>
     </div>
 
@@ -74,7 +84,7 @@
         </p>
       </div>
       <div class="h-auto w-full md:mt-7 mt-3">
-        <HeroSpecials :specials="spec_categories" class=""></HeroSpecials>
+        <HeroSpecials :specials="special_categories" class=""></HeroSpecials>
       </div>
     </div>
 
@@ -165,38 +175,22 @@
 <script setup>
 const { locale } = useI18n();
 
-const posts = ref(null);
-const categories = ref(null);
-const latest = ref(null);
-const spec_categories = ref(null);
-const special_latest = ref(null);
-const main_brands = ref(null);
+const { data: rating } = await useFetchWithCache(
+  `/api/v1/client/products/rating`
+);
 
-const { data: rating } = await useMyFetch(`/api/v1/client/products/rating`);
-const { data: products } = await useMyFetch(
+const { data: latest } = await useFetchWithCache(
   `/api/v1/client/products/latest/products?lang=${locale.value}`
 );
-if (products.value?.status) {
-  latest.value = products.value?.data;
-}
-const { data: spec_latest } = await useMyFetch(
+const { data: special_latest } = await useFetchWithCache(
   `/api/v1/client/products/special-categ-products?lang=${locale.value}`
 );
-if (spec_latest.value?.status) {
-  special_latest.value = spec_latest.value?.data;
-}
-const { data: brands } = await useMyFetch(
+const { data: main_brands } = await useFetchWithCache(
   `/api/v1/client/products/brands?lang=${locale.value}`
 );
-if (brands.value?.status) {
-  main_brands.value = brands.value?.data;
-}
-const { data: special_categories } = await useMyFetch(
+const { data: special_categories } = await useFetchWithCache(
   `/api/v1/client/products/special-categories?lang=${locale.value}`
 );
-if (special_categories.value?.status) {
-  spec_categories.value = special_categories.value?.data;
-}
 </script>
 
 <style scoped>

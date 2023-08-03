@@ -26,7 +26,7 @@
       fill="none"
       @click="toggleFav(propItem)"
       :class="item.isLiked ? 'fill-red-600 text-red-600' : ' text-white'"
-      class="hover:text-red-600 w-7"
+      class="group-hover:text-red-600 w-7"
     ></IconLike>
   </div>
   <TrashButtonAndCounter class="mt-5" :item="propItem" v-model="countProduct" />

@@ -111,6 +111,8 @@
 import { useAuthStore } from "~~/stores/authStore";
 import { useToast } from "vue-toastification";
 import { useFavStore } from "~~/stores/favourite";
+import { StorageSerializers } from "@vueuse/core";
+
 const favStore = useFavStore();
 
 const $toast = useToast();
@@ -128,6 +130,10 @@ const changedOneProduct = ref(null);
 
 const router = useRouter();
 const route = useRoute();
+const url = `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`;
+const lesson = useSessionStorage(url, null, {
+  serializer: StorageSerializers.object,
+});
 const sendComment = async () => {
   if (!comment.value?.length) {
     return $toast.error("kommentariya bosh bolmaly dal");
@@ -152,26 +158,54 @@ const sendComment = async () => {
 const { data: comments } = await useMyFetch(
   `/api/v1/client/products/product-comment?product_id=${route.params.id}&offset=0&limit=100`
 );
-const { data, status } = await useMyFetch(
-  `/api/v1/client/products/product/${route.params.id}?lang=${locale.value}`
-);
 
-if (status) {
-  oneProduct.value = data.value.data.one_products;
-  changedOneProduct.value = data.value.data.one_products;
-  selectedImg.value = data.value.data.one_products.images[0];
-  data.value.data.products.filter((e, index) => {
-    if (data.value.data.one_products.uuid !== e.uuid) {
+console.log(lesson.value, "lesson.value");
+if (!lesson.value) {
+  console.log(lesson.value, "lesson.value");
+  const { data, error, status } = await useMyFetch(url);
+
+  if (error.value) {
+    throw createError({
+      ...error.value,
+      statusMessage: `Could not fetch lesson`,
+    });
+  }
+
+  lesson.value = data.value;
+  if (status.value) {
+    oneProduct.value = data.value.data.one_products;
+    changedOneProduct.value = data.value.data.one_products;
+    selectedImg.value = data.value.data.one_products.images[0];
+    data.value.data.products.filter((e, index) => {
+      if (data.value.data.one_products.uuid !== e.uuid) {
+        similarProducts.value.push(e);
+      } else {
+        changedOneProduct.value = {
+          name: data.value.data.one_products?.name,
+          uuid: data.value.data.one_products?.uuid,
+          images: data.value.data.one_products?.images[0].img_path,
+          price: data.value.data.one_products?.price,
+        };
+      }
+    });
+  }
+} else {
+  oneProduct.value = lesson.value.data.one_products;
+  changedOneProduct.value = lesson.value.data.one_products;
+  selectedImg.value = lesson.value.data.one_products.images[0];
+  lesson.value.data.products.filter((e, index) => {
+    if (lesson.value.data.one_products.uuid !== e.uuid) {
       similarProducts.value.push(e);
     } else {
       changedOneProduct.value = {
-        name: data.value.data.one_products?.name,
-        uuid: data.value.data.one_products?.uuid,
-        images: data.value.data.one_products?.images[0].img_path,
-        price: data.value.data.one_products?.price,
+        name: lesson.value.data.one_products?.name,
+        uuid: lesson.value.data.one_products?.uuid,
+        images: lesson.value.data.one_products?.images[0].img_path,
+        price: lesson.value.data.one_products?.price,
       };
     }
   });
+  console.log(`getting from cache`);
 }
 
 favStore.wish_items?.forEach(async (e) => {

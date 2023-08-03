@@ -1,7 +1,7 @@
 <template>
   <swiper
     :spaceBetween="5"
-    :slidesPerView="$width.value == 'desktop' ? 4 : 2"
+    :slidesPerView="props.count"
     :loop="true"
     :autoplay="{
       delay: 377500,
@@ -43,6 +43,10 @@ const props = defineProps({
   products: {
     type: Array,
     default: [],
+  },
+  count: {
+    type: Number,
+    default: 4,
   },
 });
 

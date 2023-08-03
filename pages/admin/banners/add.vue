@@ -5,9 +5,9 @@
       <div class="flex flex-col justify-between">
         <BaseInput
           :validate="val_tm"
-          name="Categoriya Turkmen"
-          label="Categoriya Turkmen"
-          placeholder="Categoriya Turkmen"
+          name="Url"
+          label="link girizin"
+          placeholder="https://google.com"
           v-model="category_tm"
         />
       </div>
@@ -53,6 +53,9 @@ const addCategory = async () => {
       val_tm(category_tm.value);
       alert("Maglumatlary doly giriziň!");
       throw "Maglumatlary doly giriziň!";
+    }
+    if (!category_tm.value.includes("http")) {
+      return alert("linki dogry goyun");
     }
     const form = new FormData();
     form.append("name", category_tm.value);

@@ -97,11 +97,8 @@ const logout = () => {
           >
             Sign In
           </button>
-          <p
-            class="p-2 bg-red-500 rounded-md text-white font-bold"
-            v-if="pendings"
-          >
-            Garashyn...
+          <p class="p-2 rounded-md text-white font-bold" v-if="pendings">
+            <img src="@/assets/images/loader.gif" alt="" />
           </p>
         </div>
       </form>

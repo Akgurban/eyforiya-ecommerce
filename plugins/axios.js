@@ -6,13 +6,13 @@ export default defineNuxtPlugin((NuxtApp) => {
   return {
     provide: {
       axios: axios,
-      width: computed({
-        get: () => {
-          if (process.client) {
-            return window.innerWidth > "640" ? "desktop" : "mobile";
-          }
-        },
-      }),
+      // width: computed({
+      //   get: () => {
+      //     if (process.client) {
+      //       return window.innerWidth > "640" ? "desktop" : "mobile";
+      //     }
+      //   },
+      // }),
     },
   };
 });

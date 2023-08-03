@@ -1,5 +1,4 @@
 <template>
-  <label :for="id">{{ label }}</label>
   <div
     class="px-5 py-[10px] w-full rounded-lg bg-[#f6f6f6] flex border hover:border-black"
   >
@@ -27,7 +26,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 const props = defineProps({
-  name: { type: String, required: true },
+  name: { type: String, required: false },
   type: { type: String, default: "text" },
   modelValue: { type: [String, Number], default: "" },
   placeholder: { type: String, default: "" },
