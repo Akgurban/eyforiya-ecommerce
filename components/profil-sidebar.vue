@@ -1,6 +1,6 @@
 <template>
   <div
-    class="md:w-[400px] w-full md:h-screen h-auto md:relative md:mb-10 bottom-0 bg-blue-50 shadow-md font-bold text-xl"
+    class="md:w-[400px] w-full md:h-screen h-auto md:sticky md:mb-10 bottom-0 bg-blue-50 shadow-md font-bold text-xl"
   >
     <ul
       class="md:m-5 flex md:flex-col flex-row gap-3 mt-3 justify-between md:justify-start"

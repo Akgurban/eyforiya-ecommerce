@@ -11,14 +11,13 @@
     </div>
 
     <div class="lead flex gap-5">
-      <Transition name="slide-fade">
-        <filtered-sidebar
-          :show_filter="showFilter"
-          :brands="incomedDatas?.brands"
-          :sub_categories="incomedDatas?.sub_categories"
-          @someChange="(e) => emittedFromSidebar(e)"
-        />
-      </Transition>
+      <filtered-sidebar
+        :show_filter="showFilter"
+        :brands="incomedDatas?.brands"
+        :sub_categories="incomedDatas?.sub_categories"
+        @someChange="(e) => emittedFromSidebar(e)"
+      />
+
       <div class="w-full">
         <div
           style=""

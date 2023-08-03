@@ -1,74 +1,76 @@
 <template>
-  <div
-    class="lg:relative absolute h-auto px-2 py-2 lg:block w-50%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
-    :class="!props.show_filter ? 'block' : 'hidden'"
-  >
-    <div>
-      <div class="text-2xl font-alatsi mb-2">{{ $t("order") }}</div>
+  <Transition name="slide-fade">
+    <div
+      class="lg:relative md:pt-10 pt-20 overflow-auto fixed shadow-2xl top-0 z-40 h-screen px-3 py-3 lg:block w-[50%] 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+      v-if="!props.show_filter"
+    >
       <div>
-        <div v-for="item in orderList" class="flex items-center gap-2">
-          <BaseInput
-            @change="test(item)"
-            heightFull
-            class="w-5 h-5"
-            type="radio"
-            name="price-filter"
-            :checked="item.code == order"
-          />
-          <div class="font-alatsi text-base">{{ $t(item.name) }}</div>
+        <div class="text-2xl font-alatsi mb-2">{{ $t("order") }}</div>
+        <div>
+          <div v-for="item in orderList" class="flex items-center gap-2">
+            <BaseInput
+              @change="test(item)"
+              heightFull
+              class="w-5 h-5"
+              type="radio"
+              name="price-filter"
+              :checked="item.code == order"
+            />
+            <div class="font-alatsi text-base">{{ $t(item.name) }}</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div v-if="show_cat" class="mt-5">
-      <div class="text-2xl font-alatsi mb-2">{{ $t("in_category") }}</div>
-      <div class="ml-5" v-if="!route.query.catId">
-        <p
-          v-for="item in sub_categories"
-          @click="selectedSub = item.uuid"
-          class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
-        >
-          {{ item?.name }}
-        </p>
-      </div>
-      <div
-        v-else
-        @click="selectedSub = null"
-        class="text-[#44A4DB] md:cursor-pointer cursor-auto font-alatsi ml-5"
-      >
-        <IconChevronLeft class="inline text-[#44A4DB]" /> = yza Cyk
-      </div>
-    </div>
-
-    <div class="relative mt-5">
-      <div class="text-2xl font-alatsi mb-2">{{ $t("brands") }}</div>
-
-      <div>
-        <div
-          class="right-0 border-t-2 h-auto duration-250 ease-in-out z-10 w-full"
-        >
-          <ul
-            @click="checkBrands(option)"
-            v-for="(option, index) in brands"
-            :key="index"
+      <div v-if="show_cat" class="mt-5">
+        <div class="text-2xl font-alatsi mb-2">{{ $t("in_category") }}</div>
+        <div class="ml-5" v-if="!route.query.catId">
+          <p
+            v-for="item in sub_categories"
+            @click="selectedSub = item.uuid"
+            class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
           >
-            <li class="py-2 px-5 hover:bg-gray-100 cursor-pointer">
-              <div class="flex items-center justify-start gap-2">
-                <div class="h-4 w-4">
-                  <input v-model="option.selected" type="checkbox" />
+            {{ item?.name }}
+          </p>
+        </div>
+        <div
+          v-else
+          @click="selectedSub = null"
+          class="text-[#44A4DB] md:cursor-pointer cursor-auto font-alatsi ml-5"
+        >
+          <IconChevronLeft class="inline text-[#44A4DB]" /> = yza Cyk
+        </div>
+      </div>
+
+      <div class="relative mt-5">
+        <div class="text-2xl font-alatsi mb-2">{{ $t("brands") }}</div>
+
+        <div>
+          <div
+            class="right-0 border-t-2 h-auto duration-250 ease-in-out z-10 w-full"
+          >
+            <ul
+              @click="checkBrands(option)"
+              v-for="(option, index) in brands"
+              :key="index"
+            >
+              <li class="py-2 px-5 hover:bg-gray-100 cursor-pointer">
+                <div class="flex items-center justify-start gap-2">
+                  <div class="h-4 w-4">
+                    <input v-model="option.selected" type="checkbox" />
+                  </div>
+                  <div
+                    class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                  >
+                    {{ option.brand_name }}
+                  </div>
                 </div>
-                <div
-                  class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
-                >
-                  {{ option.brand_name }}
-                </div>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>

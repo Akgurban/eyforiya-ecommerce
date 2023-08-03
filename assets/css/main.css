@@ -26,6 +26,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   width: 100vw;
+  overflow: auto;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 620px) {
   * {
@@ -102,4 +104,17 @@ a {
   font-weight: 600;
   font-display: swap;
   src: url("@/assets/fonts/Inter/static/Inter-SemiBold.ttf") format("opentype");
+}
+.slide-fade-enter-active {
+  transition: all 0.2s ease-in;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
 }

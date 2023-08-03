@@ -4,17 +4,20 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end lg:hidden block"
+        class="self-end w-35 lg:hidden flex justify-between"
         type="secondary"
-        >{{ showFilter ? $t("close_filter") : $t("show_filter") }}</BaseButton
-      >
+        ><p>
+          {{ showFilter ? $t("close_filter") : $t("show_filter") }}
+        </p>
+        <img src="@/assets/images/filter.png" class="inline w-5" alt="" />
+      </BaseButton>
     </div>
 
     <div class="lead flex gap-5">
       <Transition name="slide-fade">
         <div
-          class="lg:relative absolute h-auto px-2 py-2 lg:block w-[50%] z-30 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
-          :class="showFilter ? 'block' : 'hidden'"
+          class="lg:relative fixed shadow-2xl top-0 z-40 h-screen px-2 py-2 lg:block w-[50%] 2xl:w-[25%] lg:w-[28%] pb-10 bg-slate-100 rounded-md p-4"
+          v-if="showFilter"
         >
           <div class="mt-5">
             <div class="text-2xl font-alatsi mb-2">
@@ -43,7 +46,7 @@
       <div class="w-full">
         <div
           style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 mx-auto justify-between mt-5"
+          class="flex w-full flex-wrap gap-3 mx-auto justify-center mt-5"
         >
           <div
             v-for="(item, index) in all_products?.products"

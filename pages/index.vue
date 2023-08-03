@@ -15,7 +15,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
-            @click="useRouter().push('/all-products')"
+            @click="useRouter().push('/categories')"
           >
             {{ $t("view_all") }}
           </p>
@@ -111,10 +111,18 @@
         </div>
       </div>
       <div class="block md:h-auto h-auto md:mt-7 mt-1">
-        <HeroSwiperProduct
-          :products="special_latest"
-          class=""
-        ></HeroSwiperProduct>
+        <div class="md:block hidden">
+          <HeroSwiperProduct
+            :products="special_latest"
+            :count="4"
+          ></HeroSwiperProduct>
+        </div>
+        <div class="block md:hidden">
+          <HeroSwiperProduct
+            :products="special_latest"
+            :count="2"
+          ></HeroSwiperProduct>
+        </div>
       </div>
     </div>
 
