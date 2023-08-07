@@ -3,7 +3,7 @@
     <div class="item_5 md:block hidden w-full overflow-hidden">
       <div class="flex w-full">
         <NuxtLink
-          v-for="item in specials.slice(0, 3)"
+          v-for="item in specials?.slice(0, 3)"
           @click="
             useRouter().push(
               localePath({
@@ -22,7 +22,7 @@
       </div>
       <div class="flex w-full">
         <NuxtLink
-          v-for="item in specials.slice(3, 5)"
+          v-for="item in specials?.slice(3, 5)"
           @click="
             useRouter().push(
               localePath({
@@ -43,7 +43,7 @@
     <div class="item_mob md:hidden block w-full overflow-hidden">
       <div class="flex w-full">
         <NuxtLink
-          v-for="item in specials.slice(2, 4)"
+          v-for="item in specials?.slice(2, 4)"
           @click="
             useRouter().push(
               localePath({
@@ -62,7 +62,7 @@
       </div>
       <div class="flex w-full">
         <NuxtLink
-          v-for="item in specials.slice(4, 5)"
+          v-for="item in specials?.slice(4, 5)"
           @click="
             useRouter().push(
               localePath({
@@ -81,7 +81,7 @@
       </div>
       <div class="flex w-full">
         <NuxtLink
-          v-for="item in specials.slice(0, 2)"
+          v-for="item in specials?.slice(0, 2)"
           @click="
             useRouter().push(
               localePath({
