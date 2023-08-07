@@ -9,23 +9,24 @@
         </div>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/location.png" alt="" />
-          <p>
-            Location: № A3-333, Altyn asyr Gundogar bazary, <br />
-            Ashgabat city, Turkmenistan
-          </p>
+          <p>Aşgabat ş. Altyn Asyr Gündogar bazary ,Dükan № A3-333</p>
         </div>
-        <a href="tel:+993 65 656565" class="flex items-start gap-2 mt-4">
+        <a href="tel:+99361876094" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/call.png" alt="" />
-          <p class="select-none">Phone: +99365656565</p>
+          <p class="select-none">Phone: +99361876094</p>
+        </a>
+        <a href="tel:+99365138000" class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/call.png" alt="" />
+          <p class="select-none">Phone: +99365138000</p>
         </a>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/email.png" alt="" />
           <p class="">
             Email:
             <a
-              href="mailto:duypbaha@gmail.com"
+              href="mailto:info@duypbaha.com.tm"
               class="select-none cursor-default"
-              >duypbaha@gmail.com</a
+              >info@duypbaha.com.tm</a
             >
           </p>
         </div>
