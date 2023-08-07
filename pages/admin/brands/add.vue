@@ -5,9 +5,9 @@
       <div class="flex flex-col justify-between">
         <BaseInput
           :validate="val_tm"
-          name="Categoriya Turkmen"
-          label="Categoriya Turkmen"
-          placeholder="Categoriya Turkmen"
+          name="Brand"
+          label="Brand"
+          placeholder="Brand"
           v-model="category_tm"
         />
       </div>
@@ -19,7 +19,7 @@
       </div>
 
       <BaseButton @click="addCategory" class="" type="secondary">
-        <button>Add Category</button>
+        <button>Brand goshmak</button>
       </BaseButton>
     </div>
   </div>
@@ -30,7 +30,6 @@ definePageMeta({
   layout: "admin",
   middleware: ["auth"],
 });
-import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 

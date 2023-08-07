@@ -12,7 +12,7 @@
         :key="item.name"
         :to="item.path"
         :class="{ active: useRoute().path.includes(item.path) }"
-        class="admin-links bg-slate-300 hover:bg-slate-500 hover:text-slate-50 my-2 p-2 text-2xl hover:underline cursor-pointer flex flex-col"
+        class="admin-links bg-slate-300 hover:bg-slate-500 hover:text-slate-50 my-2 p-2 text-xl hover:underline cursor-pointer flex flex-col"
         >{{ item.name }}</NuxtLink
       >
     </ul>
@@ -21,15 +21,15 @@
 
 <script setup>
 const posts = ref([
-  { name: "Categories", path: "/admin/categories" },
-  { name: "Sub Categories", path: "/admin/sub-categories" },
-  { name: "Banners", path: "/admin/banners" },
-  { name: "Specials", path: "/admin/special-categories" },
-  { name: "Brands", path: "/admin/brands" },
-  { name: "Videos", path: "/admin/videos" },
-  { name: "Products", path: "/admin/products" },
-  { name: "Comments", path: "/admin/comments" },
-  { name: "Orders", path: "/admin/orders" },
+  { name: "Kategoriyalar", path: "/admin/categories" },
+  { name: "Kici kategoriyalar", path: "/admin/sub-categories" },
+  { name: "Mahabat", path: "/admin/banners" },
+  { name: "Yorite Kategoriyalar", path: "/admin/special-categories" },
+  { name: "Brendlar", path: "/admin/brands" },
+  { name: "Wideolar", path: "/admin/videos" },
+  { name: "Harytlar", path: "/admin/products" },
+  { name: "Teswirler", path: "/admin/comments" },
+  { name: "Zakazlar", path: "/admin/orders" },
 ]);
 const isRouteActive = ref(true);
 </script>

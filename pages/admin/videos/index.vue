@@ -4,11 +4,11 @@
       class="bg-green-700 block rounded-md hover:bg-green-600 p-2 text-white font-bold text-center mt-3 cursor-pointer"
       to="/admin/videos/add"
     >
-      Add +
+      Goshmak +
     </NuxtLink>
     <div class="rounded-md p-2 m-1 flex justify-between">
       <p class="font-bold">Name</p>
-      <BaseButton type="">Delete</BaseButton>
+      <BaseButton type="">Pozmak</BaseButton>
     </div>
     <ul>
       <div
@@ -36,7 +36,7 @@
         </p>
         <div class="flex gap-3">
           <BaseButton @click="deleteCategory(item)" type="danger"
-            >delete</BaseButton
+            >Pozmak</BaseButton
           >
         </div>
       </div>

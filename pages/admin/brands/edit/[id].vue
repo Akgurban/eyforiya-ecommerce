@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-4 font-bold bg-slate-300 p-2">Banner gosun</div>
+    <div class="my-4 font-bold bg-slate-300 p-2">Brand gosun</div>
     <div class="flex gap-4 justify-between w-full">
       <div class="flex flex-col justify-between">
         <BaseInput
@@ -22,7 +22,7 @@
       </div>
 
       <BaseButton @click="addCategory" class="" type="secondary">
-        <button>Edit Category</button>
+        <button>Brand uytget</button>
       </BaseButton>
     </div>
   </div>

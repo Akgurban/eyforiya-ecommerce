@@ -1,23 +1,26 @@
 <template>
   <div>
-    <div class="w-60 flex gap-2 items-center ml-auto">
+    <div class="w-80 flex gap-2 items-center ml-auto">
       <div
         class="text-xl font-bold"
-        :class="statusValue.name == true ? 'text-green-700' : 'text-red-500'"
+        :class="
+          statusValue.name == `tassyklanan` ? 'text-green-700' : 'text-red-500'
+        "
       >
-        Status:
+        Yagdayy:
       </div>
       <BaseSelect
         v-model="statusValue"
-        :options="[{ name: true }, { name: false }]"
+        class=""
+        :options="[{ name: `tassyklanan` }, { name: `garashylyar` }]"
       ></BaseSelect>
     </div>
     <div class="rounded-md p-2 m-1 flex justify-between">
-      <p class="font-bold">Username</p>
-      <p class="font-bold">productName</p>
-      <p class="font-bold">Comment</p>
-      <p class="font-bold">update</p>
-      <p class="font-bold">Delete</p>
+      <p class="font-bold">Ulanyjy ady</p>
+      <p class="font-bold">harydyn ady</p>
+      <p class="font-bold">teswir</p>
+      <p class="font-bold">status uytgetmek</p>
+      <p class="font-bold">Pozmak</p>
     </div>
     <ul>
       <div
@@ -36,10 +39,10 @@
         </p>
         <div class="flex gap-3">
           <BaseButton @click="updateComments(item)" type="secondary"
-            >changeStatus</BaseButton
+            >Status uytget</BaseButton
           >
           <BaseButton @click="deleteCategory(item)" type="danger"
-            >delete</BaseButton
+            >Pozmak</BaseButton
           >
         </div>
       </div>
@@ -58,11 +61,11 @@ definePageMeta({
 const comments = ref(null);
 const count = ref(1);
 const totalItems = ref(10);
-const statusValue = ref({ name: true });
+const statusValue = ref({ name: `tassyklanan` });
 const router = useRouter();
 try {
   const { data } = await userStore.getComments({
-    status: statusValue.value.name,
+    status: statusValue.value.name == `tassyklanan` ? true : false,
     limit: 15,
     offset: count.value,
   });
@@ -75,7 +78,7 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getComments({
-      status: statusValue.value.name,
+      status: statusValue.value.name == `tassyklanan` ? true : false,
       limit: 15,
       offset: count.value - 1,
     });
@@ -96,7 +99,7 @@ const deleteCategory = async (e) => {
 const updateComments = async (e) => {
   try {
     const { data } = await userStore.updateComment({
-      status: !statusValue.value.name,
+      status: statusValue.value.name !== `tassyklanan` ? true : false,
       uuid: e.uuid,
     });
     await getCategoriesr();

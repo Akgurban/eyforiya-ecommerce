@@ -26,19 +26,19 @@
         <div class="flex flex-col justify-between gap-3 w-[400px]">
           <BaseSelect
             v-model="selectedSpec"
-            label="Select Special category"
+            label="Yorite categoriya saylan"
             :options="spec_categories"
           >
           </BaseSelect>
           <BaseSelect
             v-model="selectedSub"
-            label="Select Sub Category"
+            label="Kici kategoriya saylan"
             :options="sub_categories"
           >
           </BaseSelect>
           <BaseSelect
             v-model="selectedBrand"
-            label="Select Brand"
+            label="Brand Saylan"
             :options="brands"
           >
           </BaseSelect>

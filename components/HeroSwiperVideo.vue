@@ -27,7 +27,6 @@ const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
     }"
     :modules="[Autoplay, Pagination, Navigation]"
     :navigation="true"
-    :pagination="{ clickable: true, renderBullet }"
     style="width: 100% !important; height: 100% !important"
     :mousewheel="true"
     :keyboard="true"
@@ -46,7 +45,13 @@ const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
           })
         )
       " -->
-      <video class="w-full aspect-video object-cover z-[1]" autoplay loop muted>
+      <video
+        class="w-full h-full object-cover z-[1]"
+        autoplay
+        controls
+        loop
+        muted
+      >
         <source
           :src="`http://duypbaha.com.tm/api/v1/uploads/videos/${item?.video_path}`"
           ref="img"

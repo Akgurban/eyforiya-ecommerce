@@ -5,7 +5,7 @@
     >
       <div>Admin Panel</div>
       <div @click="logout" class="group relative flex gap-2 font-bold">
-        <p class="text-white p-1 rounded-md bg-red-700">Log out</p>
+        <p class="text-white p-1 rounded-md bg-red-700">Ulgamdan Cyk</p>
 
         <!-- <div
           class="absolute group-hover:block hidden top-6 -right-1/2 text-white h-10 w-[150px]"

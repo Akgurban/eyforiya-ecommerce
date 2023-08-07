@@ -17,7 +17,7 @@
             <p class="uppercase">Product Details</p>
             <p class="uppercase">Quantity</p>
             <p class="uppercase">Price</p>
-            <p class="uppercase">Delete</p>
+            <p class="uppercase">Pozmak</p>
           </div>
         </div>
         <div

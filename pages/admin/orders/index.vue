@@ -1,20 +1,22 @@
 <template>
   <div>
-    <div class="w-60 flex gap-2 items-center ml-auto">
+    <div class="w-80 flex gap-2 items-center ml-auto">
       <div
         class="text-xl font-bold"
-        :class="statusValue.name == true ? 'text-green-700' : 'text-red-500'"
+        :class="
+          statusValue.name == `tassyklanan` ? 'text-green-700' : 'text-red-500'
+        "
       >
-        Status:
+        Yagdayy:
       </div>
       <BaseSelect
         v-model="statusValue"
-        :options="[{ name: true }, { name: false }]"
+        :options="[{ name: `tassyklanan` }, { name: `garashylyar` }]"
       ></BaseSelect>
     </div>
     <div class="rounded-md p-2 m-1 flex justify-between">
-      <p class="font-bold">Name Orders</p>
-      <BaseButton type="">Delete</BaseButton>
+      <p class="font-bold">Zakazlar</p>
+      <BaseButton type="">Pozmak</BaseButton>
     </div>
     <ul>
       <div
@@ -33,7 +35,7 @@
               >Status uytget</BaseButton
             >
             <BaseButton @click="deleteCategory(item)" type="danger"
-              >delete</BaseButton
+              >Pozmak</BaseButton
             >
           </div>
         </div>
@@ -51,6 +53,7 @@
             <p>
               {{ small.product_name }}
             </p>
+            <p>{{ small.price }} TMT</p>
             <p>count: {{ small.count }}</p>
           </li>
         </ul>
@@ -74,13 +77,13 @@ const count = ref(1);
 const totalItems = ref(1);
 const orders = ref(null);
 const router = useRouter();
-const statusValue = ref({ name: true });
+const statusValue = ref({ name: `tassyklanan` });
 
 try {
   const { data } = await userStore.getOrders({
     limit: 25,
     offset: 0,
-    status: statusValue.value.name,
+    status: statusValue.value.name == `tassyklanan` ? true : false,
   });
   // categories.value = data.value.data;
   orders.value = data.value.data.orders;
@@ -93,7 +96,7 @@ const getCategoriesr = async () => {
     const { data } = await userStore.getOrders({
       limit: 15,
       offset: count.value - 1,
-      status: statusValue.value.name,
+      status: statusValue.value.name == `tassyklanan` ? true : false,
     });
     orders.value = data.value.data.orders;
     totalItems.value = data.value.data?.count;
@@ -115,7 +118,7 @@ const deleteCategory = async (e) => {
 const setStatus = async (e) => {
   try {
     const { data, status } = await userStore.updateOrder({
-      status: !statusValue.value.name,
+      status: statusValue.value.name !== `tassyklanan` ? true : false,
       uuid: e.order_id,
     });
     if (status) {

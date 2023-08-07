@@ -22,7 +22,7 @@
       </div>
 
       <BaseButton @click="addCategory" class="" type="secondary">
-        <button>Edit Category</button>
+        <button>Kategoriya uytgetmek</button>
       </BaseButton>
     </div>
   </div>
@@ -33,7 +33,6 @@ definePageMeta({
   layout: "admin",
   middleware: ["auth"],
 });
-import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 const router = useRouter();

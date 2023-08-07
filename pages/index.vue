@@ -144,7 +144,7 @@
           "
         >
           <img
-            class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
+            class="text-black aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
             alt=""
           />
@@ -165,7 +165,7 @@
           "
         >
           <img
-            class="text-black grayscale aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
+            class="text-black aspect-auto object-cover hover:grayscale-0 transition-all duration-75 cursor-pointer h-[90px] min-w-[80px] rounded-md"
             :src="`http://duypbaha.com.tm/api/v1/uploads/brands/${item?.img_path}`"
             alt=""
           />

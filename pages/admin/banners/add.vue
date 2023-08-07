@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-4 font-bold bg-slate-300 p-2">Banner gosun</div>
+    <div class="my-4 font-bold bg-slate-300 p-2">Banner goshun</div>
     <div class="flex gap-4 justify-between w-full">
       <div class="flex flex-col justify-between">
         <BaseInput
@@ -30,7 +30,6 @@ definePageMeta({
   layout: "admin",
   middleware: ["auth"],
 });
-import axios from "~/plugins/axios";
 import { useUserStore } from "~~/stores/user";
 const userStore = useUserStore();
 

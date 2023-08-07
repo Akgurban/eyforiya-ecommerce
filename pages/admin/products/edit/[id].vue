@@ -26,19 +26,19 @@
         <div class="flex flex-col justify-between gap-3 w-[400px]">
           <BaseSelect
             v-model="selectedSpec"
-            label="Select Special category"
+            label="Yorite kategoriya saylan"
             :options="spec_categories"
           >
           </BaseSelect>
           <BaseSelect
             v-model="selectedSub"
-            label="Select Sub Category"
+            label="kici kategoriya saylan"
             :options="sub_categories"
           >
           </BaseSelect>
           <BaseSelect
             v-model="selectedBrand"
-            label="Select Brand"
+            label="brend saylan"
             :options="brands"
           >
           </BaseSelect>
@@ -60,9 +60,9 @@
           class="mt-4"
         />
         <BaseTextarea
-          name="English Dusundiris"
-          label="English Dusundiris"
-          placeholder="English Dusundiris "
+          name="Englishe Dusundiris"
+          label="Englishe Dusundiris"
+          placeholder="Englishe Dusundiris "
           v-model="description_en"
           class="mt-4"
         />

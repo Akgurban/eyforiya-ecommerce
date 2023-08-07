@@ -4,13 +4,13 @@
       class="bg-green-700 block rounded-md hover:bg-green-600 p-2 text-white font-bold text-center mt-3 cursor-pointer"
       to="/admin/products/add"
     >
-      Add +
+      Goshmak +
     </NuxtLink>
     <div class="rounded-md p-2 m-1 flex justify-between">
       <p class="font-bold">Image</p>
       <p class="font-bold">Title</p>
       <p class="font-bold">Description</p>
-      <p class="font-bold">Delete</p>
+      <p class="font-bold">Pozmak</p>
     </div>
     <ul>
       <li
@@ -33,10 +33,10 @@
           <BaseButton
             @click="useRouter().push(`/admin/products/edit/${item?.uuid}`)"
             type="primary"
-            >edit</BaseButton
+            >uytget</BaseButton
           >
           <BaseButton @click="deletePosts(item)" type="danger"
-            >delete</BaseButton
+            >Pozmak</BaseButton
           >
         </div>
       </li>
