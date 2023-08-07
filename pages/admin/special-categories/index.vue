@@ -74,7 +74,7 @@ const deleteCategory = async (e) => {
   }
 };
 const addPost = () => {
-  if (categories.value.length < 5) {
+  if (categories.value?.length < 5) {
     useRouter().push("/admin/special-categories/add");
   } else {
     alert("maximum 5 sany special categoriya");
