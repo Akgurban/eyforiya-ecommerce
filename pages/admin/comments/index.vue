@@ -67,7 +67,7 @@ try {
   const { data } = await userStore.getComments({
     status: statusValue.value.name == `tassyklanan` ? true : false,
     limit: 15,
-    offset: count.value,
+    offset: count.value-1,
   });
   comments.value = data.value.data.comments;
   totalItems.value = data.value.data?.count;
