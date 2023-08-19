@@ -14,7 +14,7 @@
     </div>
 
     <div class="lead flex gap-5">
-      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%]">
+      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
         <filtered-sidebar
           :brands="incomedDatas?.brands"
           :show_cat="false"

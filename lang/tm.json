@@ -6,7 +6,7 @@
   "our_partners": "global hyzmatdaşlarymyz",
   "products_website": "web sahypasyndaky önümler",
   "view_all": "Hemmesini gormek",
-  "search": "gözlemek",
+  "search": "Gözlemek...",
   "main": "Baş Sahypa",
   "brands": "Brendlar",
   "shops": "Dükanlar",
@@ -30,8 +30,12 @@
   "password": "Gizlin kod",
   "username": "Ulanyjy ady",
   "profile": "Sahsy otag",
-  "favourites_none": "halanlarynyz bosh",
+  "favourites_none": "Halanlarynyz Ýok",
   "add_to": "Sebede goş",
+  "delete": "Pozmak",
+  "price": "Bahasy",
+  "quantity": "Möçberi",
+  "info_product": "Haryt barada",
 
   "enter": "Bölüme gir",
   "arkadag_newspaper": "Arkadag  gazeti",
@@ -40,10 +44,18 @@
   "show_filter": "filter",
   "close_filter": "filter",
   "category_select": "kategoriya saylan",
+  "phone": "Telefon belgiňizi giriziň",
+  "totalprice": "Jemi Bahasy",
+  "prepare": "Sargydy taýýarlamak",
 
   "home": "Baş sahypa",
+  "signup": "Hasap açyň",
+  "signin": "Hasaba giriň",
   "videos": "wideolar",
   "contactUs": "Habarlaşmak ­üçin",
+  "user_exist": "Ulanyjy ady bar!",
+  "not_correct_data": "Ulanyjy ady ýada gizlinlik kody ýalňyş!",
+
   "address": "744000, Aşgabat ş., Arçabil şaýoly, 96",
   "about_page": "Biziñ müşderilerimize öýüne ähli gerek bolan hojalyk harytlaryny almak üçin birnäçe dükanlara aýlanmak zerurlygy ýok. Biz bilýäris öýümize gerekli harytlary ýokary hilli we amatly bahadan almak her bir müşderiniñ islegi. Biziñ dükanlarymyz uzak wagtyñ dowamynda Türkmenistanyñ ähli künjeginde öz müşderilerini ýokary hilli we şol bir wagtyñ özünde amatly harytlary bilen isleglerini kanagatlandyryp gelýär. Biziñ dükanlarymyz Hytaý halk respublikasynyñ, Birleşen Arap Emirlikleriniñ, Eýran Yslam Respublikasynyñ şeýle hem dünýäniñ beýleki ösen ýurtlarynyñ harytlaryny ildeşlerimize göniden-göni öndürilýän zawodlardan amatly bahalardan getirip bermek bilen halk arasynda meşhurlyga eýe boldy. Eger-de Siz hem öýñüze ýokary hilli düýp bahadan hojalyk,gurluşyk harytlaryny we žalýuzlary almak isleseñiz onda biziñ internet dükanymyza goşulyñ we täze gelýän harytlardan elmydama habarly boluñ. Biziñ internet torundaky sahypalarymyz: "
 }

@@ -3,9 +3,13 @@
     <div
       class="2xl:w-[1424px] xl:w-[900px] w-screen flex gap-3 items-center pl-10"
     >
-      <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
+      <NuxtLink
+        to="/"
+        class="cursor-pointer hover:font-bold"
+        >{{$t("main")}}</NuxtLink
+      >
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer font-bold">Add to cart</p>
+      <p class="cursor-pointer font-bold">{{ $t('add_to') }}</p>
     </div>
     <div class="w-full">
       <div class="w-full">
@@ -14,10 +18,10 @@
         >
           <div></div>
           <div class="flex justify-between w-full md:text-xl text-[10px]">
-            <p class="uppercase">Product Details</p>
-            <p class="uppercase">Quantity</p>
-            <p class="uppercase">Price</p>
-            <p class="uppercase">Pozmak</p>
+            <p class="uppercase">{{ $t('info_product') }}</p>
+            <p class="uppercase">{{ $t('quantity') }}</p>
+            <p class="uppercase">{{ $t('price') }}</p>
+            <p class="uppercase">{{ $t("delete") }}</p>
           </div>
         </div>
         <div
@@ -68,14 +72,16 @@
           class="bg-[#3C4242] text-white py-3 flex md:flex-row flex-col gap-y-4 justify-between w-full md:text-xl px-5 text-[10px]"
         >
           <div class="">
-            <p class="uppercase font-bold font-alatsi">Total Price:</p>
+            <p class="uppercase font-bold font-alatsi">
+              {{ $t('totalprice') }}:
+            </p>
             <p class="uppercase font-bold font-inter text-lg">
               {{ totalPrice }} TMT
             </p>
           </div>
 
           <div>
-            <p class="uppercase font-bold font-alatsi">Phone number:</p>
+            <p class="uppercase font-bold font-alatsi">{{ $t('phone') }}:</p>
             <div
               class="flex h-12 items-center justify-center text-black relative bg-white rounded-lg"
             >
@@ -92,7 +98,7 @@
             @click="makeOrder"
             class="rounded-lg text-lg"
             type="secondary"
-            >Sargydy tayyarlamak</BaseButton
+            >{{ $t('prepare') }}</BaseButton
           >
         </div>
       </div>

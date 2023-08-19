@@ -67,10 +67,16 @@
       </div>
       <div class="block md:h-auto h-auto md:mt-7 mt-3">
         <div class="md:block hidden">
-          <HeroSwiperProduct :products="latest" :count="4"></HeroSwiperProduct>
+          <HeroSwiperProduct
+            :products="latest.data"
+            :count="4"
+          ></HeroSwiperProduct>
         </div>
         <div class="block md:hidden">
-          <HeroSwiperProduct :products="latest" :count="2"></HeroSwiperProduct>
+          <HeroSwiperProduct
+            :products="latest.data"
+            :count="2"
+          ></HeroSwiperProduct>
         </div>
       </div>
     </div>
@@ -84,7 +90,10 @@
         </p>
       </div>
       <div class="h-auto w-full md:mt-7 mt-3">
-        <HeroSpecials :specials="special_categories" class=""></HeroSpecials>
+        <HeroSpecials
+          :specials="special_categories.data"
+          class=""
+        ></HeroSpecials>
       </div>
     </div>
 
@@ -113,13 +122,13 @@
       <div class="block md:h-auto h-auto md:mt-7 mt-1">
         <div class="md:block hidden">
           <HeroSwiperProduct
-            :products="special_latest"
+            :products="special_latest.data"
             :count="4"
           ></HeroSwiperProduct>
         </div>
         <div class="block md:hidden">
           <HeroSwiperProduct
-            :products="special_latest"
+            :products="special_latest.data"
             :count="2"
           ></HeroSwiperProduct>
         </div>
@@ -133,7 +142,7 @@
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
         <NuxtLink
-          v-for="item in main_brands"
+          v-for="item in main_brands.data"
           @click="
             useRouter().push(
               localePath({
@@ -154,7 +163,7 @@
         class="flex justify-around md:min-w-full w-fit gap-7 md:gap-14 animation_brands"
       >
         <NuxtLink
-          v-for="item in main_brands"
+          v-for="item in main_brands.data"
           @click="
             useRouter().push(
               localePath({
@@ -183,20 +192,20 @@
 <script setup>
 const { locale } = useI18n();
 
-const { data: rating } = await useFetchWithCache(
+const { data: rating } = await useMyFetch(
   `/api/v1/client/products/rating`
 );
 
-const { data: latest } = await useFetchWithCache(
+const { data: latest } = await useMyFetch(
   `/api/v1/client/products/latest/products?lang=${locale.value}`
 );
-const { data: special_latest } = await useFetchWithCache(
+const { data: special_latest } = await useMyFetch(
   `/api/v1/client/products/special-categ-products?lang=${locale.value}`
 );
-const { data: main_brands } = await useFetchWithCache(
+const { data: main_brands } = await useMyFetch(
   `/api/v1/client/products/brands?lang=${locale.value}`
 );
-const { data: special_categories } = await useFetchWithCache(
+const { data: special_categories } = await useMyFetch(
   `/api/v1/client/products/special-categories?lang=${locale.value}`
 );
 </script>

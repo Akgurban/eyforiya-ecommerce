@@ -13,7 +13,9 @@
       /></BaseButton>
     </div>
     <div class="flex justify-between gap-5">
-      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%]">
+      <div
+        class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20 sticky top-0"
+      >
         <filtered-sidebar
           :show_filter="!showFilter"
           :brands="incomedDatas?.brands"

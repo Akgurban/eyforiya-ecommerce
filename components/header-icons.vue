@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-3">
     <NuxtLink
-      @click="profilLogin"
+      :to="!user.userToken?.uuid ? localePath(`/user/login`) : localePath(`/profil/order`)"
       :class="
         route.path == '/login' ||
         route.path == '/en/login' ||
@@ -71,6 +71,7 @@
 import { useFavStore } from "~~/stores/favourite";
 import { useTrashStore } from "~~/stores/trash";
 import { useAuthStore } from "@/stores/authStore";
+const { locale } = useI18n();
 
 const favStore = useFavStore();
 const user = useAuthStore();
@@ -113,10 +114,11 @@ if (user.userToken?.uuid) {
 }
 const path = route.path;
 const profilLogin = () => {
+  console.log(localePath,'sa');
   if (user.userToken?.uuid) {
-    router.push("/profil/order");
+        router.push(localePath({name:"/profil/order"}));
   } else {
-    router.push("/user/login");
+      router.push(localePath({name:"/user/login"}));
   }
 };
 </script>

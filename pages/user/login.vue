@@ -17,6 +17,7 @@ definePageMeta({
 });
 const user = ref("");
 const password = ref("");
+const err_valid = ref("user_exist");
 const pendings = ref(false);
 const isValid = ref(true);
 const authStore = useAuthStore();
@@ -26,7 +27,9 @@ async function signUp() {
   try {
     // simple data validation
     if (!user.value || !password.value) {
-      isValid.value = false;
+      // isValid.value = false;
+      user.value=''
+      password.value=''
       return;
       // throw new Error("Please fill all fields");
     }
@@ -45,8 +48,11 @@ async function signUp() {
     console.log(error);
     if (error.value?.fatal == false) {
       pendings.value = false;
+      err_valid.value="user_exist"
+      isValid.value=false
 
-      return $toast.error(`username exist`);
+      return
+      // return $toast.error(`username exist`);
     }
     if (data.value?.status) {
       await login();
@@ -63,7 +69,9 @@ async function login() {
   try {
     // simple data validation
     if (!user.value || !password.value) {
-      isValid.value = false;
+      // isValid.value = false;
+      user.value=''
+      password.value=''
       return;
     }
 
@@ -80,7 +88,10 @@ async function login() {
     );
     authStore.userToken = data.value?.auth;
     if (!data.value.status) {
-      $toast.error(data.value.message);
+    isValid.value=false
+
+    err_valid.value="not_correct_data"
+      // $toast.error(data.value.message);
     }
     pendings.value = false;
   } catch (err) {
@@ -156,26 +167,26 @@ const logout = () => {
 
         <div class="mb-4">
           <BaseInput
-            label="Username"
+            :label="$t('username')"
             id="username"
             name="username"
             type="text"
-            placeholder="Username"
+            placeholder="aman@example.com"
             v-model="user"
           />
         </div>
         <div class="mb-6">
           <BaseInput
-            label="Password"
+            :label="$t('password')"
             id="password"
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="···········"
             v-model="password"
           />
         </div>
         <p class="text-red-500 text-sm inter font-bold mb-4" v-if="!isValid">
-          Please fill all the forms
+          {{ $t(err_valid) }}
         </p>
         <div class="flex w-full gap-5 items-center justify-between">
           <button
@@ -183,17 +194,17 @@ const logout = () => {
             type="button"
             @click="login"
           >
-            Sign In
+            {{$t('signin')}}
           </button>
           <p class="p-2 rounded-md text-white font-bold" v-if="pendings">
             <img src="@/assets/images/loader.gif" alt="" />
           </p>
           <button
-            class="bg-green-700 rounded-2xl w-1/2 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+            class="text-blue-700 border-blue-700 border-2 rounded-2xl w-1/2  font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
             @click="signUp"
           >
-            Sign up
+            {{$t('signup')}}
           </button>
         </div>
       </form>
