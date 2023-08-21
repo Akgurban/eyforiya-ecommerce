@@ -20,6 +20,14 @@
   "favourites": "favourites",
   "show_filter": "filter",
   "close_filter": "filter",
+  "pass_rec": "Password recover",
+  "email_rec": "Email recover",
+
+  "new_pass": "Enter new password",
+  "rew_pass": "Enter new password again",
+  "new_email": "Enter new username",
+  "rew_email": "Enter username again",
+  "noorder": "No Orders",
 
   "min_to": "the cheapest price",
   "max_to": "the most expensive",
@@ -29,7 +37,7 @@
   "history": "History",
   "password": "password",
   "username": "username",
-  "profile": "Profile",
+  "profile": "profile",
   "similar_products": "Similar Products",
   "otherNews": "Other news",
   "all": "See more",

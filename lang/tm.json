@@ -14,6 +14,9 @@
   "contact": "Habarlaşyň",
   "specials": "Esasylar",
 
+  "pass_rec": "Gizlinlik koduny täzelemek",
+  "email_rec": "Ulanyjy adyny täzelemek",
+
   "otherNews": "Başga habarlar",
   "all": "Hemmesi",
   "similar_products": "Meňzeş harytlar",
@@ -25,6 +28,7 @@
   "max_to": "gymmatdan arzana",
   "in_category": "Icki kategoriya saylan",
   "order": "tertip ",
+
   "comments": "teswirler",
   "history": "gecmis",
   "password": "Gizlin kod",
@@ -47,11 +51,17 @@
   "phone": "Telefon belgiňizi giriziň",
   "totalprice": "Jemi Bahasy",
   "prepare": "Sargydy taýýarlamak",
+  "new_pass": "Täze gizlinlik koduny giriziň",
+  "rew_pass": "Ýene bir gezek giriziň",
+  "new_email": "Täze ulanyjy ady giriziň",
+  "rew_email": "Ýene bir gezek giriziň",
 
-  "home": "Baş sahypa",
+  "home": "baş sahypa",
   "signup": "Hasap açyň",
   "signin": "Hasaba giriň",
   "videos": "wideolar",
+  "noorder": "Zakazlar Ýok",
+
   "contactUs": "Habarlaşmak ­üçin",
   "user_exist": "Ulanyjy ady bar!",
   "not_correct_data": "Ulanyjy ady ýada gizlinlik kody ýalňyş!",

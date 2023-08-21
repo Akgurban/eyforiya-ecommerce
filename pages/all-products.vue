@@ -78,7 +78,7 @@
       <div class="w-full">
         <div
           style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 mx-auto justify-center mt-5"
+          class="flex w-full flex-wrap gap-3 mx-auto justify-start mt-5"
         >
           <div
             v-for="(item, index) in all_products?.products"

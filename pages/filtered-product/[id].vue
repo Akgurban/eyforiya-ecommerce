@@ -14,7 +14,7 @@
     </div>
     <div class="flex justify-between gap-5">
       <div
-        class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20 sticky top-0"
+        class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20 sticky top-60"
       >
         <filtered-sidebar
           :show_filter="!showFilter"
@@ -33,12 +33,14 @@
       </div>
 
       <div class="w-full">
-        <div class="flex flex-wrap gap-3 justify-between mx-auto mt-5 px-2">
+        <div
+          class="flex flex-wrap gap-3 w-full justify-start mx-auto mt-5 px-2 "
+        >
           <div
             v-for="(item, index) in incomedDatas?.products"
             :key="item"
             draggable="true"
-            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start items-center"
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>

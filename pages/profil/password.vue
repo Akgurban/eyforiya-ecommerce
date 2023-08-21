@@ -20,11 +20,11 @@
       <div class="md:w-[900px] w-full">
         <div class="h-[96vh] overflow-auto">
           <div class="text-2xl md:text-4xl font-bold mt-6 text-blue-900">
-            Password recover
+            {{$t('pass_rec')}}
           </div>
           <form @submit.prevent="submit" class="md:mt-20 mt-10">
             <div class="pl-2 md:pl-10 w-[70%]">
-              <p class="text-blue-800 font-bold">passwordy tazele</p>
+              <p class="text-blue-800 font-bold">{{ $t('new_pass') }}</p>
               <input
                 v-model="password"
                 type="password"
@@ -38,7 +38,7 @@
               >
             </div>
             <div class="pl-2 md:pl-10 w-[70%] mt-8">
-              <p class="text-blue-800 font-bold">passwordy tazeden girizin</p>
+              <p class="text-blue-800 font-bold">{{ $t('rew_pass') }}</p>
               <input
                 v-model="password2"
                 type="password"
