@@ -9,12 +9,13 @@
         </div>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/location.png" alt="" />
-          <p>Aşgabat ş. Altyn Asyr Gündogar bazary ,Dükan № A3-333</p>
+          <p>
+            Aşgabat ş. <br />
+            Altyn Asyr Gündogar bazary,<br />
+            Dükan № A3-333
+          </p>
         </div>
-        <a href="tel:+99361876094" class="flex items-start gap-2 mt-4">
-          <img src="@/assets/images/call.png" alt="" />
-          <p class="select-none">Phone: +99361876094</p>
-        </a>
+
         <a href="tel:+99365138000" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/call.png" alt="" />
           <p class="select-none">Phone: +99365138000</p>
@@ -23,9 +24,38 @@
           <img src="@/assets/images/imo.jpg" alt="" />
           <p class="select-none">+99364992871</p>
         </a>
-        <a href="tel:+99364992471" class="flex items-start gap-2 mt-4">
+
+        <a
+          href="https://vm.tiktok.com/ZSLs3h1ap/"
+          class="flex items-start gap-2 mt-4"
+        >
+          <img src="@/assets/images/tiktok.jpg" alt="" />
+          <p class="select-none">@dunyatekdurdyyeva</p>
+        </a>
+        <div class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/email.png" alt="" />
+          <p class="">
+            <a
+              href="mailto:info@duypbaha.com.tm"
+              class="select-none cursor-default"
+              >info@duypbaha.com.tm</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="md:text-lg text-sm mt-16">
+        <a href="tel:+99361876094" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/call.png" alt="" />
-          <p class="select-none">Start: +99364992471</p>
+          <p class="select-none">Phone: +99361876094</p>
+        </a>
+
+        <a href="tel:+99364992871" class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/imo.jpg" alt="" />
+          <p class="select-none">+99364992871</p>
+        </a>
+        <a href="tel:+99364992471" class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/start.webp" class="w-10 h-10" alt="" />
+          <p class="select-none">+99364992471</p>
         </a>
         <a
           href="tel:+99364992471"
@@ -41,26 +71,23 @@
           <img src="@/assets/images/insta.png" alt="" />
           <p class="select-none">@zemin_lux</p>
         </a>
-        <a
-          href="https://vm.tiktok.com/ZSLs3h1ap/"
-          class="flex items-start gap-2 mt-4"
-        >
-          <img src="@/assets/images/tiktok.jpg" alt="" />
-          <p class="select-none">@dunyatekdurdyyeva</p>
-        </a>
-        <div class="flex items-start gap-2 mt-4">
-          <img src="@/assets/images/email.png" alt="" />
-          <p class="">
-            Email:
-            <a
-              href="mailto:info@duypbaha.com.tm"
-              class="select-none cursor-default"
-              >info@duypbaha.com.tm</a
-            >
-          </p>
+      </div>
+      <div class="self-end mt-6  md:block hidden">
+        <p class="md:text-2xl text-xs md:m-4 m-0">Download The App</p>
+        <div class="flex mt-4 gap-4">
+          <img
+            class="h-10 rounded-xl w-40"
+            src="@/assets/images/play.png"
+            alt=""
+          />
+          <img
+            class="h-10 rounded-xl w-40"
+            src="@/assets/images/app.png"
+            alt=""
+          />
         </div>
       </div>
-      <div class="md:mt-10 mt-0">
+      <!-- <div class="md:mt-10 mt-0">
         <p class="md:mt-4 mt-2">Term and Conditions</p>
         <a
           href="/privacy_policy.docx"
@@ -83,14 +110,21 @@
             />
           </div>
         </div>
-      </div>
-
-      <div class="self-end md:block hidden">
-        <p class="md:text-2xl text-xs md:m-4 m-0">Download The App</p>
-        <div class="flex md:flex-row flex-col gap-4">
-          <img class="h-10 rounded-xl" src="@/assets/images/play.png" alt="" />
-          <img class="h-10 rounded-xl" src="@/assets/images/app.png" alt="" />
-        </div>
+      </div> -->
+    </div>
+    <div class="self-end mt-6  md:hidden block">
+      <p class="md:text-2xl text-xs md:m-4 m-0">Download The App</p>
+      <div class="flex mt-4 gap-4">
+        <img
+          class="h-10 rounded-xl w-40"
+          src="@/assets/images/play.png"
+          alt=""
+        />
+        <img
+          class="h-10 rounded-xl w-40"
+          src="@/assets/images/app.png"
+          alt=""
+        />
       </div>
     </div>
     <div class="border-t border-white p-3 mt-10 text-center">
