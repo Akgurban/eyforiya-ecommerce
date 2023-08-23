@@ -13,8 +13,8 @@
       /></BaseButton>
     </div>
 
-    <div class="lead flex gap-5">
-      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%]">
+    <div class="lead flex gap-5 ">
+      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
         <filtered-sidebar
           :show_filter="!showFilter"
           :brands="brands.data"
@@ -40,7 +40,7 @@
           user-select: none !important;
           padding-bottom: 20px !important;
         "
-        class="flex flex-wrap gap-3 justify-between mx-auto mt-5"
+        class="flex flex-wrap gap-3 justify-start mx-auto mt-5"
       >
         <div
           v-for="(item, index) in incomedDatas?.products"

@@ -4,7 +4,7 @@
       Duypbaha HJ
     </div>
     <div class="flex items-start gap-4 md:flex-row flex-col">
-      <img src="/special/spec-1.png" alt="" />
+      <!-- <img src="/special/spec-1.png" alt="" /> -->
       <div class="mb-4">
         <p>
           {{ $t("about_page") }}

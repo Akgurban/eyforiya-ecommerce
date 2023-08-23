@@ -24,12 +24,21 @@
           />
         </div>
         <div class="flex flex-col justify-between gap-3 w-[400px]">
-          <BaseSelect
-            v-model="selectedSpec"
-            label="Yorite kategoriya saylan"
-            :options="spec_categories"
-          >
-          </BaseSelect>
+          <div class="flex w-full items-end justify-between">
+            <button
+              @click="selectedSpec = ''"
+              class="bg-red-600 rounded-md text-white h-13 w-13"
+            >
+              X
+            </button>
+            <BaseSelect
+              class="w-[300px]"
+              v-model="selectedSpec"
+              label="Yorite kategoriya saylan"
+              :options="spec_categories"
+            >
+            </BaseSelect>
+          </div>
           <BaseSelect
             v-model="selectedSub"
             label="kici kategoriya saylan"

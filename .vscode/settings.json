@@ -1,5 +1,9 @@
 {
   "notebook.formatOnSave.enabled": true,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "prettier.jsxSingleQuote": true,
+  "prettier.quoteProps": "preserve",
+  "editor.autoClosingQuotes": "always",
+  "editor.suggest.selectionMode": "never"
 }

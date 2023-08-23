@@ -28,7 +28,7 @@
           class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
           v-if="!trash.trash_items.products?.length"
         >
-          SebediNiz Bosh
+          {{ $t('trash_empty') }}
         </div>
         <div
           v-for="item in trash.trash_items.products"
@@ -69,6 +69,7 @@
           </div>
         </div>
         <div
+          v-if="trash.trash_items.products.length"
           class="bg-[#3C4242] text-white py-3 flex md:flex-row flex-col gap-y-4 justify-between w-full md:text-xl px-5 text-[10px]"
         >
           <div class="">

@@ -1,0 +1,1 @@
+import{q as t,n as o}from"./entry.eea6a19a.js";import{u as e}from"./adminStore.fa39c8b0.js";import"./swiper-vue.406cf000.js";const d=t((a,r)=>{if(!e().adminToken)return o("/admin/login")});export{d as default};

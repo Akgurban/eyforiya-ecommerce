@@ -22,6 +22,7 @@
   "close_filter": "filter",
   "pass_rec": "Password recover",
   "email_rec": "Email recover",
+  "trash_empty": "Trash is empty",
 
   "new_pass": "Enter new password",
   "rew_pass": "Enter new password again",
@@ -50,7 +51,7 @@
   "videos": "Videos",
   "contactUs": "Contact Us",
   "dowload_app": "Download The App",
-  "no_product": "No producty!",
+  "no_product": "No products!",
   "username_exist": "username is used",
   "category_select": "Select kategory",
   "about_page": "Our customers do not need to go to several stores to get all the  household goods they need for their dear home. We know that it is the  desire of every customer to get the necessary goods for their home  with high quality and reasonable price. For a long time, our stores  have been satisfying the needs of their customers in all parts of  Turkmenistan with high-quality and at the same time convenient goods.  Our stores have gained popularity among the people by bringing the  goods of the People's Republic of China, the United Arab Emirates, the  Islamic Republic of Iran, as well as other developed countries of the  world to our compatriots directly from the factories at favorable  prices. If you also want to buy high-quality basic household, building goods and blinds for your home, then join our online store and always be informed about new arrivals. Our web pages:",

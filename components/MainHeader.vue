@@ -9,7 +9,7 @@
         alt=""
         draggable="false"
         style=""
-        class="cursor-pointer select-none md:w-40 w-40"
+        class="cursor-pointer select-none md:w-70 w-40"
       />
       <div class="lg:hidden block">
         <HeaderLangs></HeaderLangs>

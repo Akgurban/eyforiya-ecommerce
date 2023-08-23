@@ -19,6 +19,35 @@
           <img src="@/assets/images/call.png" alt="" />
           <p class="select-none">Phone: +99365138000</p>
         </a>
+        <a href="tel:+99364992871" class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/imo.jpg" alt="" />
+          <p class="select-none">+99364992871</p>
+        </a>
+        <a href="tel:+99364992471" class="flex items-start gap-2 mt-4">
+          <img src="@/assets/images/call.png" alt="" />
+          <p class="select-none">Start: +99364992471</p>
+        </a>
+        <a
+          href="tel:+99364992471"
+          class="flex items-start gap-2 mt-4 w-10 h-10"
+        >
+          <img src="@/assets/images/link.webp" alt="" />
+          <p class="select-none">+99364992471</p>
+        </a>
+        <a
+          href="https://instagram.com/zemin_lux?igshid=MzRlODBiNWFlZA=="
+          class="flex items-start gap-2 mt-4"
+        >
+          <img src="@/assets/images/insta.png" alt="" />
+          <p class="select-none">@zemin_lux</p>
+        </a>
+        <a
+          href="https://vm.tiktok.com/ZSLs3h1ap/"
+          class="flex items-start gap-2 mt-4"
+        >
+          <img src="@/assets/images/tiktok.jpg" alt="" />
+          <p class="select-none">@dunyatekdurdyyeva</p>
+        </a>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/email.png" alt="" />
           <p class="">
@@ -33,7 +62,12 @@
       </div>
       <div class="md:mt-10 mt-0">
         <p class="md:mt-4 mt-2">Term and Conditions</p>
-        <p class="md:mt-4 mt-2">Privacy Policy</p>
+        <a
+          href="/privacy_policy.docx"
+          target="_blank"
+          class="md:mt-4 mt-2 cursor-pointer"
+          >Privacy Policy</a
+        >
         <div class="md:hidden block">
           <p class="md:text-2xl text-base md:m-4 mt-4">Download The App</p>
           <div class="flex md:flex-row flex-col gap-2">
