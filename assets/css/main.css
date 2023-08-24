@@ -21,7 +21,7 @@
 }
 
 html {
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Noto Serif", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -79,17 +79,10 @@ a {
   src: url("@/assets/fonts/Alatsi-Regular.ttf") format("opentype");
 }
 @font-face {
-  font-family: "Alatsi";
-  font-weight: 500;
-  font-display: swap;
-  src: url("@/assets/fonts/Alatsi-Regular.ttf") format("opentype");
-}
-
-@font-face {
   font-family: "Inter";
   font-weight: 500;
   font-display: swap;
-  src: url("@/assets/fonts/Inter/static/Inter-Regular.ttf") format("opentype");
+  src: url("@/assets/fonts/Inter/static/Inter-Medium.ttf") format("opentype");
 }
 
 @font-face {
@@ -105,6 +98,41 @@ a {
   font-display: swap;
   src: url("@/assets/fonts/Inter/static/Inter-SemiBold.ttf") format("opentype");
 }
+
+@font-face {
+  font-family: "Noto Serif";
+  font-weight: 400;
+  font-display: swap;
+  src: url("@/assets/fonts/Noto_Serif/NotoSerif-Regular.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Noto Serif";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("@/assets/fonts/Noto_Serif/NotoSerif-Italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  font-weight: 700;
+  font-display: swap;
+  src: url("@/assets/fonts/Noto_Serif/NotoSerif-Bold.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Noto Serif";
+  font-weight: 600;
+  font-display: swap;
+  src: url("@/assets/fonts/Noto_Serif/NotoSerif-SemiBold.ttf")
+    format("opentype");
+}
+@font-face {
+  font-family: "Noto Serif";
+  font-weight: 500;
+  font-display: swap;
+  src: url("@/assets/fonts/Noto_Serif/NotoSerif-Medium.ttf") format("opentype");
+}
+
 .slide-fade-enter-active {
   transition: all 0.2s ease-in;
 }

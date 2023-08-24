@@ -23,7 +23,6 @@ const { data: categories } = await useMyFetch(
   <swiper
     :spaceBetween="5"
     :slidesPerView="count"
-    :centeredSlides="false"
     :autoplay="{
       delay: 3500,
       disableOnInteraction: false,
@@ -56,7 +55,7 @@ const { data: categories } = await useMyFetch(
           loading="lazy"
         />
         <div
-          class="md:text-3xl text-lg font-alatsi text-[#3C4242] mt-0 md:mt-3 mb-1"
+          class="md:text-xl text-base font-semibold font-alatsi text-[#3C4242] mt-0 md:mt-3 mb-1"
         >
           {{ item.name }}
         </div>

@@ -6,15 +6,15 @@
       <MainSwiper></MainSwiper>
     </div>
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center">
         <p
-          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-semibold md:text-2xl text-base text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[6px]"
         >
           {{ $t("categories") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p
-            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            class="font-alatsi font-semibold inline md:text-2xl text-base text-[#3C4242]"
             @click="useRouter().push('/categories')"
           >
             {{ $t("view_all") }}
@@ -44,15 +44,15 @@
     </div>
 
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center">
         <p
-          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-semibold md:text-2xl text-base text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[6px]"
         >
           {{ $t("latest_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p
-            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            class="font-alatsi font-semibold inline md:text-2xl text-base text-[#3C4242]"
             @click="useRouter().push('/all-products')"
           >
             {{ $t("view_all") }}
@@ -84,7 +84,7 @@
     <div class="block h-auto xl:w-[1238px] w-screen mx-auto md:mt-[92px]">
       <div class="flex justify-center">
         <p
-          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-semibold md:text-2xl text-base text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[6px]"
         >
           {{ $t("specials") }}
         </p>
@@ -98,15 +98,15 @@
     </div>
 
     <div class="block xl:w-[1238px] w-full mx-auto md:mt-[92px] mt-4">
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center">
         <p
-          class="font-alatsi font-medium md:text-4xl text-xl text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[14px]"
+          class="font-alatsi font-semibold md:text-2xl text-base text-[#3C4242] border-l-[6px] border-[#8A33FD] pl-[6px]"
         >
           {{ $t("special_products") }}
         </p>
         <div class="flex cursor-pointer items-center">
           <p
-            class="font-alatsi font-medium inline md:text-3xl text-lg text-[#3C4242]"
+            class="font-alatsi font-semibold inline md:text-2xl text-base text-[#3C4242]"
             @click="useRouter().push('/all-products')"
           >
             {{ $t("view_all") }}

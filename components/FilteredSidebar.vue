@@ -7,7 +7,7 @@
       >
         <div>
           <div
-            class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+            class="md:text-2xl text-base uppercase font-bold text-[#44A4DB] font-alatsi mb-2"
           >
             {{ $t("order") }}
           </div>
@@ -21,14 +21,16 @@
                 name="price-filter"
                 :checked="item.code == order"
               />
-              <div class="font-alatsi text-base">{{ $t(item.name) }}</div>
+              <div class="font-alatsi text-base font-semibold">
+                {{ $t(item.name) }}
+              </div>
             </div>
           </div>
         </div>
 
         <div v-if="show_cat" class="mt-5">
           <div
-            class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+            class="md:text-2xl text-base uppercase font-bold text-[#44A4DB] font-alatsi mb-2"
           >
             {{ $t("in_category") }}
           </div>
@@ -36,7 +38,7 @@
             <p
               v-for="item in sub_categories"
               @click="selectedSub = item.uuid"
-              class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+              class="font-alatsi font-semibold hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
             >
               {{ item?.name }}
             </p>
@@ -44,7 +46,7 @@
           <div
             v-else
             @click="selectedSub = null"
-            class="text-[#44A4DB] md:cursor-pointer cursor-auto font-alatsi ml-5"
+            class="text-[#44A4DB] md:cursor-pointer cursor-auto font-bold font-alatsi ml-5"
           >
             <IconChevronLeft class="inline text-[#44A4DB]" /> = yza Cyk
           </div>
@@ -52,7 +54,7 @@
 
         <div class="relative mt-5">
           <div
-            class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+            class="md:text-2xl text-base uppercase font-bold text-[#44A4DB] font-alatsi mb-2"
           >
             {{ $t("brands") }}
           </div>
@@ -72,7 +74,7 @@
                       <input v-model="option.selected" type="checkbox" />
                     </div>
                     <div
-                      class="font-alatsi text-base hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                      class="font-alatsi text-base font-semibold hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
                     >
                       {{ option.brand_name }}
                     </div>

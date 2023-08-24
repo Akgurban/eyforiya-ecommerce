@@ -12,7 +12,7 @@
       <p class="cursor-pointer">{{ $t("profile") }}</p>
 
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer">{{ $t("order") }}</p>
+      <p class="cursor-pointer">{{ $t("history") }}</p>
     </div>
 
     <div class="flex md:flex-row flex-col gap-4 mt-3">
@@ -37,7 +37,7 @@
               <div
                 class="bg-gray-200 cursor-pointer flex justify-between items-center text-lg font-bold rounded-md p-2 m-1"
               >
-                <p>name: {{ item.username }}</p>
+                <p>{{ item.username }}</p>
                 <p>+993 {{ item.string }}</p>
                 <!-- <p>status: {{ item.status }}</p> -->
               </div>
@@ -55,7 +55,7 @@
                   <p>
                     {{ small.product_name }}
                   </p>
-                  <p>count: {{ small.count }}</p>
+                  <p>{{ small.count }} x</p>
                 </li>
               </ul>
             </div>

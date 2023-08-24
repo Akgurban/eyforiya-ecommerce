@@ -3,11 +3,16 @@
     <div
       class="2xl:w-[1424px] xl:w-[1230px] w-full flex gap-3 items-center pl-0 md:pl-10"
     >
-      <NuxtLink to="/" class="cursor-pointer hover:font-bold">Home</NuxtLink>
+      <NuxtLink
+        to="/"
+        class="cursor-pointer hover:font-bold"
+        >{{ $t("home") }}</NuxtLink
+      >
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer">{{ $t("profile") }}</p>
+
       <IconChevronRight class="h-3" />
-      <p class="cursor-pointer font-bold">{{ $t("history") }}</p>
+      <p class="cursor-pointer">{{ $t("username") }}</p>
     </div>
 
     <div class="flex md:flex-row flex-col gap-4 mt-3">

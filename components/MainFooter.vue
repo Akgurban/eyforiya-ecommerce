@@ -1,12 +1,12 @@
 <template>
   <footer class="md:px-[100px] px-3 md:pt-10 pt-7 text-white">
+    <div>
+      <p class="md:text-4xl text-2xl font-semibold">
+        {{ $t("contactUs") }}
+      </p>
+    </div>
     <div class="flex md:gap-25 gap-4">
       <div class="md:text-lg text-sm">
-        <div>
-          <p class="md:text-4xl text-2xl font-semibold">
-            {{ $t("contactUs") }}
-          </p>
-        </div>
         <div class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/location.png" alt="" />
           <p>
@@ -43,16 +43,12 @@
           </p>
         </div>
       </div>
-      <div class="md:text-lg text-sm mt-16">
+      <div class="md:text-lg text-sm ">
         <a href="tel:+99361876094" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/call.png" alt="" />
           <p class="select-none">Phone: +99361876094</p>
         </a>
 
-        <a href="tel:+99364992871" class="flex items-start gap-2 mt-4">
-          <img src="@/assets/images/imo.jpg" alt="" />
-          <p class="select-none">+99364992871</p>
-        </a>
         <a href="tel:+99364992471" class="flex items-start gap-2 mt-4">
           <img src="@/assets/images/start.webp" class="w-10 h-10" alt="" />
           <p class="select-none">+99364992471</p>

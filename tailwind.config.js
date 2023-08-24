@@ -1197,7 +1197,7 @@ module.exports = {
         "monospace",
       ],
       inter: ["Inter"],
-      alatsi: ["Alatsi"],
+      alatsi: ["Noto Serif"],
       "noto-serif": ["Noto Serif"],
     },
     fontSize: {

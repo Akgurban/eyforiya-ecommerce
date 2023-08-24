@@ -10,7 +10,7 @@
       <img :src="item.img" alt="" />
       <div class="text-center ml-3">
         <p
-          class="font-alatsi md:text-[45px] text-2xl text-[#3C4242] leading-[33px]"
+          class="font-alatsi md:text-[45px] font-bold text-2xl text-[#3C4242] leading-[33px]"
         >
           {{ item.name }}
         </p>

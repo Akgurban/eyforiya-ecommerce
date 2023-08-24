@@ -20,7 +20,7 @@
         >
           <div class="mt-5">
             <div
-              class="md:text-2xl text-xl uppercase text-[#44A4DB] font-alatsi mb-2"
+              class="md:text-xl text-lg font-semibold uppercase text-[#44A4DB] font-alatsi mb-2"
             >
               {{ $t("category_select") }}
             </div>
@@ -35,7 +35,7 @@
                     })
                   )
                 "
-                class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                class="font-alatsi font-semibold hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
               >
                 {{ item?.name }}
               </p>
@@ -50,7 +50,7 @@
           >
             <div class="mt-5">
               <div
-                class="md:text-2xl text-xl w-min uppercase text-[#44A4DB] font-alatsi mb-2"
+                class="md:text-xl text-base font-bold w-min uppercase whitespace-nowrap text-[#44A4DB] font-alatsi mb-2"
               >
                 {{ $t("category_select") }}
               </div>
@@ -65,7 +65,7 @@
                       })
                     )
                   "
-                  class="font-alatsi hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
+                  class="font-alatsi font-semibold hover:text-[#44A4DB] cursor-auto md:cursor-pointer"
                 >
                   {{ item?.name }}
                 </p>
@@ -78,7 +78,7 @@
       <div class="w-full">
         <div
           style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 mx-auto justify-start mt-5"
+          class="flex w-full flex-wrap gap-3 px-3 justify-start mt-5 "
         >
           <div
             v-for="(item, index) in all_products?.products"

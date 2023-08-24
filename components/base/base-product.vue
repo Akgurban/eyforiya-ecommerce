@@ -11,12 +11,12 @@
       loading="lazy"
     />
     <div
-      class="w-fit mx-auto md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
+      class="w-fit mx-auto font-medium md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
     >
       {{ propItem?.name }}
     </div>
     <div
-      class="mx-auto text-[#48BC4E] text-3xl font-alatsi w-fit pb-1 border-b border-[#44A4DB]"
+      class="mx-auto font-semibold text-[#48BC4E] text-3xl font-alatsi w-fit pb-1 border-b border-[#44A4DB]"
     >
       {{ propItem?.price }} TMT
     </div>

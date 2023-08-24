@@ -14,7 +14,7 @@
         class="absolute top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
       >
         <div
-          class="md:text-2xl text-lg font-alatsi uppercase whitespace-nowrap"
+          class="md:text-xl text-lg font-alatsi font-semibold uppercase whitespace-nowrap mt-1 md:mt-0"
         >
           {{ $t("add_to") }}
         </div>
@@ -30,18 +30,22 @@
       class="w-[80%] mx-auto text-center z-50 md:h-17.5 h-13"
     >
       <div
-        class="w-full font-bold justify-evenly flex gap-2 px-6 py-1 md:py-2 rounded-xl bg-[#F6F6F6]"
+        class="w-full font-bold border border-gray-600 justify-evenly flex gap-2 px-6 py-1 md:py-1 rounded-xl bg-[#F6F6F6]"
       >
         <div
           @click="decrement"
-          class="cursor-pointer text-2xl text-[#3C4242] px-2 select-none"
+          class="cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
         >
           -
         </div>
-        <div class="cursor-pointer text-2xl w-7 text-center">{{ count }}</div>
+        <div
+          class="cursor-pointer text-2xl md:text-3xl font-bold w-7 text-center"
+        >
+          {{ count }}
+        </div>
         <div
           @click="increment"
-          class="cursor-pointer text-2xl text-[#3C4242] px-2 select-none"
+          class="cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
         >
           +
         </div>
