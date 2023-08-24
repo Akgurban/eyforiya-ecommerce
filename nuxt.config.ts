@@ -10,7 +10,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      titleTemplate: "%s - Duypbaha HJ",
       title: "Duypbaha",
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
       link: [
         {
           rel: "apple-touch-icon",

@@ -103,6 +103,12 @@
 
 <script setup>
 import { useFavStore } from "~~/stores/favourite";
+useHead({
+  title: `All products-Ähli harytlar-Все Товары`,
+  meta: [
+    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+  ],
+})
 const { locale } = useI18n();
 const count = ref(1);
 const showFilter = ref(false);

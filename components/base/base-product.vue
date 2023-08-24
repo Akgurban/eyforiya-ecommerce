@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="localePath(`/product/${item?.uuid}`)"
-    class="rounded-xl w-full text-center"
+    class="group rounded-xl w-full text-center"
   >
     <img
       class="border w-full aspect-square select-none rounded-md md:rounded-lg border-[#e6e6e6]"
@@ -25,8 +25,8 @@
     <IconLike
       fill="none"
       @click="toggleFav(propItem)"
-      :class="item.isLiked ? 'fill-red-600 text-red-600' : ' text-white'"
-      class="hover:text-red-600 w-7"
+      :class="item.isLiked ? 'fill-red-600 text-red-600'  : ' text-gray-400'"
+      class="group-hover:text-red-600 w-7"
     ></IconLike>
   </div>
   <TrashButtonAndCounter class="pt-5" :item="propItem" v-model="countProduct" />

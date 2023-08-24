@@ -68,7 +68,6 @@ const incomedDatas = ref("");
 const count = ref(1);
 const totalItems = ref(15);
 const showFilter = ref(true);
-
 const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
@@ -146,6 +145,12 @@ watch(
 watch(count, async () => {
   await refetch();
 });
+useHead({
+  title: `All products-Ähli harytlar-Все Товары`,
+  meta: [
+    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+  ],
+})
 </script>
 
 <style scoped>

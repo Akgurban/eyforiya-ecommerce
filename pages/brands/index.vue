@@ -40,6 +40,12 @@ const { locale } = useI18n();
 const { data: brands } = await useMyFetch(
   `/api/v1/client/products/brands?lang=${locale.value}`
 );
+useHead({
+  title: 'Brendlar - Brands - Бренды',
+  meta: [
+    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+  ],
+})
 </script>
 
 <style scoped></style>

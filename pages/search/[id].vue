@@ -6,7 +6,8 @@
         @click="toggleFilter"
         class="self-end w-49 lg:hidden flex justify-between"
         type="secondary"
-        ><p>
+      >
+        <p>
           {{ showFilter ? $t("close_filter") : $t("show_filter") }}
         </p>
         <img src="@/assets/images/filter.png" class="inline w-5" alt="" />
@@ -31,7 +32,7 @@
           @someChange="(e) => emittedFromSidebar(e)"
         />
       </div>
-      <div class="w-full">
+      <div ref="listEl" class="w-full h-[80vh] overflow-auto ">
         <div
           style="padding-bottom: 20px !important"
           class="flex w-full flex-wrap gap-3 md:justify-start justify-center mt-2 mx-auto"
@@ -44,6 +45,11 @@
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>
+          <br />
+
+          <div v-if="ShowLoader" class="w-full ">
+            <img src="@/assets/images/loader.gif" class="mx-auto" alt="" />
+          </div>
           <div
             v-if="!incomedDatas?.products"
             class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
@@ -51,27 +57,75 @@
             {{ $t("no_product") }}
           </div>
         </div>
-        <BasePaginate
+        <!-- <BasePaginate
           :total-items="incomedDatas.product_count"
           v-model="count"
-        />
+        /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useInfiniteScroll } from "@vueuse/core";
 const { $width } = useNuxtApp();
 const { locale, locales } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
 const incomedDatas = ref("");
+const listEl = ref(null);
 const totalItems = ref(15);
 const count = ref(1);
+const limit = ref(28);
 const showFilter = ref(true);
+const ShowLoader = ref(false);
 const order = ref("");
+// const total = Math.floor(incomedDatas.value?.product_count / limit.value) + 1
+(!ShowLoader.value) ? useInfiniteScroll(
+  listEl,
+  async () => {
+    if(count.value <= Math.floor(incomedDatas.value?.product_count / limit.value)){
 
+    count.value +=1
+    var dataForm = {
+      lang: locale.value,
+      //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
+      order: route.query.order,
+      limit: limit.value,
+      offset: count.value - 1,
+      criteria: route.params.id,
+    };
+
+    if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
+      dataForm.brand_id = JSON.parse(route.query?.filter);
+    }
+    if (route.params.id) {
+    }
+    if (route.query.catId) {
+      dataForm.sub_category_id = route.query.catId;
+    }
+    ShowLoader.value = true
+    const { data, status } = await useMyFetch(
+      () => `/api/v1/client/products/product/search`,
+      {
+        method: "POST",
+        body: dataForm,
+      }
+    );
+    if (status) {
+      ShowLoader.value=false
+      console.log(count.value , Math.floor(incomedDatas.value?.product_count / limit.value) + 1);
+      data.value?.data.products.forEach(e => incomedDatas.value.products.push(e))
+    }
+  }
+
+  },
+  // setTimeout(async() => {
+  {
+    distance: 20
+  }
+) : null
 const active = useState();
 async function emittedFromSidebar(e) {
   locales.value.forEach((a) => {
@@ -88,11 +142,11 @@ const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
 const refetch = async () => {
-  let dataForm = {
+  var dataForm = {
     lang: locale.value,
     //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
     order: route.query.order,
-    limit: 15,
+    limit: limit.value,
     offset: count.value - 1,
     criteria: route.params.id,
   };
@@ -142,9 +196,9 @@ watch(
     });
   }
 );
-watch(count, async () => {
-  await refetch();
-});
+// watch(count, async () => {
+//   await refetch();
+// });
 </script>
 
 <style scoped>
@@ -165,6 +219,7 @@ watch(count, async () => {
 .prod_name.active {
   view-transition-name: title;
 }
+
 img.active {
   view-transition-name: selected-img;
   contain: layout;

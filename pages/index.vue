@@ -191,7 +191,12 @@
 
 <script setup>
 const { locale } = useI18n();
-
+useHead({
+  title: `Online Söwda`,
+  meta: [
+    { name: 'description', content: 'Internet Magazin' }
+  ],
+})
 const { data: rating } = await useMyFetch(
   `/api/v1/client/products/rating`
 );

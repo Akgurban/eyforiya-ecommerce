@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="aspect-[video] w-screen 2xl:w-[1428px] mx-auto flex justify-between items-start px-4 sm:flex-row flex-col"
+      class="group aspect-[video] w-screen 2xl:w-[1428px] mx-auto flex justify-between items-start px-4 sm:flex-row flex-col"
     >
       <div class="sm:w-[35%] w-full relative">
         <img
@@ -14,9 +14,9 @@
             fill="none"
             @click="toggleFav(oneProduct)"
             :class="
-              oneProduct.isLiked ? 'fill-red-600 text-red-600' : ' text-white'
+              oneProduct.isLiked ? 'fill-red-600 text-red-600' : ' text-gray-400'
             "
-            class="hover:text-red-600 w-7"
+            class="group-hover:text-red-600 w-7"
           ></IconLike>
         </div>
         <div class="w-full relative mt-5 flex justify-start">
@@ -52,14 +52,14 @@
               {{ oneProduct.price }} TMT
             </div>
           </div>
-          <div class="w-fit md:ml-5 ml-1 pt-3">
+          <div class=" md:ml-5 ml-1 pt-3 w-55">
             <TrashButtonAndCounter
               :item="changedOneProduct"
               v-model="oneCountProduct"
             />
           </div>
           <div>
-            <p>Kommentariya</p>
+            <p>{{$t('comment')}}</p>
             <div class="min-w-[300px] w-auto flex gap-4">
               <textarea
                 class="border border-[#44A4DB] p-2"
@@ -78,7 +78,7 @@
 
     <div class="w-screen 2xl:w-[1428px] mx-auto px-4 sm:flex-row flex-col">
       <div class="bg-teal-100 mt-6">
-        <p class="font-alatsi font-bold p-2">Kommentariyalar</p>
+        <p class="font-alatsi font-bold p-2 uppercase">{{$t('comments')}}</p>
         <ul>
           <li
             v-for="(item, index) in comments.data.comments"
@@ -112,7 +112,6 @@ import { useAuthStore } from "~~/stores/authStore";
 import { useToast } from "vue-toastification";
 import { useFavStore } from "~~/stores/favourite";
 import { StorageSerializers } from "@vueuse/core";
-
 const favStore = useFavStore();
 
 const $toast = useToast();
@@ -125,6 +124,8 @@ const oneProduct = ref(null);
 const similarProducts = ref([]);
 const selectedImg = ref(null);
 const comment = ref(null);
+
+
 const oneCountProduct = ref(0);
 const changedOneProduct = ref(null);
 
@@ -268,6 +269,12 @@ const toggleFav = async (e) => {
     favStore.setLocalStorage(changedOneProduct.value);
   }
 };
+useHead({
+  title: oneProduct.value?.name,
+  meta: [
+    { name: 'description', content: oneProduct.value?.description }
+  ],
+})
 </script>
 
 <style scoped>

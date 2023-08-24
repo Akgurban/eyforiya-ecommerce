@@ -1,56 +1,65 @@
 <template>
-  <div>
-    <div
-      v-if="count == 0"
-      @click="increment"
-      class="relative select-none mb-[20px] hover:scale-95 transition-transform duration-150"
-    >
-      <img
-        class="mx-auto h-9 md:h-10 md:mt-5 mt-1"
-        src="@/assets/images/add_cart.svg"
-        alt=""
-      />
+  <div
+    class="relative w-full md:h-17.5 h-13 mt-6 flex items-center justify-center "
+  >
+    <Transition name="fade2" mode="out-in" class="absolute top-0 ">
       <div
-        class="absolute top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
+        v-if="count == 0"
+        @click="increment"
+        class="relative select-none mb-[20px] hover:scale-95 transition-transform duration-150"
       >
+        <img
+          class="mx-auto h-9 md:h-10 "
+          src="@/assets/images/add_cart.svg"
+          alt=""
+        />
         <div
-          class="md:text-xl text-lg font-alatsi font-semibold uppercase whitespace-nowrap mt-1 md:mt-0"
+          class="absolute top-0 right-1/2 translate-x-1/2 flex items-center gap-3 text-white h-fit"
         >
-          {{ $t("add_to") }}
-        </div>
-        <IconTrash
-          draggable="false"
-          class="inline pointer-events-none mt-1 md:w-9 w-6 md:h-9 h-6"
-        ></IconTrash>
-      </div>
-    </div>
-
-    <div
-      v-if="count != 0"
-      class="w-[80%] mx-auto text-center z-50 md:h-17.5 h-13"
-    >
-      <div
-        class="w-full font-bold border border-gray-600 justify-evenly flex gap-2 px-6 py-1 md:py-1 rounded-xl bg-[#F6F6F6]"
-      >
-        <div
-          @click="decrement"
-          class="cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
-        >
-          -
-        </div>
-        <div
-          class="cursor-pointer text-2xl md:text-3xl font-bold w-7 text-center"
-        >
-          {{ count }}
-        </div>
-        <div
-          @click="increment"
-          class="cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
-        >
-          +
+          <div
+            class="md:text-xl text-lg font-alatsi font-semibold uppercase whitespace-nowrap mt-1 md:mt-0"
+          >
+            {{ $t("add_to") }}
+          </div>
+          <IconTrash
+            draggable="false"
+            class="inline pointer-events-none  md:w-9 w-6 md:h-9 h-6"
+          ></IconTrash>
         </div>
       </div>
-    </div>
+    </Transition>
+    <Transition
+      name="fade2"
+      mode="out-in"
+      class="absolute top-0 mx-auto block w-auto mt-2"
+    >
+      <div
+        v-if="count != 0"
+        class=" w-[105%] mx-auto text-center z-20 md:h-17.5 h-13 "
+      >
+        <div
+          class="w-full font-bold border border-gray-600 justify-evenly flex gap-2 px-6 py-[1px] md:py-[2px] rounded-xl bg-[#F6F6F6]"
+        >
+          <div
+            @click="decrement"
+            class="cursor-auto md:cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
+          >
+            -
+          </div>
+          <div
+            class="cursor-auto md:cursor-pointer text-2xl md:text-2xl font-bold w-7 text-center"
+          >
+            {{ count }}
+          </div>
+          <div
+            @click="increment"
+            class="cursor-auto md:cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
+          >
+            +
+          </div>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -113,4 +122,15 @@ const decrement = async () => {
   }
 };
 </script>
-<style scoped></style>
+<style scoped>
+.fade2-enter-active,
+.fade2-leave-active {
+  transition: opacity 0.4s ease;
+
+}
+
+.fade2-enter-from,
+.fade2-leave-to {
+  opacity: 0;
+}
+</style>
