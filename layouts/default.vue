@@ -44,7 +44,7 @@ const route = useRoute();
 const links = ref([
   { name: "main", path: "/" },
   { name: "brands", path: "/brands" },
-  { name: "products", path: "/all-products" },
+  { name: "products", path: "/all-products?p=1" },
   { name: "about_us", path: "/about-us" },
 ]);
 </script>

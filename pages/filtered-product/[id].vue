@@ -64,32 +64,42 @@ const router = useRouter();
 const route = useRoute();
 const incomedDatas = ref("");
 const count = ref(1);
-const totalItems = ref(15);
+const totalItems = ref(24);
 const showFilter = ref(true);
 const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
+// count.value = +route.query.p;
 
 const active = useState();
 async function emittedFromSidebar(e) {
+  // route.query.p = 1;
+  count.value = 1;
   console.log(locale, locales);
   locales.value.forEach((a) => {
     if (a.code == locale.value) {
       console.log(a.code, locale.value);
       router.push({
         path: `${a.code2}/filtered-product/${route.params.id}`,
-        query: { filter: JSON.stringify(e.brnd), order: e.ord, catId: e.sub },
+        query: {
+          filter: JSON.stringify(e.brnd),
+          order: e.ord,
+          catId: e.sub,
+          p: 1,
+        },
       });
     }
   });
 }
 
 const refetch = async () => {
+  // count.value = +route.query.p;
+
   let dataForm = {
     category_id: route.params.id,
     lang: locale.value,
-    limit: 15,
-    offset: count.value,
+    limit: 24,
+    offset: +route.query.p,
   };
 
   if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
@@ -113,6 +123,7 @@ const refetch = async () => {
     incomedDatas.value = data.value?.data;
     console.log(data.value, "[]");
     totalItems.value = data.value?.data?.product_count;
+    // count.value = +route.query.p;
   }
 };
 await refetch();
@@ -140,8 +151,37 @@ watch(
     });
   }
 );
+// watch(
+//   () => route.query.p,
+//   async () => {
+//     await refetch();
+//     incomedDatas.value?.brands?.forEach((e) => {
+//       JSON.parse(route.query?.filter)?.forEach((item) => {
+//         if (item == e.uuid) {
+//           e.selected = true;
+//         }
+//       });
+//     });
+//   }
+// );
+
 watch(count, async () => {
-  await refetch();
+  // await refetch();
+
+  locales.value.forEach((a) => {
+    if (a.code == locale.value) {
+      router.push({
+        path: `${a.code2}/filtered-product/${route.params.id}`,
+        query: {
+          filter: route.query?.filter,
+          order: route.query?.order,
+          catId: route.query?.catId,
+          p: count.value,
+        },
+      });
+    }
+  });
+
   incomedDatas.value?.brands?.forEach((e) => {
     JSON.parse(route.query?.filter)?.forEach((item) => {
       if (item == e.uuid) {
@@ -150,6 +190,7 @@ watch(count, async () => {
     });
   });
 
+  console.log(route, "sw");
   window.scrollTo(0, 0);
 });
 useHead({

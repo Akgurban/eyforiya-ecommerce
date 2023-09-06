@@ -12,7 +12,7 @@
           useRouter().push(
             localePath({
               path: `/filtered-product/${item?.uuid}`,
-              query: { filter: '[]' },
+              query: { filter: '[]', p: '0' },
             })
           )
         "

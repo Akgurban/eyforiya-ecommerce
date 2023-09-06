@@ -33,7 +33,7 @@
                   useRouter().push(
                     localePath({
                       path: `/filtered-product/${item?.uuid}`,
-                      query: { filter: '[]' },
+                      query: { filter: '[]', p: 1 },
                     })
                   )
                 "
@@ -106,6 +106,8 @@
 
 <script setup>
 import { useFavStore } from "~~/stores/favourite";
+const router = useRouter();
+const route = useRoute();
 useHead({
   title: `All products-Ähli harytlar-Все Товары`,
   meta: [
@@ -118,12 +120,14 @@ const showFilter = ref(false);
 const all_products = ref(null);
 const refetch = async () => {
   const { data: all } = await useMyFetch(
-    `/api/v1/client/products/all-products?limit=24&offset=${count.value}&lang=${locale.value}`
+    `/api/v1/client/products/all-products?limit=24&offset=${route.query?.p}&lang=${locale.value}`
   );
   console.log(all);
   all_products.value = all.value.data;
+  count.value = +route.query.p;
 };
 await refetch();
+
 const toggleFilter = () => {
   showFilter.value = !showFilter.value;
 };
@@ -134,9 +138,16 @@ const { data: categories } = await useMyFetch(
   `/api/v1/client/products/categories?lang=${locale.value}`
 );
 watch(count, async () => {
-  await refetch();
+  router.push(`/all-products?p=${count.value}`);
+  // await refetch();
   window.scrollTo(0, 0);
 });
+watch(
+  () => route.query.p,
+  async () => {
+    await refetch();
+  }
+);
 </script>
 
 <style lang="scss" scoped></style>

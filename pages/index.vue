@@ -53,7 +53,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-semibold inline md:text-2xl text-base text-[#3C4242]"
-            @click="useRouter().push('/all-products')"
+            @click="useRouter().push('/all-products?p=1')"
           >
             {{ $t("view_all") }}
           </p>
@@ -107,7 +107,7 @@
         <div class="flex cursor-pointer items-center">
           <p
             class="font-alatsi font-semibold inline md:text-2xl text-base text-[#3C4242]"
-            @click="useRouter().push('/all-products')"
+            @click="useRouter().push('/all-products?p=1')"
           >
             {{ $t("view_all") }}
           </p>
