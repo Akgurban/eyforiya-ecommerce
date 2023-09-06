@@ -2,9 +2,8 @@
   <swiper
     :spaceBetween="5"
     :slidesPerView="props.count"
-    :loop="true"
     :autoplay="{
-      delay: 377500,
+      delay: 3500,
       disableOnInteraction: false,
     }"
     class="pb-3"

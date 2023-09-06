@@ -1,15 +1,15 @@
 <template>
   <div
-    class="relative w-full md:h-17.5 h-13 mt-6 flex items-center justify-center "
+    class="relative w-full md:h-17.5 h-13 mt-6 flex items-center justify-center"
   >
-    <Transition name="fade2" mode="out-in" class="absolute top-0 ">
+    <Transition name="fade2" mode="out-in" class="absolute top-0">
       <div
-        v-if="count == 0"
+        v-if="count <= 0"
         @click="increment"
         class="relative select-none mb-[20px] hover:scale-95 transition-transform duration-150"
       >
         <img
-          class="mx-auto h-9 md:h-10 "
+          class="mx-auto h-9 md:h-10"
           src="@/assets/images/add_cart.svg"
           alt=""
         />
@@ -23,7 +23,7 @@
           </div>
           <IconTrash
             draggable="false"
-            class="inline pointer-events-none  md:w-9 w-6 md:h-9 h-6"
+            class="inline pointer-events-none md:w-9 w-6 md:h-9 h-6"
           ></IconTrash>
         </div>
       </div>
@@ -34,14 +34,15 @@
       class="absolute top-0 mx-auto block w-auto mt-2"
     >
       <div
-        v-if="count != 0"
-        class=" w-[105%] mx-auto text-center z-20 md:h-17.5 h-13 "
+        v-if="count > 0"
+        class="w-[105%] mx-auto text-center z-20 md:h-17.5 h-13"
       >
         <div
           class="w-full font-bold border border-gray-600 justify-evenly flex gap-2 px-6 py-[1px] md:py-[2px] rounded-xl bg-[#F6F6F6]"
         >
           <div
             @click="decrement"
+            :disable="count <= 0"
             class="cursor-auto md:cursor-pointer text-2xl md:text-3xl font-bold text-[#3C4242] px-2 select-none"
           >
             -
@@ -126,7 +127,6 @@ const decrement = async () => {
 .fade2-enter-active,
 .fade2-leave-active {
   transition: opacity 0.4s ease;
-
 }
 
 .fade2-enter-from,

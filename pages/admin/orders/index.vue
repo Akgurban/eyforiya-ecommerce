@@ -77,7 +77,7 @@ const count = ref(1);
 const totalItems = ref(1);
 const orders = ref(null);
 const router = useRouter();
-const statusValue = ref({ name: `tassyklanan` });
+const statusValue = ref({ name: `garashylyar` });
 
 try {
   const { data } = await userStore.getOrders({

@@ -9,12 +9,17 @@
           class="w-full one_img rounded-md aspect-square"
           alt=""
         />
+        <div v-if="propItem?.status" class="absolute -top-[10px] -left-[11px]">
+          <img class="md:w-25 w-18" src="@/assets/images/new.png" alt="" />
+        </div>
         <div class="absolute top-5 right-5">
           <IconLike
             fill="none"
             @click="toggleFav(oneProduct)"
             :class="
-              oneProduct.isLiked ? 'fill-red-600 text-red-600' : ' text-gray-400'
+              oneProduct.isLiked
+                ? 'fill-red-600 text-red-600'
+                : ' text-gray-400'
             "
             class="group-hover:text-red-600 w-7"
           ></IconLike>
@@ -52,14 +57,14 @@
               {{ oneProduct.price }} TMT
             </div>
           </div>
-          <div class=" md:ml-5 ml-1 pt-3 w-55">
+          <div class="md:ml-5 ml-1 pt-3 w-55">
             <TrashButtonAndCounter
               :item="changedOneProduct"
               v-model="oneCountProduct"
             />
           </div>
           <div>
-            <p>{{$t('comment')}}</p>
+            <p>{{ $t("comment") }}</p>
             <div class="min-w-[300px] w-auto flex gap-4">
               <textarea
                 class="border border-[#44A4DB] p-2"
@@ -78,7 +83,7 @@
 
     <div class="w-screen 2xl:w-[1428px] mx-auto px-4 sm:flex-row flex-col">
       <div class="bg-teal-100 mt-6">
-        <p class="font-alatsi font-bold p-2 uppercase">{{$t('comments')}}</p>
+        <p class="font-alatsi font-bold p-2 uppercase">{{ $t("comments") }}</p>
         <ul>
           <li
             v-for="(item, index) in comments.data.comments"
@@ -94,11 +99,14 @@
         {{ $t("similar_products") }}
       </div>
 
-      <div style="" class="flex flex-wrap justify-between md:px-1 mt-2">
+      <div
+        style=""
+        class="flex flex-wrap justify-start md:px-1 mt-2 gap-2 md:gap-3"
+      >
         <div
           v-for="(item, index) in similarProducts"
           :key="item?.uuid"
-          class="group relative md:w-[276px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          class="group relative md:w-[265px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero bg-[#D9D9D940] hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
         >
           <BaseProduct :item="item"></BaseProduct>
         </div>
@@ -124,7 +132,6 @@ const oneProduct = ref(null);
 const similarProducts = ref([]);
 const selectedImg = ref(null);
 const comment = ref(null);
-
 
 const oneCountProduct = ref(0);
 const changedOneProduct = ref(null);
@@ -271,10 +278,8 @@ const toggleFav = async (e) => {
 };
 useHead({
   title: oneProduct.value?.name,
-  meta: [
-    { name: 'description', content: oneProduct.value?.description }
-  ],
-})
+  meta: [{ name: "description", content: oneProduct.value?.description }],
+});
 </script>
 
 <style scoped>

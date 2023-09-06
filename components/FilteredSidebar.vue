@@ -2,7 +2,7 @@
   <div class="w-full">
     <Transition name="slide-fade">
       <div
-        class="lg:relative lg:top-0 md:pt-10 pt-20 overflow-auto fixed shadow-2xl top-0 z-40 h-screen px-3 py-3  pb-10 bg-slate-100 rounded-md p-4"
+        class="lg:relative lg:top-0 md:bottom-auto bottom-0 md:pt-10 pt-20 overflow-auto fixed shadow-2xl top-0 z-40 md:h-fit h-screen px-3 py-3 pb-10 bg-slate-100 rounded-md p-4"
         v-if="!props.show_filter"
       >
         <div>

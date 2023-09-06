@@ -69,13 +69,13 @@
         <div class="md:block hidden">
           <HeroSwiperProduct
             :products="latest.data"
-            :count="4"
+            count="4"
           ></HeroSwiperProduct>
         </div>
         <div class="block md:hidden">
           <HeroSwiperProduct
             :products="latest.data"
-            :count="2"
+            count="2"
           ></HeroSwiperProduct>
         </div>
       </div>
@@ -193,13 +193,9 @@
 const { locale } = useI18n();
 useHead({
   title: `Online Söwda`,
-  meta: [
-    { name: 'description', content: 'Internet Magazin' }
-  ],
-})
-const { data: rating } = await useMyFetch(
-  `/api/v1/client/products/rating`
-);
+  meta: [{ name: "description", content: "Internet Magazin" }],
+});
+const { data: rating } = await useMyFetch(`/api/v1/client/products/rating`);
 
 const { data: latest } = await useMyFetch(
   `/api/v1/client/products/latest/products?lang=${locale.value}`

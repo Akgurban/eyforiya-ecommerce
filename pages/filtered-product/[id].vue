@@ -12,10 +12,8 @@
         <img src="@/assets/images/filter.png" class="inline w-5" alt=""
       /></BaseButton>
     </div>
-    <div class="flex justify-between gap-5">
-      <div
-        class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20 sticky top-60"
-      >
+    <div class="flex justify-between gap-5 items-start">
+      <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
         <filtered-sidebar
           :show_filter="!showFilter"
           :brands="incomedDatas?.brands"
@@ -34,7 +32,7 @@
 
       <div class="w-full">
         <div
-          class="flex flex-wrap gap-3 w-full justify-start mx-auto mt-5 px-2 "
+          class="flex flex-wrap gap-3 w-full justify-start mx-auto mt-5 px-2"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"
@@ -51,7 +49,7 @@
             {{ $t("no_product") }}
           </div>
         </div>
-        <div class="" v-if="!(count == 1)">
+        <div class="" v-if="incomedDatas?.products">
           <BasePaginate :total-items="totalItems" v-model="count" />
         </div>
       </div>
@@ -91,7 +89,7 @@ const refetch = async () => {
     category_id: route.params.id,
     lang: locale.value,
     limit: 15,
-    offset: count.value - 1,
+    offset: count.value,
   };
 
   if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
@@ -144,13 +142,22 @@ watch(
 );
 watch(count, async () => {
   await refetch();
+  incomedDatas.value?.brands?.forEach((e) => {
+    JSON.parse(route.query?.filter)?.forEach((item) => {
+      if (item == e.uuid) {
+        e.selected = true;
+      }
+    });
+  });
+
+  window.scrollTo(0, 0);
 });
 useHead({
   title: `All products-Ähli harytlar-Все Товары`,
   meta: [
-    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+    { name: "description", content: "All products-Ähli harytlar-Все Товары" },
   ],
-})
+});
 </script>
 
 <style scoped>

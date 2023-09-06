@@ -1,6 +1,6 @@
 <template>
   <vue-awesome-paginate
-    :items-per-page="15"
+    :items-per-page="24"
     :max-pages-shown="5"
     paginate-buttons-class="btn"
     active-page-class="btn-active"
@@ -22,8 +22,8 @@
 
 <style scopeds>
 .btn {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border: none;
   margin-inline: 0.2rem;
   cursor: pointer;
@@ -31,12 +31,14 @@
   transition: all 0.3s ease;
   color: #9c9c9c;
 }
-.btn:hover {
-  background-color: #40b064;
-  color: white;
+@media screen and (min-width: 620px) {
+  .btn:hover {
+    background-color: #40a3b0;
+    color: white;
+  }
 }
 .btn-active {
-  background-color: #40b064;
+  background-color: #40a3b0;
   color: white;
 }
 .prev-button:hover {

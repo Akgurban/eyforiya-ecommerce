@@ -13,10 +13,12 @@
       </BaseButton>
     </div>
 
-    <div class="lead flex gap-5">
-      <div class="md:relative absolute w-[50%] 2xl:w-[25%] lg:w-[28%]">
+    <div class="lead flex gap-5 items-start">
+      <div
+        class="md:sticky absolute w-[50%] top-[190px] 2xl:w-[25%] lg:w-[28%]"
+      >
         <div
-          class="md:block hidden shadow-2xl top-0 z-30 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
+          class="md:block hidden shadow-2xl z-30 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
         >
           <div class="mt-5">
             <div
@@ -42,13 +44,14 @@
             </div>
           </div>
         </div>
+
         <!-- xas -->
         <Transition name="slide-fade">
           <div
-            class="md:hidden block fixed w-[50%] 2xl:w-[25%] lg:w-[28%] shadow-2xl top-0 z-40 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
+            class="md:hidden block fixed w-[50%] 2xl:w-[25%] lg:w-[28%] shadow-2xl bottom-0 z-40 h-screen px-2 py-2 pb-10 bg-slate-100 rounded-md p-4"
             v-if="showFilter"
           >
-            <div class="mt-5">
+            <div class="mt-15">
               <div
                 class="md:text-xl text-base font-bold w-min uppercase whitespace-nowrap text-[#44A4DB] font-alatsi mb-2"
               >
@@ -78,7 +81,7 @@
       <div class="w-full">
         <div
           style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 px-3 justify-start mt-5 "
+          class="flex w-full flex-wrap gap-3 px-3 justify-start mt-5"
         >
           <div
             v-for="(item, index) in all_products?.products"
@@ -106,18 +109,16 @@ import { useFavStore } from "~~/stores/favourite";
 useHead({
   title: `All products-Ähli harytlar-Все Товары`,
   meta: [
-    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+    { name: "description", content: "All products-Ähli harytlar-Все Товары" },
   ],
-})
+});
 const { locale } = useI18n();
 const count = ref(1);
 const showFilter = ref(false);
 const all_products = ref(null);
 const refetch = async () => {
   const { data: all } = await useMyFetch(
-    `/api/v1/client/products/all-products?limit=15&offset=${
-      count.value - 1
-    }&lang=${locale.value}`
+    `/api/v1/client/products/all-products?limit=24&offset=${count.value}&lang=${locale.value}`
   );
   console.log(all);
   all_products.value = all.value.data;
@@ -134,6 +135,7 @@ const { data: categories } = await useMyFetch(
 );
 watch(count, async () => {
   await refetch();
+  window.scrollTo(0, 0);
 });
 </script>
 

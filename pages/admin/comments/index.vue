@@ -61,13 +61,13 @@ definePageMeta({
 const comments = ref(null);
 const count = ref(1);
 const totalItems = ref(10);
-const statusValue = ref({ name: `tassyklanan` });
+const statusValue = ref({ name: `garashylyar` });
 const router = useRouter();
 try {
   const { data } = await userStore.getComments({
     status: statusValue.value.name == `tassyklanan` ? true : false,
     limit: 15,
-    offset: count.value-1,
+    offset: count.value - 1,
   });
   comments.value = data.value.data.comments;
   totalItems.value = data.value.data?.count;

@@ -21,11 +21,14 @@
       {{ propItem?.price }} TMT
     </div>
   </NuxtLink>
+  <div v-if="propItem.status" class="absolute -top-[10px] -left-[11px]">
+    <img class="md:w-25 w-18" src="@/assets/images/new.png" alt="" />
+  </div>
   <div class="absolute top-5 right-5">
     <IconLike
       fill="none"
       @click="toggleFav(propItem)"
-      :class="item.isLiked ? 'fill-red-600 text-red-600'  : ' text-gray-400'"
+      :class="item.isLiked ? 'fill-red-600 text-red-600' : ' text-gray-400'"
       class="group-hover:text-red-600 w-7"
     ></IconLike>
   </div>

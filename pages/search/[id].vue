@@ -4,7 +4,7 @@
       <div></div>
       <BaseButton
         @click="toggleFilter"
-        class="self-end w-49 lg:hidden flex justify-between"
+        class="self-end w-32 lg:hidden flex justify-between"
         type="secondary"
       >
         <p>
@@ -32,7 +32,7 @@
           @someChange="(e) => emittedFromSidebar(e)"
         />
       </div>
-      <div ref="listEl" class="w-full h-[80vh] overflow-auto ">
+      <div ref="listEl" class="w-full h-[80vh] overflow-auto">
         <div
           style="padding-bottom: 20px !important"
           class="flex w-full flex-wrap gap-3 md:justify-start justify-center mt-2 mx-auto"
@@ -47,7 +47,7 @@
           </div>
           <br />
 
-          <div v-if="ShowLoader" class="w-full ">
+          <div v-if="ShowLoader" class="w-full">
             <img src="@/assets/images/loader.gif" class="mx-auto" alt="" />
           </div>
           <div
@@ -82,50 +82,58 @@ const showFilter = ref(true);
 const ShowLoader = ref(false);
 const order = ref("");
 // const total = Math.floor(incomedDatas.value?.product_count / limit.value) + 1
-(!ShowLoader.value) ? useInfiniteScroll(
-  listEl,
-  async () => {
-    if(count.value <= Math.floor(incomedDatas.value?.product_count / limit.value)){
+!ShowLoader.value
+  ? useInfiniteScroll(
+      listEl,
+      async () => {
+        if (
+          count.value <=
+          Math.floor(incomedDatas.value?.product_count / limit.value)
+        ) {
+          count.value += 1;
+          var dataForm = {
+            lang: locale.value,
+            //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
+            order: route.query.order,
+            limit: limit.value,
+            offset: count.value - 1,
+            criteria: route.params.id,
+          };
 
-    count.value +=1
-    var dataForm = {
-      lang: locale.value,
-      //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
-      order: route.query.order,
-      limit: limit.value,
-      offset: count.value - 1,
-      criteria: route.params.id,
-    };
-
-    if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
-      dataForm.brand_id = JSON.parse(route.query?.filter);
-    }
-    if (route.params.id) {
-    }
-    if (route.query.catId) {
-      dataForm.sub_category_id = route.query.catId;
-    }
-    ShowLoader.value = true
-    const { data, status } = await useMyFetch(
-      () => `/api/v1/client/products/product/search`,
+          if (route.query?.filter && JSON.parse(route.query?.filter)?.length) {
+            dataForm.brand_id = JSON.parse(route.query?.filter);
+          }
+          if (route.params.id) {
+          }
+          if (route.query.catId) {
+            dataForm.sub_category_id = route.query.catId;
+          }
+          ShowLoader.value = true;
+          const { data, status } = await useMyFetch(
+            () => `/api/v1/client/products/product/search`,
+            {
+              method: "POST",
+              body: dataForm,
+            }
+          );
+          if (status) {
+            ShowLoader.value = false;
+            console.log(
+              count.value,
+              Math.floor(incomedDatas.value?.product_count / limit.value) + 1
+            );
+            data.value?.data.products.forEach((e) =>
+              incomedDatas.value.products.push(e)
+            );
+          }
+        }
+      },
+      // setTimeout(async() => {
       {
-        method: "POST",
-        body: dataForm,
+        distance: 20,
       }
-    );
-    if (status) {
-      ShowLoader.value=false
-      console.log(count.value , Math.floor(incomedDatas.value?.product_count / limit.value) + 1);
-      data.value?.data.products.forEach(e => incomedDatas.value.products.push(e))
-    }
-  }
-
-  },
-  // setTimeout(async() => {
-  {
-    distance: 20
-  }
-) : null
+    )
+  : null;
 const active = useState();
 async function emittedFromSidebar(e) {
   locales.value.forEach((a) => {

@@ -119,7 +119,7 @@
         <img
           class="h-10 rounded-xl w-40"
           src="@/assets/images/app.png"
-          alt=""
+          alt=""  
         />
       </div>
     </div>

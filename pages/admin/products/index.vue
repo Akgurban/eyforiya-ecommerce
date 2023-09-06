@@ -66,7 +66,7 @@ const getPosts = async () => {
   try {
     const { data } = await userStore.getProduct({
       limit: 15,
-      offset: count.value-1,
+      offset: count.value,
     });
     if (data?.value.status) {
       products.value = data.value.data?.products;
