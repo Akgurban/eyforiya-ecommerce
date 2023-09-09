@@ -1,7 +1,9 @@
 <script setup>
 import { useAdminStore } from "@/stores/adminStore";
 import { useLoaderStore } from "~~/stores/loader";
+import { useToast } from "vue-toastification";
 const loaderStore = useLoaderStore();
+const $toast = useToast();
 definePageMeta({
   layout: "default",
   // middleware: ["redirect"],
@@ -35,6 +37,8 @@ async function login() {
     if (data.value.data) {
       admin_store.adminToken = data.value.data;
       router.push("/admin/categories");
+    } else if (status) {
+      $toast.error("kodunyz yalnys :(");
     }
     pendings.value = false;
   } catch (error) {

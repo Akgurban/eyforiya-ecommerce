@@ -14,14 +14,14 @@
     style="
       width: 97% !important;
       height: auto !important;
-      user-select: none !important;
+
       padding-bottom: 20px !important;
     "
   >
     <swiper-slide
       v-for="(item, index) in products"
       :key="item"
-      class="group product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center"
+      class="group product_item mb-3 mt-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-center items-center"
     >
       <BaseProduct :item="item"></BaseProduct>
     </swiper-slide>

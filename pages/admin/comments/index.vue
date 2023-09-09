@@ -66,7 +66,7 @@ const router = useRouter();
 try {
   const { data } = await userStore.getComments({
     status: statusValue.value.name == `tassyklanan` ? true : false,
-    limit: 15,
+    limit: 24,
     offset: count.value - 1,
   });
   comments.value = data.value.data.comments;
@@ -79,7 +79,7 @@ const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getComments({
       status: statusValue.value.name == `tassyklanan` ? true : false,
-      limit: 15,
+      limit: 24,
       offset: count.value - 1,
     });
     comments.value = data.value.data.comments;

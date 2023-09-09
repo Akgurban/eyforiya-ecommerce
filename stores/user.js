@@ -201,7 +201,7 @@ export const useUserStore = defineStore("user", {
     },
     async getProduct(data) {
       return await useAdminFetch(
-        `/api/v1/admin/products/products?limit=15&offset=${data.offset}`
+        `/api/v1/admin/products/products?limit=24&offset=${data.offset}`
       );
     },
     async OneProduct(uuid) {

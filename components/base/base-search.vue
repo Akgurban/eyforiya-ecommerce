@@ -10,7 +10,7 @@
       alt=""
     />
     <input
-      :id="id"
+      id="myInput"
       :name="name"
       :type="type"
       :placeholder="placeholder"
@@ -41,6 +41,15 @@ function handleInput(event) {
     error.value = props.validate(event.target.value);
   }
 }
+watch(
+  () => useRoute().path,
+  async () => {
+    console.log("xas");
+    var inputElement = document.getElementById("myInput");
+    // To unfocus the input element programmatically
+    inputElement.blur();
+  }
+);
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="my-4 font-bold bg-slate-300 p-2">Habar gosun</div>
+      <div class="my-4 font-bold bg-slate-300 p-2">Haryt gosun</div>
       <div class="flex gap-4 justify-between w-full">
         <div class="w-[400px] flex flex-col gap-3">
           <BaseInput

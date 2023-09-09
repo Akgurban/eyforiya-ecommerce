@@ -1,0 +1,1 @@
+import{d as o}from"./entry.bfa7a906.js";import{u as a}from"./fetch.f5b25f3c.js";import{u as h}from"./authStore.4421eb47.js";const p=(t,r)=>{const s=o(),u=h();return a(t,{baseURL:s.public.baseURL,...r,onRequest({request:m,options:e}){e.headers=e.headers||{},e.headers.authorization=u}},"$pLJOpmWEpt")};export{p as u};

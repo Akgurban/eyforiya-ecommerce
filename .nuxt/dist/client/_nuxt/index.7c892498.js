@@ -1,0 +1,1 @@
+import{n as a}from"./entry.bfa7a906.js";import{aa as n,Z as o,I as r}from"./swiper-vue.406cf000.js";const p={__name:"index",async setup(s){let e,t;return[e,t]=n(()=>a("/admin/login")),await e,t(),(_,c)=>(o(),r("div"))}};export{p as default};

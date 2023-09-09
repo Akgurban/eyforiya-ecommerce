@@ -81,7 +81,7 @@ const statusValue = ref({ name: `garashylyar` });
 
 try {
   const { data } = await userStore.getOrders({
-    limit: 25,
+    limit: 24,
     offset: 0,
     status: statusValue.value.name == `tassyklanan` ? true : false,
   });
@@ -94,7 +94,7 @@ try {
 const getCategoriesr = async () => {
   try {
     const { data } = await userStore.getOrders({
-      limit: 15,
+      limit: 24,
       offset: count.value - 1,
       status: statusValue.value.name == `tassyklanan` ? true : false,
     });

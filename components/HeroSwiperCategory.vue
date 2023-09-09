@@ -41,7 +41,7 @@ const { data: categories } = await useMyFetch(
         useRouter().push(
           localePath({
             path: `/filtered-product/${item?.uuid}`,
-            query: { filter: '[]' },
+            query: { filter: '[]', p: 1 },
           })
         )
       "

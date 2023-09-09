@@ -30,6 +30,7 @@ const posts = ref([
   { name: "Harytlar", path: "/admin/products" },
   { name: "Teswirler", path: "/admin/comments" },
   { name: "Zakazlar", path: "/admin/orders" },
+  { name: "Reset Password", path: "/admin/reset-password" },
 ]);
 const isRouteActive = ref(true);
 </script>
