@@ -28,7 +28,7 @@
             </div>
             <div class="ml-5">
               <p
-                v-for="item in categories.data"
+                v-for="item in categories?.data"
                 @click="
                   useRouter().push(
                     localePath({
@@ -57,14 +57,14 @@
               >
                 {{ $t("category_select") }}
               </div>
-              <div class="ml-5">
+              <div v-if="categories?.data" class="ml-5">
                 <p
-                  v-for="item in categories.data"
+                  v-for="item in categories?.data"
                   @click="
                     useRouter().push(
                       localePath({
                         path: `/filtered-product/${item?.uuid}`,
-                        query: { filter: '[]' },
+                        query: { filter: '[]', p: '1' },
                       })
                     )
                   "
@@ -98,7 +98,7 @@
             {{ $t("no_product") }}
           </div>
         </div>
-        <BasePaginate v-model="count" :total-items="all_products.count" />
+        <BasePaginate v-model="count" :total-items="all_products?.count" />
       </div>
     </div>
   </div>
@@ -116,14 +116,14 @@ useHead({
 });
 const { locale } = useI18n();
 const count = ref(1);
+const pending = ref(true);
 const showFilter = ref(false);
 const all_products = ref(null);
 const refetch = async () => {
-  const { data: all } = await useMyFetch(
+  let { data: all, pending: isPending } = await useMyFetch(
     `/api/v1/client/products/all-products?limit=24&offset=${route.query?.p}&lang=${locale.value}`
   );
-  console.log(all);
-  all_products.value = all.value.data;
+  all_products.value = all.value?.data;
   count.value = +route.query.p;
 };
 await refetch();

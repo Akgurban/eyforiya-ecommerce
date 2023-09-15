@@ -13,7 +13,7 @@
       /></BaseButton>
     </div>
 
-    <div class="lead flex gap-5 ">
+    <div class="flex justify-between gap-5 items-start">
       <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
         <filtered-sidebar
           :show_filter="!showFilter"
@@ -33,29 +33,32 @@
         />
       </div>
 
+      <div class="w-full">
+        <div
+          style="height: auto !important; padding-bottom: 20px !important"
+          class="flex flex-wrap gap-3 justify-start mx-auto mt-5"
+        >
+          <div
+            v-for="(item, index) in incomedDatas?.products"
+            :key="item"
+            draggable="true"
+            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+          >
+            <BaseProduct :item="item"></BaseProduct>
+          </div>
+        </div>
+        <div v-if="incomedDatas?.count !== 0">
+          <BasePaginate
+            :total-items="incomedDatas?.count"
+            v-model="count"
+          ></BasePaginate>
+        </div>
+      </div>
       <div
-        style="
-          width: 96% !important;
-          height: auto !important;
-          user-select: none !important;
-          padding-bottom: 20px !important;
-        "
-        class="flex flex-wrap gap-3 justify-start mx-auto mt-5"
+        v-if="!incomedDatas?.products"
+        class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
       >
-        <div
-          v-for="(item, index) in incomedDatas?.products"
-          :key="item"
-          draggable="true"
-          class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
-        >
-          <BaseProduct :item="item"></BaseProduct>
-        </div>
-        <div
-          v-if="!incomedDatas?.products"
-          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-        >
-          {{ $t("no_product") }}
-        </div>
+        {{ $t("no_product") }}
       </div>
     </div>
   </div>
@@ -70,6 +73,7 @@ const route = useRoute();
 const incomedDatas = ref("");
 const showFilter = ref(true);
 const order = ref("");
+const count = ref(1);
 
 const orderList = ref([
   { code: "", name: "none" },
@@ -80,6 +84,7 @@ const orderList = ref([
 const active = useState();
 async function emittedFromSidebar(e) {
   console.log(e);
+  count.value = 1;
   if (e.brnd?.length) {
     locales.value.forEach((a) => {
       if (a.code == locale.value) {
@@ -88,6 +93,7 @@ async function emittedFromSidebar(e) {
           query: {
             filter: JSON.stringify([`${e.brnd[e.brnd.length - 1]}`]),
             order: e.ord,
+            p: "1",
           },
         });
       }
@@ -103,8 +109,8 @@ const refetch = async () => {
     lang: "tm",
     //  / "brand_id":["73fbbb62-c863-47e5-a80b-a7cbd67589f4"	,"031a90c5-a29c-4d38-9f49-10f52c37eb76"],
     order: route.query.order,
-    limit: 20,
-    offset: 0,
+    limit: 24,
+    offset: route.query.p,
     criteria: route.params.id,
   };
 
@@ -122,8 +128,8 @@ const refetch = async () => {
     {
       query: {
         brand_id: route.params.id,
-        limit: 10,
-        offset: 0,
+        limit: 24,
+        offset: route.query.p,
         lang: "tm",
         order: route.query.order,
       },
@@ -163,6 +169,26 @@ watch(
     });
   }
 );
+
+watch(count, async () => {
+  // await refetch();
+
+  locales.value.forEach((a) => {
+    if (a.code == locale.value) {
+      router.push({
+        path: `${a.code2}/brand_id/${route.params.id}`,
+        query: {
+          filter: route.query?.filter,
+          order: route.query?.order,
+          p: count.value,
+        },
+      });
+    }
+  });
+
+  console.log(route, "sw");
+  window.scrollTo(0, 0);
+});
 
 const { data: brands } = await useMyFetch(
   `/api/v1/client/products/brands?lang=${locale.value}`

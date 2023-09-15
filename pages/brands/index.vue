@@ -12,7 +12,7 @@
           useRouter().push(
             localePath({
               path: `/brand_id/${item?.uuid}`,
-              query: { filter: JSON.stringify([`${item?.uuid}`]) },
+              query: { p: '1', filter: JSON.stringify([`${item?.uuid}`]) },
             })
           )
         "
@@ -41,11 +41,11 @@ const { data: brands } = await useMyFetch(
   `/api/v1/client/products/brands?lang=${locale.value}`
 );
 useHead({
-  title: 'Brendlar - Brands - Бренды',
+  title: "Brendlar - Brands - Бренды",
   meta: [
-    { name: 'description', content: 'All products-Ähli harytlar-Все Товары' }
+    { name: "description", content: "All products-Ähli harytlar-Все Товары" },
   ],
-})
+});
 </script>
 
 <style scoped></style>

@@ -22,7 +22,7 @@ const { data: categories } = await useMyFetch(
 <template>
   <swiper
     :spaceBetween="5"
-    :slidesPerView="count"
+    :slidesPerView="count || 2"
     :autoplay="{
       delay: 3500,
       disableOnInteraction: false,

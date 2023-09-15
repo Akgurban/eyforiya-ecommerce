@@ -45,13 +45,10 @@ const { data: video } = await useMyFetch(`/api/v1/client/products/videos`);
           })
         )
       " -->
-      <video
-        class="w-full h-full object-cover z-[1]"
-        autoplay
+      <video class="w-full h-full object-cover z-[1]" autoplay loop muted>
+        <!-- muted
         controls
-        loop
-        muted
-      >
+        -->
         <source
           :src="`http://duypbaha.com.tm/api/v1/uploads/videos/${item?.video_path}`"
           ref="img"

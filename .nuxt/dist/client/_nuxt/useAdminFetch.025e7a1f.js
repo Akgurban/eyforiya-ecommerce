@@ -1,0 +1,1 @@
+import{f as u}from"./entry.82f784ed.js";import{u as a}from"./fetch.dc8ba421.js";import{u as m}from"./adminStore.9dde2bc5.js";const h=(r,s)=>{const t=u(),o=m();return a(r,{baseURL:t.public.baseURL,...s,onRequest({request:n,options:e}){e.headers=e.headers||{},e.headers.authorization=o.adminToken}},"$fjRCjZbP4m")};export{h as u};

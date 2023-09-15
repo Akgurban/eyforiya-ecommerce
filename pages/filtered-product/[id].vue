@@ -32,13 +32,13 @@
 
       <div class="w-full">
         <div
-          class="flex flex-wrap gap-3 w-full justify-start mx-auto mt-5 px-2"
+          class="flex flex-wrap gap-2 md:gap-3 w-full justify-start mx-auto mt-5 px-1 md:px-2"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"
             :key="item"
             draggable="true"
-            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start items-center"
+            class="group relative md:w-[266px] w-[46vw] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start items-center"
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>

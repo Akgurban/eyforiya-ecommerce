@@ -28,8 +28,8 @@ async function signUp() {
     // simple data validation
     if (!user.value || !password.value) {
       // isValid.value = false;
-      user.value=''
-      password.value=''
+      user.value = "";
+      password.value = "";
       return;
       // throw new Error("Please fill all fields");
     }
@@ -48,10 +48,10 @@ async function signUp() {
     console.log(error);
     if (error.value?.fatal == false) {
       pendings.value = false;
-      err_valid.value="user_exist"
-      isValid.value=false
+      err_valid.value = "user_exist";
+      isValid.value = false;
 
-      return
+      return;
       // return $toast.error(`username exist`);
     }
     if (data.value?.status) {
@@ -70,8 +70,8 @@ async function login() {
     // simple data validation
     if (!user.value || !password.value) {
       // isValid.value = false;
-      user.value=''
-      password.value=''
+      user.value = "";
+      password.value = "";
       return;
     }
 
@@ -88,9 +88,9 @@ async function login() {
     );
     authStore.userToken = data.value?.auth;
     if (!data.value.status) {
-    isValid.value=false
+      isValid.value = false;
 
-    err_valid.value="not_correct_data"
+      err_valid.value = "not_correct_data";
       // $toast.error(data.value.message);
     }
     pendings.value = false;
@@ -185,6 +185,7 @@ const logout = () => {
             v-model="password"
           />
         </div>
+        <p class="text-xs text-gray-400 mb-3">{{ $t("alert_login") }}</p>
         <p class="text-red-500 text-sm inter font-bold mb-4" v-if="!isValid">
           {{ $t(err_valid) }}
         </p>
@@ -194,17 +195,17 @@ const logout = () => {
             type="button"
             @click="login"
           >
-            {{$t('signin')}}
+            {{ $t("signin") }}
           </button>
           <p class="p-2 rounded-md text-white font-bold" v-if="pendings">
             <img src="@/assets/images/loader.gif" alt="" />
           </p>
           <button
-            class="text-blue-700 border-blue-700 border-2 rounded-2xl w-1/2  font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+            class="text-blue-700 border-blue-700 border-2 rounded-2xl w-1/2 font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
             @click="signUp"
           >
-            {{$t('signup')}}
+            {{ $t("signup") }}
           </button>
         </div>
       </form>

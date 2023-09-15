@@ -35,7 +35,7 @@
       <div ref="listEl" class="w-full h-[80vh] overflow-auto">
         <div
           style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 md:justify-start justify-center mt-2 mx-auto"
+          class="flex w-full flex-wrap gap-3 md:justify-start justify-start mt-2 mx-auto px-3"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"

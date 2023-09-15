@@ -69,13 +69,13 @@
         <div class="md:block hidden">
           <HeroSwiperProduct
             :products="latest.data"
-            count="4"
+            :count="4"
           ></HeroSwiperProduct>
         </div>
         <div class="block md:hidden">
           <HeroSwiperProduct
             :products="latest.data"
-            count="2"
+            :count="2"
           ></HeroSwiperProduct>
         </div>
       </div>
@@ -147,7 +147,7 @@
             useRouter().push(
               localePath({
                 path: `/brand_id/${item?.uuid}`,
-                query: { filter: JSON.stringify([`${item?.uuid}`]) },
+                query: { p: '1', filter: JSON.stringify([`${item?.uuid}`]) },
               })
             )
           "
@@ -168,7 +168,7 @@
             useRouter().push(
               localePath({
                 path: `/brand_id/${item?.uuid}`,
-                query: { filter: JSON.stringify([`${item?.uuid}`]) },
+                query: { p: '1', filter: JSON.stringify([`${item?.uuid}`]) },
               })
             )
           "
