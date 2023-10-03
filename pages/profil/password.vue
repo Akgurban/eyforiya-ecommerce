@@ -3,11 +3,9 @@
     <div
       class="2xl:w-[1424px] xl:w-[1230px] w-full flex gap-3 items-center pl-0 md:pl-10"
     >
-      <NuxtLink
-        to="/"
-        class="cursor-pointer hover:font-bold"
-        >{{ $t("home") }}</NuxtLink
-      >
+      <NuxtLink to="/" class="cursor-pointer hover:font-bold">{{
+        $t("home")
+      }}</NuxtLink>
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer">{{ $t("profile") }}</p>
 
@@ -22,11 +20,11 @@
       <div class="md:w-[900px] w-full">
         <div class="h-[96vh] overflow-auto">
           <div class="text-2xl md:text-4xl font-bold mt-6 text-blue-900">
-            {{$t('pass_rec')}}
+            {{ $t("pass_rec") }}
           </div>
           <form @submit.prevent="submit" class="md:mt-20 mt-10">
             <div class="pl-2 md:pl-10 w-[70%]">
-              <p class="text-blue-800 font-bold">{{ $t('new_pass') }}</p>
+              <p class="text-blue-800 font-bold">{{ $t("new_pass") }}</p>
               <input
                 v-model="password"
                 type="password"
@@ -40,7 +38,7 @@
               >
             </div>
             <div class="pl-2 md:pl-10 w-[70%] mt-8">
-              <p class="text-blue-800 font-bold">{{ $t('rew_pass') }}</p>
+              <p class="text-blue-800 font-bold">{{ $t("rew_pass") }}</p>
               <input
                 v-model="password2"
                 type="password"
@@ -103,9 +101,7 @@ const submit = async () => {
         authStore.userToken.uuid;
       }
       pending1.value = false;
-      console.log();
       // orders.value = history.value.data.orders;
-      console.log(history.value, "history");
     }
   }
 };

@@ -2,15 +2,17 @@
   <div class="2xl:w-[1440px] xl:screen mx-auto">
     <div class="flex justify-between">
       <div></div>
-      <BaseButton
-        @click="toggleFilter"
-        class="self-end w-32 lg:hidden flex justify-between"
-        type="secondary"
-        ><p>
-          {{ !showFilter ? $t("close_filter") : $t("show_filter") }}
-        </p>
-        <img src="@/assets/images/filter.png" class="inline w-5" alt=""
-      /></BaseButton>
+      <div ref="filter_btn">
+        <BaseButton
+          @click="toggleFilter"
+          class="self-end w-32 lg:hidden flex justify-between"
+          type="secondary"
+          ><p>
+            {{ !showFilter ? $t("close_filter") : $t("show_filter") }}
+          </p>
+          <img src="@/assets/images/filter.png" class="inline w-5" alt=""
+        /></BaseButton>
+      </div>
     </div>
     <div class="flex justify-between gap-5 items-start">
       <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
@@ -21,7 +23,10 @@
           @someChange="(e) => emittedFromSidebar(e)"
         />
       </div>
-      <div class="block md:hidden absolute w-full 2xl:w-[25%] lg:w-[28%]">
+      <div
+        ref="filter_side"
+        class="block md:hidden absolute w-full 2xl:w-[25%] lg:w-[28%]"
+      >
         <filtered-sidebar
           :show_filter="showFilter"
           :brands="incomedDatas?.brands"
@@ -30,9 +35,9 @@
         />
       </div>
 
-      <div class="w-full">
+      <div class="w-full mt-4">
         <div
-          class="flex flex-wrap gap-2 md:gap-3 w-full justify-start mx-auto mt-5 px-1 md:px-2"
+          class="grid md:grid-cols-3 grid-cols-2 mx-auto w-fit gap-2 lg:grid-cols-4"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"
@@ -42,12 +47,12 @@
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>
-          <div
-            v-if="!incomedDatas?.products"
-            class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-          >
-            {{ $t("no_product") }}
-          </div>
+        </div>
+        <div
+          v-if="!incomedDatas?.products"
+          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+        >
+          {{ $t("no_product") }}
         </div>
         <div class="" v-if="incomedDatas?.products">
           <BasePaginate :total-items="totalItems" v-model="count" />
@@ -66,19 +71,17 @@ const incomedDatas = ref("");
 const count = ref(1);
 const totalItems = ref(24);
 const showFilter = ref(true);
-const toggleFilter = () => {
-  showFilter.value = !showFilter.value;
-};
+const filter_side = ref();
+const filter_btn = ref();
+
 // count.value = +route.query.p;
 
 const active = useState();
 async function emittedFromSidebar(e) {
   // route.query.p = 1;
   count.value = 1;
-  console.log(locale, locales);
   locales.value.forEach((a) => {
     if (a.code == locale.value) {
-      console.log(a.code, locale.value);
       router.push({
         path: `${a.code2}/filtered-product/${route.params.id}`,
         query: {
@@ -121,7 +124,6 @@ const refetch = async () => {
   );
   if (status) {
     incomedDatas.value = data.value?.data;
-    console.log(data.value, "[]");
     totalItems.value = data.value?.data?.product_count;
     // count.value = +route.query.p;
   }
@@ -190,9 +192,31 @@ watch(count, async () => {
     });
   });
 
-  console.log(route, "sw");
   window.scrollTo(0, 0);
 });
+onMounted(() => {
+  document.addEventListener("click", (e) => {
+    if (filter_side.value != null) {
+      if (
+        !filter_side.value.contains(e.target) &&
+        !showFilter.value &&
+        filter_btn.value.contains(e.target)
+      ) {
+        showFilter.value = false;
+      }
+      if (
+        !filter_side.value.contains(e.target) &&
+        !showFilter.value &&
+        !filter_btn.value.contains(e.target)
+      ) {
+        showFilter.value = true;
+      }
+    }
+  });
+});
+const toggleFilter = () => {
+  showFilter.value = !showFilter.value;
+};
 useHead({
   title: `All products-Ähli harytlar-Все Товары`,
   meta: [

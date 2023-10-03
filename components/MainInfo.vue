@@ -71,7 +71,6 @@ onMounted(() => {
     } || {};
   const observer = new IntersectionObserver(([entry]) => {
     if (entry && entry.isIntersecting) {
-      console.log(entry, "saaa");
       updateCount();
     }
   }, options);

@@ -13,7 +13,7 @@
       /></BaseButton>
     </div>
 
-    <div class="flex justify-between gap-5 items-start">
+    <div class="flex justify-start gap-5 items-start">
       <div class="md:block hidden w-full 2xl:w-[25%] lg:w-[28%] z-20">
         <filtered-sidebar
           :show_filter="!showFilter"
@@ -35,8 +35,7 @@
 
       <div class="w-full">
         <div
-          style="height: auto !important; padding-bottom: 20px !important"
-          class="flex flex-wrap gap-3 justify-start mx-auto mt-5"
+          class="grid md:grid-cols-3 grid-cols-2 mx-auto w-fit gap-2 lg:grid-cols-4"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"
@@ -53,12 +52,12 @@
             v-model="count"
           ></BasePaginate>
         </div>
-      </div>
-      <div
-        v-if="!incomedDatas?.products"
-        class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-      >
-        {{ $t("no_product") }}
+        <div
+          v-if="!incomedDatas?.products"
+          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+        >
+          {{ $t("no_product") }}
+        </div>
       </div>
     </div>
   </div>
@@ -137,7 +136,6 @@ const refetch = async () => {
     }
   );
   if (status) {
-    console.log(data.value, "poo");
     incomedDatas.value = data.value?.data;
   }
   var { data: brands } = await useMyFetch(
@@ -186,7 +184,6 @@ watch(count, async () => {
     }
   });
 
-  console.log(route, "sw");
   window.scrollTo(0, 0);
 });
 

@@ -89,7 +89,10 @@
             v-for="(item, index) in comments.data.comments"
             class="odd:bg-teal-50 even:bg-teal-100 p-2 font-inter"
           >
-            {{ index + 1 }}: {{ item.content }}
+            <div>
+              <p class="inline font-semibold">{{ item.user_name }}</p>
+              : {{ item.content }}
+            </div>
           </li>
         </ul>
       </div>
@@ -167,9 +170,7 @@ const { data: comments } = await useMyFetch(
   `/api/v1/client/products/product-comment?product_id=${route.params.id}&offset=0&limit=100`
 );
 
-console.log(lesson.value, "lesson.value");
 if (!lesson.value) {
-  console.log(lesson.value, "lesson.value");
   const { data, error, status } = await useMyFetch(url);
 
   if (error.value) {
@@ -213,7 +214,7 @@ if (!lesson.value) {
       };
     }
   });
-  console.log(`getting from cache`);
+  // console.log(`getting from cache`);
 }
 
 favStore.wish_items?.forEach(async (e) => {

@@ -80,7 +80,6 @@ const getPosts = async () => {
 await getPosts();
 
 watch(count, async () => {
-  console.log("xsa");
   await getPosts();
 });
 const deletePosts = async (e) => {

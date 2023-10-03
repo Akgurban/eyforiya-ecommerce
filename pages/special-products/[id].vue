@@ -7,7 +7,9 @@
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer font-bold">special products</p>
     </div>
-    <div class="w-full flex gap-2 flex-wrap mt-4 mx-3">
+    <div
+      class="grid md:grid-cols-3 grid-cols-2 mx-auto w-fit gap-2 lg:grid-cols-4 mt-4"
+    >
       <div
         class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
         v-if="!all_products.data.products?.length"

@@ -10,7 +10,6 @@ export const useFavStore = defineStore("favourite", {
   }),
   actions: {
     async setLocalStorage(propItem) {
-      console.log(propItem, this.wish_items);
       propItem.isLiked = true;
       if (this.wish_items == null) {
         this.wish_items = [];

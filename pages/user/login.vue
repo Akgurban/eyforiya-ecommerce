@@ -108,10 +108,8 @@ async function login() {
         `/api/v1/client/wish-list?lang=tm&user_id=${authStore.userToken?.uuid}`
       );
     }
-    console.log(wish_user.value.status, "wish_user.value");
     if (wish_user.value.status && wish_user.value?.data?.length) {
       favStore.wish_items = [];
-      console.log("[][]");
       wish_user.value.data?.filter((e) => {
         e.images = e.img_path;
         favStore.setLocalStorage(e);

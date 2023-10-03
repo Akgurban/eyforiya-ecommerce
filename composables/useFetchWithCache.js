@@ -19,7 +19,7 @@ export const useFetchWithCache = async (url, opts) => {
 
     cached.value = data.value;
   } else {
-    console.log(`getting from cache`);
+    // console.log(`getting from cache`);
   }
   return cached.value;
 };

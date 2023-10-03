@@ -2,7 +2,7 @@
   <div class="2xl:w-[1440px] xl:screen w-[90%] mx-auto">
     <div
       style="padding-bottom: 20px !important"
-      class="flex flex-wrap gap-6 justify-center"
+      class="grid md:grid-cols-5 gap-3 grid-cols-2"
     >
       <NuxtLink
         v-for="(item, index) in brands?.data"
@@ -16,7 +16,7 @@
             })
           )
         "
-        class="group md:w-[146px] gap-3 md:gap-6 w-[96px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+        class="group w-full gap-3 md:gap-6 mb-3 hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
       >
         <img
           class="text-black w-full aspect-square object-contain mx-5 hover:grayscale-0 transition-all duration-75 cursor-pointer"

@@ -3,11 +3,9 @@
     <div
       class="2xl:w-[1424px] xl:w-[1230px] w-full flex gap-3 items-center pl-0 md:pl-10"
     >
-      <NuxtLink
-        to="/"
-        class="cursor-pointer hover:font-bold"
-        >{{ $t("home") }}</NuxtLink
-      >
+      <NuxtLink to="/" class="cursor-pointer hover:font-bold">{{
+        $t("home")
+      }}</NuxtLink>
       <IconChevronRight class="h-3" />
       <p class="cursor-pointer">{{ $t("profile") }}</p>
 
@@ -25,7 +23,7 @@
           v-if="!orders"
           class="w-full h-auto mt-30 flex font-bold items-center justify-center text-6xl font-alatsi"
         >
-          {{$t('noorder')}}
+          {{ $t("noorder") }}
         </div>
         <div class="overflow-auto">
           <ul>
@@ -76,7 +74,6 @@ if (authStore.userToken?.uuid) {
     `/api/v1/client/orders?limit=100&offset=0&lang=tm&user_id=${authStore.userToken?.uuid}`
   );
   orders.value = history.value.data.orders;
-  console.log(history.value.data.orders, "history");
 }
 </script>
 

@@ -78,16 +78,15 @@
         </Transition>
       </div>
 
-      <div class="w-full">
+      <div class="w-full mt-4">
         <div
-          style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 px-3 justify-start mt-5"
+          class="grid md:grid-cols-3 grid-cols-2 mx-auto w-fit gap-2 lg:grid-cols-4"
         >
           <div
             v-for="(item, index) in all_products?.products"
             :key="item"
             draggable="true"
-            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start gap-y-4 items-center"
+            class="group relative md:w-[266px] w-[45vw] gap-y-4 product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-start items-center"
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>

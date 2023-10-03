@@ -3,12 +3,18 @@
     :to="localePath(`/product/${item?.uuid}`)"
     class="group rounded-xl w-full text-center"
   >
-    <img
-      class="border w-full aspect-square select-none rounded-md md:rounded-lg border-[#e6e6e6]"
-      :src="`http://duypbaha.com.tm/api/v1/uploads/images/${propItem?.images}`"
-      alt=""
-      height="262"
-      loading="lazy"
+    <div
+      v-if="!propItem?.images"
+      class="border absolute border-blue-300 shadow rounded-md p-4 max-w-sm w-full aspect-square mx-auto"
+    >
+      <div class="animate-pulse flex space-x-4">
+        <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+        <div class="flex-1 space-y-6 py-1"></div>
+      </div>
+    </div>
+    <BaseImg
+      class="w-full"
+      :src_img="`http://duypbaha.com.tm/api/v1/uploads/images/${propItem?.images}`"
     />
     <div
       class="w-fit mx-auto font-medium md:text-3xl text-base font-alatsi text-[#3C4242] mt-3 mb-1"
@@ -21,7 +27,7 @@
       {{ propItem?.price }} TMT
     </div>
   </NuxtLink>
-  <div v-if="propItem.status" class="absolute -top-[10px] -left-[11px]">
+  <div v-if="propItem?.status" class="absolute -top-[10px] -left-[11px]">
     <img class="md:w-25 w-18" src="@/assets/images/new.png" alt="" />
   </div>
   <div class="absolute top-5 right-5">
@@ -48,6 +54,7 @@ const props = defineProps({
 const favStore = useFavStore();
 const propItem = ref({});
 const user = useAuthStore();
+const IMG_SRC = ref("");
 
 propItem.value = props.item;
 
@@ -99,6 +106,20 @@ const toggleFav = async (e) => {
 
 const countProduct = ref(null);
 watch(countProduct, () => {});
+const loadingImg = (e, b) => {
+  IMG_SRC.value = `http://duypbaha.com.tm/api/v1/uploads/images/${e}`;
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.opacity-enter-active,
+.opacity-leave-active {
+  transition: opacity 0.1s;
+  transition-delay: 1s;
+}
+
+.opacity-enter,
+.opacity-leave-to {
+  opacity: 0;
+}
+</style>

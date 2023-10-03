@@ -32,30 +32,28 @@
           @someChange="(e) => emittedFromSidebar(e)"
         />
       </div>
-      <div ref="listEl" class="w-full h-[80vh] overflow-auto">
+      <div ref="listEl" class="w-full h-[80vh] overflow-auto mt-3">
         <div
-          style="padding-bottom: 20px !important"
-          class="flex w-full flex-wrap gap-3 md:justify-start justify-start mt-2 mx-auto px-3"
+          class="grid md:grid-cols-3 grid-cols-2 mx-auto w-fit gap-2 lg:grid-cols-4 px-2"
         >
           <div
             v-for="(item, index) in incomedDatas?.products"
             :key="item"
             draggable="true"
-            class="group relative md:w-[266px] w-[176px] product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
+            class="group relative w-full product_item mb-3 hover:shadow-none md:hover:shadow-hero hover:bg-[#D9D9D940] transition-all ease-in-out duration-200 rounded-xl flex flex-col justify-between items-center"
           >
             <BaseProduct :item="item"></BaseProduct>
           </div>
           <br />
-
-          <div v-if="ShowLoader" class="w-full">
-            <img src="@/assets/images/loader.gif" class="mx-auto" alt="" />
-          </div>
-          <div
-            v-if="!incomedDatas?.products"
-            class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
-          >
-            {{ $t("no_product") }}
-          </div>
+        </div>
+        <div v-if="ShowLoader" class="w-full">
+          <img src="@/assets/images/loader.gif" class="mx-auto" alt="" />
+        </div>
+        <div
+          v-if="!incomedDatas?.products"
+          class="mt-20 text-center w-full text-6xl text-gray-500 font-alatsi font-bold"
+        >
+          {{ $t("no_product") }}
         </div>
         <!-- <BasePaginate
           :total-items="incomedDatas.product_count"
@@ -130,7 +128,7 @@ const order = ref("");
       },
       // setTimeout(async() => {
       {
-        distance: 20,
+        distance: 500,
       }
     )
   : null;

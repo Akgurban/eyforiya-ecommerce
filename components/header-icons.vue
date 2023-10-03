@@ -1,7 +1,11 @@
 <template>
   <div class="flex gap-3">
     <NuxtLink
-      :to="!user.userToken?.uuid ? localePath(`/user/login`) : localePath(`/profil/order`)"
+      :to="
+        !user.userToken?.uuid
+          ? localePath(`/user/login`)
+          : localePath(`/profil/order`)
+      "
       :class="
         route.path == '/login' ||
         route.path == '/en/login' ||
@@ -114,11 +118,10 @@ if (user.userToken?.uuid) {
 }
 const path = route.path;
 const profilLogin = () => {
-  console.log(localePath,'sa');
   if (user.userToken?.uuid) {
-        router.push(localePath({name:"/profil/order"}));
+    router.push(localePath({ name: "/profil/order" }));
   } else {
-      router.push(localePath({name:"/user/login"}));
+    router.push(localePath({ name: "/user/login" }));
   }
 };
 </script>

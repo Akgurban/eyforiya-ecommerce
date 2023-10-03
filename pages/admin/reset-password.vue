@@ -91,7 +91,6 @@ const submit = async () => {
     $toast.success("password changed");
   }
   pending1.value = false;
-  console.log();
   // orders.value = history.value.data.orders;
 };
 </script>
